@@ -30,9 +30,7 @@ public class ProjectileBullet : MonoBehaviour
     void Update()
     {
         MyInput();
-        Debug.DrawLine(transform.position, mousePos.GetMousePosition());
-        Debug.Log(mousePos.GetMousePosition() - transform.position);
-
+        //Debug.DrawLine(transform.position, mousePos.GetMousePosition());
     }
 
     private void MyInput()
