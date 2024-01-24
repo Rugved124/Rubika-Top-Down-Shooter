@@ -7,6 +7,10 @@ TagManager:
   - Red
   - Blue
   - Green
+  - Obstacle
+  - Enemies
+  - Ground
+  - Bullets
   layers:
   - Default
   - TransparentFX

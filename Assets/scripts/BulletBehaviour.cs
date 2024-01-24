@@ -32,6 +32,7 @@ public class ProjectileBullet : MonoBehaviour
         MyInput();
         Debug.DrawLine(transform.position, mousePos.GetMousePosition());
         Debug.Log(mousePos.GetMousePosition() - transform.position);
+
     }
 
     private void MyInput()
@@ -50,9 +51,7 @@ public class ProjectileBullet : MonoBehaviour
             bulletsShot = 0;
             Shoot();
         }
-
     }
-
     private void Shoot()
     {
         readyToShoot = false;
@@ -102,5 +101,9 @@ public class ProjectileBullet : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         reloading = false;
+    }
+    private void DestroyBullet()
+    {
+        
     }
 }
