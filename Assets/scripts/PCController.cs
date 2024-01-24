@@ -18,23 +18,24 @@ public class PCController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMove();
+        var targetVector = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical());
+        MoveTowardsTarget(targetVector);
+
         PlayerRotation();
     }
 
-    void PlayerMove()
-    {
-        Vector3 movementVector = new Vector3(InputManager.instance.GetMovementHorizontal(), playerRb.velocity.y, InputManager.instance.GetMovementVertical());
-        //playerRb.AddForce(movementVector.normalized * playerMoveSpeed / Time.fixedDeltaTime);
-        playerRb.velocity = movementVector.normalized * playerMoveSpeed / Time.deltaTime;
-    }
-
     void PlayerRotation()
-    {
-        
+    {   
         Vector3 lookDir = InputManager.instance.GetMousePosition();
-        lookDir.y = 0;
+        lookDir.y = transform.position.y;
         Debug.DrawLine(transform.position, lookDir);
         transform.LookAt(lookDir);
+    }
+
+    private void MoveTowardsTarget(Vector3 targetVector)
+    {
+        var speed = playerMoveSpeed * Time.deltaTime;
+        var targetPosition = transform.position + targetVector * speed;
+        transform.position = targetPosition;
     }
 }

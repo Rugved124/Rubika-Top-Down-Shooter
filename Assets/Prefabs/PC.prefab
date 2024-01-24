@@ -1105,7 +1105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daac0da214a652f47a36940b6b4459fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMoveSpeed: 0.08
+  playerMoveSpeed: 6
 --- !u!54 &3654550992965985218
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1131,8 +1131,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 0
+  m_Constraints: 80
+  m_CollisionDetection: 2
 --- !u!114 &8410670252110975710
 MonoBehaviour:
   m_ObjectHideFlags: 0
