@@ -5,9 +5,8 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     [SerializeField]
     private float detectionRange;
-    [SerializeField]
     private float shootingRange;
-    private bool canShoot;
+    public bool canShoot;
     PCController playerPos;
     private void Awake()
     {
@@ -16,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
         shootingRange = navMeshAgent.stoppingDistance;
     }
 
-    private void Update()
+    public void Update()
     {
 
         var lookPos = playerPos.transform.position - transform.position;
