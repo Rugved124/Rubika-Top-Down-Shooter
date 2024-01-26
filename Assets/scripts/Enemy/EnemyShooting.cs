@@ -6,9 +6,7 @@ public class EnemyShooting : MonoBehaviour
 {
 
     [SerializeField] private GameObject bullet; // a link to the bullet gameobject
-    [SerializeField] private Camera cam; // link to the cam
     [SerializeField] private Transform attackPoint; // the location where the bullets will spawn
-    [SerializeField] private InputManager mousePos;
     [SerializeField] private float shootForce, upwardForce; //force applied on the bullets
 
     [SerializeField] private float timeBetweenShooting, timeBetweenShots, spread, reloadTime; // bullet stats
@@ -38,10 +36,11 @@ public class EnemyShooting : MonoBehaviour
         if (enemy.canShoot)
         {
             transform.LookAt(pcLocation.transform.position);
+            shooting = true;
             ReloadAndShoot();
         }
 
-        //Debug.DrawLine(transform.position, mousePos.GetMousePosition());
+        
     }
 
     private void ReloadAndShoot()

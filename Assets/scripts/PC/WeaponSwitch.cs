@@ -61,7 +61,7 @@ public class WeaponSwitch : MonoBehaviour
             else
                 weapon.gameObject.SetActive(false);
             i++;
-            Debug.Log(i);
+            //Debug.Log(i);
         }
     }
 }

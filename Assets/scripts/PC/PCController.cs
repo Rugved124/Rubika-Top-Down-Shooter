@@ -18,7 +18,7 @@ public class PCController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var targetVector = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical());
+        var targetVector = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical()).normalized;
         MoveTowardsTarget(targetVector);
 
         PlayerRotation();

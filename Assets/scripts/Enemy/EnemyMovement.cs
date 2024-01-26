@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     {
 
         var lookPos = playerPos.transform.position - transform.position;
-        Debug.Log(lookPos.magnitude);
+        //Debug.Log(lookPos.magnitude);
         Debug.DrawRay(transform.position,lookPos.normalized * detectionRange, Color.red);
         if (lookPos.magnitude <= detectionRange)
         {

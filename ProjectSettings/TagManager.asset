@@ -11,6 +11,8 @@ TagManager:
   - Enemies
   - Ground
   - Bullets
+  - EnemyBulletDefault
+  - RespawnPoint
   layers:
   - Default
   - TransparentFX
