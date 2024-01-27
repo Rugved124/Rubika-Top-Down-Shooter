@@ -13,6 +13,9 @@ TagManager:
   - Bullets
   - EnemyBulletDefault
   - RespawnPoint
+  - SlowPC
+  - Poison
+  - SilenceAbility
   layers:
   - Default
   - TransparentFX

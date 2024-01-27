@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PCHealth : MonoBehaviour
+public class PCHealth : PCStats
 {
     public static PCHealth instance;
-    public int hitPoints;
-    public int maxHitPoints = 100;
-
+    [SerializeField]
+    private int maxShieldPoints;
     private void Awake()
     {
         if (instance == null)
@@ -23,11 +22,12 @@ public class PCHealth : MonoBehaviour
 
     private void Start()
     {
+        maxHitPoints = 100;
         hitPoints = maxHitPoints;
     }
     void Update()
     {
-        if(hitPoints <= 0)
+        if (hitPoints <= 0)
         {
             PCDie.pcDie.isDead = true;
         }
@@ -45,8 +45,37 @@ public class PCHealth : MonoBehaviour
             }
         }
     }
-    void TakeDamage(int attackPoints)
+    public void TakeDamage(int attackPoints)
     {
-        hitPoints -= attackPoints;  
+        if (shieldPoints <= 0)
+        {
+            hitPoints -= attackPoints;
+        }
+        else
+        {
+            shieldPoints -= 1;
+        }
     }
+
+    public void RespawnHealth()
+    {
+        hitPoints = maxHitPoints;
+    }
+    public int GetHitPoints()
+    {
+        return hitPoints;
+    }
+
+    public void SetShieldPoints(int shieldAdded)
+    {
+        if (shieldPoints < maxShieldPoints)
+        {
+            shieldPoints += shieldAdded;
+        }
+        if (shieldPoints > maxShieldPoints)
+        {
+            shieldPoints = maxShieldPoints;
+        }
+    }
+
 }

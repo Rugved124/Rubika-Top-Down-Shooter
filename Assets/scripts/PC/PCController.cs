@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PCController : MonoBehaviour
+public class PCController : PCStats
 {
-    public static PCController instance;
-    Rigidbody playerRb;
+    public static PCController instance;    
 
-    [SerializeField]
-    float playerMoveSpeed = 5f;
 
     private void Awake()
     {
@@ -21,13 +18,6 @@ public class PCController : MonoBehaviour
             Destroy(this);
         }
     }
-
-    void Start()
-    {
-        playerRb = GetComponent<Rigidbody>();  
-    }
-
-    // Update is called once per frame
     void Update()
     {
         var targetVector = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical()).normalized;

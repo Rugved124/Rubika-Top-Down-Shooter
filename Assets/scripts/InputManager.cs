@@ -23,12 +23,11 @@ public class InputManager : MonoBehaviour
         }
     }
     //till here everything is to make this a singleton script so there wont be any copies of this script and you can directly access the functions in this directly
-    
+
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-        
     }
 
     public float GetMovementHorizontal()
@@ -60,15 +59,29 @@ public class InputManager : MonoBehaviour
 
     public bool GetIfConsumeIsHeld()
     {
-        if(Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
 
-            return true; 
+            return true;
         }
         else
         {
             return false;
         }
+    }
+
+    public bool GetIfShieldIsPressed()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 }
 

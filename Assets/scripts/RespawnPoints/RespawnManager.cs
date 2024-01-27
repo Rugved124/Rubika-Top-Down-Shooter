@@ -21,7 +21,7 @@ public class RespawnManager : MonoBehaviour
     {
         PC.transform.position = PCRespawn.respawn.respawnPoint;
         PC.SetActive(true);
-        PCHealth.instance.hitPoints = PCHealth.instance.maxHitPoints;
+        PCHealth.instance.RespawnHealth();
         PCDie.pcDie.isDead = false;
         Debug.Log("respawn");
         

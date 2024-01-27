@@ -45,7 +45,8 @@ public class BulletType : MonoBehaviour
         if ((firstBullet == bulletType.Red && secondBullet == bulletType.Blue) || (firstBullet == bulletType.Blue && secondBullet == bulletType.Red)) bulletTypeForShooting = bulletType.RedBlue;
         if ((firstBullet == bulletType.Red && secondBullet == bulletType.Green) || (firstBullet == bulletType.Green && secondBullet == bulletType.Red)) bulletTypeForShooting = bulletType.RedGreen;
         if ((firstBullet == bulletType.Blue && secondBullet == bulletType.Green) || (firstBullet == bulletType.Green && secondBullet == bulletType.Blue)) bulletTypeForShooting = bulletType.BlueGreen;
-        if (InputManager.instance.GetIfConsumeIsHeld())
+
+        if (InputManager.instance.GetIfConsumeIsHeld() && !PCStatusEffects.instance.consumeIsDisabled)
         {
             Debug.DrawRay(transform.position, (InputManager.instance.GetMousePosition() - transform.position).normalized * consumeRange, Color.black);
             Debug.Log("Consume");
