@@ -8,7 +8,7 @@ public class ProjectileBullet : MonoBehaviour
     [SerializeField] private InputManager mousePos;
     [SerializeField] private float shootForce, upwardForce; //force applied on the bullets
 
-    [SerializeField] private float timeBetweenShooting, timeBetweenShots, spread, reloadTime; // bullet stats
+    [SerializeField] private float timeBetweenShooting, timeBetweenShots, spread; // bullet stats
 
     [SerializeField] private int magazineSize, bulletsperTap; // gun stats 
 
@@ -16,7 +16,7 @@ public class ProjectileBullet : MonoBehaviour
     [SerializeField] private Transform bullDir;
     private int bulletsLeft, bulletsShot;
 
-    private bool readyToShoot, shooting, reloading;
+    private bool readyToShoot, shooting;
 
 
     public bool allowInvoke = true;
@@ -38,12 +38,8 @@ public class ProjectileBullet : MonoBehaviour
         // check if you are allowed to hold button down
         if (allowButtonHold) shooting = Input.GetMouseButton(0);
         else shooting = Input.GetMouseButtonDown(0);
-
-        //reloading
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading) Reload();
-        if (readyToShoot && shooting && !reloading && bulletsLeft <= 0) Reload();
         //Shooting
-        if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
+        if (readyToShoot && shooting  && bulletsLeft > 0)
         {
             //set bullets shot to 0
             bulletsShot = 0;
@@ -88,20 +84,5 @@ public class ProjectileBullet : MonoBehaviour
     {
         readyToShoot = true;
         allowInvoke = true;
-    }
-
-    private void Reload()
-    {
-        reloading = true;
-        Invoke("ReloadFinished", reloadTime);
-    }
-    private void ReloadFinished()
-    {
-        bulletsLeft = magazineSize;
-        reloading = false;
-    }
-    private void DestroyBullet()
-    {
-        
     }
 }

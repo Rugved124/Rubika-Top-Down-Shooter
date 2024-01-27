@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class PCController : MonoBehaviour
 {
+    public static PCController instance;
     Rigidbody playerRb;
 
     [SerializeField]
     float playerMoveSpeed = 5f;
 
-    
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();  

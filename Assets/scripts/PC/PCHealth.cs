@@ -37,9 +37,10 @@ public class PCHealth : MonoBehaviour
     {
         if (collision.collider.tag == "EnemyBulletDefault")
         {
-            BulletDamage bulletDamage = collision.gameObject.GetComponent<BulletDamage>(); ;
+            DefaultBulletDamage bulletDamage = collision.gameObject.GetComponent<DefaultBulletDamage>(); ;
             if (bulletDamage != null)
             {
+                Debug.Log("tookDamage");
                 TakeDamage(bulletDamage.GetBulletDamage());
             }
         }

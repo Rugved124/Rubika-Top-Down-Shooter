@@ -57,5 +57,18 @@ public class InputManager : MonoBehaviour
         return mousePos;
 
     }
+
+    public bool GetIfConsumeIsHeld()
+    {
+        if(Input.GetKey(KeyCode.E))
+        {
+
+            return true; 
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 

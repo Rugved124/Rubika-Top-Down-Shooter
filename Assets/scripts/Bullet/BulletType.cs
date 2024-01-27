@@ -1,13 +1,21 @@
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class BulletType : MonoBehaviour
 {
     public static BulletType bulletState;
     public bulletType bulletTypeForShooting;
-    
-    private bulletType previousBullet;
-
+    [SerializeField]
+    private float consumeRange;
+    private bulletType firstBullet;
+    private bulletType secondBullet;
+    [SerializeField]
+    private int firstBulletCount;
+    [SerializeField]
+    private int secondBulletCount;
+    bool isConsuming;
+    float consumeTime;
+    [SerializeField]
+    private float maxConsumeDuration;
     private void Awake()
     {
         if (bulletState == null)
@@ -18,6 +26,12 @@ public class BulletType : MonoBehaviour
             Destroy(this);
         }
     }
+    private void Start()
+    {
+        firstBullet = bulletType.Default;
+        secondBullet = bulletType.Default;
+        isConsuming = false;
+    }
     public enum bulletType
     {
         Default, Red, Blue, Green, RedGreen, BlueGreen, RedBlue
@@ -25,52 +39,51 @@ public class BulletType : MonoBehaviour
     
     void Update()
     {
-       // Debug.Log(bulletTypeForShooting);
-    }
-    
-    public void OnTriggerEnter(Collider collider)
-    {
-        if (collider.tag == "Red" && previousBullet == bulletType.Default || collider.tag == "Red" && previousBullet == bulletType.Red)
-        {
-            bulletTypeForShooting = bulletType.Red;
-            Destroy (collider.gameObject);
-            previousBullet = bulletType.Red;
-        }
-        if (collider.tag == "Green" && previousBullet == bulletType.Default || collider.tag == "Green" && previousBullet == bulletType.Green)
-        {
-            bulletTypeForShooting = bulletType.Green;
-            Destroy(collider.gameObject);
-            previousBullet = bulletType.Green;
-        }
-        if (collider.tag == "Blue" && previousBullet == bulletType.Default || collider.tag == "Blue" && previousBullet == bulletType.Blue)
-        {
-            bulletTypeForShooting = bulletType.Blue;
-            Destroy(collider.gameObject);
-            previousBullet = bulletType.Blue;
-        }
-        if (collider.tag == "Red" && previousBullet == bulletType.Blue || collider.tag == "Blue" && previousBullet == bulletType.Red)
-        {
-            bulletTypeForShooting = bulletType.RedBlue;
-            if (collider.tag == "Red") previousBullet = bulletType.Red;
-            if (collider.tag == "Blue") previousBullet = bulletType.Blue;
-            Destroy(collider.gameObject);
-            
 
-        }
-        if (collider.tag == "Blue" && previousBullet == bulletType.Green || collider.tag == "Green" && previousBullet == bulletType.Blue)
+        if (firstBullet == bulletType.Default) bulletTypeForShooting = secondBullet;
+        if (secondBullet == bulletType.Default) bulletTypeForShooting = firstBullet;
+        if ((firstBullet == bulletType.Red && secondBullet == bulletType.Blue) || (firstBullet == bulletType.Blue && secondBullet == bulletType.Red)) bulletTypeForShooting = bulletType.RedBlue;
+        if ((firstBullet == bulletType.Red && secondBullet == bulletType.Green) || (firstBullet == bulletType.Green && secondBullet == bulletType.Red)) bulletTypeForShooting = bulletType.RedGreen;
+        if ((firstBullet == bulletType.Blue && secondBullet == bulletType.Green) || (firstBullet == bulletType.Green && secondBullet == bulletType.Blue)) bulletTypeForShooting = bulletType.BlueGreen;
+        if (InputManager.instance.GetIfConsumeIsHeld())
         {
-            bulletTypeForShooting = bulletType.BlueGreen;
-            if (collider.tag == "Blue") previousBullet = bulletType.Blue;
-            if (collider.tag == "Green") previousBullet = bulletType.Green;
-            Destroy(collider.gameObject);
+            Debug.DrawRay(transform.position, (InputManager.instance.GetMousePosition() - transform.position).normalized * consumeRange, Color.black);
+            Debug.Log("Consume");
+            RaycastHit hit;
+            Physics.Raycast(transform.position, InputManager.instance.GetMousePosition() - transform.position, out hit, consumeRange);
+            if (hit.collider != null)
+            {
+                if ((hit.collider.tag == "Enemies" || hit.collider.tag == "Red" || hit.collider.tag == "Blue" || hit.collider.tag == "Green") && !isConsuming)
+                {
+                    PCController.instance.enabled = false;
+                    transform.forward = transform.forward;
+                    consumeTime = Time.time;
+                    isConsuming = true;
+                }
+                if (hit.collider.tag == "Red" && Time.time - consumeTime >= maxConsumeDuration)
+                {
+                    firstBullet = secondBullet;
+                    secondBullet = bulletType.Red;
+                    Destroy(hit.collider.gameObject);
+                }
+                if (hit.collider.tag == "Green" && Time.time - consumeTime >= maxConsumeDuration)
+                {
+                    firstBullet = secondBullet;
+                    secondBullet = bulletType.Green;
+                    Destroy(hit.collider.gameObject);
+                }
+                if (hit.collider.tag == "Blue" && Time.time - consumeTime >= maxConsumeDuration)
+                {
+                    firstBullet = secondBullet;
+                    secondBullet = bulletType.Blue;
+                    Destroy(hit.collider.gameObject);
+                }
+            }
         }
-        if (collider.tag == "Red" && previousBullet == bulletType.Green || collider.tag == "Green" && previousBullet == bulletType.Red)
+        else if (!InputManager.instance.GetIfConsumeIsHeld())
         {
-            bulletTypeForShooting = bulletType.RedGreen;
-            if (collider.tag == "Red") previousBullet = bulletType.Red;
-            if (collider.tag == "Green") previousBullet = bulletType.Green;
-            Destroy(collider.gameObject);
-
+            PCController.instance.enabled = true;
+            isConsuming = false;
         }
     }
     public bulletType GetBulletTypeForShooting()
