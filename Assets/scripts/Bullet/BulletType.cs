@@ -15,6 +15,10 @@ public class BulletType : MonoBehaviour
     [SerializeField]
     private float maxConsumeDuration;
 
+    private float consumedTime;
+    [SerializeField]
+    private float consumeCoolDown;
+
     private EnemyConsumedState _enemy;
 
     [SerializeField]
@@ -43,6 +47,7 @@ public class BulletType : MonoBehaviour
         secondBullet = bulletType.Default;
         isConsuming = false;
         isShootingAllowed = true;
+        consumedTime = -consumeCoolDown;
     }
     public enum bulletType
     {
@@ -75,10 +80,9 @@ public class BulletType : MonoBehaviour
         if ((firstBullet == bulletType.Red && secondBullet == bulletType.Green) || (firstBullet == bulletType.Green && secondBullet == bulletType.Red)) bulletTypeForShooting = bulletType.RedGreen;
         if ((firstBullet == bulletType.Blue && secondBullet == bulletType.Green) || (firstBullet == bulletType.Green && secondBullet == bulletType.Blue)) bulletTypeForShooting = bulletType.BlueGreen;
 
-        if (InputManager.instance.GetIfConsumeIsHeld())
+        if (InputManager.instance.GetIfConsumeIsHeld() && Time.time - consumedTime >= consumeCoolDown)
         {
             isShootingAllowed = false;
-            var consumeRay = InputManager.instance.GetMousePosition() - transform.position;
             Debug.DrawRay(transform.position, transform.forward.normalized * consumeRange, Color.black);
             Debug.Log(transform.forward);
             RaycastHit hit;
@@ -92,7 +96,6 @@ public class BulletType : MonoBehaviour
                     transform.forward = transform.forward;
                     consumeTime = Time.time;
                     isConsuming = true;
-                    consumeRay = hit.collider.transform.position;
                 }
                 if (hit.collider.tag == "Enemies")
                 {
@@ -106,6 +109,7 @@ public class BulletType : MonoBehaviour
                         secondBullet = enemy.GetEnemyBulletType();
                         secondBulletCount = SetBulletCount(secondBullet);
                         Destroy(hit.collider.gameObject);
+                        consumedTime = Time.time;
                     }
                 }
                 if (hit.collider.tag == "Red" && Time.time - consumeTime >= maxConsumeDuration)
@@ -115,6 +119,7 @@ public class BulletType : MonoBehaviour
                     secondBullet = bulletType.Red;
                     secondBulletCount = SetBulletCount(secondBullet);
                     Destroy(hit.collider.gameObject);
+                    consumedTime = Time.time;
                 }
                 if (hit.collider.tag == "Green" && Time.time - consumeTime >= maxConsumeDuration)
                 {
@@ -123,6 +128,7 @@ public class BulletType : MonoBehaviour
                     secondBullet = bulletType.Green;
                     secondBulletCount = SetBulletCount(secondBullet);
                     Destroy(hit.collider.gameObject);
+                    consumedTime = Time.time;
                 }
                 if (hit.collider.tag == "Blue" && Time.time - consumeTime >= maxConsumeDuration)
                 {
@@ -131,6 +137,7 @@ public class BulletType : MonoBehaviour
                     secondBullet = bulletType.Blue;
                     secondBulletCount = SetBulletCount(secondBullet);
                     Destroy(hit.collider.gameObject);
+                    consumedTime = Time.time;
                 }
 
             }

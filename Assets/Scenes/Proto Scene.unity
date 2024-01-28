@@ -3616,6 +3616,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8410670252110975710, guid: b13a6224fbc4e7e4f9c09066f16db064,
         type: 3}
+      propertyPath: consumeCoolDown
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410670252110975710, guid: b13a6224fbc4e7e4f9c09066f16db064,
+        type: 3}
       propertyPath: firstBulletCount
       value: 10
       objectReference: {fileID: 0}
