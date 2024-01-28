@@ -198,6 +198,34 @@ public class BulletType : MonoBehaviour
         firstBullet = bulletType.Default;
         secondBullet = bulletType.Default;
     }
+    public int GiveFirstBulletCount()
+    {
+        if (firstBullet == bulletType.Default) { return 10; }
+        if (firstBullet == bulletType.Red) { return maxRed; }
+        if (firstBullet == bulletType.Blue) { return maxBlue; }
+        if (firstBullet == bulletType.Green) { return maxGreen; }
+        else return 0;
+    }
+    public int GiveSecondBulletCount()
+    {
+        if (secondBullet == bulletType.Default) { return 10; }
+        if (secondBullet == bulletType.Red) { return maxRed; }
+        if (secondBullet == bulletType.Blue) { return maxBlue; }
+        if (secondBullet == bulletType.Green) { return maxGreen; }
+        else return 0;
+    }
+    public int GetFirstbulletCount()
+    {
+        return firstBulletCount;
+    }
+    public int GetSecondbulletCount()
+    {
+        return secondBulletCount;
+    }
+    public bulletType GetFirstBullet()
+    {
+        return firstBullet;
+    }
 }
 
 

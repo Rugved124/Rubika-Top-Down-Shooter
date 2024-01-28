@@ -59,7 +59,7 @@ public class InputManager : MonoBehaviour
 
     public bool GetIfConsumeIsHeld()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetMouseButton(1))
         {
 
             return true;
