@@ -5,7 +5,6 @@ public class ProjectileBullet : MonoBehaviour
     [SerializeField] private GameObject bullet; // a link to the bullet gameobject
     [SerializeField] private Camera cam; // link to the cam
     [SerializeField] private Transform attackPoint; // the location where the bullets will spawn
-    [SerializeField] private InputManager mousePos;
     [SerializeField] private float shootForce, upwardForce; //force applied on the bullets
 
     [SerializeField] private float timeBetweenShooting, timeBetweenShots, spread; // bullet stats
@@ -14,7 +13,6 @@ public class ProjectileBullet : MonoBehaviour
 
     [SerializeField] private bool allowButtonHold; // to check if the gun is automatic fire on hold or tapfire
     [SerializeField] private Transform bullDir;
-    private int bulletsLeft;
 
     private bool readyToShoot, shooting;
     private BulletType bulletInfo;
@@ -22,15 +20,14 @@ public class ProjectileBullet : MonoBehaviour
     public bool allowInvoke = true;
     private void Awake()
     {
-        bulletsLeft = magazineSize;
         readyToShoot = true;
+        bulletInfo = FindObjectOfType<BulletType>();
     }
 
 
     void Update()
     {
         MyInput();
-        bulletInfo = FindObjectOfType<BulletType>();
     }
 
     private void MyInput()
@@ -49,7 +46,7 @@ public class ProjectileBullet : MonoBehaviour
     {
         readyToShoot = false;
         bulletInfo.CountBulletShot();
-        Vector3 directionWithoutSpread = mousePos.GetMousePosition() - transform.position;
+        Vector3 directionWithoutSpread = InputManager.instance.GetMousePosition() - transform.position;
         directionWithoutSpread.y = 0;
         //calculate the spread
         float spreadX = Random.Range(-spread, spread);
@@ -61,7 +58,7 @@ public class ProjectileBullet : MonoBehaviour
         //Instantiate bullet projectile
         GameObject currentBullet = Instantiate(bullet, attackPoint.transform.position, Quaternion.identity);
         currentBullet.transform.forward = directionWithSpread.normalized;
-        if (mousePos.GetMousePosition().z - transform.position.z < 1 && mousePos.GetMousePosition().z - transform.position.z > -1 && mousePos.GetMousePosition().x - transform.position.x < 1 && mousePos.GetMousePosition().x - transform.position.x > -1)
+        if (InputManager.instance.GetMousePosition().z - transform.position.z < 1 && InputManager.instance.GetMousePosition().z - transform.position.z > -1 && InputManager.instance.GetMousePosition().x - transform.position.x < 1 && InputManager.instance.GetMousePosition().x - transform.position.x > -1)
         {
             currentBullet.GetComponent<Rigidbody>().AddForce(bulletDirection.normalized * shootForce, ForceMode.Impulse);
         }

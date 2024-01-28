@@ -21,12 +21,9 @@ public class BulletType : MonoBehaviour
 
     private EnemyConsumedState _enemy;
 
-    [SerializeField]
-    private int maxRed;
-    [SerializeField]
-    private int maxGreen;
-    [SerializeField]
-    private int maxBlue;
+    public int maxRed;
+    public int maxGreen;
+    public int maxBlue;
 
     public int firstBulletCount, secondBulletCount;
     bool isShootingAllowed;
@@ -225,6 +222,11 @@ public class BulletType : MonoBehaviour
     public bulletType GetFirstBullet()
     {
         return firstBullet;
+    }
+
+    public bulletType GetSecondBullet()
+    {
+        return secondBullet;
     }
 }
 
