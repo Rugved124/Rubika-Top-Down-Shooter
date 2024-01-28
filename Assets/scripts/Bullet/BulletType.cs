@@ -16,6 +16,7 @@ public class BulletType : MonoBehaviour
     float consumeTime;
     [SerializeField]
     private float maxConsumeDuration;
+    private EnemyConsumedState _enemy;
     private void Awake()
     {
         if (bulletState == null)
@@ -39,7 +40,12 @@ public class BulletType : MonoBehaviour
     
     void Update()
     {
-
+        Debug.Log(isConsuming);
+        if(_enemy != null)
+        {
+            _enemy.MoveAndSHoot();
+            _enemy = null;
+        }
         if (firstBullet == bulletType.Default) bulletTypeForShooting = secondBullet;
         if (secondBullet == bulletType.Default) bulletTypeForShooting = firstBullet;
         if ((firstBullet == bulletType.Red && secondBullet == bulletType.Blue) || (firstBullet == bulletType.Blue && secondBullet == bulletType.Red)) bulletTypeForShooting = bulletType.RedBlue;
@@ -48,20 +54,35 @@ public class BulletType : MonoBehaviour
 
         if (InputManager.instance.GetIfConsumeIsHeld() && !PCStatusEffects.instance.consumeIsDisabled)
         {
-            Debug.DrawRay(transform.position, (InputManager.instance.GetMousePosition() - transform.position).normalized * consumeRange, Color.black);
-            Debug.Log("Consume");
-            RaycastHit hit;
-            Physics.Raycast(transform.position, InputManager.instance.GetMousePosition() - transform.position, out hit, consumeRange);
+            var consumeRay = InputManager.instance.GetMousePosition() - transform.position;
+            Debug.DrawRay(transform.position, transform.forward.normalized * consumeRange, Color.black);
+            Debug.Log(transform.forward);
+            RaycastHit hit;     
+            Physics.Raycast(transform.position, transform.forward, out hit, consumeRange);
             if (hit.collider != null)
             {
+
                 if ((hit.collider.tag == "Enemies" || hit.collider.tag == "Red" || hit.collider.tag == "Blue" || hit.collider.tag == "Green") && !isConsuming)
                 {
                     PCController.instance.enabled = false;
                     transform.forward = transform.forward;
                     consumeTime = Time.time;
                     isConsuming = true;
+                    consumeRay = hit.collider.transform.position;
                 }
-                if (hit.collider.tag == "Red" && Time.time - consumeTime >= maxConsumeDuration)
+                if (hit.collider.tag == "Enemies")
+                {
+                    var enemy = hit.collider.GetComponent<EnemyConsumedState>();
+                    enemy.Consumed();
+                    _enemy =  enemy;
+                    if (Time.time - consumeTime >= maxConsumeDuration)
+                    {
+                        firstBullet = secondBullet;
+                        secondBullet = enemy.GetEnemyBulletType();
+                        Destroy(hit.collider.gameObject);
+                    }
+                }
+                    if (hit.collider.tag == "Red" && Time.time - consumeTime >= maxConsumeDuration)
                 {
                     firstBullet = secondBullet;
                     secondBullet = bulletType.Red;
@@ -79,6 +100,11 @@ public class BulletType : MonoBehaviour
                     secondBullet = bulletType.Blue;
                     Destroy(hit.collider.gameObject);
                 }
+                
+            }
+            else 
+            {
+                isConsuming = false;
             }
         }
         else if (!InputManager.instance.GetIfConsumeIsHeld())
