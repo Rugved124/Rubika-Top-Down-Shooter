@@ -3596,6 +3596,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8410670252110975710, guid: b13a6224fbc4e7e4f9c09066f16db064,
         type: 3}
+      propertyPath: maxRed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410670252110975710, guid: b13a6224fbc4e7e4f9c09066f16db064,
+        type: 3}
+      propertyPath: maxBlue
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410670252110975710, guid: b13a6224fbc4e7e4f9c09066f16db064,
+        type: 3}
+      propertyPath: maxGreen
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410670252110975710, guid: b13a6224fbc4e7e4f9c09066f16db064,
+        type: 3}
       propertyPath: consumeRange
       value: 6
       objectReference: {fileID: 0}
@@ -3612,7 +3627,7 @@ PrefabInstance:
     - target: {fileID: 8410670252110975710, guid: b13a6224fbc4e7e4f9c09066f16db064,
         type: 3}
       propertyPath: maxConsumeDuration
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

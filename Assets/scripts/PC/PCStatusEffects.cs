@@ -24,6 +24,8 @@ public class PCStatusEffects : PCStats
     [SerializeField]
     private float tickSpeed, lastTick;
 
+    private BulletType bullet;
+
     private void Awake()
     {
         if (instance == null)
@@ -38,6 +40,7 @@ public class PCStatusEffects : PCStats
     private void Start()
     {
         normalSpeed = PCController.instance.playerMoveSpeed;
+        bullet = GetComponent<BulletType>();
     }
     void Update()
     {
@@ -60,10 +63,6 @@ public class PCStatusEffects : PCStats
   
         if (hasLostAbility)
         {
-            if (PCCollisionHandler.instance.isSilenceCounting)
-            {
-                silencedForTime = Time.time;
-            }
             LostAbility();
         }
             
@@ -101,14 +100,6 @@ public class PCStatusEffects : PCStats
 
     void LostAbility()
     {
-        if (Time.time - silencedForTime <= maxSilencedForTime)
-        {
-            consumeIsDisabled = true;
-        }
-        else
-        {
-            hasLostAbility = false;
-            consumeIsDisabled = false;
-        }
+        bullet.LostConsumedSoul();
     }
 }

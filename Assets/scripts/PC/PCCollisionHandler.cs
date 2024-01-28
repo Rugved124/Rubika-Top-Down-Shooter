@@ -34,7 +34,6 @@ public class PCCollisionHandler : MonoBehaviour
             }
             if (other.tag == "SilenceAbility")
             {
-                isSilenceCounting = true;
                 PCStatusEffects.instance.hasLostAbility = true;
 
             }
@@ -55,7 +54,7 @@ public class PCCollisionHandler : MonoBehaviour
             }
             if (other.tag == "SilenceAbility")
             {
-                isSilenceCounting = false;
+                PCStatusEffects.instance.hasLostAbility = false;
             }
         }
     }

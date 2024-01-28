@@ -14,10 +14,10 @@ public class ProjectileBullet : MonoBehaviour
 
     [SerializeField] private bool allowButtonHold; // to check if the gun is automatic fire on hold or tapfire
     [SerializeField] private Transform bullDir;
-    private int bulletsLeft, bulletsShot;
+    private int bulletsLeft;
 
     private bool readyToShoot, shooting;
-
+    private BulletType bulletInfo;
 
     public bool allowInvoke = true;
     private void Awake()
@@ -30,7 +30,7 @@ public class ProjectileBullet : MonoBehaviour
     void Update()
     {
         MyInput();
-        //Debug.DrawLine(transform.position, mousePos.GetMousePosition());
+        bulletInfo = FindObjectOfType<BulletType>();
     }
 
     private void MyInput()
@@ -39,20 +39,16 @@ public class ProjectileBullet : MonoBehaviour
         if (allowButtonHold) shooting = Input.GetMouseButton(0);
         else shooting = Input.GetMouseButtonDown(0);
         //Shooting
-        if (readyToShoot && shooting  && bulletsLeft > 0)
+        if (readyToShoot && shooting  && bulletInfo.canShoot())
         {
             //set bullets shot to 0
-            bulletsShot = 0;
             Shoot();
         }
     }
     private void Shoot()
     {
         readyToShoot = false;
-
-        bulletsLeft--;
-        bulletsShot++;
-
+        bulletInfo.CountBulletShot();
         Vector3 directionWithoutSpread = mousePos.GetMousePosition() - transform.position;
         directionWithoutSpread.y = 0;
         //calculate the spread

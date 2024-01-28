@@ -30,4 +30,5 @@ public class EnemyConsumedState : MonoBehaviour
     {
         return enemysBulleteType;
     }
+
 }
