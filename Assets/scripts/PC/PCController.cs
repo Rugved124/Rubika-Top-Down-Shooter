@@ -7,6 +7,7 @@ public class PCController : PCStats
     public static PCController instance;    
 
 
+
     private void Awake()
     {
         if (instance == null)

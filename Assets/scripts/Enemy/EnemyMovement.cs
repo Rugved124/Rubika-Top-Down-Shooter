@@ -17,29 +17,31 @@ public class EnemyMovement : MonoBehaviour
 
     public void Update()
     {
-
-        var lookPos = playerPos.transform.position - transform.position;
-        //Debug.Log(lookPos.magnitude);
-        Debug.DrawRay(transform.position,lookPos.normalized * detectionRange, Color.red);
-        if (lookPos.magnitude <= detectionRange)
+        if (playerPos != null)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, lookPos, out hit, detectionRange))
+            var lookPos = playerPos.transform.position - transform.position;
+            //Debug.Log(lookPos.magnitude);
+            Debug.DrawRay(transform.position, lookPos.normalized * detectionRange, Color.red);
+            if (lookPos.magnitude <= detectionRange)
             {
-                if (hit.collider.tag == "Player" && lookPos.magnitude >= shootingRange)
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, lookPos, out hit, detectionRange))
                 {
-                    MoveToPlayer();
-                }
-                else if (lookPos.magnitude <= shootingRange)
-                {
-                    StopMoving();
+                    if (hit.collider.tag == "Player" && lookPos.magnitude >= shootingRange)
+                    {
+                        MoveToPlayer();
+                    }
+                    else if (lookPos.magnitude <= shootingRange)
+                    {
+                        StopMoving();
+                    }
                 }
             }
-        }
-        if (lookPos.magnitude <= shootingRange)
-        {
-            canShoot = true;
-           // MoveBack(lookPos);
+            if (lookPos.magnitude <= shootingRange)
+            {
+                canShoot = true;
+                // MoveBack(lookPos);
+            }
         }
     }
 
