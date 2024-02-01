@@ -1,3 +1,4 @@
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class PC : MonoBehaviour
@@ -18,12 +19,18 @@ public class PC : MonoBehaviour
 
     [SerializeField]
     private float pcSpeed;
+
+    [SerializeField]
+    private float consumeRange;
     [SerializeField]
     float slowMultiplier = 1;
 
     Rigidbody playerRb;
     [SerializeField]
     private Transform bulletSpawn;
+
+    bool isConsuming;
+    GameObject beingConsumed;
 
     private void Start()
     {
@@ -51,8 +58,6 @@ public class PC : MonoBehaviour
         {
             slowMultiplier = 1f;
         }
-        PlayerMove(movetVector, slowMultiplier);
-
         //Check whether PC is Consuming
         if (currentPCState != PCStates.CONSUME)
         {
@@ -60,6 +65,48 @@ public class PC : MonoBehaviour
             PlayerRotation();
         }
         //-------------------------------------Movement Section End-----------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------------------------------
+        if (InputManager.instance.GetIfConsumeIsHeld()) 
+        {
+            RaycastHit hitObj;
+            bool didHit = Physics.Raycast(transform.position, transform.forward, out hitObj, consumeRange);
+            Debug.DrawRay(transform.position, transform.forward * consumeRange, Color.red);
+            if (didHit)
+            {
+                if (hitObj.collider.CompareTag("Consumables"))
+                {
+                    ChangePCState(PCStates.CONSUME);
+                    if(beingConsumed == null)
+                    {
+                        beingConsumed = hitObj.collider.gameObject;
+                    }
+                }
+            }
+            
+        }
+        switch(currentPCState)
+        {
+            case PCStates.DEFAULT:
+                break;
+            case PCStates.CONSUME:
+                if (beingConsumed != null)
+                {
+                    Consume(beingConsumed); 
+                }
+                break;
+            case PCStates.SHIELDED:
+                break;
+            case PCStates.POISONED:
+                break;
+            case PCStates.SILENCED:
+                break;
+            case PCStates.SLOWED:
+                break;
+            case PCStates.DEAD:
+                break;
+            case PCStates.BURNED:
+                break;
+        }
     }
     void ChangePCState(PCStates state)
     {
@@ -78,12 +125,27 @@ public class PC : MonoBehaviour
     {
         Vector3 lookDir = InputManager.instance.GetMousePosition();
         lookDir.y = transform.position.y;
-        Debug.DrawLine(transform.position, lookDir);
         transform.LookAt(lookDir);
     }
 
-    public Vector3 GetPCShootPos()
+    public Transform GetPCShoot()
     {
-        return bulletSpawn.position;
+        return bulletSpawn;
+    }
+
+    private void Consume(GameObject consumeObj)
+    {
+        consumeObj.GetComponent<Souls>().Consumption();
+    }
+    
+    public void DoneConsuming()
+    {
+        ChangePCState(PCStates.DEFAULT);
+        beingConsumed = null;
+    }
+
+    public PCStates GetPCState()
+    {
+        return currentPCState;
     }
 }

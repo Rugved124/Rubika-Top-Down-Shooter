@@ -24,8 +24,7 @@ public class BaseBullet : MonoBehaviour
     [SerializeField]
     protected float bulletSpeed;
 
-    [SerializeField]
-    protected float bulletRate;
+    public float bulletRate;
 
     [SerializeField]
     protected float bulletDamage;
@@ -37,12 +36,31 @@ public class BaseBullet : MonoBehaviour
 
     public BulletTypes bulletType;
 
+    protected PC pc;
+
+    protected Rigidbody bulletRB;
     public virtual void Start()
     {
         spawnTime = Time.time;
+        pc = FindObjectOfType<PC>();
+    }
+    public virtual void Update()
+    {
+        BulletMovement();
     }
     void Die()
     {
       Destroy(this.gameObject);
     }
+    public virtual void InitializeBullet()
+    { 
+
+    }
+
+    public virtual void BulletMovement()
+    {
+
+    }
+    
 }
+

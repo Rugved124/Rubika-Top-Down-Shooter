@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class AmmoManager : MonoBehaviour
     [SerializeField]
     GameObject bulletToSpawn;
     PC pc;
+    bool canShoot;
 
     public enum EquippedAmmoType
     {
@@ -39,14 +41,17 @@ public class AmmoManager : MonoBehaviour
         currentAmmoType = EquippedAmmoType.DEFAULTAMMO;
         pc = FindObjectOfType<PC>();
         ChangeAmmoType();
+        canShoot = true;
     }
     private void Update()
     {
         if(InputManager.instance.IsMousePressed()) 
         {
-            if(bulletToSpawn != null)
+            if(bulletToSpawn != null && canShoot)
             {
-                Instantiate(bulletToSpawn, pc.GetPCShootPos(), Quaternion.identity);
+                canShoot = false;
+                StartCoroutine(bulletFireRate());
+                Instantiate(bulletToSpawn, pc.GetPCShoot().position, Quaternion.identity);
             }
             
         }
@@ -77,6 +82,11 @@ public class AmmoManager : MonoBehaviour
             }
         }
    
+    }
+    IEnumerator bulletFireRate()
+    {
+        yield return new WaitForSeconds(1/bulletToSpawn.GetComponent<BaseBullet>().bulletRate);
+        canShoot = true;
     }
 
 }

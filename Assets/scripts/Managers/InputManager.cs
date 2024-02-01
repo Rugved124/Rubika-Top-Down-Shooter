@@ -11,6 +11,9 @@ public class InputManager : MonoBehaviour
 
     [SerializeField]
     private LayerMask groundMask;
+
+    [SerializeField]
+    private LayerMask soulMask;
     private void Awake()
     {
         if (instance == null)
@@ -64,13 +67,9 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetMouseButton(1))
         {
-
             return true;
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     public bool GetIfShieldIsPressed()
