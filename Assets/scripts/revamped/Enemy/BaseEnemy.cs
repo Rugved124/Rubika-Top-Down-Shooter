@@ -1,17 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.AI;
 
 public class BaseEnemy : MonoBehaviour
 {
     public enum EnemyStates
     {
         WANDER,
-        SHIELDED,
-        SLOWED,
-        POISONED,
-        BURNED,
         CHASING,
         ABILITY,
         RUNAWAY,
@@ -38,11 +33,20 @@ public class BaseEnemy : MonoBehaviour
     Quaternion startingAngle = Quaternion.AngleAxis(-0, Vector3.up);
     Quaternion stepAngle = Quaternion.AngleAxis(5, Vector3.up);
 
+    protected Vector3 destination;
 
+    protected NavMeshAgent navMeshAgent;
+
+    protected bool isPCDetected;
+
+    public virtual void Awake()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        startingAngle = Quaternion.AngleAxis(-visionConeAngle / 2, Vector3.up);
+    }
     public virtual void  Start()
     {
-        currentEnemyStates = EnemyStates.WANDER;
-        startingAngle = Quaternion.AngleAxis(-visionConeAngle/2, Vector3.up);
+        currentEnemyStates = EnemyStates.WANDER;   
     }
 
     public virtual void Update()
@@ -67,7 +71,27 @@ public class BaseEnemy : MonoBehaviour
 
     }
 
-    public virtual void CheckForPlayer() 
+    public  void GetDestination()
+    {
+        Vector3 testPosition = transform.position + (transform.forward * 4f) + new Vector3(Random.Range(-4.5f,4.5f), 0, Random.Range(-4.5f, 4.5f));
+
+        destination = new Vector3(testPosition.x,transform.position.y,testPosition.z);
+       
+    }
+
+    public  bool NeedsDestination()
+    {
+        if (destination == Vector3.zero)
+        {
+            return true;
+        }
+        if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+        {
+            return true;
+        }
+        return false;   
+    }
+    public virtual Transform CheckForPlayer() 
     {
         
         RaycastHit hit;
@@ -87,18 +111,27 @@ public class BaseEnemy : MonoBehaviour
                 if (pc != null)
                 {
                     Debug.DrawRay(pos, direction * hit.distance, Color.red);
+                    isPCDetected = true;
+                    return pc.transform;
+                    
                 }
                 else
                 {
                     Debug.DrawRay(pos, direction * hit.distance, Color.yellow);
+                    isPCDetected = false;
+                    
                 }
             }
             else
             {
                 Debug.DrawRay(pos, direction * aggroRadius, Color.white);
+                isPCDetected = false;
+                
             }
+            
 
             direction = stepAngle * direction;
         }
+        return null;
     }
 }

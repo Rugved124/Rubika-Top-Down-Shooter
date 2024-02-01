@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1216,7 +1216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPCState: 0
-  pcSpeed: 6
+  pcSpeed: 8
   consumeRange: 6
   slowMultiplier: 1
   bulletSpawn: {fileID: 1353855218}
@@ -2152,7 +2152,7 @@ Transform:
   m_GameObject: {fileID: 1115286520}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 8.820254, z: -5}
+  m_LocalPosition: {x: -11.46, y: 8.820253, z: -18.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2369,7 +2369,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 5f0ea835660662447abef512253bd6dc, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 61a48b15fbb6dbd4fa4835e03d6a8035, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1232437189
 GameObject:
@@ -3271,9 +3271,10 @@ MonoBehaviour:
   maxHitPoints: 0
   moveSpeed: 0
   damageDealtTopPlayer: 0
-  visionConeCounter: 37
-  visionConeAngle: 45
-  aggroRadius: 5
+  visionConeAngle: 180
+  aggroRadius: 10
+  currentShipoyState: 0
+  fireBreathingRange: 4
 --- !u!1001 &1061719862024363999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3497,7 +3498,7 @@ PrefabInstance:
     - target: {fileID: 8194695298778898395, guid: b13a6224fbc4e7e4f9c09066f16db064,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -11.46
       objectReference: {fileID: 0}
     - target: {fileID: 8194695298778898395, guid: b13a6224fbc4e7e4f9c09066f16db064,
         type: 3}
@@ -3507,7 +3508,7 @@ PrefabInstance:
     - target: {fileID: 8194695298778898395, guid: b13a6224fbc4e7e4f9c09066f16db064,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -13.4
       objectReference: {fileID: 0}
     - target: {fileID: 8194695298778898395, guid: b13a6224fbc4e7e4f9c09066f16db064,
         type: 3}
@@ -3708,17 +3709,17 @@ PrefabInstance:
     - target: {fileID: 2485273108301467295, guid: 9347f405d66bc6d4295695b2a8302d13,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -11.46
       objectReference: {fileID: 0}
     - target: {fileID: 2485273108301467295, guid: 9347f405d66bc6d4295695b2a8302d13,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.820254
+      value: 8.820253
       objectReference: {fileID: 0}
     - target: {fileID: 2485273108301467295, guid: 9347f405d66bc6d4295695b2a8302d13,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5
+      value: -18.4
       objectReference: {fileID: 0}
     - target: {fileID: 2485273108301467295, guid: 9347f405d66bc6d4295695b2a8302d13,
         type: 3}
@@ -3964,6 +3965,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5099420188568119942, guid: a60e975be2b9ee24aaa7babdde65b743,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 33daf66424ec0ca4e8f057fdbcb705fb, type: 2}
     - target: {fileID: 7659182602338755165, guid: a60e975be2b9ee24aaa7babdde65b743,
         type: 3}
       propertyPath: m_Name
@@ -3987,7 +3993,7 @@ PrefabInstance:
     - target: {fileID: 9120788383671865638, guid: a60e975be2b9ee24aaa7babdde65b743,
         type: 3}
       propertyPath: m_StoppingDistance
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8351000290325772452, guid: a60e975be2b9ee24aaa7babdde65b743, type: 3}
