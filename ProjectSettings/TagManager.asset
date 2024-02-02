@@ -16,6 +16,7 @@ TagManager:
   - SlowPC
   - Poison
   - SilenceAbility
+  - Consumables
   layers:
   - Default
   - TransparentFX

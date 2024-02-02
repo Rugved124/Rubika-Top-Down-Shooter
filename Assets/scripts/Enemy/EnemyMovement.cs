@@ -7,11 +7,11 @@ public class EnemyMovement : MonoBehaviour
     private float detectionRange;
     private float shootingRange;
     public bool canShoot;
-    PCController playerPos;
+    PC playerPos;
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        playerPos = FindObjectOfType<PCController>();
+        playerPos = FindObjectOfType<PC>();
         shootingRange = navMeshAgent.stoppingDistance;
     }
 
