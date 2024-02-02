@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,7 +9,8 @@ public class BaseEnemy : MonoBehaviour
     {
         WANDER,
         CHASING,
-        ABILITY,
+        CHARGING,
+        ATTACKING,
         RUNAWAY,
         DEAD
     }
@@ -39,14 +41,15 @@ public class BaseEnemy : MonoBehaviour
 
     protected bool isPCDetected;
 
+    PC pc;
     public virtual void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         startingAngle = Quaternion.AngleAxis(-visionConeAngle / 2, Vector3.up);
     }
-    public virtual void  Start()
+    public virtual void Start()
     {
-        currentEnemyStates = EnemyStates.WANDER;   
+        currentEnemyStates = EnemyStates.WANDER;
     }
 
     public virtual void Update()
@@ -71,29 +74,29 @@ public class BaseEnemy : MonoBehaviour
 
     }
 
-    public  void GetDestination()
+    public void GetDestination()
     {
-        Vector3 testPosition = transform.position + (transform.forward * 4f) + new Vector3(Random.Range(-4.5f,4.5f), 0, Random.Range(-4.5f, 4.5f));
+        Vector3 testPosition = transform.position + (transform.forward * 4f) + new Vector3(Random.Range(-4.5f, 4.5f), 0, Random.Range(-4.5f, 4.5f));
 
-        destination = new Vector3(testPosition.x,transform.position.y,testPosition.z);
-       
+        destination = new Vector3(testPosition.x, transform.position.y, testPosition.z);
+
     }
 
-    public  bool NeedsDestination()
+    public bool NeedsDestination()
     {
         if (destination == Vector3.zero)
         {
             return true;
         }
-        if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
             return true;
         }
-        return false;   
+        return false;
     }
-    public virtual Transform CheckForPlayer() 
+    public virtual void CheckForPlayer()
     {
-        
+
         RaycastHit hit;
 
         Quaternion angle = transform.rotation * startingAngle;
@@ -102,36 +105,46 @@ public class BaseEnemy : MonoBehaviour
 
         Vector3 pos = transform.position;
 
-        for (int i = 0; i < (visionConeAngle/5) + 1; i++)
+        for (int i = 0; i < (visionConeAngle / 5) + 1; i++)
         {
-            if(Physics.Raycast(pos, direction, out hit, aggroRadius))
+
+            if (Physics.Raycast(pos, direction, out hit, aggroRadius))
             {
-                PC pc = hit.collider.GetComponent<PC>();
+                pc = hit.collider.GetComponent<PC>();
 
                 if (pc != null)
                 {
                     Debug.DrawRay(pos, direction * hit.distance, Color.red);
                     isPCDetected = true;
-                    return pc.transform;
-                    
+                    return;
                 }
                 else
                 {
                     Debug.DrawRay(pos, direction * hit.distance, Color.yellow);
                     isPCDetected = false;
-                    
+
                 }
             }
             else
             {
                 Debug.DrawRay(pos, direction * aggroRadius, Color.white);
                 isPCDetected = false;
-                
+
             }
-            
+
 
             direction = stepAngle * direction;
         }
-        return null;
+    }
+    public Transform GetPlayerTransform()
+    {
+        if (pc != null)
+        {
+            return pc.transform;
+        }
+        else { return null; }
+
+
+        
     }
 }
