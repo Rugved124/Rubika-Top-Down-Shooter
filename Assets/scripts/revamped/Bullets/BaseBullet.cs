@@ -32,6 +32,7 @@ public class BaseBullet : MonoBehaviour
     [SerializeField] 
     protected float bulletLifeTime;
 
+    [SerializeField]
     protected float spawnTime;
 
     public BulletTypes bulletType;
@@ -48,7 +49,7 @@ public class BaseBullet : MonoBehaviour
     {
         BulletMovement();
     }
-    void Die()
+    public virtual void Die()
     {
       Destroy(this.gameObject);
     }

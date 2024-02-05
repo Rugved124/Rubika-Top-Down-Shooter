@@ -67,7 +67,7 @@ public class BaseEnemy : MonoBehaviour
     }
     public virtual void Die()
     {
-
+        Destroy(this.gameObject);
     }
     public virtual void TakeDamage()
     {

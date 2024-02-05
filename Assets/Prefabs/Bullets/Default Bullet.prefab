@@ -151,4 +151,5 @@ MonoBehaviour:
   bulletRate: 5
   bulletDamage: 0
   bulletLifeTime: 0
+  spawnTime: 0
   bulletType: 0
