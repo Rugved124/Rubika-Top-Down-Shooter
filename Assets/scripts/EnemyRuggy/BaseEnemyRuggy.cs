@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BaseEnemyRuggy : MonoBehaviour
 {
@@ -20,12 +22,24 @@ public class BaseEnemyRuggy : MonoBehaviour
 	[SerializeField] protected int maxHitPoints;
 	[SerializeField] protected float moveSpeed;
 	[SerializeField] protected int damageDealtToPlayer;
-	[SerializeField] protected int visionConeNumber;
-
 	protected int currentHitPoints;
+
+
+	protected Vector3 destination;
+	protected Vector3 direction;
 
 	Quaternion startingAngle = Quaternion.AngleAxis(-90, Vector3.up);
 	Quaternion stepAngle = Quaternion.AngleAxis(5, Vector3.up);
+
+	[SerializeField] protected int visionConeAngle;
+
+	protected NavMeshAgent navMeshAgent;
+
+	public virtual void Awake()
+	{
+		navMeshAgent = GetComponent<NavMeshAgent>();
+		startingAngle = Quaternion.AngleAxis(-visionConeAngle/2, Vector3.up);
+	}
 
 	public virtual void Start()
 	{
@@ -38,7 +52,7 @@ public class BaseEnemyRuggy : MonoBehaviour
 
 	public virtual void ChangeState(EnemyStates state)
 	{
-		if(currentEnemyStates != state)
+		if (currentEnemyStates != state)
 		{
 			currentEnemyStates = state;
 		}
@@ -54,6 +68,27 @@ public class BaseEnemyRuggy : MonoBehaviour
 
 	}
 
+	public virtual void GetDestination()
+	{
+		Vector3 testPosition = (transform.position + (transform.forward * 4f)) + new Vector3(Random.Range(-4.5f, 4.5f), 0f, Random.Range(-4.5f, 4.5f));
+
+		destination = new Vector3(testPosition.x, transform.position.y, testPosition.z);
+
+	}
+
+	public bool NeedsDestination()
+	{
+		if (destination == Vector3.zero)
+		{
+			return true;
+		}
+		if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+		{
+			return true;
+		}
+
+		return false;
+	}
 	public virtual void CheckForPlayer()
 	{
 		//the length of each line 
@@ -62,14 +97,14 @@ public class BaseEnemyRuggy : MonoBehaviour
 		RaycastHit hit;
 
 		//stores an angle, the computer simulates what will happen if you rotate any angle
-		Quaternion angle  = transform.rotation * startingAngle;
+		Quaternion angle = transform.rotation * startingAngle;
 
 		Vector3 direction = angle * Vector3.forward;
 
 		Vector3 pos = transform.position;
 
 		//for loop that repeats 38 times as that's the number of vision cone number
-		for (int i = 0; i < visionConeNumber; i++)
+		for (int i = 0; i < (visionConeAngle/5)+1; i++)
 		{
 			if (Physics.Raycast(pos, direction, out hit, aggroRadius))
 			{
