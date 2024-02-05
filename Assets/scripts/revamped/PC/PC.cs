@@ -47,7 +47,7 @@ public class PC : MonoBehaviour
             return;
         }
         //-------------------------------------Movement Section-----------------------------------------------------------------------------------
-        Vector3 movetVector = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical()).normalized;
+        Vector3 moveVector = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical()).normalized;
 
         //Check whether Poisoned or Slowed
         if (currentPCState == PCStates.SLOWED || currentPCState == PCStates.POISONED)
@@ -61,7 +61,7 @@ public class PC : MonoBehaviour
         //Check whether PC is Consuming
         if (currentPCState != PCStates.CONSUME)
         {
-            PlayerMove(movetVector, slowMultiplier);
+            PlayerMove(moveVector, slowMultiplier);
             PlayerRotation();
         }
         //-------------------------------------Movement Section End-----------------------------------------------------------------------------------
@@ -118,6 +118,8 @@ public class PC : MonoBehaviour
 
     private void PlayerMove(Vector3 movement, float slowMultiplier)
     {
+        Quaternion rotation = Quaternion.AngleAxis(-45, Vector3.up);
+        movement = rotation * movement;
         playerRb.MovePosition(transform.position + (movement * pcSpeed * slowMultiplier * Time.deltaTime));
     }
 
