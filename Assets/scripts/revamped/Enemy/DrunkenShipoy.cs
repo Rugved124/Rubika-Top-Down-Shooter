@@ -39,84 +39,86 @@ public class DrunkenShipoy : BaseEnemy
     public override void Update()
     {
         base.Update();
-
-        if (currentShipoyState != EnemyStates.CHARGING)
+        if (navMeshAgent.isActiveAndEnabled)
         {
-            if (isPCDetected && Vector3.Distance(GetPlayerTransform().position, transform.position) > fireBreathingRange && !isCharged)
+            if (currentShipoyState != EnemyStates.CHARGING)
             {
-                ChangeState(EnemyStates.CHASING);
-            }
-            else if (isPCDetected && Vector3.Distance(GetPlayerTransform().position, transform.position) <= fireBreathingRange && !isCharged)
-            {
-                ChangeState(EnemyStates.CHARGING);
-            }
-            else if (isPCDetected &&  isCharged)
-            {
-                ChangeState(EnemyStates.ATTACKING);
-            }
-            else
-            {
-                ChangeState(EnemyStates.WANDER);
-            }
-        }
-
-        if (GetPlayerTransform() != null)
-        {
-            playerLocation = GetPlayerTransform().position;
-        }
-
-
-        switch (currentShipoyState)
-        {
-            case EnemyStates.WANDER:
-                EnteredWander();
-                if (NeedsDestination())
+                if (isPCDetected && Vector3.Distance(GetPlayerTransform().position, transform.position) > fireBreathingRange && !isCharged)
                 {
-                    GetDestination();
+                    ChangeState(EnemyStates.CHASING);
                 }
-                if (isCharged && !resetCharging)
+                else if (isPCDetected && Vector3.Distance(GetPlayerTransform().position, transform.position) <= fireBreathingRange && !isCharged)
                 {
-                    StartCoroutine(ResetCharged());
+                    ChangeState(EnemyStates.CHARGING);
                 }
-                navMeshAgent.SetDestination(destination);
-                break;
-            case EnemyStates.CHASING:
-              
-                navMeshAgent.SetDestination(playerLocation);
-                
-                break;
-
-            case EnemyStates.CHARGING:
-                myMaterial.color = Color.yellow;
-                //navMeshAgent.stoppingDistance = navMeshAgent.remainingDistance + 4;
-                //navMeshAgent.SetDestination(playerLocation);
-                navMeshAgent.isStopped = true;
-                LookAtPlayer();
-
-                if (!isCharged)
+                else if (isPCDetected && isCharged)
                 {
-                    ShipoyCharging();
-                }
-                break;
-
-            case EnemyStates.ATTACKING:
-                myMaterial.color = Color.red;
-                navMeshAgent.speed = 4f;
-                LookAtPlayer();
-                if(Vector3.Distance(transform.position,playerLocation) < fireBreathingRange)
-                {
-                    if (!navMeshAgent.isStopped)
-                    {
-                        navMeshAgent.isStopped = true;
-                    }
-                    ShipoyFire();
+                    ChangeState(EnemyStates.ATTACKING);
                 }
                 else
                 {
-                    navMeshAgent.isStopped = false;
-                    navMeshAgent.SetDestination(playerLocation);
+                    ChangeState(EnemyStates.WANDER);
                 }
-                break;
+            }
+
+            if (GetPlayerTransform() != null)
+            {
+                playerLocation = GetPlayerTransform().position;
+            }
+
+
+            switch (currentShipoyState)
+            {
+                case EnemyStates.WANDER:
+                    EnteredWander();
+                    if (NeedsDestination())
+                    {
+                        GetDestination();
+                    }
+                    if (isCharged && !resetCharging)
+                    {
+                        StartCoroutine(ResetCharged());
+                    }
+                    navMeshAgent.SetDestination(destination);
+                    break;
+                case EnemyStates.CHASING:
+
+                    navMeshAgent.SetDestination(playerLocation);
+
+                    break;
+
+                case EnemyStates.CHARGING:
+                    myMaterial.color = Color.yellow;
+                    //navMeshAgent.stoppingDistance = navMeshAgent.remainingDistance + 4;
+                    //navMeshAgent.SetDestination(playerLocation);
+                    navMeshAgent.isStopped = true;
+                    LookAtPlayer();
+
+                    if (!isCharged)
+                    {
+                        ShipoyCharging();
+                    }
+                    break;
+
+                case EnemyStates.ATTACKING:
+                    myMaterial.color = Color.red;
+                    navMeshAgent.speed = 4f;
+                    LookAtPlayer();
+                    if (Vector3.Distance(transform.position, playerLocation) < fireBreathingRange)
+                    {
+                        if (!navMeshAgent.isStopped)
+                        {
+                            navMeshAgent.isStopped = true;
+                        }
+                        ShipoyFire();
+                    }
+                    else
+                    {
+                        navMeshAgent.isStopped = false;
+                        navMeshAgent.SetDestination(playerLocation);
+                    }
+                    break;
+            }
         }
     }
     public override void ChangeState(EnemyStates state)
@@ -137,7 +139,6 @@ public class DrunkenShipoy : BaseEnemy
 
     IEnumerator CoroutineToAttack()
     {
-        Debug.Log("Charging");
         //isCharged = true;
         yield return new WaitForSeconds(fireBreathingChargeTime);
         if(currentShipoyState != EnemyStates.CHARGING)

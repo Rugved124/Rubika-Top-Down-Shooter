@@ -1,8 +1,7 @@
-using JetBrains.Annotations;
-using Unity.IO.LowLevel.Unsafe;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.UI;
 public class BaseEnemy : MonoBehaviour
 {
     public enum EnemyStates
@@ -18,6 +17,8 @@ public class BaseEnemy : MonoBehaviour
 
     [SerializeField]
     protected int maxHitPoints;
+
+    //protected float maxHitPointScale;
 
     [SerializeField]
     protected int moveSpeed;
@@ -45,11 +46,22 @@ public class BaseEnemy : MonoBehaviour
     PC pc;
 
     [SerializeField]
-    protected Transform hitPointBar;
+    protected Slider healthSlider;
+    //[SerializeField]
+    //protected Transform hitPointBar;
+
+    //[SerializeField]
+    //protected Transform hitPointBackGround;
 
     public virtual void Awake()
     {
+        //hitPointBar.localScale += new Vector3 (maxHitPoints / 50, 0);
+        //hitPointBar.position += new Vector3 (- maxHitPoints / 100,0);
+        //hitPointBackGround.localScale += new Vector3((maxHitPoints / 50) + 0.2f, 0);
+        //maxHitPointScale = hitPointBar.localScale.x;
+        healthSlider.maxValue = maxHitPoints;
         currentHitPoints = maxHitPoints;
+        
         navMeshAgent = GetComponent<NavMeshAgent>();
         startingAngle = Quaternion.AngleAxis(-visionConeAngle / 2, Vector3.up);
     }
@@ -60,6 +72,14 @@ public class BaseEnemy : MonoBehaviour
 
     public virtual void Update()
     {
+        healthSlider.value = currentHitPoints;
+        if (currentEnemyStates == EnemyStates.DEAD)return;
+        
+        if (currentHitPoints <= 0)
+        {
+            ChangeState(EnemyStates.DEAD);
+            Die();
+        }
         CheckForPlayer();
     }
 
@@ -75,9 +95,10 @@ public class BaseEnemy : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
-    public virtual void TakeDamage()
+    public virtual void TakeDamage(int damage)
     {
-
+        currentHitPoints -= damage;
+        //hitPointBar.localScale -= new Vector3 (((float)damage / (float)maxHitPoints) * maxHitPointScale ,0);
     }
 
     public void GetDestination()
@@ -152,20 +173,5 @@ public class BaseEnemy : MonoBehaviour
 
 
         
-    }
-    protected float HPPercentage()
-    {
-        float currentHPPercent = (currentHitPoints / maxHitPoints) ;
-        return currentHPPercent;
-    }
-    public virtual void OnCollisionEnter(Collision collision)
-    {
-        if (collision != null)
-        {
-            if (collision.collider.tag == "Bullets")
-            {
-                Die();
-            }
-        }
     }
 }

@@ -27,7 +27,7 @@ public class BaseBullet : MonoBehaviour
     public float bulletRate;
 
     [SerializeField]
-    protected float bulletDamage;
+    protected int bulletDamage;
 
     [SerializeField] 
     protected float bulletLifeTime;
@@ -76,6 +76,13 @@ public class BaseBullet : MonoBehaviour
     {
         if (collision != null)
         {
+            if (collision.collider.CompareTag("Enemies"))
+            {
+                if(collision.collider.GetComponent<BaseEnemy>() != null)
+                {
+                    collision.collider.GetComponent<BaseEnemy>().TakeDamage(bulletDamage);
+                }
+            }
             Die();
         }
     }
