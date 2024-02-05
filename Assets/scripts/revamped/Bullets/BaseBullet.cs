@@ -32,22 +32,31 @@ public class BaseBullet : MonoBehaviour
     [SerializeField] 
     protected float bulletLifeTime;
 
-    [SerializeField]
+    
     protected float spawnTime;
 
     public BulletTypes bulletType;
 
+    [SerializeField]
     protected PC pc;
 
+    [SerializeField]
     protected Rigidbody bulletRB;
     public virtual void Start()
     {
         spawnTime = Time.time;
         pc = FindObjectOfType<PC>();
+        bulletRB = GetComponent<Rigidbody>();
+
+        BulletMovement();
+
     }
     public virtual void Update()
     {
-        BulletMovement();
+        if (Time.time - spawnTime > bulletLifeTime)
+        {
+            Die();
+        }
     }
     public virtual void Die()
     {
@@ -61,6 +70,14 @@ public class BaseBullet : MonoBehaviour
     public virtual void BulletMovement()
     {
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision != null)
+        {
+            Die();
+        }
     }
     
 }

@@ -197,14 +197,5 @@ public class DrunkenShipoy : BaseEnemy
         isCharged = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision != null)
-        {
-            if(collision.collider.tag == "Bullets")
-            {
-                Die();
-            }
-        }
-    }
+    
 }

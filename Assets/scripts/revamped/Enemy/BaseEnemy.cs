@@ -147,4 +147,14 @@ public class BaseEnemy : MonoBehaviour
 
         
     }
+    public virtual void OnCollisionEnter(Collision collision)
+    {
+        if (collision != null)
+        {
+            if (collision.collider.tag == "Bullets")
+            {
+                Die();
+            }
+        }
+    }
 }
