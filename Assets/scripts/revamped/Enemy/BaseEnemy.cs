@@ -25,6 +25,7 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField]
     protected int damageDealtTopPlayer;
 
+
     protected int currentHitPoints;
 
     [SerializeField]
@@ -42,8 +43,13 @@ public class BaseEnemy : MonoBehaviour
     protected bool isPCDetected;
 
     PC pc;
+
+    [SerializeField]
+    protected Transform hitPointBar;
+
     public virtual void Awake()
     {
+        currentHitPoints = maxHitPoints;
         navMeshAgent = GetComponent<NavMeshAgent>();
         startingAngle = Quaternion.AngleAxis(-visionConeAngle / 2, Vector3.up);
     }
@@ -146,6 +152,11 @@ public class BaseEnemy : MonoBehaviour
 
 
         
+    }
+    protected float HPPercentage()
+    {
+        float currentHPPercent = (currentHitPoints / maxHitPoints) ;
+        return currentHPPercent;
     }
     public virtual void OnCollisionEnter(Collision collision)
     {
