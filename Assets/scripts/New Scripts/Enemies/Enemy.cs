@@ -11,7 +11,9 @@ public class Enemy : MonoBehaviour
     public enum EnemyType
     {
         DRUNKENSEPOY,
-        BUTCHER
+        BUTCHER,
+        NANNY,
+        SHADOW
     }
 
     public EnemyType enemyType;

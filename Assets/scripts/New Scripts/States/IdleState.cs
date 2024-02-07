@@ -25,11 +25,34 @@ public class IdleState : BaseState
 
         if (distanceFromPC >= _enemy.enemyData.attackRange)
         {
-            return typeof(RunToPCState);
+            switch(_enemy.enemyType)
+            {
+                case Enemy.EnemyType.NANNY:
+					return typeof(ShieldState);
+
+                case Enemy.EnemyType.DRUNKENSEPOY:
+                    return typeof(RunToPCState);
+
+                case Enemy.EnemyType.BUTCHER:
+                    return typeof(RunToPCState);
+                
+                case Enemy.EnemyType.SHADOW:
+                    return typeof(RunToPCState);
+            } 
         }
         else if (distanceFromPC < _enemy.enemyData.attackRange)
         {
-            return typeof(AttackState);
+            switch (_enemy.enemyType)
+            {
+                case Enemy.EnemyType.DRUNKENSEPOY:
+                    return typeof(AttackState);
+                case Enemy.EnemyType.BUTCHER:
+                    return typeof(ButcherAttackState);
+                case Enemy.EnemyType.SHADOW:
+                    return typeof(AttackState);
+                case Enemy.EnemyType.NANNY:
+                    return typeof(RunAwayState);
+            }
         }
 
         return null;
