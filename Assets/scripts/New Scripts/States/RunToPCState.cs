@@ -12,7 +12,7 @@ public class RunToPCState : BaseState
         _enemy = enemy;
 
         pc = _enemy.pc.transform;
-        
+
     }
 
     public override void EnterState()
@@ -25,27 +25,31 @@ public class RunToPCState : BaseState
 
     public override Type ExecuteState()
     {
-       float distanceFromPC = CalculateDistance(pc);
+        float distanceFromPC = CalculateDistance(pc);
 
         MoveTowardsPlayer();
 
         if (distanceFromPC < _enemy.enemyData.attackRange)
         {
+        //    switch (_enemy.enemyType)
+        //    {
+        //        case: _enemy.EnemyType.DRUNKENSEPOY
+        //    }
             return typeof(AttackState);
         }
-
         return null;
     }
-    private void MoveTowardsPlayer()
-    {
-        _enemy.agent.SetDestination(pc.position);
-    }
+        private void MoveTowardsPlayer()
+        {
+            _enemy.agent.SetDestination(pc.position);
+        }
 
-    
-    float CalculateDistance(Transform objTransform)
-    {
-        float distanceFromObj = Vector3.Distance(_enemy.transform.position, objTransform.position);
 
-        return distanceFromObj;
-    }
-}
+        float CalculateDistance(Transform objTransform)
+        {
+            float distanceFromObj = Vector3.Distance(_enemy.transform.position, objTransform.position);
+
+            return distanceFromObj;
+        }
+} 
+

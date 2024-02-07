@@ -16,6 +16,14 @@ public class Butcher : Enemy
     public float bulletDirMultiplier;
 
     bool allowInvoke = true;
+
+    public override void Start()
+    {
+        base.Start();
+        enemyType = EnemyType.BUTCHER;
+        Debug.Log(enemyType.ToString());
+
+    }
     public override void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
@@ -27,6 +35,8 @@ public class Butcher : Enemy
         };
 
         GetComponent<FiniteStateMachine>().SetStates(states);
+
+        
     }
     public override void Update()
     {
@@ -75,4 +85,5 @@ public class Butcher : Enemy
         Quaternion lookOnLook = Quaternion.LookRotation(pc.transform.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookOnLook, Time.deltaTime * angularSpeedMulitplier);
     }
+
 }
