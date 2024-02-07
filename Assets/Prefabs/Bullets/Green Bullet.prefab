@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 8953844645312633241}
   - component: {fileID: 9058957463748084198}
   - component: {fileID: 8154813916876562400}
-  - component: {fileID: 9023676042179181536}
-  - component: {fileID: 8858464513200300927}
+  - component: {fileID: -5040417974243076471}
   m_Layer: 0
   m_Name: Green Bullet
   m_TagString: Bullets
@@ -102,7 +101,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -130,12 +129,12 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9023676042179181536
+--- !u!114 &-5040417974243076471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,19 +143,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3411248443990829376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8ef476f5015a404487fe31e87682ca8, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a021f95655c1f741b7fc53123b9a85a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8858464513200300927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3411248443990829376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d39254afe0043ff4ca3b5f24d15877be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 40
+  bulletLifeTime: 4
+  bulletDamage: 10
+  PoisonAOE: {fileID: 4077398964003033904, guid: 241016bf1e3e1ef4f84e2ed0912077fc,
+    type: 3}

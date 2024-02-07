@@ -71,16 +71,15 @@ public class BaseBullet : MonoBehaviour
     {
 
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision != null)
         {
             if (collision.collider.CompareTag("Enemies"))
             {
-                if(collision.collider.GetComponent<BaseEnemy>() != null)
+                if(collision.collider.GetComponent<Enemy>() != null)
                 {
-                    collision.collider.GetComponent<BaseEnemy>().TakeDamage(bulletDamage);
+                    collision.collider.GetComponent<Enemy>().TakeDamage(bulletDamage);
                 }
             }
             Die();
