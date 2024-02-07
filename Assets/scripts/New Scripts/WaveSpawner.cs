@@ -109,9 +109,10 @@ public class WaveSpawner : MonoBehaviour
         int randomEnemyCost = currentWave.enemy[randomEnemyID].enemyValue;
 
 
-        if (currentWave.waveValue - randomEnemyCost >= 0)
+        if (wavePurchasePower - randomEnemyCost >= 0)
         {
-            generateEnemies.Add(currentWave.enemy[randomEnemyID].enemiesInWave);;
+            generateEnemies.Add(currentWave.enemy[randomEnemyID].enemiesInWave);
+            wavePurchasePower -= randomEnemyCost;
         }
         else
         {

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy:
   - {fileID: 11400000, guid: 9c780ee427f08db47bcee5eaca908cba, type: 2}
+  - {fileID: 11400000, guid: 857e72c2febcf4f49b394a9157f01482, type: 2}
   timeBeforeThisWave: 5
-  numberToSpawn: 5
   waveValue: 10
