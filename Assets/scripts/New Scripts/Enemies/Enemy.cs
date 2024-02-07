@@ -8,6 +8,14 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public enum EnemyType
+    {
+        DRUNKENSEPOY,
+        BUTCHER
+    }
+
+    public EnemyType enemyType;
+
     protected FiniteStateMachine fsm;
 
     public EnemyData enemyData;
@@ -45,6 +53,11 @@ public class Enemy : MonoBehaviour
         isWeaponFiringDone = false;
 
         InitializeStateMachine();
+    }
+
+    public virtual void Start()
+    {
+        
     }
 
     public virtual void InitializeStateMachine()
@@ -110,4 +123,6 @@ public class Enemy : MonoBehaviour
     {
         Instantiate(enemySoul, transform.position, Quaternion.identity);
     }
+
+
 }

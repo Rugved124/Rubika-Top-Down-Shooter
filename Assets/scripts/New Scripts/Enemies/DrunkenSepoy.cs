@@ -6,6 +6,12 @@ public class DrunkenSepoy : Enemy
 {
     public GameObject fireline;
 
+    public override void Start()
+    {
+        base.Start();
+        enemyType = EnemyType.DRUNKENSEPOY;
+        Debug.Log(enemyType.ToString());
+    }
 
     public override void InitializeStateMachine()
     {
@@ -18,6 +24,8 @@ public class DrunkenSepoy : Enemy
         };
 
         GetComponent<FiniteStateMachine>().SetStates(states);
+
+      
     }
     public  override void FireWeapon ()
     {
