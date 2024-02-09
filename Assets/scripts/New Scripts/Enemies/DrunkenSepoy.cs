@@ -114,5 +114,14 @@ public class DrunkenSepoy : Enemy
         Quaternion lookOnLook = Quaternion.LookRotation(pc.transform.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookOnLook, Time.deltaTime * angularSpeedMulitplier);
     }
+
+    public override void Die()
+    {
+        if (pc != null)
+        {
+            pc.isBurning = false;
+        }
+        base.Die();
+    }
 }
 

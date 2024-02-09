@@ -26,25 +26,30 @@ public class RunToPCState : BaseState
 
     public override Type ExecuteState()
     {
-        float distanceFromPC = CalculateDistance(pc);
-
-        MoveTowardsPlayer();
-
-        if (distanceFromPC <= _enemy.enemyData.attackRange)
+        if (pc != null)
         {
-            switch (_enemy.enemyType)
+            float distanceFromPC = CalculateDistance(pc);
+
+            MoveTowardsPlayer();
+
+            if (distanceFromPC <= _enemy.enemyData.attackRange)
             {
-                case (Enemy.EnemyType.DRUNKENSEPOY):
-                    return typeof(SepoyAttackState);
-                    
-                case (Enemy.EnemyType.BUTCHER):
-                    return typeof(ButcherAttackState);
-                    
-                case (Enemy.EnemyType.SHADOW):
-                    return typeof(ShadowAttackState);
+                switch (_enemy.enemyType)
+                {
+                    case (Enemy.EnemyType.DRUNKENSEPOY):
+                        return typeof(SepoyAttackState);
+
+                    case (Enemy.EnemyType.BUTCHER):
+                        return typeof(ButcherAttackState);
+
+                    case (Enemy.EnemyType.SHADOW):
+                        return typeof(ShadowAttackState);
+                }
+
             }
-            
         }
+
+      
         return null;
     }
         private void MoveTowardsPlayer()

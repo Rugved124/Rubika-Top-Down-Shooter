@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bdb749b0bc52d7143bb8c1b733065a3e, type: 3}
-  m_Name: Wave 1
+  m_Name: EA_1_WaveOne
   m_EditorClassIdentifier: 
   enemy:
-  - {fileID: 11400000, guid: 857e72c2febcf4f49b394a9157f01482, type: 2}
-  - {fileID: 11400000, guid: 9c780ee427f08db47bcee5eaca908cba, type: 2}
+  - {fileID: 11400000, guid: d356e864f74668f4fb65fc0435dd83de, type: 2}
   timeBeforeThisWave: 0.5
   waveValue: 20

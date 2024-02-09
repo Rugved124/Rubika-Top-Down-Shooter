@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 849af088b11ec0b439e90f526af516df, type: 3}
-  m_Name: SpawnableDS
+  m_Name: EA_ButcherOne
   m_EditorClassIdentifier: 
-  enemiesInWave: {fileID: 7466105767855820433, guid: ca3387c6447462f46a446f63ad104636,
+  enemiesInWave: {fileID: 8319296224104033158, guid: 05e8d8aa1e8c5f44bb647c9a8f4c6666,
     type: 3}
-  enemyValue: 4
+  enemyValue: 20

@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
         return "Not Playing";
         
     }
-    public void Die()
+    public virtual void Die()
     {
         DropSoul(enemySoul);
         Destroy(this.gameObject);

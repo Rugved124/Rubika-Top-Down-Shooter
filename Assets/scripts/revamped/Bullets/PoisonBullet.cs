@@ -39,7 +39,7 @@ public class PoisonBullet : MonoBehaviour
                     other.GetComponent<PC>().TakeDamage(bulletDamage);
                 }
             }
-            else if (other.tag != "Player" && other.tag != "Ground" )
+            else if (other.tag != "Player" && other.tag != "Ground")
             {
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, Vector3.down, out hit))

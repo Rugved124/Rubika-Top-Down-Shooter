@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,7 +10,8 @@ public class WaveSpawner : MonoBehaviour
     {
         GenerateEnemies,
         SpawnWave,
-        Wait
+        Wait,
+        StopSpawn
     }
 
     public WaveStates currentWaveStates;
@@ -36,6 +38,9 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField]
     List<GameObject> generateEnemies = new List<GameObject>();
 
+    [SerializeField]
+    List<GameObject> doors = new List<GameObject>();
+
     public bool canSpawm;
     private void Awake()
     {
@@ -48,10 +53,6 @@ public class WaveSpawner : MonoBehaviour
     {
         if (canSpawm)
         {
-            if (stopSpawning)
-            {
-                return;
-            }
 
             switch (currentWaveStates)
             {
@@ -71,7 +72,19 @@ public class WaveSpawner : MonoBehaviour
                     if (Time.time >= timebetweenSpawns)
                     {
                         ResetGeneratedEnemies();
+
+                        if (stopSpawning)
+                        {
+                            if (currentWaveStates != WaveStates.StopSpawn)
+                            {
+                                ChangeWaveState(WaveStates.StopSpawn);
+                            }
+                        }
                     }
+                    break;
+                case WaveStates.StopSpawn:
+
+                    ChangeDoorState(false);
                     break;
             }
         }
@@ -151,6 +164,13 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
+    void ChangeDoorState(bool value)
+    {
+       foreach(GameObject door in doors)
+        {
+            door.SetActive(value);
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other != null)
@@ -158,6 +178,7 @@ public class WaveSpawner : MonoBehaviour
             if(other.tag == "Player")
             {
                 canSpawm = true;
+                ChangeDoorState(true);
             }
         }
     }
