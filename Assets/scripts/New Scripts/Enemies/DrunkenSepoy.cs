@@ -48,41 +48,46 @@ public class DrunkenSepoy : Enemy
             Debug.Log("Something");
             fireline.SetActive(true);
             firedTime -= Time.deltaTime;
-            RaycastHit hit;
-
-            Quaternion angle = transform.rotation * startingAngle;
-
-            Vector3 direction = angle * Vector3.forward;
-
-            Vector3 pos = transform.position;
-
-            for (int i = 0; i < (visionConeAngle / 5) + 1; i++)
-            {
-                if (Physics.Raycast(pos, direction, out hit, enemyData.aggroRadius -0.4f))
-                {
-                    if (hit.collider.tag == "Player")
-                    {
-                        Debug.DrawRay(pos, direction * hit.distance, Color.red);
-                        if (pc != null)
-                        {
-                            pc.isBurning = true;
-                        }
-                        return;
-                    }
-                }
-                if(pc != null)
-                {
-                    pc.isBurning = false;
-                }
-                
-                direction = stepAngle * direction;
-            }
             if (firedTime <= 0)
             {
                 fireline.SetActive(false);
                 isWeaponFiringDone = true;
                 pc.isBurning = false;
             }
+            if (firedTime > 0)
+            {
+                RaycastHit hit;
+
+                Quaternion angle = transform.rotation * startingAngle;
+
+                Vector3 direction = angle * Vector3.forward;
+
+                Vector3 pos = transform.position;
+
+                for (int i = 0; i < (visionConeAngle / 5) + 1; i++)
+                {
+                    if (Physics.Raycast(pos, direction, out hit, enemyData.aggroRadius - 0.4f))
+                    {
+                        if (hit.collider.tag == "Player")
+                        {
+                            Debug.DrawRay(pos, direction * hit.distance, Color.red);
+                            if (pc != null)
+                            {
+                                pc.isBurning = true;
+                            }
+                            return;
+                        }
+                    }
+                    if (pc != null)
+                    {
+                        pc.isBurning = false;
+                    }
+
+                    direction = stepAngle * direction;
+                }
+            }
+            
+            
         }
         
         else if (isWeaponFiringDone)
