@@ -55,13 +55,10 @@ public class Butcher : Enemy
     {
         base.FireWeapon();
         isWeaponFiringDone = true;
-        if(transform.position.y == pc.transform.position.y)
-        {
-            Rigidbody bulletRB = Instantiate(bullet, shootPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-            Vector3 movementDirection = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical()).normalized;
-            movementDirection = Quaternion.AngleAxis(-45f, Vector3.up) * movementDirection;
-            bulletRB.AddForce(((pc.transform.position + movementDirection * bulletDirMultiplier) - shootPoint.position).normalized * bulletSpeed_setInInspector, ForceMode.Impulse);
-        }
+        Rigidbody bulletRB = Instantiate(bullet, shootPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+        Vector3 movementDirection = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical()).normalized;
+        movementDirection = Quaternion.AngleAxis(-45f, Vector3.up) * movementDirection;
+        bulletRB.AddForce(((pc.transform.position + movementDirection * bulletDirMultiplier) - shootPoint.position).normalized * bulletSpeed_setInInspector, ForceMode.Impulse);
     }
 
     public override void ResetAttack()
