@@ -1,10 +1,8 @@
-using JetBrains.Annotations;
-using System;
-using System.Collections.Generic;
-using TreeEditor;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.UI;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
@@ -23,21 +21,31 @@ public class Enemy : MonoBehaviour
     public EnemyData enemyData;
     public PC pc { get; private set; }
 
-    [SerializeField]
     protected float firedTime;
 
     [SerializeField]
     private GameObject enemySoul;
     public NavMeshAgent agent { get; private set; }
 
-    public bool isWeaponFiringDone {  get; protected set; }
+    [HideInInspector]
+    public bool isWeaponFiringDone;
 
-
+    [HideInInspector]
     public float angularSpeedMulitplier;
 
-    public float MaxHP;
+    [HideInInspector]
+    public float maxHP;
     public float currentHP;
 
+    [SerializeField]
+    private Slider hpSlider;
+    
+    public List<Enemy> lowHpEnemy;
+
+    public float shieldDistance;
+    private int curShieldPoints;
+    public bool isShielded;
+    public bool canShield;
     private void Awake()
     {
         firedTime = enemyData.timeBetweenBullets;
@@ -49,10 +57,10 @@ public class Enemy : MonoBehaviour
         agent.angularSpeed = enemyData.enemyRotationSpeed;
 
         angularSpeedMulitplier = enemyData.enemyAttackingAngularSpeed;
-        MaxHP = enemyData.HitPoints;
-        currentHP = MaxHP;
-        
-        isWeaponFiringDone = false;
+        maxHP = enemyData.HitPoints;
+        currentHP = maxHP;
+        hpSlider.maxValue = maxHP;
+        isWeaponFiringDone = true;
 
         InitializeStateMachine();
     }
@@ -74,6 +82,8 @@ public class Enemy : MonoBehaviour
 
     public virtual void Update() 
     {
+        if(curShieldPoints <= 0)isShielded = false;
+        hpSlider.value = currentHP;
         if(currentHP <= 0)
         {
              Die();
@@ -109,7 +119,6 @@ public class Enemy : MonoBehaviour
     public virtual void SetFiringToTrue()
     {
         isWeaponFiringDone = false;
-        Debug.Log(isWeaponFiringDone);
     }
     public virtual void LookAtPlayer()
     {
@@ -118,13 +127,37 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage) 
     {
-        currentHP -= damage;
+        if(curShieldPoints > 0)
+        {
+            curShieldPoints--;
+        }
+        else if(curShieldPoints <= 0)
+        {
+            currentHP -= damage;
+        }
+       
     }
     
     void DropSoul(GameObject enemySoul)
     {
         Instantiate(enemySoul, transform.position, Quaternion.identity);
     }
+    public virtual void SecondaryWeaponFire() 
+    {
 
+    }
+    public virtual void LookForAllies()
+    {
 
+    }
+    public void AddShield()
+    {
+        isShielded = true;
+        curShieldPoints = 5;
+    }
+    public virtual void ResetShield()
+    {
+
+    }
 }
+

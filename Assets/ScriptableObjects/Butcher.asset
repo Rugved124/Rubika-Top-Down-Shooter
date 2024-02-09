@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visionConeAngle: 180
   aggroRadius: 5
-  attackRange: 10
-  HitPoints: 150
+  attackRange: 12
+  HitPoints: 100
   enemyMoveSpeed: 5
   enemyRotationSpeed: 200
   enemyAttackingAngularSpeed: 8
-  timeBetweenBullets: 0.5
+  timeBetweenBullets: 1.5
   bullet: 2
+  allyDetectionRange: 0

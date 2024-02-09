@@ -2,20 +2,19 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class AttackState : BaseState
+public class SepoyAttackState : BaseState
 {
     private Enemy _enemy;
     float startTime;
-    
-    public AttackState(Enemy enemy) : base(enemy.gameObject)
+    public SepoyAttackState(Enemy enemy) : base(enemy.gameObject)
     {
         _enemy = enemy;
     }
 
     public override void EnterState()
     {
-        startTime = 2.5f;
-
+        startTime = 0.5f;
+        _enemy.isWeaponFiringDone = false;
         if (!_enemy.agent.isStopped)
         {
             _enemy.agent.isStopped = true;
@@ -26,21 +25,16 @@ public class AttackState : BaseState
 
     public override Type ExecuteState()
     {
-        startTime -= Time.deltaTime;
-        _enemy.LookAtPlayer();
-        if (!_enemy.isWeaponFiringDone)
-        {
-            if (startTime <= 0f)
-            {
-                _enemy.FireWeapon();
-            }
-        }
-        else
+        if(Vector3.Distance(transform.position, _enemy.pc.transform.position) > _enemy.enemyData.attackRange)
         {
             return typeof(RunToPCState);
         }
-        
-      
+        startTime -= Time.deltaTime;
+        _enemy.LookAtPlayer();
+        if (startTime <= 0f)
+        { 
+            _enemy.FireWeapon();
+        }  
         return null;
     }
 

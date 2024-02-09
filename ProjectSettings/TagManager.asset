@@ -17,6 +17,7 @@ TagManager:
   - Poison
   - SilenceAbility
   - Consumables
+  - Spawner
   layers:
   - Default
   - TransparentFX
@@ -27,8 +28,8 @@ TagManager:
   - Obstacles
   - Souls
   - Enemy
-  - 
-  - 
+  - Player
+  - Bullets
   - 
   - 
   - 

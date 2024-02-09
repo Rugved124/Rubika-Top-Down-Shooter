@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8375149650565676278}
   - component: {fileID: -397394881026188541}
   - component: {fileID: -7135606201017283115}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RedBlue Bullet
   m_TagString: Bullets
   m_Icon: {fileID: 0}

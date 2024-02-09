@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2953120173996415079}
   - component: {fileID: -528556740088012420}
   - component: {fileID: -8143970380836414528}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BlueGreen Bullet
   m_TagString: Bullets
   m_Icon: {fileID: 0}

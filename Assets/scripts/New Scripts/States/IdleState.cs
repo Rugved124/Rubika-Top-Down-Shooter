@@ -27,9 +27,6 @@ public class IdleState : BaseState
         {
             switch(_enemy.enemyType)
             {
-                case Enemy.EnemyType.NANNY:
-					return typeof(ShieldState);
-
                 case Enemy.EnemyType.DRUNKENSEPOY:
                     return typeof(RunToPCState);
 
@@ -45,13 +42,13 @@ public class IdleState : BaseState
             switch (_enemy.enemyType)
             {
                 case Enemy.EnemyType.DRUNKENSEPOY:
-                    return typeof(AttackState);
+                    return typeof(SepoyAttackState);
+
                 case Enemy.EnemyType.BUTCHER:
                     return typeof(ButcherAttackState);
+
                 case Enemy.EnemyType.SHADOW:
-                    return typeof(AttackState);
-                case Enemy.EnemyType.NANNY:
-                    return typeof(RunAwayState);
+                    return typeof(ShadowAttackState);
             }
         }
 

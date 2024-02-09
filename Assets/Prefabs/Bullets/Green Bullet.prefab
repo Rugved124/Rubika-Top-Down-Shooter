@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9058957463748084198}
   - component: {fileID: 8154813916876562400}
   - component: {fileID: -5040417974243076471}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Green Bullet
   m_TagString: Bullets
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a021f95655c1f741b7fc53123b9a85a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletLifeTime: 4
-  bulletDamage: 10
+  bulletLifeTime: 3
+  bulletDamage: 35
   PoisonAOE: {fileID: 4077398964003033904, guid: 241016bf1e3e1ef4f84e2ed0912077fc,
     type: 3}

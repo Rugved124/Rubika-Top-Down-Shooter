@@ -11,7 +11,7 @@ public class PoisonBullet : MonoBehaviour
     private int bulletDamage;
 
     [SerializeField]
-    private GameObject PoisonAOE;
+    private GameObject PoisonAOE;   
     public void Start()
     {
     }
@@ -36,7 +36,7 @@ public class PoisonBullet : MonoBehaviour
             {
                 if (other.GetComponent<PC>() != null)
                 {
-                  // other.GetComponent<PC>().TakeDamage(bulletDamage);
+                    other.GetComponent<PC>().TakeDamage(bulletDamage);
                 }
             }
             else if (other.tag != "Player" && other.tag != "Ground" )

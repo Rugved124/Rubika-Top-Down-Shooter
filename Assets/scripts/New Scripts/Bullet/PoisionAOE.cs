@@ -6,6 +6,11 @@ public class PoisionAOE : MonoBehaviour
 {
     [SerializeField]
     private float PoisonTime;
+
+    private void Start()
+    {
+        
+    }
     void Update()
     {
         PoisonTime -= Time.deltaTime;

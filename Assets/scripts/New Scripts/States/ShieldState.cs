@@ -6,6 +6,8 @@ using System;
 public class ShieldState : BaseState
 {
 	Enemy _enemy;
+	float waitbeforeShield;
+	float shieldCoolDown;
 	public ShieldState(Enemy enemy) : base(enemy.gameObject)
 	{
 		_enemy = enemy;
@@ -13,61 +15,41 @@ public class ShieldState : BaseState
 	}
 	public override void EnterState()
 	{
-
+		waitbeforeShield = 2.5f;
+		_enemy.agent.isStopped = true;
+		_enemy.agent.updateRotation = false;
 	}
 
 	public override Type ExecuteState()
 	{
+        
+        if (_enemy.lowHpEnemy.Count > 0)
+        {
+			if (_enemy.lowHpEnemy[0] == null)
+			{
+				return typeof(NannyIdleState);
+			}
 
-		float distanceFromPC = CalculateDistance(_enemy.pc.transform);
-		if (distanceFromPC <= _enemy.enemyData.attackRange) 
-		{
-			return typeof(RunAwayState);
-		}
-		
-		return null;
-	}
-	float CalculateDistance(Transform objTransform)
-	{
-		float distanceFromObj = Vector3.Distance(_enemy.transform.position, objTransform.position);
+            Quaternion lookOnLook = Quaternion.LookRotation(_enemy.lowHpEnemy[0].transform.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookOnLook, Time.deltaTime * 5);
+			waitbeforeShield -= Time.deltaTime;
+            if (!_enemy.lowHpEnemy[0].isShielded)
+			{
+                
+                if (waitbeforeShield <= 0f)
+				{
+                    if (_enemy.canShield)
+					{
+                        _enemy.lowHpEnemy[0].AddShield();
+                        _enemy.canShield = false;
+						_enemy.ResetShield();
+					}
+                }
+				return null;
+				
+            }
+        }
+		return typeof(NannyIdleState);
 
-		return distanceFromObj;
-	}
-	//public void CheckForAllies()
-	//{
-
-	//	RaycastHit hit;
-
-	//	Quaternion angle = _enemy.transform.rotation * startAngle;
-
-	//	Vector3 direction = angle * Vector3.forward;
-
-	//	Vector3 pos = _enemy.transform.position;
-
-	//	for (int i = 0; i < (_enemy.enemyData.visionConeAngle / 5) + 1; i++)
-	//	{
-
-	//		if (Physics.Raycast(pos, direction, out hit, _enemy.enemyData.aggroRadius))
-	//		{
-
-	//			if (_enemy.pc != null)
-	//			{
-	//				Debug.DrawRay(pos, direction * hit.distance, Color.red);
-	//				return;
-	//			}
-	//			else
-	//			{
-	//				Debug.DrawRay(pos, direction * hit.distance, Color.yellow);
-
-	//			}
-	//		}
-	//		else
-	//		{
-	//			Debug.DrawRay(pos, direction * _enemy.enemyData.aggroRadius, Color.white);
-	//		}
-
-
-	//		direction = _enemy.enemyData.stepAngle * direction;
-	//	}
-	//}
+    }
 }

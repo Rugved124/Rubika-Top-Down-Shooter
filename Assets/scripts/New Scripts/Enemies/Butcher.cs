@@ -28,10 +28,10 @@ public class Butcher : Enemy
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
         {
-            { typeof(ButcherIdleState), new ButcherIdleState(this)},
-            { typeof(ButcherRunToPCState), new ButcherRunToPCState(this)},
+            { typeof(IdleState), new IdleState(this)},
+            { typeof(RunToPCState), new RunToPCState(this)},
             { typeof(ButcherAttackState), new ButcherAttackState(this)},
-            { typeof(ButcherDeadState), new ButcherDeadState(this)}
+            { typeof(DeadState), new DeadState(this)}
         };
 
         GetComponent<FiniteStateMachine>().SetStates(states);
@@ -55,13 +55,13 @@ public class Butcher : Enemy
     {
         base.FireWeapon();
         isWeaponFiringDone = true;
-        Debug.Log(isWeaponFiringDone);
-        Rigidbody bulletRB = Instantiate(bullet, shootPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-        Vector3 movementDirection = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical()).normalized;
-        movementDirection = Quaternion.AngleAxis(-45f, Vector3.up) * movementDirection;
-        bulletRB.AddForce(((pc.transform.position + movementDirection * bulletDirMultiplier) - shootPoint.position).normalized * bulletSpeed_setInInspector, ForceMode.Impulse);
-
-       
+        if(transform.position.y == pc.transform.position.y)
+        {
+            Rigidbody bulletRB = Instantiate(bullet, shootPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+            Vector3 movementDirection = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical()).normalized;
+            movementDirection = Quaternion.AngleAxis(-45f, Vector3.up) * movementDirection;
+            bulletRB.AddForce(((pc.transform.position + movementDirection * bulletDirMultiplier) - shootPoint.position).normalized * bulletSpeed_setInInspector, ForceMode.Impulse);
+        }
     }
 
     public override void ResetAttack()
@@ -85,5 +85,9 @@ public class Butcher : Enemy
         Quaternion lookOnLook = Quaternion.LookRotation(pc.transform.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookOnLook, Time.deltaTime * angularSpeedMulitplier);
     }
-
+    private void OnDestroy()
+    { 
+        lowHpEnemy.Remove(this.GetComponent<Enemy>());
+    }
+   
 }

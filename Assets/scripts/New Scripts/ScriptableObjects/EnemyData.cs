@@ -20,4 +20,6 @@ public class EnemyData : ScriptableObject
 
     public float timeBetweenBullets = 0.5f;
     public AmmoManager.EquippedAmmoType bullet;
+
+    public float allyDetectionRange;
 }

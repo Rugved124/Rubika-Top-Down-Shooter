@@ -45,7 +45,7 @@ public class AmmoManager : MonoBehaviour
     }
     private void Update()
     {
-        if(InputManager.instance.IsMousePressed()) 
+        if(InputManager.instance.IsMousePressed() && pc != null) 
         {
             if(bulletToSpawn != null && canShoot)
             {

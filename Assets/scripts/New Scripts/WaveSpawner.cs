@@ -35,6 +35,8 @@ public class WaveSpawner : MonoBehaviour
 
     [SerializeField]
     List<GameObject> generateEnemies = new List<GameObject>();
+
+    public bool canSpawm;
     private void Awake()
     {
         currentWave = waves[i];
@@ -44,32 +46,36 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (stopSpawning)
+        if (canSpawm)
         {
-            return;
+            if (stopSpawning)
+            {
+                return;
+            }
+
+            switch (currentWaveStates)
+            {
+                case WaveStates.GenerateEnemies:
+                    GenerateEnemies();
+                    break;
+
+                case WaveStates.SpawnWave:
+                    if (!isSpawning)
+                    {
+                        isSpawning = true;
+                        StartCoroutine(SpawnWave());
+                    }
+                    break;
+                case WaveStates.Wait:
+
+                    if (Time.time >= timebetweenSpawns)
+                    {
+                        ResetGeneratedEnemies();
+                    }
+                    break;
+            }
         }
-
-       switch (currentWaveStates)
-        {
-            case WaveStates.GenerateEnemies:
-                GenerateEnemies(); 
-                break;
-
-            case WaveStates.SpawnWave:
-                if (!isSpawning)
-                {
-                    isSpawning = true;
-                    StartCoroutine(SpawnWave());
-                }
-                break;
-            case WaveStates.Wait:
-
-                if(Time.time >= timebetweenSpawns)
-                {
-                    ResetGeneratedEnemies();
-                }
-                break;
-        }
+        
 
     }
 
@@ -142,6 +148,17 @@ public class WaveSpawner : MonoBehaviour
         if(currentWaveStates != WaveStates.GenerateEnemies)
         {
             ChangeWaveState(WaveStates.GenerateEnemies);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other != null)
+        {
+            if(other.tag == "Player")
+            {
+                canSpawm = true;
+            }
         }
     }
 }

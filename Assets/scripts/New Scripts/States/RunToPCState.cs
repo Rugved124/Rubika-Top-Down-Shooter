@@ -20,6 +20,7 @@ public class RunToPCState : BaseState
         _enemy.ResetAttack();
         _enemy.agent.isStopped = false;
         _enemy.agent.updateRotation = true;
+        _enemy.isWeaponFiringDone = true;
     }
 
 
@@ -29,13 +30,20 @@ public class RunToPCState : BaseState
 
         MoveTowardsPlayer();
 
-        if (distanceFromPC < _enemy.enemyData.attackRange)
+        if (distanceFromPC <= _enemy.enemyData.attackRange)
         {
-        //    switch (_enemy.enemyType)
-        //    {
-        //        case: _enemy.EnemyType.DRUNKENSEPOY
-        //    }
-            return typeof(AttackState);
+            switch (_enemy.enemyType)
+            {
+                case (Enemy.EnemyType.DRUNKENSEPOY):
+                    return typeof(SepoyAttackState);
+                    
+                case (Enemy.EnemyType.BUTCHER):
+                    return typeof(ButcherAttackState);
+                    
+                case (Enemy.EnemyType.SHADOW):
+                    return typeof(ShadowAttackState);
+            }
+            
         }
         return null;
     }

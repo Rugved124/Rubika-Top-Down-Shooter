@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4289184117319836559}
   - component: {fileID: 169971713383501422}
   - component: {fileID: 7271935129925441969}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PoisonAOE
   m_TagString: Poison
   m_Icon: {fileID: 0}
@@ -120,4 +120,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed12ed3e8791e0644b4dac9a2e856762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PoisonTime: 4
+  PoisonTime: 5

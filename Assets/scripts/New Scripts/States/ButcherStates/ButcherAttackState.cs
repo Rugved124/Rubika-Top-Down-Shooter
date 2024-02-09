@@ -36,7 +36,7 @@ public class ButcherAttackState : BaseState
         }
         if (Vector3.Distance(_enemy.pc.transform.position, transform.position) >= _enemy.enemyData.attackRange + 4f)
         {
-            return typeof(ButcherRunToPCState);
+            return typeof(RunToPCState);
         }
 
         return null;

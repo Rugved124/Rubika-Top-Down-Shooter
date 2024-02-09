@@ -18,7 +18,10 @@ public class Souls : MonoBehaviour
     }
     void Die()
     {
-        FindObjectOfType<PC>().DoneConsuming();
+        if(FindObjectOfType<PC>() != null)
+        {
+            FindObjectOfType<PC>().DoneConsuming();
+        } 
         Destroy(this.gameObject);
     }
 }

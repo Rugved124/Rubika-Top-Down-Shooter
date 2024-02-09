@@ -28,7 +28,14 @@ public class DefaultBullet : BaseBullet
     public override void BulletMovement()
     {
         base.BulletMovement();
-        bulletRB.AddForce(pc.GetPCShoot().forward * bulletSpeed, ForceMode.Impulse);
+        if(pc != null)
+        {
+            bulletRB.AddForce(pc.GetPCShoot().forward * bulletSpeed, ForceMode.Impulse);
+        }
+        else
+        {
+            Die();
+        }
     }
 }
 
