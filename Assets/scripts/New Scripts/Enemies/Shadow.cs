@@ -67,7 +67,7 @@ public class Shadow : Enemy
             if (hit.collider.tag == "Player")
             {
                 
-                if (!isSecondaryFired && transform.position.y == pc.transform.position.y)
+                if (!isSecondaryFired)
                 {
                     Debug.Log("Fire");
                     isSecondaryFired = true;
