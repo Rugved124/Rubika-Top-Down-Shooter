@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     private Slider hpSlider;
-    
+
     public List<Enemy> lowHpEnemy;
 
     public float shieldDistance;
@@ -48,9 +48,15 @@ public class Enemy : MonoBehaviour
     public bool canShield;
 
     public float hpPercent;
+
+    [HideInInspector]
     public bool canRunAway;
     float timer = 4f;
     float randomAngle = 0f;
+
+    [SerializeField]
+    public Vector3 surroundPos;
+
     private void Awake()
     {
         firedTime = enemyData.timeBetweenBullets;
@@ -66,39 +72,39 @@ public class Enemy : MonoBehaviour
         currentHP = maxHP;
         hpSlider.maxValue = maxHP;
         isWeaponFiringDone = true;
-
+        AIManager.instance.AddToList(this);
         canRunAway = true;
-    InitializeStateMachine();
+        InitializeStateMachine();
     }
 
     public virtual void Start()
     {
-        
+
     }
 
     public virtual void InitializeStateMachine()
     {
-       
+
     }
 
     public virtual void FireWeapon()
     {
-        
+
     }
 
-    public virtual void Update() 
+    public virtual void Update()
     {
         hpPercent = (currentHP / maxHP) * 100f;
         if (curShieldPoints <= 0)
         {
             isShielded = false;
         }
-           
+
 
         hpSlider.value = currentHP;
-        if(currentHP <= 0)
+        if (currentHP <= 0)
         {
-             Die();
+            Die();
         }
     }
 
@@ -115,17 +121,18 @@ public class Enemy : MonoBehaviour
                 return "No State Detected";
             }
         }
-        
+
         return "Not Playing";
-        
+
     }
     public virtual void Die()
     {
+        AIManager.instance.RemoveFromList(this);
         DropSoul(enemySoul);
         Destroy(this.gameObject);
     }
 
-    public virtual void  ResetAttack()
+    public virtual void ResetAttack()
     {
     }
     public virtual void SetFiringToTrue()
@@ -134,27 +141,27 @@ public class Enemy : MonoBehaviour
     }
     public virtual void LookAtPlayer()
     {
-        
+
     }
 
-    public void TakeDamage(int damage) 
+    public void TakeDamage(int damage)
     {
-        if(curShieldPoints > 0)
+        if (curShieldPoints > 0)
         {
             curShieldPoints--;
         }
-        else if(curShieldPoints <= 0)
+        else if (curShieldPoints <= 0)
         {
             currentHP -= damage;
         }
-       
+
     }
-    
+
     void DropSoul(GameObject enemySoul)
     {
         Instantiate(enemySoul, transform.position, Quaternion.identity);
     }
-    public virtual void SecondaryWeaponFire() 
+    public virtual void SecondaryWeaponFire()
     {
 
     }
@@ -175,15 +182,25 @@ public class Enemy : MonoBehaviour
     public virtual void RunAwayWhenLow()
     {
         Vector3 runDir = (transform.position - pc.transform.position).normalized * enemyData.runAwayDistance;
-       
+
         timer -= Time.deltaTime;
-        if(timer <= 0f)
+        if (timer <= 0f)
         {
             randomAngle = Random.Range(-45f, 45f);
-            timer = 4f; 
+            timer = 4f;
         }
-        runDir = Quaternion.AngleAxis(randomAngle,Vector3.up) * (runDir + transform.position);
+        runDir = Quaternion.AngleAxis(randomAngle, Vector3.up) * (runDir + transform.position);
         agent.SetDestination(runDir);
+    }
+
+    public void SetRunAwayToFalse()
+    {
+        Invoke("InvokeRunAway", 5f);
+    }
+
+    void InvokeRunAway()
+    {
+        canRunAway = false;
     }
 }
 

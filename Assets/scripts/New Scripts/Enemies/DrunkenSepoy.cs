@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(1)]
 public class DrunkenSepoy : Enemy
 {
     public GameObject fireline;
@@ -54,9 +55,9 @@ public class DrunkenSepoy : Enemy
             {
                 fireline.SetActive(false);
                 isWeaponFiringDone = true;
-                if (canAdd && pc.burnNumber > 0)
+                if (canAdd && pc.statusEffects.burnNumber > 0)
                 {
-                    pc.burnNumber--;
+                    pc.statusEffects.burnNumber--;
                     canAdd = false;
                 }
             }
@@ -81,7 +82,7 @@ public class DrunkenSepoy : Enemy
                             {
                                 if (!canAdd)
                                 {
-                                    pc.burnNumber++;
+                                    pc.statusEffects.burnNumber++;
                                     canAdd = true;
                                 }
                             }
@@ -90,9 +91,9 @@ public class DrunkenSepoy : Enemy
                     }
                     if (pc != null)
                     {
-                        if (canAdd && pc.burnNumber > 0)
+                        if (canAdd && pc.statusEffects.burnNumber > 0)
                         {
-                            pc.burnNumber--;
+                            pc.statusEffects.burnNumber--;
                             canAdd = false;
                         }
                     }
@@ -120,9 +121,9 @@ public class DrunkenSepoy : Enemy
         isWeaponFiringDone = false;
         fireline.SetActive(false);
         firedTime = fireTime;
-        if (canAdd && pc.burnNumber > 0)
+        if (canAdd && pc.statusEffects.burnNumber > 0)
         {
-            pc.burnNumber--;
+            pc.statusEffects.burnNumber--;
             canAdd = false;
         }
         canInvoke = true;  
@@ -138,9 +139,9 @@ public class DrunkenSepoy : Enemy
     {
         if (pc != null)
         {
-            if (canAdd && pc.burnNumber > 0)
+            if (canAdd && pc.statusEffects.burnNumber > 0)
             {
-                pc.burnNumber--;
+                pc.statusEffects.burnNumber--;
                 canAdd = false;
             }
         }

@@ -20,31 +20,30 @@ public class ShadowAttackState : BaseState
 
     public override Type ExecuteState()
     {
-        if (_enemy.hpPercent <= 20)
-        {
-            return typeof(RunAwayState);
-        }
         float distanceFromPC = CalculateDistance(_enemy.pc.transform);
-        _enemy.LookAtPlayer();
-        if (distanceFromPC >= _enemy.enemyData.attackRange / 2 && distanceFromPC <= _enemy.enemyData.attackRange)
+        if (_enemy.hpPercent > 20 && distanceFromPC <= _enemy.enemyData.attackRange)
         {
-            
-            if (!_enemy.isWeaponFiringDone)
+            _enemy.LookAtPlayer();
+            if (distanceFromPC >= _enemy.enemyData.attackRange / 2)
             {
-                _enemy.FireWeapon();
+
+                if (!_enemy.isWeaponFiringDone)
+                {
+                    _enemy.FireWeapon();
+                }
+                if (_enemy.isWeaponFiringDone)
+                {
+                    _enemy.ResetAttack();
+                }
             }
-            if (_enemy.isWeaponFiringDone)
+            else
             {
-                _enemy.ResetAttack();
+                _enemy.SecondaryWeaponFire();
             }
         }
-        else if (distanceFromPC < _enemy.enemyData.attackRange / 2)
+        else
         {
-            _enemy.SecondaryWeaponFire();
-        }
-        if(distanceFromPC > _enemy.enemyData.attackRange)
-        {
-            return typeof(RunToPCState);
+            return typeof(IdleState);
         }
         return null;
     }

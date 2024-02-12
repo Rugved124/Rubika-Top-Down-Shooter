@@ -1,7 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.Linq;
+using UnityEngine.Events;
+
 public class PC : MonoBehaviour
 {
+    private Dictionary<Type, BaseState> availableStates;
+
+    public BaseState currentState { get; private set; }
     public enum PCStates
     {
         DEFAULT,
@@ -16,154 +24,105 @@ public class PC : MonoBehaviour
 
     public PCStates currentPCState;
 
-    [SerializeField]
-    private float pcSpeed;
+    public float pcSpeed;
 
-    [SerializeField]
-    private float consumeRange;
-    [SerializeField]
-    float slowMultiplier = 1;
+    public float consumeRange;
+
+
+    public float slowMultiplier = 1;
 
     Rigidbody playerRb;
-    [SerializeField]
-    private Transform bulletSpawn;
 
-    bool isConsuming;
-    GameObject beingConsumed;
+    public Transform bulletSpawn;
+
+    public bool isConsuming;
+
+    public GameObject beingConsumed;
 
     [SerializeField]
     int maxHP;
-    [SerializeField]
-    private int currentHP;
+    public int currentHP;
 
     [SerializeField]
     private Slider slider;
 
-    //-----------------------------------------StatusEffects For PC-----------------------------------------------------------------
-    public bool isSlowed, isPoisoned, hasLostAbility, isBurning;
+    public PCStatusEffectsData statusEffects;
 
-    [SerializeField]
-    private float normalSpeed;
+    GameObject bullet;
 
-    [SerializeField]
-    private float maxSlowedForTime, maxPoisonedForTime;
+    public void InitializeStateMachine()
+    {
+        Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
+        {
+            { typeof(PCDefaultState), new PCDefaultState(this)},
+            { typeof(PCConsumeState), new PCConsumeState(this)},
+            { typeof(PCDeadState), new PCDeadState(this)}
+        };
+        SetStates(states);
 
-    [SerializeField]
-    private float slowedSpeed = 0.3f;
 
-    [SerializeField]
-    private float poisonedForTime, slowedForTime;
+    }
+    private void Awake()
+    {
+        InitializeStateMachine();
+    }
 
-    public int poisonDamagePerTick, burningPerTick, burnNumber;
-
-    [SerializeField]
-    private float tickSpeed, lastTick, burnTickSpeed, burnLastTick;
-
-    private BulletType bullet;
-
-    public bool isSlowedCounting, isPoisonCounting;
-    //-----------------------------------------StatusEffects For PC End-----------------------------------------------------------
     private void Start()
     {
-        currentPCState = PCStates.DEFAULT;
         playerRb = GetComponent<Rigidbody>();
-
         currentHP = maxHP;
         slider.maxValue = maxHP;
-
+        statusEffects.burnLastTick = 0f;
+        statusEffects.burnNumber = 0;
+        statusEffects.lastTick = 0f;
+        statusEffects.isPoisonCounting = false;
+        statusEffects.isPoisoned = false;
+        statusEffects.isSlowed = false;
+        statusEffects.isSlowedCounting = false;
+        statusEffects.hasLostAbility = false;
     }
 
     private void Update()
     {
-        slider.value = currentHP;
-        if (currentHP <= 0)
+        if (currentState == null)
         {
-            Die(); return;
+            currentState = availableStates.Values.First();
         }
-        //Check if PC is dead
-        if (currentPCState == PCStates.DEAD)
+        else
         {
-            return;
+            UpdateState();
         }
-        //-------------------------------------Movement Section-----------------------------------------------------------------------------------
-        Vector3 moveVector = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical()).normalized;
 
-        //Check whether PC is Consuming
-        if (currentPCState != PCStates.CONSUME)
+        slider.value = currentHP;
+        //-------------------------------------StatusEfffects---------------------------------------------------------
+        if (statusEffects.isPoisoned)
         {
-            PlayerMove(moveVector, slowMultiplier);
-            PlayerRotation();
-        }
-        //-------------------------------------Movement Section End-----------------------------------------------------------------------------------
-        //--------------------------------------------------------------------------------------------------------------------------------------------
-        if (InputManager.instance.GetIfConsumeIsHeld()) 
-        {
-            RaycastHit hitObj;
-            bool didHit = Physics.Raycast(transform.position, transform.forward, out hitObj, consumeRange);
-            Debug.DrawRay(transform.position, transform.forward * consumeRange, Color.red);
-            if (didHit)
+            if (statusEffects.isPoisonCounting)
             {
-                if (hitObj.collider.CompareTag("Consumables"))
-                {
-                    ChangePCState(PCStates.CONSUME);
-                    if(beingConsumed == null)
-                    {
-                        beingConsumed = hitObj.collider.gameObject;
-                    }
-                }
-            }
-            
-        }
-        switch(currentPCState)
-        {
-            case PCStates.DEFAULT:
-                break;
-            case PCStates.CONSUME:
-                if (beingConsumed != null)
-                {
-                    Consume(beingConsumed); 
-                }
-                break;
-        }
-        if (isPoisoned)
-        {
-            if (isPoisonCounting)
-            {
-                poisonedForTime = Time.time;
+                statusEffects.poisonedForTime = Time.time;
             }
             Poisoned();
         }
-        if (isSlowed)
+        if (statusEffects.isSlowed)
         {
-            if (isSlowedCounting)
+            if (statusEffects.isSlowedCounting)
             {
-                slowedForTime = Time.time;
+                statusEffects.slowedForTime = Time.time;
             }
             Slowed();
         }
-        
-        Burning();
-        //if (hasLostAbility)
-        //{
-        //    LostAbility();
-        //}
-    }
-    void ChangePCState(PCStates state)
-    {
-        if (currentPCState != state)
-        {
-            currentPCState = state;
-        }
-    }
 
-    private void PlayerMove(Vector3 movement, float slowMultiplier)
+        Burning();
+       
+    }
+    public void PlayerMove(Vector3 movement, float slowMultiplier)
     {
         Quaternion rotation = Quaternion.AngleAxis(-45, Vector3.up);
         movement = rotation * movement;
         playerRb.MovePosition(transform.position + (movement * pcSpeed * slowMultiplier * Time.deltaTime));
     }
 
-    private void PlayerRotation()
+    public void PlayerRotation()
     {
         Vector3 lookDir = InputManager.instance.GetMousePosition();
         lookDir.y = transform.position.y;
@@ -175,14 +134,13 @@ public class PC : MonoBehaviour
         return bulletSpawn;
     }
 
-    private void Consume(GameObject consumeObj)
+    public void Consume(GameObject consumeObj)
     {
         consumeObj.GetComponent<Souls>().Consumption();
     }
     
     public void DoneConsuming()
     {
-        ChangePCState(PCStates.DEFAULT);
         beingConsumed = null;
     }
 
@@ -196,75 +154,68 @@ public class PC : MonoBehaviour
         currentHP -= damage;
     }
 
-    private void Die()
+    public void Die()
     {
        this.gameObject.SetActive(false);
     }
+
     //---------------------------------------------------PC Status Effect Functions Start--------------------------------------------------------
     void Poisoned()
     {
-        if (Time.time - poisonedForTime <= maxPoisonedForTime)
+        if (Time.time - statusEffects.poisonedForTime <= statusEffects.maxPoisonedForTime)
         {
 
-            if (Time.time - lastTick >= tickSpeed)
+            if (Time.time - statusEffects.lastTick >= statusEffects.tickSpeed)
             {
-                slowMultiplier = slowedSpeed;
-                TakeDamage(poisonDamagePerTick);
-                lastTick = Time.time;
+                slowMultiplier = statusEffects.slowedSpeed;
+                TakeDamage(statusEffects.poisonDamagePerTick);
+                statusEffects.lastTick = Time.time;
             }
 
         }
         else
         {
-            isPoisoned = false;
+            statusEffects.isPoisoned = false;
             slowMultiplier = 1f;
         }
     }
     void Burning()
     {
-        if (Time.time - burnLastTick >= burnTickSpeed)
+        if (Time.time - statusEffects.burnLastTick >= statusEffects.burnTickSpeed)
         {
-            TakeDamage(burningPerTick * burnNumber);
-            burnLastTick = Time.time;
+            TakeDamage(statusEffects.burningPerTick * statusEffects.burnNumber);
+            statusEffects.burnLastTick = Time.time;
         }
     }
     void Slowed()
     {
-        if (Time.time - slowedForTime <= maxSlowedForTime)
+        if (Time.time - statusEffects.slowedForTime <= statusEffects.maxSlowedForTime)
         {
-           slowMultiplier = slowedSpeed;
+            slowMultiplier = statusEffects.slowedSpeed;
         }
         else
         {
-            isSlowed = false;
+            statusEffects.isSlowed = false;
             slowMultiplier = 1;
             return;
         }
 
     }
-
-    void LostAbility()
-    {
-        bullet.LostConsumedSoul();
-    }
-
-    //------------------------------------------------------------PC Status Effects Functions End------------------------------------------------------
-    //------------------------------------------------------------Collisions and Triggers for PC-------------------------------------------------------
     private void OnTriggerEnter(Collider other)
     {
         if (other != null)
         {
             if (other.tag == "SlowPC")
             {
-                isSlowedCounting = true;
-                isSlowed = true;
-                hasLostAbility = true;
+                statusEffects.isSlowedCounting = true;
+                statusEffects.isSlowed = true;
+                statusEffects.hasLostAbility = true;
 
             }
             if (other.tag == "Poison")
             {
-                isPoisonCounting = true;
-                isPoisoned = true;
+                statusEffects.isPoisonCounting = true;
+                statusEffects.isPoisoned = true;
 
             }
 
@@ -276,15 +227,35 @@ public class PC : MonoBehaviour
         {
             if (other.tag == "SlowPC")
             {
-                isSlowedCounting = false;
-                hasLostAbility = false;
+                statusEffects.isSlowedCounting = false;
+                statusEffects.hasLostAbility = false;
 
             }
             if (other.tag == "Poison")
             {
-                isPoisonCounting = false;
+                statusEffects.isPoisonCounting = false;
             }
         }
     }
     //----------------------------------------------------------------Collisions and Triggers for PC End---------------------------------------------------------
+
+    public void SetStates(Dictionary<Type, BaseState> states)
+    {
+        availableStates = states;
+    }
+    void SwitchToNextState(Type nextState)
+    {
+        currentState = availableStates[nextState];
+        currentState.EnterState();
+    }
+
+    void UpdateState()
+    {
+        Type nextState = currentState.ExecuteState();
+
+        if (nextState != null && nextState != currentState.GetType())
+        {
+            SwitchToNextState(nextState);
+        }
+    }
 }

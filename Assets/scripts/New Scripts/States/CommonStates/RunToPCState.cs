@@ -27,9 +27,9 @@ public class RunToPCState : BaseState
         _enemy.agent.isStopped = false;
         _enemy.agent.updateRotation = true;
         _enemy.isWeaponFiringDone = true;
-        angle = UnityEngine.Random.Range(-60f, 60f);
-        stopPoint = (pc.position - transform.position).normalized * (_enemy.enemyData.attackRange - 2f);
-        stopPoint = Quaternion.AngleAxis(angle, Vector3.up) * stopPoint;
+        //angle = UnityEngine.Random.Range(-120f, 120f);
+        //stopPoint = (pc.position - transform.position).normalized * (_enemy.enemyData.attackRange - 2f);
+        //stopPoint = Quaternion.AngleAxis(angle, Vector3.up) * stopPoint;
     }
 
 
@@ -43,42 +43,28 @@ public class RunToPCState : BaseState
         if (pc != null)
         {
             float distanceFromPC = CalculateDistance(pc);
+            MoveTowardsPlayer();
+            if (_enemy.enemyType == Enemy.EnemyType.NANNY)
+            {
 
-            if(_enemy.enemyType == Enemy.EnemyType.NANNY)
-            { 
-
-                if ( distanceFromPC <= _enemy.enemyData.attackRange / 3 || _enemy.lowHpEnemy.Count > 0)
+                if (distanceFromPC <= _enemy.enemyData.attackRange / 3 || _enemy.lowHpEnemy.Count > 0)
                 {
                     return typeof(NannyIdleState);
                 }
             }
-            MoveTowardsPlayer();
-
-            if (_enemy.agent.remainingDistance <= 1f)
+            else
             {
-                switch (_enemy.enemyType)
-               {
-                    case (Enemy.EnemyType.DRUNKENSEPOY):
-                        return typeof(SepoyAttackState);
-
-                    case (Enemy.EnemyType.BUTCHER):
-                        return typeof(ButcherAttackState);
-
-                    case (Enemy.EnemyType.SHADOW):
-                        return typeof(ShadowAttackState);
-                    case (Enemy.EnemyType.NANNY):
-                        return typeof(NannyAttackState);
+                if (_enemy.agent.remainingDistance <= 1f)
+                {
+                    return typeof(IdleState);
                 }
-
             }
         }
-
-      
         return null;
     }
     private void MoveTowardsPlayer()
     {
-        _enemy.agent.SetDestination(pc.position - stopPoint);
+        _enemy.agent.SetDestination(_enemy.surroundPos);
     }
     float CalculateDistance(Transform objTransform)
     {

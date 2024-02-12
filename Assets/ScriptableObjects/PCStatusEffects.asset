@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3748baeb03bd1e44da41d4f50882a3b4, type: 3}
+  m_Name: PCStatusEffects
+  m_EditorClassIdentifier: 
+  isSlowed: 0
+  isPoisoned: 0
+  hasLostAbility: 0
+  normalSpeed: 1
+  maxSlowedForTime: 3
+  maxPoisonedForTime: 5
+  slowedSpeed: 0.3
+  poisonedForTime: 0
+  slowedForTime: 0
+  poisonDamagePerTick: 3
+  burningPerTick: 1
+  burnNumber: 0
+  tickSpeed: 0.2
+  burnTickSpeed: 0.2
+  lastTick: 0
+  burnLastTick: 7.5842166
+  isSlowedCounting: 0
+  isPoisonCounting: 0

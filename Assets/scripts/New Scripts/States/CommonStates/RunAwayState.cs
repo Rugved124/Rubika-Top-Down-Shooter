@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 public class RunAwayState : BaseState
 {
 	Enemy _enemy;
+    private bool canSetRunAway;
     public RunAwayState(Enemy enemy) : base(enemy.gameObject)
 	{
 		_enemy = enemy;
@@ -18,6 +19,7 @@ public class RunAwayState : BaseState
         _enemy.agent.isStopped = false;
         _enemy.agent.updateRotation = true;
         _enemy.ResetAttack();
+        canSetRunAway = true;
     }
 
 	public override Type ExecuteState()
@@ -38,6 +40,20 @@ public class RunAwayState : BaseState
         }
         else if (_enemy.hpPercent <= 20f)
         {
+            if (canSetRunAway)
+            {
+                canSetRunAway = false;
+                _enemy.SetRunAwayToFalse();
+            }
+            
+            if (!_enemy.canRunAway)
+            {
+                if(_enemy.enemyType == Enemy.EnemyType.NANNY)
+                {
+                    return typeof(NannyIdleState);
+                }
+                return typeof(IdleState);
+            }
             _enemy.RunAwayWhenLow();
         }
 

@@ -25,24 +25,22 @@ public class ButcherAttackState : BaseState
 
     public override Type ExecuteState()
     {
-        if(_enemy.hpPercent <= 20)
+        if (_enemy.hpPercent > 20 && Vector3.Distance(_enemy.pc.transform.position, transform.position) <= _enemy.enemyData.attackRange)
         {
-            return typeof(RunAwayState);
+            _enemy.LookAtPlayer();
+            if (!_enemy.isWeaponFiringDone)
+            {
+                _enemy.FireWeapon();
+            }
+            if (_enemy.isWeaponFiringDone)
+            {
+                _enemy.ResetAttack();
+            }
         }
-        _enemy.LookAtPlayer();
-        if (!_enemy.isWeaponFiringDone)
-        {          
-            _enemy.FireWeapon();
-        }
-        if (_enemy.isWeaponFiringDone)
+        else
         {
-            _enemy.ResetAttack();
+            return typeof(IdleState);
         }
-        if (Vector3.Distance(_enemy.pc.transform.position, transform.position) >= _enemy.enemyData.attackRange + 4f)
-        {
-            return typeof(RunToPCState);
-        }
-
         return null;
     }
 

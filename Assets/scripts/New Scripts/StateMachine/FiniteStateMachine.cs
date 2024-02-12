@@ -9,7 +9,6 @@ public class FiniteStateMachine : MonoBehaviour
     private Dictionary<Type, BaseState> availableStates;
 
     public BaseState currentState { get; private set; }
-    public UnityAction<BaseState> OnStateChanged;
 
     public void SetStates(Dictionary<Type, BaseState> states)
     {
@@ -32,11 +31,6 @@ public class FiniteStateMachine : MonoBehaviour
     {
         currentState = availableStates[nextState];
         currentState.EnterState();
-
-        //if (OnStateChanged == null)
-        //{
-        //    OnStateChanged.Invoke(currentState);
-        //}
     }
 
     void UpdateState()

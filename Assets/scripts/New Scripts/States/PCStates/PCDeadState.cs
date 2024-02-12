@@ -2,24 +2,23 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButcherDeadState : BaseState
+public class PCDeadState : BaseState
 {
-    private Enemy _enemy;
+    private PC _pc;
 
-    public ButcherDeadState(Enemy enemy) : base(enemy.gameObject)
+    public PCDeadState(PC pc) : base(pc.gameObject)
     {
-        _enemy = enemy;
+        _pc = pc;
     }
 
     public override void EnterState()
     {
-
+        _pc.Die();
     }
 
     public override Type ExecuteState()
     {
-        _enemy.Die();
+        
         return null;
     }
-
 }
