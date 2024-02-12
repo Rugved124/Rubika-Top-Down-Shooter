@@ -25,6 +25,10 @@ public class ButcherAttackState : BaseState
 
     public override Type ExecuteState()
     {
+        if(_enemy.hpPercent <= 20)
+        {
+            return typeof(RunAwayState);
+        }
         _enemy.LookAtPlayer();
         if (!_enemy.isWeaponFiringDone)
         {          

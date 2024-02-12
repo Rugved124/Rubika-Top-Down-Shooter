@@ -38,7 +38,8 @@ public class Shadow : Enemy
             { typeof(IdleState), new IdleState(this)},
             { typeof(RunToPCState), new RunToPCState(this)},
             { typeof(ShadowAttackState), new ShadowAttackState(this)},
-            { typeof(DeadState), new DeadState(this)}
+            { typeof(DeadState), new DeadState(this)},
+            { typeof(RunAwayState), new RunAwayState(this)}
         };
 
         GetComponent<FiniteStateMachine>().SetStates(states);

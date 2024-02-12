@@ -178,8 +178,8 @@ GameObject:
   - component: {fileID: 4329837846314905748}
   - component: {fileID: 1936576725428167023}
   - component: {fileID: 9084905155735580316}
-  - component: {fileID: 7715775416035410120}
   - component: {fileID: 4123557816643880777}
+  - component: {fileID: 8076461431349314651}
   m_Layer: 8
   m_Name: Nanny
   m_TagString: Enemies
@@ -312,19 +312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd94104f31191fa4e91b60a2d6e9c21b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7715775416035410120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5637126596393224611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 548a1437b36654d4381017cc21071da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateName: Not Playing
 --- !u!114 &4123557816643880777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,11 +337,29 @@ MonoBehaviour:
   shieldDistance: 4
   isShielded: 0
   canShield: 0
+  hpPercent: 0
+  canRunAway: 0
   runawayRadius: 5
   enemiesTemp: []
   enemies:
     serializedVersion: 2
     m_Bits: 256
+  bullet: {fileID: 8484276848674366825, guid: bc851ef4e327eba489449b651542a5f2, type: 3}
+  bulletSpeed: 8
+  shootPoint: {fileID: 3440395814735381810}
+--- !u!114 &8076461431349314651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5637126596393224611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548a1437b36654d4381017cc21071da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: Not Playing
 --- !u!1 &6313554291630544118
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +372,7 @@ GameObject:
   - component: {fileID: 2988978358691509638}
   - component: {fileID: 2639155065772141443}
   - component: {fileID: 6115598071525505043}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultGun (1)
   m_TagString: Enemies
   m_Icon: {fileID: 0}
@@ -485,7 +490,7 @@ Transform:
   m_GameObject: {fileID: 7185933554918826241}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.371, z: 1.107}
+  m_LocalPosition: {x: 0, y: 0.371, z: 2.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

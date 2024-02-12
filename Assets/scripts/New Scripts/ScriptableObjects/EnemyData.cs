@@ -22,4 +22,6 @@ public class EnemyData : ScriptableObject
     public AmmoManager.EquippedAmmoType bullet;
 
     public float allyDetectionRange;
+
+    public float runAwayDistance;
 }

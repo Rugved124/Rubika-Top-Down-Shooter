@@ -14,6 +14,9 @@ public class InputManager : MonoBehaviour
 
     [SerializeField]
     private LayerMask soulMask;
+
+    [SerializeField]
+    SceneLoader loader;
     private void Awake()
     {
         if (instance == null)
@@ -29,6 +32,10 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            loader.ReloadScene();
+        }
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
     }

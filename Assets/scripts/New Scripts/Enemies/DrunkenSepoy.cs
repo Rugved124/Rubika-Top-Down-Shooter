@@ -10,6 +10,8 @@ public class DrunkenSepoy : Enemy
     public int fireDamage;
     bool canInvoke = true;
 
+    bool canAdd;
+
     [SerializeField]
     protected float visionConeAngle = 90f;
 
@@ -33,7 +35,8 @@ public class DrunkenSepoy : Enemy
             { typeof(IdleState), new IdleState(this)},
             { typeof(RunToPCState), new RunToPCState(this)},
             { typeof(SepoyAttackState), new SepoyAttackState(this)},
-            { typeof(DeadState), new DeadState(this)}
+            { typeof(DeadState), new DeadState(this)},
+            { typeof(RunAwayState), new RunAwayState(this)}
         };
 
         GetComponent<FiniteStateMachine>().SetStates(states);
@@ -45,14 +48,17 @@ public class DrunkenSepoy : Enemy
         base.FireWeapon();
         if (!isWeaponFiringDone)
         {
-            Debug.Log("Something");
             fireline.SetActive(true);
             firedTime -= Time.deltaTime;
             if (firedTime <= 0)
             {
                 fireline.SetActive(false);
                 isWeaponFiringDone = true;
-                pc.isBurning = false;
+                if (canAdd && pc.burnNumber > 0)
+                {
+                    pc.burnNumber--;
+                    canAdd = false;
+                }
             }
             if (firedTime > 0)
             {
@@ -73,14 +79,22 @@ public class DrunkenSepoy : Enemy
                             Debug.DrawRay(pos, direction * hit.distance, Color.red);
                             if (pc != null)
                             {
-                                pc.isBurning = true;
+                                if (!canAdd)
+                                {
+                                    pc.burnNumber++;
+                                    canAdd = true;
+                                }
                             }
                             return;
                         }
                     }
                     if (pc != null)
                     {
-                        pc.isBurning = false;
+                        if (canAdd && pc.burnNumber > 0)
+                        {
+                            pc.burnNumber--;
+                            canAdd = false;
+                        }
                     }
 
                     direction = stepAngle * direction;
@@ -106,6 +120,11 @@ public class DrunkenSepoy : Enemy
         isWeaponFiringDone = false;
         fireline.SetActive(false);
         firedTime = fireTime;
+        if (canAdd && pc.burnNumber > 0)
+        {
+            pc.burnNumber--;
+            canAdd = false;
+        }
         canInvoke = true;  
     }
     public override void LookAtPlayer()
@@ -119,7 +138,11 @@ public class DrunkenSepoy : Enemy
     {
         if (pc != null)
         {
-            pc.isBurning = false;
+            if (canAdd && pc.burnNumber > 0)
+            {
+                pc.burnNumber--;
+                canAdd = false;
+            }
         }
         base.Die();
     }

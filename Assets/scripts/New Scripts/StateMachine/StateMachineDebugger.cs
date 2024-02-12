@@ -1,11 +1,10 @@
-
 using UnityEditor;
 using UnityEngine;
 
 [ExecuteInEditMode]
 public class StateMachineDebugger : MonoBehaviour
 {
-   public Enemy enemy { get; private set; }
+    public Enemy enemy { get; private set; }
 
     public string stateName;
 
@@ -29,7 +28,7 @@ public class TextDrawer : Editor
     {
 
         StateMachineDebugger t = target as StateMachineDebugger;
-        
+
         GUIStyle style = new GUIStyle();
 
         if (t.stateName == "Not Playing")
@@ -43,7 +42,7 @@ public class TextDrawer : Editor
 
         style.fontSize = 18;
         style.fontStyle = FontStyle.Bold;
-        
+
 
         UnityEditor.Handles.Label(t.transform.position, t.stateName, style);
     }

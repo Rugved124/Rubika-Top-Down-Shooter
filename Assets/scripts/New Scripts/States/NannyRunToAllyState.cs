@@ -13,6 +13,7 @@ public class NannyRunToAllyState : BaseState
 
     public override void EnterState()
     {
+        Debug.Log("RunToAlly");
         _enemy.agent.isStopped = false;
         _enemy.agent.updateRotation = true;
         runAlly = _enemy.lowHpEnemy[0];
@@ -21,7 +22,7 @@ public class NannyRunToAllyState : BaseState
     public override Type ExecuteState()
     {
 
-        if (_enemy.lowHpEnemy.Count > 0)
+        if (_enemy.lowHpEnemy.Count > 0 && _enemy.canShield)
         {
             if (_enemy.lowHpEnemy[0] != null)
             {
@@ -34,6 +35,7 @@ public class NannyRunToAllyState : BaseState
             }
             else
             {
+                Debug.Log("Go Back");
                 return typeof(NannyIdleState);
             }
             

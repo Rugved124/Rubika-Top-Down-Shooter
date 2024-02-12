@@ -526,9 +526,8 @@ GameObject:
   - component: {fileID: 2666825485549235522}
   - component: {fileID: 9066459578093757070}
   - component: {fileID: 918344242897421585}
-  - component: {fileID: 4796761999355886673}
-  - component: {fileID: 4295350252339919268}
   - component: {fileID: 3956735895962568045}
+  - component: {fileID: 4210408251616444179}
   m_Layer: 8
   m_Name: Shadow
   m_TagString: Enemies
@@ -649,31 +648,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4796761999355886673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6180407339577389415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd94104f31191fa4e91b60a2d6e9c21b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4295350252339919268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6180407339577389415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 548a1437b36654d4381017cc21071da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateName: Not Playing
 --- !u!114 &3956735895962568045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,3 +685,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 767
   secondaryFireSpeed: 0.5
+--- !u!114 &4210408251616444179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6180407339577389415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd94104f31191fa4e91b60a2d6e9c21b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

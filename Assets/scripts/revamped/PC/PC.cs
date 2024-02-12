@@ -1,4 +1,3 @@
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.UI;
 public class PC : MonoBehaviour
@@ -55,7 +54,7 @@ public class PC : MonoBehaviour
     [SerializeField]
     private float poisonedForTime, slowedForTime;
 
-    public int poisonDamagePerTick, burningPerTick;
+    public int poisonDamagePerTick, burningPerTick, burnNumber;
 
     [SerializeField]
     private float tickSpeed, lastTick, burnTickSpeed, burnLastTick;
@@ -143,10 +142,7 @@ public class PC : MonoBehaviour
             Slowed();
         }
         
-        if (isBurning)
-        {
-            Burning();
-        }
+        Burning();
         //if (hasLostAbility)
         //{
         //    LostAbility();
@@ -228,7 +224,7 @@ public class PC : MonoBehaviour
     {
         if (Time.time - burnLastTick >= burnTickSpeed)
         {
-            TakeDamage(burningPerTick);
+            TakeDamage(burningPerTick * burnNumber);
             burnLastTick = Time.time;
         }
     }

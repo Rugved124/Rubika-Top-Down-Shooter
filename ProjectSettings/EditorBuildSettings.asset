@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Aseems Scenes/EntranceAseem.unity
     guid: 6f35adb312f0b3448b86a4787d0b8143
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Ruggy's Levels/Section 1.unity
     guid: 467d1fba06f1500409b81f31cded827b
   m_configObjects: {}

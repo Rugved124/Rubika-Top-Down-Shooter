@@ -15,6 +15,7 @@ public class NannyIdleState : BaseState
     }
     public override void EnterState()
     {
+        Debug.Log("Idle");
         _enemy.agent.isStopped = true;
         _enemy.agent.updateRotation = false;
     }
@@ -23,14 +24,23 @@ public class NannyIdleState : BaseState
     {
 
         float distanceFromPC = CalculateDistance(_enemy.pc.transform);
-        _enemy.LookAtPlayer();
-        if(_enemy.lowHpEnemy.Count == 0) 
-        {
-            if (distanceFromPC <= _enemy.enemyData.attackRange)
-            {
-                return typeof(RunAwayState);
-            }
 
+        if (_enemy.hpPercent <= 20 || distanceFromPC <= _enemy.enemyData.attackRange / 2.5f)
+        {
+            return typeof(RunAwayState);
+        }
+        _enemy.LookAtPlayer();
+        if (!_enemy.canShield || _enemy.lowHpEnemy.Count == 0) 
+        {
+            if (distanceFromPC > _enemy.enemyData.attackRange)
+            {
+                return typeof(RunToPCState);
+            }
+            else if (distanceFromPC <= _enemy.enemyData.attackRange && distanceFromPC > _enemy.enemyData.attackRange/3)
+            {
+                return typeof(NannyAttackState);
+            }
+            
         }
         else if(_enemy.lowHpEnemy.Count > 0 && _enemy.canShield)
         {

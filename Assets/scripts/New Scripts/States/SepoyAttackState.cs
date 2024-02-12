@@ -25,7 +25,11 @@ public class SepoyAttackState : BaseState
 
     public override Type ExecuteState()
     {
-        if(Vector3.Distance(transform.position, _enemy.pc.transform.position) > _enemy.enemyData.attackRange)
+        if (_enemy.hpPercent <= 20)
+        {
+            return typeof(RunAwayState);
+        }
+        if (Vector3.Distance(transform.position, _enemy.pc.transform.position) > _enemy.enemyData.attackRange)
         {
             return typeof(RunToPCState);
         }

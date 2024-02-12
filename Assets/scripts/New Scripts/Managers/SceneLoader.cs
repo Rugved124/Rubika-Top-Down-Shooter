@@ -8,17 +8,19 @@ public class SceneLoader : MonoBehaviour
     {
         if(other != null)
         {
-            if(other.tag == "Player")
+            if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCount)
             {
-                if (SceneManager.GetSceneAt(SceneManager.GetActiveScene().buildIndex + 1) == null)
-                {
-                    Application.Quit();
-                }
-                    if (SceneManager.GetSceneAt(SceneManager.GetActiveScene().buildIndex + 1) != null)
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                }
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                Debug.Log("Game End");
+                Application.Quit();
             }
         }
+    }
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

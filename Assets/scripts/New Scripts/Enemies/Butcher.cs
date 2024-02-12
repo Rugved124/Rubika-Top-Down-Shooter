@@ -31,7 +31,8 @@ public class Butcher : Enemy
             { typeof(IdleState), new IdleState(this)},
             { typeof(RunToPCState), new RunToPCState(this)},
             { typeof(ButcherAttackState), new ButcherAttackState(this)},
-            { typeof(DeadState), new DeadState(this)}
+            { typeof(DeadState), new DeadState(this)},
+            { typeof(RunAwayState), new RunAwayState(this)}
         };
 
         GetComponent<FiniteStateMachine>().SetStates(states);
