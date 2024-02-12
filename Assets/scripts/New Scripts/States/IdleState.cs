@@ -20,6 +20,10 @@ public class IdleState : BaseState
 
     public override Type ExecuteState()
     {
+        if (_enemy.hpPercent <= 20)
+        {
+            return typeof(RunAwayState);
+        }
 
         float distanceFromPC = CalculateDistance(_enemy.pc.transform);
 

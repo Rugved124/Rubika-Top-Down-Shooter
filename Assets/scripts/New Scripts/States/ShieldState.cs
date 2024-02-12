@@ -15,7 +15,8 @@ public class ShieldState : BaseState
 	}
 	public override void EnterState()
 	{
-		waitbeforeShield = 2.5f;
+        Debug.Log("Shielding");
+        waitbeforeShield = 2.5f;
 		_enemy.agent.isStopped = true;
 		_enemy.agent.updateRotation = false;
 	}
@@ -23,7 +24,7 @@ public class ShieldState : BaseState
 	public override Type ExecuteState()
 	{
         
-        if (_enemy.lowHpEnemy.Count > 0)
+        if (_enemy.lowHpEnemy.Count > 0 && _enemy.canShield)
         {
 			if (_enemy.lowHpEnemy[0] == null)
 			{
@@ -37,13 +38,10 @@ public class ShieldState : BaseState
 			{
                 
                 if (waitbeforeShield <= 0f)
-				{
-                    if (_enemy.canShield)
-					{
-                        _enemy.lowHpEnemy[0].AddShield();
-                        _enemy.canShield = false;
-						_enemy.ResetShield();
-					}
+				{ 
+                    _enemy.lowHpEnemy[0].AddShield();
+                    _enemy.canShield = false;
+					_enemy.ResetShield();
                 }
 				return null;
 				

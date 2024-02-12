@@ -5,20 +5,27 @@ using UnityEngine;
 
 public class Nanny : Enemy
 {
-
     public float runawayRadius = 5f;
     [SerializeField]
     List<Collider> enemiesTemp;
     [SerializeField]
     private LayerMask enemies;
     bool canInvoke;
-    
+    [SerializeField]
+    GameObject bullet;
+    [SerializeField]
+    float bulletSpeed;
+    [SerializeField]
+    Transform shootPoint;
+
+    bool canInvokeBullet;
     public override void Start()
     {
         base.Start();
         enemyType = EnemyType.NANNY;
         Debug.Log(enemyType.ToString());
         canInvoke = true;
+        canInvokeBullet = true;
         canShield = true;
     }
 
@@ -31,6 +38,8 @@ public class Nanny : Enemy
             { typeof(DeadState), new DeadState(this)},
             { typeof(RunAwayState), new RunAwayState(this)},
             { typeof(NannyRunToAllyState), new NannyRunToAllyState(this)},
+            { typeof(RunToPCState), new RunToPCState(this)},
+            { typeof(NannyAttackState), new NannyAttackState(this)},
         };
 
         GetComponent<FiniteStateMachine>().SetStates(states);
@@ -41,26 +50,15 @@ public class Nanny : Enemy
     {
         base.Update();
         lowHpEnemy.RemoveAll(s => s == null);
+        lowHpEnemy.RemoveAll(s => s.isShielded == true);
         LookForAllies();
     }
-
-    public void ShieldEnemies()
-    {
-
-    }
-
     public override void LookAtPlayer()
     {
         base.LookAtPlayer();
         Quaternion lookOnLook = Quaternion.LookRotation(pc.transform.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookOnLook, Time.deltaTime * angularSpeedMulitplier);
     }
-
-    private void RunAwayFromPC()
-    {
-
-    }
-
     public override void LookForAllies()
     {
         enemiesTemp = Physics.OverlapSphere(transform.position, enemyData.allyDetectionRange, enemies).ToList();
@@ -72,14 +70,14 @@ public class Nanny : Enemy
 
                 if (enemy.currentHP / enemy.maxHP * 100f <= 50)
                 {
-                    if (enemy != this && !lowHpEnemy.Exists(r => r.gameObject == enemy.gameObject))
+                    if (enemy != this && !lowHpEnemy.Exists(r => r.gameObject == enemy.gameObject) && !enemy.isShielded)
                     {
                             lowHpEnemy.Add(enemy);
                     }
                 }               
             }
         }
-        lowHpEnemy = lowHpEnemy.OrderBy(enemy => enemy.currentHP).ToList();
+        lowHpEnemy = lowHpEnemy.OrderBy(enemy => enemy.currentHP / enemy.maxHP * 100f).ToList();
 
 
     }
@@ -88,7 +86,27 @@ public class Nanny : Enemy
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, enemyData.allyDetectionRange);
     }
-
+  
+    public override void FireWeapon()
+    {
+        base.FireWeapon();
+        LookAtPlayer();
+        if (!isWeaponFiringDone)
+        {
+            Debug.Log("FIRED");
+            isWeaponFiringDone = true;
+            Rigidbody rb = Instantiate(bullet, shootPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.transform.forward = transform.forward;
+        }
+        if (isWeaponFiringDone)
+        {
+            if (canInvokeBullet)
+            {
+                canInvokeBullet = false;
+                Invoke("ResetAttack",enemyData.timeBetweenBullets);
+            }
+        }
+    }
     public override void ResetShield()
     {
         base.ResetShield();
@@ -105,5 +123,10 @@ public class Nanny : Enemy
         canShield = true;
         canInvoke = true;
     }
+    public override void ResetAttack()
+    {
+        base.ResetAttack();
+        isWeaponFiringDone = false;
+        canInvokeBullet = true;
+    }
 }
-

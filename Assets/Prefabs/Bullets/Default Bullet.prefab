@@ -149,7 +149,7 @@ MonoBehaviour:
   status: 0
   bulletSpeed: 50
   bulletRate: 5
-  bulletDamage: 20
+  bulletDamage: 10
   bulletLifeTime: 0.4
   bulletType: 0
   pc: {fileID: 0}

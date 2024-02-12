@@ -20,6 +20,10 @@ public class ShadowAttackState : BaseState
 
     public override Type ExecuteState()
     {
+        if (_enemy.hpPercent <= 20)
+        {
+            return typeof(RunAwayState);
+        }
         float distanceFromPC = CalculateDistance(_enemy.pc.transform);
         _enemy.LookAtPlayer();
         if (distanceFromPC >= _enemy.enemyData.attackRange / 2 && distanceFromPC <= _enemy.enemyData.attackRange)

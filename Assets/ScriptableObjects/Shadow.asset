@@ -22,3 +22,4 @@ MonoBehaviour:
   timeBetweenBullets: 6
   bullet: 3
   allyDetectionRange: 0
+  runAwayDistance: 8

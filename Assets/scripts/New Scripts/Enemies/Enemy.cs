@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
-using Unity.UI;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 public class Enemy : MonoBehaviour
 {
@@ -46,6 +46,11 @@ public class Enemy : MonoBehaviour
     private int curShieldPoints;
     public bool isShielded;
     public bool canShield;
+
+    public float hpPercent;
+    public bool canRunAway;
+    float timer = 4f;
+    float randomAngle = 0f;
     private void Awake()
     {
         firedTime = enemyData.timeBetweenBullets;
@@ -62,7 +67,8 @@ public class Enemy : MonoBehaviour
         hpSlider.maxValue = maxHP;
         isWeaponFiringDone = true;
 
-        InitializeStateMachine();
+        canRunAway = true;
+    InitializeStateMachine();
     }
 
     public virtual void Start()
@@ -82,7 +88,13 @@ public class Enemy : MonoBehaviour
 
     public virtual void Update() 
     {
-        if(curShieldPoints <= 0)isShielded = false;
+        hpPercent = (currentHP / maxHP) * 100f;
+        if (curShieldPoints <= 0)
+        {
+            isShielded = false;
+        }
+           
+
         hpSlider.value = currentHP;
         if(currentHP <= 0)
         {
@@ -158,6 +170,20 @@ public class Enemy : MonoBehaviour
     public virtual void ResetShield()
     {
 
+    }
+
+    public virtual void RunAwayWhenLow()
+    {
+        Vector3 runDir = (transform.position - pc.transform.position).normalized * enemyData.runAwayDistance;
+       
+        timer -= Time.deltaTime;
+        if(timer <= 0f)
+        {
+            randomAngle = Random.Range(-45f, 45f);
+            timer = 4f; 
+        }
+        runDir = Quaternion.AngleAxis(randomAngle,Vector3.up) * (runDir + transform.position);
+        agent.SetDestination(runDir);
     }
 }
 
