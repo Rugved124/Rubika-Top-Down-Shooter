@@ -1,15 +1,17 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/EnemyData")]
 public class EnemyData : ScriptableObject
 {
-    public  float visionConeAngle = 180;
+    public float visionConeAngle = 180;
     public float aggroRadius = 5f;
 
     public float attackRange = 10f;
 
     public int HitPoints = 100;
 
+    public float teleportCoolDown = 0f;
     public readonly Quaternion startingAngle = Quaternion.AngleAxis(0, Vector3.up);
     public readonly Quaternion stepAngle = Quaternion.AngleAxis(5, Vector3.up);
 
@@ -24,4 +26,6 @@ public class EnemyData : ScriptableObject
     public float allyDetectionRange;
 
     public float runAwayDistance;
+
+    public bool canTeleport = true;
 }

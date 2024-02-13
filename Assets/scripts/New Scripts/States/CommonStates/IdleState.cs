@@ -7,6 +7,8 @@ public class IdleState : BaseState
 
     Quaternion startAngle = Quaternion.AngleAxis(0, Vector3.up);
 
+    bool rollDiceShadow;
+    float chance = 0;
     public IdleState(Enemy enemy):base(enemy.gameObject)
     {
         _enemy = enemy;
@@ -15,7 +17,7 @@ public class IdleState : BaseState
     }
     public override void EnterState()
     {
-        
+        rollDiceShadow = true;
     }
 
     public override Type ExecuteState()
@@ -27,11 +29,11 @@ public class IdleState : BaseState
 
         float distanceFromPC = CalculateDistance(_enemy.pc.transform);
 
-        if (distanceFromPC >= _enemy.enemyData.attackRange)
+        if (distanceFromPC > _enemy.enemyData.attackRange)
         {
             return typeof(RunToPCState);
         }
-        else if (distanceFromPC < _enemy.enemyData.attackRange)
+        else if (distanceFromPC <= _enemy.enemyData.attackRange)
         {
             switch (_enemy.enemyType)
             {
@@ -40,9 +42,10 @@ public class IdleState : BaseState
 
                 case Enemy.EnemyType.BUTCHER:
                     return typeof(ButcherAttackState);
-
-                case Enemy.EnemyType.SHADOW:
-                    return typeof(ShadowAttackState);
+            }
+            if(_enemy.enemyType == Enemy.EnemyType.SHADOW && distanceFromPC <= _enemy.enemyData.attackRange / 2)
+            {
+                return typeof(ShadowAttackState);
             }
         }
 

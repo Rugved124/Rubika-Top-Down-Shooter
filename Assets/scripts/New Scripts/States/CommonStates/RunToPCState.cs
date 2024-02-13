@@ -27,9 +27,9 @@ public class RunToPCState : BaseState
         _enemy.agent.isStopped = false;
         _enemy.agent.updateRotation = true;
         _enemy.isWeaponFiringDone = true;
-        //angle = UnityEngine.Random.Range(-120f, 120f);
-        //stopPoint = (pc.position - transform.position).normalized * (_enemy.enemyData.attackRange - 2f);
-        //stopPoint = Quaternion.AngleAxis(angle, Vector3.up) * stopPoint;
+        angle = UnityEngine.Random.Range(-120f, 120f);
+        stopPoint = (pc.position - transform.position).normalized * (_enemy.enemyData.attackRange - 2f);
+        stopPoint = Quaternion.AngleAxis(angle, Vector3.up) * stopPoint;
     }
 
 
@@ -47,7 +47,7 @@ public class RunToPCState : BaseState
             if (_enemy.enemyType == Enemy.EnemyType.NANNY)
             {
 
-                if (distanceFromPC <= _enemy.enemyData.attackRange / 3 || _enemy.lowHpEnemy.Count > 0)
+                if (_enemy.agent.remainingDistance <= 1f || _enemy.lowHpEnemy.Count > 0)
                 {
                     return typeof(NannyIdleState);
                 }
@@ -64,7 +64,15 @@ public class RunToPCState : BaseState
     }
     private void MoveTowardsPlayer()
     {
-        _enemy.agent.SetDestination(_enemy.surroundPos);
+        if(_enemy.enemyType == Enemy.EnemyType.DRUNKENSEPOY)
+        {
+            _enemy.agent.SetDestination(_enemy.surroundPos);
+        }
+        else
+        {
+            _enemy.agent.SetDestination(stopPoint + pc.position);
+        }
+       
     }
     float CalculateDistance(Transform objTransform)
     {

@@ -18,6 +18,7 @@ TagManager:
   - SilenceAbility
   - Consumables
   - Spawner
+  - PlayerBullets
   layers:
   - Default
   - TransparentFX

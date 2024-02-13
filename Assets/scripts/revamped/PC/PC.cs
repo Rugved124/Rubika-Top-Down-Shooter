@@ -229,7 +229,7 @@ public class PC : MonoBehaviour
             {
                 statusEffects.isSlowedCounting = false;
                 statusEffects.hasLostAbility = false;
-
+                slowMultiplier = 1;
             }
             if (other.tag == "Poison")
             {

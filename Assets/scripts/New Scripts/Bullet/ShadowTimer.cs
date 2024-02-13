@@ -15,6 +15,12 @@ public class ShadowTimer : MonoBehaviour
         timer -= Time.deltaTime;
         if(timer <= 0f)
         {
+            if (FindObjectOfType<PC>())
+            {
+                FindObjectOfType<PC>().statusEffects.isSlowed = false;
+                FindObjectOfType<PC>().statusEffects.hasLostAbility = false;
+                FindObjectOfType<PC>().slowMultiplier = 1;
+            }
             Destroy(this.gameObject);
         }
     }

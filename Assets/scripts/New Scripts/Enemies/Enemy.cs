@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     public EnemyData enemyData;
     public PC pc { get; private set; }
 
-    protected float firedTime;
+    public float firedTime;
 
     [SerializeField]
     private GameObject enemySoul;
@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
     public bool canRunAway;
     float timer = 4f;
     float randomAngle = 0f;
+    public bool tpDone;
 
     [SerializeField]
     public Vector3 surroundPos;
@@ -72,7 +73,6 @@ public class Enemy : MonoBehaviour
         currentHP = maxHP;
         hpSlider.maxValue = maxHP;
         isWeaponFiringDone = true;
-        AIManager.instance.AddToList(this);
         canRunAway = true;
         InitializeStateMachine();
     }
@@ -201,6 +201,10 @@ public class Enemy : MonoBehaviour
     void InvokeRunAway()
     {
         canRunAway = false;
+    }
+    public virtual void Teleport()
+    {
+
     }
 }
 

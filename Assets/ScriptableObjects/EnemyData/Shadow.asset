@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b49413cba2de6844ab2be9a319324522, type: 3}
-  m_Name: DrunkenSepoy
+  m_Name: Shadow
   m_EditorClassIdentifier: 
   visionConeAngle: 180
   aggroRadius: 5
-  attackRange: 6
+  attackRange: 15
   HitPoints: 100
-  enemyMoveSpeed: 5
+  teleportCoolDown: 6
+  enemyMoveSpeed: 6
   enemyRotationSpeed: 200
-  enemyAttackingAngularSpeed: 5
-  timeBetweenBullets: 2
-  bullet: 1
+  enemyAttackingAngularSpeed: 6
+  timeBetweenBullets: 6
+  bullet: 3
   allyDetectionRange: 0
   runAwayDistance: 8
+  canTeleport: 0

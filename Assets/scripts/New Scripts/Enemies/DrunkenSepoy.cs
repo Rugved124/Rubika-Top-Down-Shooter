@@ -27,6 +27,7 @@ public class DrunkenSepoy : Enemy
         isWeaponFiringDone = false;
         startingAngle = Quaternion.AngleAxis(-visionConeAngle / 2, Vector3.up);
         firedTime = fireTime;
+        AIManager.instance.AddToList(this);
     }
 
     public override void InitializeStateMachine()
