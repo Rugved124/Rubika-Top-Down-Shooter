@@ -59,6 +59,9 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public bool canDashAgain;
 
+    [HideInInspector]
+    public Vector3 dashPos;
+
     float timer = 4f;
     float randomAngle = 0f;
     public bool tpDone;

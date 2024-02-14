@@ -5,6 +5,7 @@ using UnityEngine;
 public class NannyDashState : BaseState
 {
     private Enemy _enemy;
+    [SerializeField]
     int dashCount;
     public NannyDashState(Enemy enemy): base(enemy.gameObject)
     {
@@ -14,6 +15,8 @@ public class NannyDashState : BaseState
     public override void EnterState()
     {
         dashCount = 3;
+        _enemy.agent.isStopped = false;
+        _enemy.agent.updateRotation = false;
     }
 
     public override Type ExecuteState()
@@ -27,12 +30,16 @@ public class NannyDashState : BaseState
                 _enemy.ResetDash();
                 dashCount--;
             }
-            
+            _enemy.agent.SetDestination(_enemy.dashPos);
         }
         else
         {
-            _enemy.canDash = false;
-            return typeof(NannyIdleState);
+            if(_enemy.canDashAgain == true)
+            {
+                _enemy.canDash = false;
+                return typeof(NannyTiredState);
+            }
+            
         }
         return null;
     }

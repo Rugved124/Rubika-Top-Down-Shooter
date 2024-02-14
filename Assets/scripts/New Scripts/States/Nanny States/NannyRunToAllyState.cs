@@ -21,7 +21,10 @@ public class NannyRunToAllyState : BaseState
 
     public override Type ExecuteState()
     {
-
+        if(_enemy.lowHpEnemy.Count == 0)
+        {
+            return typeof(NannyIdleState);
+        }
         if (_enemy.lowHpEnemy.Count > 0 && _enemy.canShield)
         {
             if (_enemy.lowHpEnemy[0] != null)
@@ -37,10 +40,8 @@ public class NannyRunToAllyState : BaseState
             {
                 Debug.Log("Go Back");
                 return typeof(NannyIdleState);
-            }
-            
+            }   
         }
-        
         return null;
     }
 }

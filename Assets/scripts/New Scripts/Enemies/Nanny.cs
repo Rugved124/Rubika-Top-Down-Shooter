@@ -35,6 +35,8 @@ public class Nanny : Enemy
         canInvokeBullet = true;
         invokeDash = true;
         canShield = true;
+        canDash = true;
+        canDashAgain = true;
     }
 
     public override void InitializeStateMachine()
@@ -49,6 +51,7 @@ public class Nanny : Enemy
             { typeof(RunToPCState), new RunToPCState(this)},
             { typeof(NannyAttackState), new NannyAttackState(this)},
             { typeof(NannyDashState), new NannyDashState(this)},
+            { typeof(NannyTiredState), new NannyTiredState(this)}
         };
 
         GetComponent<FiniteStateMachine>().SetStates(states);
@@ -150,17 +153,25 @@ public class Nanny : Enemy
 
     public override void Dash()
     {
-        transform.forward = Quaternion.AngleAxis(UnityEngine.Random.Range(-45f, 45f), Vector3.up) * transform.forward;
-        rb.AddForce(transform.forward * dashSpeed, ForceMode.Impulse);
+        agent.speed = agent.speed * 5;
+        agent.acceleration = agent.acceleration * 5;
+        transform.forward = Quaternion.AngleAxis(UnityEngine.Random.Range(-70f, 70f), Vector3.up) * transform.forward;
+        dashPos = transform.position + transform.forward * 10;
+        //rb.AddForce(transform.forward * dashSpeed, ForceMode.Impulse);
     }
 
     public override void ResetDash()
     {
-        Invoke("DashInvoke", 2f);
+        
+        Invoke("DashInvoke", 1f);
     }
     private void DashInvoke()
     {
         canDashAgain = true;
+        rb.isKinematic = true;
+        agent.speed = agent.speed / 5;
+        agent.acceleration = agent.acceleration / 5;
+        transform.forward = pc.transform.position - transform.position;
     }
 
     private void ResetCompleteDash()

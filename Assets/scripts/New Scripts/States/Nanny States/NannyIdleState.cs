@@ -34,7 +34,7 @@ public class NannyIdleState : BaseState
                     roleDice = false;
                     chance = UnityEngine.Random.Range(0f, 1f);
                 }
-                if(chance <= 0.5)
+                if(chance <= 0.3)
                 {
                     return typeof(RunAwayState);
                 }
