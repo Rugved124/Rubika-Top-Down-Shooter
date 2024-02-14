@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     public EnemyData enemyData;
     public PC pc { get; private set; }
 
+    public Rigidbody rb { get; private set; }
     public float firedTime;
 
     [SerializeField]
@@ -51,6 +52,13 @@ public class Enemy : MonoBehaviour
 
     [HideInInspector]
     public bool canRunAway;
+
+    [HideInInspector]
+    public bool canDash;
+    
+    [HideInInspector]
+    public bool canDashAgain;
+
     float timer = 4f;
     float randomAngle = 0f;
     public bool tpDone;
@@ -63,6 +71,7 @@ public class Enemy : MonoBehaviour
         firedTime = enemyData.timeBetweenBullets;
         fsm = GetComponent<FiniteStateMachine>();
         pc = FindObjectOfType<PC>();
+        rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         //NavMesh Stuff
         agent.speed = enemyData.enemyMoveSpeed;
@@ -203,6 +212,15 @@ public class Enemy : MonoBehaviour
         canRunAway = false;
     }
     public virtual void Teleport()
+    {
+
+    }
+    public virtual void Dash()
+    {
+
+    }
+
+    public virtual void ResetDash()
     {
 
     }
