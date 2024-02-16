@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Properties;
 using UnityEngine;
 
 public class NannyDashState : BaseState
@@ -7,9 +8,11 @@ public class NannyDashState : BaseState
     private Enemy _enemy;
     [SerializeField]
     int dashCount;
+    float timeBetweenFire;
     public NannyDashState(Enemy enemy): base(enemy.gameObject)
     {
         _enemy = enemy;
+
     }
 
     public override void EnterState()
@@ -17,6 +20,7 @@ public class NannyDashState : BaseState
         dashCount = 3;
         _enemy.agent.isStopped = false;
         _enemy.agent.updateRotation = false;
+        timeBetweenFire = 0.1f;
     }
 
     public override Type ExecuteState()
@@ -31,6 +35,15 @@ public class NannyDashState : BaseState
                 dashCount--;
             }
             _enemy.agent.SetDestination(_enemy.dashPos);
+            if(_enemy.rb.velocity.magnitude > 0)
+            {
+                timeBetweenFire -= Time.deltaTime;
+                if(timeBetweenFire <= 0f)
+                {
+                    timeBetweenFire = 0.1f;
+                    _enemy.ReleaseNannyFire();
+                }
+            }
         }
         else
         {

@@ -26,6 +26,8 @@ public class Nanny : Enemy
     float dashSpeed;
     bool invokeDash;
     bool canInvokeBullet;
+
+    public GameObject nannyTrail;
     public override void Start()
     {
         base.Start();
@@ -178,5 +180,10 @@ public class Nanny : Enemy
     {
         canDash = true;
         invokeDash = true;
+    }
+
+    public override void ReleaseNannyFire()
+    {
+        Instantiate(nannyTrail, transform.position, Quaternion.identity);
     }
 }

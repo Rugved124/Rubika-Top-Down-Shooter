@@ -69,6 +69,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     public Vector3 surroundPos;
 
+    
     private void Awake()
     {
         firedTime = enemyData.timeBetweenBullets;
@@ -224,6 +225,11 @@ public class Enemy : MonoBehaviour
     }
 
     public virtual void ResetDash()
+    {
+
+    }
+
+    public virtual void ReleaseNannyFire()
     {
 
     }

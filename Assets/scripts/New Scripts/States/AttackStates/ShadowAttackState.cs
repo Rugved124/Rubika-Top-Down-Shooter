@@ -24,7 +24,7 @@ public class ShadowAttackState : BaseState
     {
         waitBeforeTime -= Time.deltaTime;
         float distanceFromPC = CalculateDistance(_enemy.pc.transform);
-        if (_enemy.hpPercent > 20 && distanceFromPC <= _enemy.enemyData.attackRange/2)
+        if (_enemy.hpPercent > 20 && distanceFromPC <= _enemy.enemyData.attackRange)
         {
 
             _enemy.LookAtPlayer();
