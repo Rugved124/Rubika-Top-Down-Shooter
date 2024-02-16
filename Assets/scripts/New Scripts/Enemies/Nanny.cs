@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,19 @@ public class Nanny : Enemy
     [SerializeField]
     private LayerMask enemies;
     bool canInvoke;
+
     [SerializeField]
     GameObject bullet;
+
     [SerializeField]
     float bulletSpeed;
+
     [SerializeField]
     Transform shootPoint;
 
+    [SerializeField]
+    float dashSpeed;
+    bool invokeDash;
     bool canInvokeBullet;
     public override void Start()
     {
@@ -26,7 +33,10 @@ public class Nanny : Enemy
         Debug.Log(enemyType.ToString());
         canInvoke = true;
         canInvokeBullet = true;
+        invokeDash = true;
         canShield = true;
+        canDash = true;
+        canDashAgain = true;
     }
 
     public override void InitializeStateMachine()
@@ -40,6 +50,8 @@ public class Nanny : Enemy
             { typeof(NannyRunToAllyState), new NannyRunToAllyState(this)},
             { typeof(RunToPCState), new RunToPCState(this)},
             { typeof(NannyAttackState), new NannyAttackState(this)},
+            { typeof(NannyDashState), new NannyDashState(this)},
+            { typeof(NannyTiredState), new NannyTiredState(this)}
         };
 
         GetComponent<FiniteStateMachine>().SetStates(states);
@@ -52,6 +64,15 @@ public class Nanny : Enemy
         lowHpEnemy.RemoveAll(s => s == null);
         lowHpEnemy.RemoveAll(s => s.isShielded == true);
         LookForAllies();
+        if(!canDash)
+        {
+            if (invokeDash)
+            {
+                invokeDash = false;
+                Invoke("ResetCompleteDash", 10f);
+            }
+            
+        }
     }
     public override void LookAtPlayer()
     {
@@ -128,5 +149,34 @@ public class Nanny : Enemy
         base.ResetAttack();
         isWeaponFiringDone = false;
         canInvokeBullet = true;
+    }
+
+    public override void Dash()
+    {
+        agent.speed = agent.speed * 5;
+        agent.acceleration = agent.acceleration * 5;
+        transform.forward = Quaternion.AngleAxis(UnityEngine.Random.Range(-70f, 70f), Vector3.up) * transform.forward;
+        dashPos = transform.position + transform.forward * 10;
+        //rb.AddForce(transform.forward * dashSpeed, ForceMode.Impulse);
+    }
+
+    public override void ResetDash()
+    {
+        
+        Invoke("DashInvoke", 1f);
+    }
+    private void DashInvoke()
+    {
+        canDashAgain = true;
+        rb.isKinematic = true;
+        agent.speed = agent.speed / 5;
+        agent.acceleration = agent.acceleration / 5;
+        transform.forward = pc.transform.position - transform.position;
+    }
+
+    private void ResetCompleteDash()
+    {
+        canDash = true;
+        invokeDash = true;
     }
 }

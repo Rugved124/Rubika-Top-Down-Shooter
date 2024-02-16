@@ -528,6 +528,8 @@ GameObject:
   - component: {fileID: 918344242897421585}
   - component: {fileID: 3956735895962568045}
   - component: {fileID: 4210408251616444179}
+  - component: {fileID: 1865751556441722457}
+  - component: {fileID: 3174900430790910953}
   m_Layer: 8
   m_Name: Shadow
   m_TagString: Enemies
@@ -662,6 +664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   enemyData: {fileID: 11400000, guid: 766c7d59e137ea149bd83fb3b402394e, type: 2}
+  firedTime: 0
   enemySoul: {fileID: 8498124923016124782, guid: 77848483f2786ac4b8a19e04029de6bc,
     type: 3}
   isWeaponFiringDone: 0
@@ -673,6 +676,12 @@ MonoBehaviour:
   shieldDistance: 0
   isShielded: 0
   canShield: 0
+  hpPercent: 0
+  canRunAway: 0
+  canDash: 0
+  canDashAgain: 0
+  tpDone: 0
+  surroundPos: {x: 0, y: 0, z: 0}
   bulletSpeed: 10
   shootPoint: {fileID: 7406950846534626964}
   bullet: {fileID: 3411248443990829376, guid: a4ce36a938cad024d8467898cc232581, type: 3}
@@ -685,6 +694,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 767
   secondaryFireSpeed: 0.5
+  teleportRange: 4
 --- !u!114 &4210408251616444179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,3 +707,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd94104f31191fa4e91b60a2d6e9c21b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1865751556441722457
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6180407339577389415}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3174900430790910953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6180407339577389415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548a1437b36654d4381017cc21071da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: Not Playing

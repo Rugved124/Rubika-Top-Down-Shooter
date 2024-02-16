@@ -6,8 +6,8 @@ using UnityEngine;
 public class NannyIdleState : BaseState
 {
     Enemy _enemy;
-
-
+    bool roleDice;
+    float chance;
     public NannyIdleState(Enemy enemy) : base(enemy.gameObject)
     {
         _enemy = enemy;
@@ -17,28 +17,40 @@ public class NannyIdleState : BaseState
     {
         _enemy.agent.isStopped = true;
         _enemy.agent.updateRotation = false;
+        roleDice = true;
     }
 
     public override Type ExecuteState()
     {
 
         float distanceFromPC = CalculateDistance(_enemy.pc.transform);
-
-        if (_enemy.hpPercent <= 20 || distanceFromPC <= _enemy.enemyData.attackRange / 2.5f && _enemy.canRunAway)
-        {
-            return typeof(RunAwayState);
-        }
         _enemy.LookAtPlayer();
-        if (!_enemy.canShield || _enemy.lowHpEnemy.Count == 0) 
+        if (_enemy.hpPercent <= 20 || distanceFromPC <= _enemy.enemyData.attackRange / 2f)
         {
-            if (distanceFromPC > _enemy.enemyData.attackRange)
+            if(_enemy.canDash && _enemy.canRunAway)
             {
-                return typeof(RunToPCState);
+                if (roleDice)
+                {
+                    roleDice = false;
+                    chance = UnityEngine.Random.Range(0f, 1f);
+                }
+                if(chance <= 0.3)
+                {
+                    return typeof(RunAwayState);
+                }
+                else
+                {
+                    return typeof(NannyDashState);
+                }
             }
-            else if (distanceFromPC <= _enemy.enemyData.attackRange && distanceFromPC > _enemy.enemyData.attackRange/3)
+            if (_enemy.canRunAway)
             {
-                return typeof(NannyAttackState);
-            }  
+                return typeof(RunAwayState);
+            }
+            if (_enemy.canDash)
+            {
+                return typeof(NannyDashState);
+            }
         }
         else if(_enemy.lowHpEnemy.Count > 0 && _enemy.canShield)
         {

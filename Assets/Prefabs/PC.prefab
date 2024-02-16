@@ -457,7 +457,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -405, y: 254}
+  m_AnchoredPosition: {x: -382, y: 260}
   m_SizeDelta: {x: 148.8017, y: 24.2552}
   m_Pivot: {x: 0.49999994, y: 0.49999997}
 --- !u!222 &6758286380390423513
@@ -781,28 +781,12 @@ MonoBehaviour:
   consumeRange: 6
   slowMultiplier: 1
   bulletSpawn: {fileID: 255074778981524322}
+  isConsuming: 0
+  beingConsumed: {fileID: 0}
   maxHP: 100
   currentHP: 0
   slider: {fileID: 8834468885634656430}
-  isSlowed: 0
-  isPoisoned: 0
-  hasLostAbility: 0
-  isBurning: 0
-  normalSpeed: 0
-  maxSlowedForTime: 1
-  maxPoisonedForTime: 2
-  slowedSpeed: 0.5
-  poisonedForTime: 0
-  slowedForTime: 0
-  poisonDamagePerTick: 2
-  burningPerTick: 2
-  burnNumber: 0
-  tickSpeed: 0.5
-  lastTick: 0
-  burnTickSpeed: 0.2
-  burnLastTick: 0
-  isSlowedCounting: 0
-  isPoisonCounting: 0
+  statusEffects: {fileID: 11400000, guid: 1a18351127999a34f97468b288f5f83b, type: 2}
 --- !u!1 &7776335315992055090
 GameObject:
   m_ObjectHideFlags: 0
