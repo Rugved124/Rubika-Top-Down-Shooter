@@ -50,6 +50,11 @@ public class PC : MonoBehaviour
 
     GameObject bullet;
 
+    public float isBurningFor;
+    [SerializeField]
+    private float maxBurnTime;
+    public int nannyFire;
+    public float timeBetweenFire;
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
@@ -80,6 +85,8 @@ public class PC : MonoBehaviour
         statusEffects.isSlowed = false;
         statusEffects.isSlowedCounting = false;
         statusEffects.hasLostAbility = false;
+        timeBetweenFire = statusEffects.burnTickSpeed;
+        isBurningFor = -maxBurnTime;
     }
 
     private void Update()
@@ -111,9 +118,17 @@ public class PC : MonoBehaviour
             }
             Slowed();
         }
+        if (Time.time - isBurningFor <= maxBurnTime)
+        {
+            nannyFire = 1;
+        }
+        else
+        {
+            nannyFire = 0;
+        }
 
         Burning();
-       
+        NannyBurning();
     }
     public void PlayerMove(Vector3 movement, float slowMultiplier)
     {
@@ -187,6 +202,17 @@ public class PC : MonoBehaviour
             statusEffects.burnLastTick = Time.time;
         }
     }
+    void NannyBurning()
+    {
+        Debug.Log(nannyFire);
+        timeBetweenFire -= Time.deltaTime;
+        if (timeBetweenFire <= 0f)
+        {
+            timeBetweenFire = statusEffects.burnTickSpeed;
+            TakeDamage(statusEffects.burningPerTick * nannyFire);
+
+        }
+    }
     void Slowed()
     {
         if (Time.time - statusEffects.slowedForTime <= statusEffects.maxSlowedForTime)
@@ -216,7 +242,10 @@ public class PC : MonoBehaviour
             {
                 statusEffects.isPoisonCounting = true;
                 statusEffects.isPoisoned = true;
-
+            }
+            if(other.tag == "NannyFire")
+            {
+                isBurningFor = Time.time;
             }
 
         }

@@ -69,7 +69,10 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     public Vector3 surroundPos;
 
-    
+    public float fireTime;
+
+    [HideInInspector]
+    public bool sepoyLookAtPlayer;
     private void Awake()
     {
         firedTime = enemyData.timeBetweenBullets;

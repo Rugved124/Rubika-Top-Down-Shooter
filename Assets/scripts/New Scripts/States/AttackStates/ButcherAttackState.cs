@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class ButcherAttackState : BaseState
@@ -31,6 +32,11 @@ public class ButcherAttackState : BaseState
             if (!_enemy.isWeaponFiringDone)
             {
                 _enemy.FireWeapon();
+                if(UnityEngine.Random.Range(0f, 100f) <= 50f && _enemy.canDash)
+                {
+                    _enemy.canDash = false;
+                    return typeof(ButcherChargeState);
+                }
             }
             if (_enemy.isWeaponFiringDone)
             {

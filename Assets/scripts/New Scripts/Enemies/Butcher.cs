@@ -22,7 +22,7 @@ public class Butcher : Enemy
         base.Start();
         enemyType = EnemyType.BUTCHER;
         Debug.Log(enemyType.ToString());
-
+        canDash = true;
     }
     public override void InitializeStateMachine()
     {
@@ -32,7 +32,8 @@ public class Butcher : Enemy
             { typeof(RunToPCState), new RunToPCState(this)},
             { typeof(ButcherAttackState), new ButcherAttackState(this)},
             { typeof(DeadState), new DeadState(this)},
-            { typeof(RunAwayState), new RunAwayState(this)}
+            { typeof(RunAwayState), new RunAwayState(this)},
+            { typeof(ButcherChargeState), new ButcherChargeState(this)}
         };
 
         GetComponent<FiniteStateMachine>().SetStates(states);
@@ -87,5 +88,14 @@ public class Butcher : Enemy
     { 
         lowHpEnemy.Remove(this.GetComponent<Enemy>());
     }
-   
+    public override void ResetDash()
+    {
+        base.ResetDash();
+        Invoke("InvokeResetDash", 10f);
+    }
+
+    private void InvokeResetDash()
+    {
+        canDash = true;
+    }
 }

@@ -155,8 +155,8 @@ public class Nanny : Enemy
 
     public override void Dash()
     {
-        agent.speed = agent.speed * 5;
-        agent.acceleration = agent.acceleration * 5;
+        agent.speed = agent.speed * 8;
+        agent.acceleration = agent.acceleration * 8;
         transform.forward = Quaternion.AngleAxis(UnityEngine.Random.Range(-70f, 70f), Vector3.up) * transform.forward;
         dashPos = transform.position + transform.forward * 10;
         //rb.AddForce(transform.forward * dashSpeed, ForceMode.Impulse);
@@ -165,14 +165,14 @@ public class Nanny : Enemy
     public override void ResetDash()
     {
         
-        Invoke("DashInvoke", 1f);
+        Invoke("DashInvoke", 0.6f);
     }
     private void DashInvoke()
     {
         canDashAgain = true;
         rb.isKinematic = true;
-        agent.speed = agent.speed / 5;
-        agent.acceleration = agent.acceleration / 5;
+        agent.speed = agent.speed / 8;
+        agent.acceleration = agent.acceleration / 8;
         transform.forward = pc.transform.position - transform.position;
     }
 
@@ -184,6 +184,6 @@ public class Nanny : Enemy
 
     public override void ReleaseNannyFire()
     {
-        Instantiate(nannyTrail, transform.position, Quaternion.identity);
+        Instantiate(nannyTrail, new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), Quaternion.identity);
     }
 }

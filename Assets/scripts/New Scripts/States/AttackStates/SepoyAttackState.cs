@@ -13,14 +13,23 @@ public class SepoyAttackState : BaseState
 
     public override void EnterState()
     {
-        startTime = 0.5f;
+        _enemy.sepoyLookAtPlayer = true;
+        startTime = 1f;
         _enemy.isWeaponFiringDone = false;
         if (!_enemy.agent.isStopped)
         {
             _enemy.agent.isStopped = true;
             _enemy.agent.updateRotation = false;
         }
-
+        if(UnityEngine.Random.Range(0f,100f) <= 50)
+        {
+            _enemy.firedTime = 0.5f;
+            _enemy.sepoyLookAtPlayer = true;
+        }
+        else
+        {
+            _enemy.firedTime = _enemy.fireTime;
+        }
     }
 
     public override Type ExecuteState()
@@ -28,11 +37,19 @@ public class SepoyAttackState : BaseState
         if (_enemy.hpPercent > 20 && Vector3.Distance(transform.position, _enemy.pc.transform.position) <= _enemy.enemyData.attackRange)
         {
             startTime -= Time.deltaTime;
-            _enemy.LookAtPlayer();
-            if (startTime <= 0f)
+            if(startTime <= 0f)
             {
-                _enemy.FireWeapon();
+                if (_enemy.firedTime > 0.5)
+                {
+                    _enemy.sepoyLookAtPlayer = false;
+                }
             }
+            
+            if (_enemy.sepoyLookAtPlayer)
+            {
+                _enemy.LookAtPlayer();
+            }
+            _enemy.FireWeapon();
         }
         else
         {

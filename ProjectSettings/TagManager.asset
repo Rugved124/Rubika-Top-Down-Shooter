@@ -19,6 +19,7 @@ TagManager:
   - Consumables
   - Spawner
   - PlayerBullets
+  - NannyFire
   layers:
   - Default
   - TransparentFX

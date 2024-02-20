@@ -6,7 +6,7 @@ using UnityEngine;
 public class DrunkenSepoy : Enemy
 {
     public GameObject fireline;
-    public float fireTime;
+    
 
     public int fireDamage;
     bool canInvoke = true;
@@ -112,6 +112,7 @@ public class DrunkenSepoy : Enemy
             {
                 canInvoke = false;
                 Invoke("ResetAttack", enemyData.timeBetweenBullets);
+                sepoyLookAtPlayer = true;
             }
         }
     }
@@ -121,7 +122,16 @@ public class DrunkenSepoy : Enemy
         base.ResetAttack();
         isWeaponFiringDone = false;
         fireline.SetActive(false);
-        firedTime = fireTime;
+        if (UnityEngine.Random.Range(0f, 100f) <= 50)
+        {
+            firedTime = 0.5f;
+            sepoyLookAtPlayer = true;
+        }
+        else
+        {
+            firedTime = fireTime;
+            Invoke("DontLookAtPlayer", 0.5f);
+        }
         if (canAdd && pc.statusEffects.burnNumber > 0)
         {
             pc.statusEffects.burnNumber--;
@@ -147,6 +157,11 @@ public class DrunkenSepoy : Enemy
             }
         }
         base.Die();
+    }
+
+    void DontLookAtPlayer()
+    {
+        sepoyLookAtPlayer = false;
     }
 }
 
