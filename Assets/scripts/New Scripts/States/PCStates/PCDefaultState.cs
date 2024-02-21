@@ -5,11 +5,20 @@ using static PC;
 
 public class PCDefaultState : BaseState
 {
+    float forwards;
+    float sideways;
     private PC _pc;
+    Transform cam;
+    Vector3 camForward;
+    Vector3 move;
+    Vector3 moveInput;
 
+    float forwardsAmount;
+    float sidewaysAmount;
     public PCDefaultState(PC pc) : base(pc.gameObject)
     {
         _pc = pc;
+        cam = Camera.main.transform;
     }
 
     public override void EnterState()
@@ -19,13 +28,30 @@ public class PCDefaultState : BaseState
 
     public override Type ExecuteState()
     {
+        forwards = InputManager.instance.GetMovementVertical();
+        sideways = InputManager.instance.GetMovementHorizontal();
         if (_pc.currentHP <= 0)
         {
             return typeof(PCDeadState);
         }
-        Vector3 moveVector = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical()).normalized;
-        _pc.anim.SetFloat("Forwards", InputManager.instance.GetMovementVertical());
-        _pc.anim.SetFloat("Sideways", InputManager.instance.GetMovementHorizontal());
+        Vector3 moveVector = new Vector3(sideways, 0, forwards).normalized;
+        if (cam != null)
+        {
+            camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
+            move = forwards * camForward + sideways * cam.right;
+        }
+        else
+        {
+            move = forwards * Vector3.forward + sideways * Vector3.right;
+        }
+
+        if(move.magnitude > 1)
+        {
+            move.Normalize();
+        }
+
+        Move(move);
+
         _pc.PlayerMove(moveVector, _pc.slowMultiplier);
         _pc.PlayerRotation();
 
@@ -48,5 +74,28 @@ public class PCDefaultState : BaseState
             }
         }
         return null;
+    }
+
+    void Move(Vector3 move)
+    {
+        if(move.magnitude > 1)
+        {
+            move.Normalize();
+        }
+        this.moveInput = move;
+        ConvertMoveInput();
+        UpdateAnimator();
+    }
+
+    void ConvertMoveInput()
+    {
+        Vector3 localMove = transform.InverseTransformDirection(moveInput);
+        sidewaysAmount = localMove.x;
+        forwardsAmount = localMove.z;
+    }
+    void UpdateAnimator()
+    {
+        _pc.anim.SetFloat("Forwards", forwardsAmount, 0.1f ,Time.deltaTime);
+        _pc.anim.SetFloat("Sideways", sidewaysAmount, 0.1f, Time.deltaTime);
     }
 }
