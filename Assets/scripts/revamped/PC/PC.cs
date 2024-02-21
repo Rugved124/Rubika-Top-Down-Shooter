@@ -26,6 +26,10 @@ public class PC : MonoBehaviour
 
     public GameObject beingConsumed;
 
+    public GameObject visuals;
+    
+    public Animator anim;
+
     [SerializeField]
     int maxHP;
     public int currentHP;
@@ -36,7 +40,7 @@ public class PC : MonoBehaviour
     public PCStatusEffectsData statusEffects;
 
     GameObject bullet;
-
+    
     public float isBurningFor;
     [SerializeField]
     private float maxBurnTime;
@@ -61,6 +65,7 @@ public class PC : MonoBehaviour
 
     private void Start()
     {
+        anim = visuals.GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
         currentHP = maxHP;
         slider.maxValue = maxHP;

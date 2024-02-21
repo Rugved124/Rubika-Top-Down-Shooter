@@ -24,7 +24,8 @@ public class PCDefaultState : BaseState
             return typeof(PCDeadState);
         }
         Vector3 moveVector = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical()).normalized;
-
+        _pc.anim.SetFloat("Forwards", InputManager.instance.GetMovementVertical());
+        _pc.anim.SetFloat("Sideways", InputManager.instance.GetMovementHorizontal());
         _pc.PlayerMove(moveVector, _pc.slowMultiplier);
         _pc.PlayerRotation();
 
