@@ -10,16 +10,23 @@ public class AmmoManager : MonoBehaviour
     [SerializeField]
     GameObject bulletToSpawn;
     PC pc;
+
     bool canShoot;
 
     public enum EquippedAmmoType
     {
         DEFAULTAMMO,
         FIRE,
+        FIREFIRE,
         POISON,
+        POISONPOSION,
         SLOW,
+        SLOWSLOW,
         FIREPOISON,
+        POISONFIRE,
+        SLOWFIRE,
         FIRESLOW,
+        SLOWPOISON,
         POISONSLOW
 
     }

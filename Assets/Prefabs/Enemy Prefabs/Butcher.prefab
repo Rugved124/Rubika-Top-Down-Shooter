@@ -161,8 +161,7 @@ GameObject:
   - component: {fileID: 220511820075012163}
   - component: {fileID: 7336835483079945795}
   - component: {fileID: 1212502780565912587}
-  - component: {fileID: 4364837108419801566}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultGun (1)
   m_TagString: Enemies
   m_Icon: {fileID: 0}
@@ -234,27 +233,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4364837108419801566
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923011099025716386}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5151453636745936133
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +404,8 @@ GameObject:
   - component: {fileID: 3798733579849678136}
   - component: {fileID: 3678558057581693568}
   - component: {fileID: 2799205842702275187}
+  - component: {fileID: 6499029726065964075}
+  - component: {fileID: 1206793713241307077}
   m_Layer: 8
   m_Name: Butcher
   m_TagString: Enemies
@@ -443,8 +423,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.18, y: 0, z: -2.1094246}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2246623131217589833}
   - {fileID: 220511820075012163}
@@ -587,16 +567,67 @@ MonoBehaviour:
   hpPercent: 0
   canRunAway: 0
   canDash: 0
+  isCharging: 0
   canDashAgain: 0
   dashPos: {x: 0, y: 0, z: 0}
   tpDone: 0
   surroundPos: {x: 0, y: 0, z: 0}
   fireTime: 0
   sepoyLookAtPlayer: 0
+  canGabbarCharge: 0
   bulletSpeed_setInInspector: 40
+  debries: {fileID: 4500201555358269410, guid: 07619ea9c57f81748804aa6a4e6f1b50, type: 3}
   shootPoint: {fileID: 2246623131217589833}
   bullet: {fileID: 3411248443990829376, guid: 00a16d290702cb94eaa186ecf41e28ba, type: 3}
+  chargeDamage: 30
   bulletDirMultiplier: 0
+  isChargeHit: 0
+  isChargeHitWall: 0
+  colliders: []
+  spawnLayerMask:
+    serializedVersion: 2
+    m_Bits: 3191
+  gap: 2
+--- !u!114 &6499029726065964075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8319296224104033158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548a1437b36654d4381017cc21071da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: Not Playing
+--- !u!54 &1206793713241307077
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8319296224104033158}
+  serializedVersion: 4
+  m_Mass: 1000
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 1
 --- !u!1 &8603813156904068880
 GameObject:
   m_ObjectHideFlags: 0

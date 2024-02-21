@@ -15,7 +15,7 @@ public class ButcherAttackState : BaseState
 
     public override void EnterState()
     {
-
+        startTime = 0.5f;
         if (!_enemy.agent.isStopped)
         {
             _enemy.agent.isStopped = true;
@@ -26,17 +26,18 @@ public class ButcherAttackState : BaseState
 
     public override Type ExecuteState()
     {
+        startTime -= Time.deltaTime;
         if (_enemy.hpPercent > 20 && Vector3.Distance(_enemy.pc.transform.position, transform.position) <= _enemy.enemyData.attackRange)
         {
             _enemy.LookAtPlayer();
-            if (!_enemy.isWeaponFiringDone)
+            if (!_enemy.isWeaponFiringDone && startTime <= 0f)
             {
                 _enemy.FireWeapon();
-                if(UnityEngine.Random.Range(0f, 100f) <= 50f && _enemy.canDash)
-                {
-                    _enemy.canDash = false;
-                    return typeof(ButcherChargeState);
-                }
+                //if(UnityEngine.Random.Range(0f, 100f) <= 50f && _enemy.canDash)
+                //{
+                //    _enemy.canDash = false;
+                //   // return typeof(ButcherChargeState);
+                //}
             }
             if (_enemy.isWeaponFiringDone)
             {

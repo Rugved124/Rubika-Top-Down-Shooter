@@ -55,7 +55,9 @@ public class Enemy : MonoBehaviour
 
     [HideInInspector]
     public bool canDash;
-    
+    [HideInInspector]
+    public bool isCharging;
+
     [HideInInspector]
     public bool canDashAgain;
 
@@ -73,6 +75,9 @@ public class Enemy : MonoBehaviour
 
     [HideInInspector]
     public bool sepoyLookAtPlayer;
+
+    [HideInInspector]
+    public bool canGabbarCharge;
     private void Awake()
     {
         firedTime = enemyData.timeBetweenBullets;

@@ -111,8 +111,6 @@ public class ShadowFollow : MonoBehaviour
         {
             Instantiate(spawnPrefab, spawnPoint, Quaternion.identity);
         }
-       
-
     }
     private bool PreventOverlapSpawn(Vector3 _spawnPoint)
     {

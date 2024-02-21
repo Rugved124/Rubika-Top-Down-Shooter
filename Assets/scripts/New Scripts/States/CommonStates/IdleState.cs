@@ -18,6 +18,7 @@ public class IdleState : BaseState
     public override void EnterState()
     {
         rollDiceShadow = true;
+        _enemy.isCharging = false;
     }
 
     public override Type ExecuteState()

@@ -8,15 +8,18 @@ public class SceneLoader : MonoBehaviour
     {
         if(other != null)
         {
-            if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCount)
+            if(other.tag == "Player")
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            else
-            {
-                Debug.Log("Game End");
-                Application.Quit();
-            }
+                if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCount)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+                else
+                {
+                    Debug.Log("Game End");
+                    Application.Quit();
+                }
+            } 
         }
     }
     public void ReloadScene()

@@ -10,19 +10,6 @@ public class PC : MonoBehaviour
     private Dictionary<Type, BaseState> availableStates;
 
     public BaseState currentState { get; private set; }
-    public enum PCStates
-    {
-        DEFAULT,
-        CONSUME,
-        SHIELDED,
-        SLOWED,
-        POISONED,
-        BURNED,
-        SILENCED,
-        DEAD
-    }
-
-    public PCStates currentPCState;
 
     public float pcSpeed;
 
@@ -158,22 +145,21 @@ public class PC : MonoBehaviour
     {
         beingConsumed = null;
     }
-
-    public PCStates GetPCState()
-    {
-        return currentPCState;
-    }
-
     public void TakeDamage(int damage)
     {
-        currentHP -= damage;
+      //  currentHP -= damage;
     }
 
     public void Die()
     {
        this.gameObject.SetActive(false);
     }
-
+    public void KnockBack(Vector3 collisionPos, float pushBackForce)
+    {
+        Debug.Log("Pushed");
+        Vector3 knockBackDir = transform.position - collisionPos;
+        playerRb.AddForce(knockBackDir.normalized * pushBackForce,ForceMode.Impulse);
+    }
     //---------------------------------------------------PC Status Effect Functions Start--------------------------------------------------------
     void Poisoned()
     {

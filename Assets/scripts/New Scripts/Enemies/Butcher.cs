@@ -10,19 +10,35 @@ public class Butcher : Enemy
     [SerializeField]
     private float bulletSpeed_setInInspector;
     [SerializeField]
+    private GameObject debries;
+    [SerializeField]
     private Transform shootPoint;
     public GameObject bullet;
 
+    public int chargeDamage;
     public float bulletDirMultiplier;
 
     bool allowInvoke = true;
+    [HideInInspector]
+    public bool isChargeHit;
+    [HideInInspector]
+    public bool isChargeHitWall;
 
+    //------------------------------Debries Falling--------------------------
+    Vector3 spawnPoint;
+    public Collider[] colliders;
+    public LayerMask spawnLayerMask;
+    [SerializeField]
+    float gap;
+    float timeBetweenDebries;
     public override void Start()
     {
         base.Start();
         enemyType = EnemyType.BUTCHER;
         Debug.Log(enemyType.ToString());
         canDash = true;
+        timeBetweenDebries = 0.4f;
+        isChargeHitWall = false;
     }
     public override void InitializeStateMachine()
     {
@@ -98,4 +114,125 @@ public class Butcher : Enemy
     {
         canDash = true;
     }
+    public override void Die()
+    {
+        base.Die();
+        isCharging = false;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (isCharging)
+        {
+            if (collision.collider.tag == "Obstacle")
+            {
+                Debug.Log("I hit a Wall");
+                canGabbarCharge = false;
+                if (!isChargeHitWall)
+                {
+                    
+                    agent.isStopped = true;
+                    agent.SetDestination(transform.position);
+                    SpawnDebries();
+                    isChargeHitWall = false;
+                    Invoke("ResetChargeHitWall", 10f);
+                }
+            }
+            if (collision.collider.tag == "Player")
+            {
+                if (!isChargeHit)
+                {
+
+                    if (FindObjectOfType<PC>() != null)
+                    {
+                        isChargeHit = true;
+                        Invoke("ResetChargeDamage", 10f);
+                        FindObjectOfType<PC>().TakeDamage(chargeDamage);
+                        FindObjectOfType<PC>().KnockBack(transform.position, 14);
+                    }
+                }
+            }
+        }
+    }
+    void ResetChargeDamage()
+    {
+        isChargeHit = false;
+    }
+    void ResetChargeHitWall()
+    {
+        isChargeHitWall = false;
+        canGabbarCharge = true;
+    }
+
+    void SpawnDebries()
+    {
+        for (int i = 0;i < 3;i++)
+        {
+            timeBetweenDebries -= Time.deltaTime;
+            if(timeBetweenDebries <= 0f)
+            {
+                timeBetweenDebries = 0.4f;
+                SpawnSpheres();
+                
+            }
+            
+        }
+    }
+    void SpawnSpheres()
+    {
+        int safetyNet = 0;
+        bool canSpawn = false;
+        bool dontSpawn = false;
+        while (!canSpawn)
+        {
+            float x = UnityEngine.Random.Range(2.5f, -2.5f);
+            float z = UnityEngine.Random.Range(2.5f, -2.5f);
+
+            spawnPoint = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
+            canSpawn = PreventOverlapSpawn(spawnPoint);
+            if (canSpawn)
+            {
+                break;
+            }
+            safetyNet++;
+            if (safetyNet > 50)
+            {
+                dontSpawn = true;
+                Debug.Log("Too Many Attempts");
+                break;
+
+            }
+        }
+        if (!dontSpawn)
+        {
+            Instantiate(debries, spawnPoint, Quaternion.identity);
+        }
+
+
+    }
+    private bool PreventOverlapSpawn(Vector3 _spawnPoint)
+    {
+        colliders = Physics.OverlapSphere(transform.position, 5f, spawnLayerMask);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            Vector3 centerPoint = colliders[i].bounds.center;
+            float width = colliders[i].bounds.extents.x + gap;
+            float hieght = colliders[i].bounds.extents.z + gap;
+
+            float leftExtent = centerPoint.x - width;
+            float rightExtent = centerPoint.x + width;
+            float lowerExtent = centerPoint.z - hieght;
+            float upperExtent = centerPoint.z + hieght;
+
+            if (_spawnPoint.x >= leftExtent && _spawnPoint.x <= rightExtent)
+            {
+                if (_spawnPoint.z >= lowerExtent && _spawnPoint.z <= upperExtent)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
+
+

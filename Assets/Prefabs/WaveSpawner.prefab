@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5270054164413694885}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpawnPoint 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4854714511117186437}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3334825309412738507}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpawnPoint 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,8 +165,6 @@ MonoBehaviour:
   currentWaveStates: 0
   waves:
   - {fileID: 11400000, guid: 67081ff59dc78544595abef12ff07840, type: 2}
-  - {fileID: 11400000, guid: 82fd5a65ef2742d4c942dffae366b5c6, type: 2}
-  - {fileID: 11400000, guid: 972f473328452444899029d3051aadbc, type: 2}
   spawnPoints:
   - {fileID: 1801710984376139952}
   - {fileID: 3334825309412738507}
@@ -188,7 +186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2861266448853325401}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WaveSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +223,7 @@ GameObject:
   - component: {fileID: 6076395363599402938}
   - component: {fileID: 4756434450591823066}
   - component: {fileID: 7594706204984363535}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1801710984376139952}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ' SpawnPoint 1'
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -361,7 +359,7 @@ GameObject:
   - component: {fileID: 1982292941560531502}
   - component: {fileID: 6940147480908613963}
   - component: {fileID: 561543981637865515}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Door (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +464,7 @@ GameObject:
   - component: {fileID: 3691956858421512601}
   - component: {fileID: 2001406391281953426}
   - component: {fileID: 1971390538278965004}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Door (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,7 +566,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3165777672079382439}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
