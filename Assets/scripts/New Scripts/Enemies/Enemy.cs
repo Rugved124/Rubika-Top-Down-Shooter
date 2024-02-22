@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
 
     public EnemyType enemyType;
 
+    public Animator enemyAnim;
+
     protected FiniteStateMachine fsm;
 
     public EnemyData enemyData;

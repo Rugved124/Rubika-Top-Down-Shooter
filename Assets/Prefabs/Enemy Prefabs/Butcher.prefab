@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 2799205842702275187}
   - component: {fileID: 6499029726065964075}
   - component: {fileID: 1206793713241307077}
+  - component: {fileID: 7668670416895128794}
   m_Layer: 8
   m_Name: Butcher
   m_TagString: Enemies
@@ -470,6 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 0
+  enemyAnim: {fileID: 0}
   enemyData: {fileID: 11400000, guid: 1a4a4b3fbd840e74aa4cbb8c12b25a5b, type: 2}
   firedTime: 0
   enemySoul: {fileID: 2141065964912912087, guid: f4327c4559cd15c4ba4d3a4f71b75c33,
@@ -497,6 +499,10 @@ MonoBehaviour:
   fireTime: 0
   sepoyLookAtPlayer: 0
   canGabbarCharge: 0
+  storedAOE: {fileID: 0}
+  all:
+    serializedVersion: 2
+    m_Bits: 0
   bulletSpeed_setInInspector: 40
   debries: {fileID: 4500201555358269410, guid: 07619ea9c57f81748804aa6a4e6f1b50, type: 3}
   shootPoint: {fileID: 2246623131217589833}
@@ -550,6 +556,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
+--- !u!95 &7668670416895128794
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8319296224104033158}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 0ddcc4d7fae7ec44f9d1d252317be948, type: 3}
+  m_Controller: {fileID: 9100000, guid: ba856dcca1a83644ba412698c5baac74, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8603813156904068880
 GameObject:
   m_ObjectHideFlags: 0

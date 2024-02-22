@@ -156,7 +156,7 @@ public class PC : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-      //  currentHP -= damage;
+        currentHP -= damage;
     }
 
     public void Die()

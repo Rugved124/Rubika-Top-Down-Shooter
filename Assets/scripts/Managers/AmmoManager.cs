@@ -60,7 +60,7 @@ public class AmmoManager : MonoBehaviour
     }
     private void Update()
     {
-        if(InputManager.instance.IsMousePressed() && pc != null) 
+        if(InputManager.instance.IsMousePressed() && !pc.isDead) 
         {
             if(bulletToSpawn != null && canShoot && ammoCount > 0)
             {
