@@ -88,13 +88,26 @@ public class Enemy : MonoBehaviour
     public GameObject storedAOE;
     public LayerMask all;
     //-----------------------------------------------StatusEffects-------------------------------------------------------//
-    float lastTick;
+    float burnLastTick;
     float burnTickSpeed;
     int burnDamage;
     float currentTickTime;
     float maxDuration;
+    //--------------------
+    float poisonedForTime;
+    [SerializeField]
+    private float maxPoisonedForTime;
+
+    [SerializeField]
+    float tickSpeed;
+    float lastTick;
+
+    [SerializeField]
+    int poisonDamagePerTick;
+
     private void Awake()
     {
+        poisonedForTime = -maxPoisonedForTime;
         firedTime = enemyData.timeBetweenBullets;
         fsm = GetComponent<FiniteStateMachine>();
         enemyAnim = GetComponent<Animator>();
@@ -148,6 +161,7 @@ public class Enemy : MonoBehaviour
             Die();
         }
         Burning();
+        Poisoned();
     }
 
     public string GetCurrentState()
@@ -275,13 +289,34 @@ public class Enemy : MonoBehaviour
         {
             maxDuration -= Time.deltaTime;
             currentTickTime = Time.time;
-            if (currentTickTime - lastTick > burnTickSpeed)
+            if (currentTickTime - burnLastTick > burnTickSpeed)
             {
-                lastTick = currentTickTime;
+                burnLastTick = currentTickTime;
                 TakeDamage(burnDamage);
             }
         }
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Poison"))
+        {
+            poisonedForTime = Time.time;
+        }
+    }
+    void Poisoned()
+    {
+        if (Time.time - poisonedForTime <= maxPoisonedForTime)
+        {
+
+            if (Time.time - lastTick >= tickSpeed)
+            {
+                TakeDamage( poisonDamagePerTick);
+                lastTick = Time.time;
+            }
+
+        }
     }
 }
 
