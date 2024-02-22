@@ -172,6 +172,7 @@ MonoBehaviour:
   isSpawning: 0
   wavePurchasePower: 0
   generateEnemies: []
+  existingEnemies: []
   doors:
   - {fileID: 4444748296004414862}
   - {fileID: 4887975120961718371}
