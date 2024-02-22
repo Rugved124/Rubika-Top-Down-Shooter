@@ -20,7 +20,7 @@ public class NannyDashState : BaseState
         dashCount = 3;
         _enemy.agent.isStopped = false;
         _enemy.agent.updateRotation = false;
-        timeBetweenFire = 0.03f;
+        timeBetweenFire = 0.05f;
     }
 
     public override Type ExecuteState()

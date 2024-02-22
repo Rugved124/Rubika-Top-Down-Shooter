@@ -13,7 +13,9 @@ public class AmmoManager : MonoBehaviour
     [SerializeField]
     int ammoCount;
     bool canShoot;
-    GameObject shield;
+
+    [SerializeField]
+    private GameObject shield;
 
     public GameObject currentShield;
     public enum EquippedAmmoType
@@ -98,6 +100,9 @@ public class AmmoManager : MonoBehaviour
                 break;
             case EquippedAmmoType.SLOW:
                 GetBulletObject(BaseBullet.BulletTypes.SLOW);
+                break;
+            case EquippedAmmoType.FIRE:
+                GetBulletObject(BaseBullet.BulletTypes.FIRE);
                 break;
             case EquippedAmmoType.SHIELD:
                 GetBulletObject(BaseBullet.BulletTypes.DEFAULTAMMO);

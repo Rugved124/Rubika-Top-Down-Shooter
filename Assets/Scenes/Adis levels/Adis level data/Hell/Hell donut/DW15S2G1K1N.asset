@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb749b0bc52d7143bb8c1b733065a3e, type: 3}
+  m_Name: DW15S2G1K1N
+  m_EditorClassIdentifier: 
+  enemy:
+  - {fileID: 11400000, guid: 8a17493765e2de5428c4adb015ee04e9, type: 2}
+  - {fileID: 11400000, guid: 8a17493765e2de5428c4adb015ee04e9, type: 2}
+  - {fileID: 11400000, guid: 8a17493765e2de5428c4adb015ee04e9, type: 2}
+  - {fileID: 11400000, guid: 6f3d83d3e44f3114f9d205d2214a4a16, type: 2}
+  - {fileID: 11400000, guid: 6f3d83d3e44f3114f9d205d2214a4a16, type: 2}
+  - {fileID: 11400000, guid: 6f3d83d3e44f3114f9d205d2214a4a16, type: 2}
+  - {fileID: 11400000, guid: afaf699a871a72f429b19a435602638b, type: 2}
+  - {fileID: 11400000, guid: 8a17493765e2de5428c4adb015ee04e9, type: 2}
+  - {fileID: 11400000, guid: 73c1fd3fc9c92884ca2910b7a2e26be3, type: 2}
+  timeBeforeThisWave: 1
+  waveValue: 60

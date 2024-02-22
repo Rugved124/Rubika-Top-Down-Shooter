@@ -546,8 +546,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.18, y: 0, z: -2.1094246}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7406950846534626964}
   - {fileID: 5143600362455672369}
@@ -675,15 +675,20 @@ MonoBehaviour:
   shieldDistance: 0
   isShielded: 0
   canShield: 0
+  shieldToSpawn: {fileID: 4671155514325838039, guid: 3c020af5537d3cf4f8e86b68372ca246,
+    type: 3}
+  currentShield: {fileID: 0}
   hpPercent: 0
   canRunAway: 0
   canDash: 0
+  isCharging: 0
   canDashAgain: 0
   dashPos: {x: 0, y: 0, z: 0}
   tpDone: 0
   surroundPos: {x: 0, y: 0, z: 0}
   fireTime: 0
   sepoyLookAtPlayer: 0
+  canGabbarCharge: 0
   bulletSpeed: 10
   shootPoint: {fileID: 7406950846534626964}
   bullet: {fileID: 3411248443990829376, guid: a4ce36a938cad024d8467898cc232581, type: 3}

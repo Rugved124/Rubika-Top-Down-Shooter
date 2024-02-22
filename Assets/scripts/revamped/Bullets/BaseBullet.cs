@@ -98,8 +98,10 @@ public class BaseBullet : MonoBehaviour
             }
             if (isEnemy)
             {
+                Debug.Log("DidSomething");
                 if (collision.CompareTag("Shield"))
                 {
+                    
                     if (collision.GetComponent<ShieldBehaviour>() != null && collision.GetComponent<ShieldBehaviour>().isPC)
                     {
                         collision.GetComponent<ShieldBehaviour>().TakeDamage(1);

@@ -44,7 +44,6 @@ public class Enemy : MonoBehaviour
     public List<Enemy> lowHpEnemy;
 
     public float shieldDistance;
-    private int curShieldPoints;
     public bool isShielded;
     public bool canShield;
 
@@ -120,16 +119,16 @@ public class Enemy : MonoBehaviour
 
     public virtual void Update()
     {
-        if(currentShield != null)
-        {
-            currentShield.GetComponent<ShieldBehaviour>().FollowSpawner(transform);
-        }
-        hpPercent = (currentHP / maxHP) * 100f;
-        if (curShieldPoints <= 0)
+        if (currentShield)
         {
             isShielded = false;
         }
-
+        if(currentShield != null)
+        {
+            isShielded = true;
+            currentShield.GetComponent<ShieldBehaviour>().FollowSpawner(transform);
+        }
+        hpPercent = (currentHP / maxHP) * 100f;
 
         hpSlider.value = currentHP;
         if (currentHP <= 0)
@@ -182,15 +181,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (curShieldPoints > 0)
-        {
-            curShieldPoints--;
-        }
-        else if (curShieldPoints <= 0)
-        {
-            currentHP -= damage;
-        }
-
+        currentHP -= damage;
     }
 
     void DropSoul(GameObject enemySoul)
@@ -209,8 +200,6 @@ public class Enemy : MonoBehaviour
     }
     public void AddShield()
     {
-        isShielded = true;
-        curShieldPoints = 5;
         currentShield = Instantiate(shieldToSpawn, transform.position, Quaternion.identity);
         currentShield.GetComponent<ShieldBehaviour>().IsPCShield(false);
         currentShield.GetComponent<ShieldBehaviour>().SetParentToEnemy(this.gameObject);
@@ -260,6 +249,23 @@ public class Enemy : MonoBehaviour
     public virtual void ReleaseNannyFire()
     {
 
+    }
+
+    public virtual void Burning(int damage, float maxTime, float tickSpeed)
+    {
+        float lastTick = 0f;
+        while(maxTime > 0f)
+        {
+            maxTime -= Time.deltaTime;
+            Debug.Log(maxTime +"," + lastTick);
+            float currentTick = Time.time;
+            
+            if(currentTick - lastTick > tickSpeed)
+            {
+                lastTick = currentTick;
+                TakeDamage(damage);
+            } 
+        }
     }
 }
 
