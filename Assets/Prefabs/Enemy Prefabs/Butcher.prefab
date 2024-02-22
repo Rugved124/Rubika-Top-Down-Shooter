@@ -159,7 +159,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 168844762721582836}
-  - component: {fileID: 7890801498315795570}
   m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
@@ -183,27 +182,6 @@ Transform:
   - {fileID: 4638476039787548002}
   m_Father: {fileID: 2124307067443303685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &7890801498315795570
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4013090549874589078}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ba856dcca1a83644ba412698c5baac74, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5151453636745936133
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +543,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8319296224104033158}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0ddcc4d7fae7ec44f9d1d252317be948, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 976644c47ba549a4eb4c3d20ecc60286, type: 3}
   m_Controller: {fileID: 9100000, guid: ba856dcca1a83644ba412698c5baac74, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -762,7 +740,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gabbar Animations
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7408645911046004770, guid: 793ca5c18b626cc4e87803c1d33ae68c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

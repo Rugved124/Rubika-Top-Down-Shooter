@@ -46,6 +46,7 @@ public class GabbarBullet : BaseBullet
                 if (hit.collider != null)
                 {
                     Instantiate(poisonAOE, hit.point, Quaternion.identity);
+                    Die();
                 }
             }
 

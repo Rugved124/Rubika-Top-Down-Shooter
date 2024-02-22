@@ -17,6 +17,7 @@ public class NannyDashState : BaseState
 
     public override void EnterState()
     {
+        _enemy.enemyAnim.SetTrigger("DashState");
         dashCount = 3;
         _enemy.agent.isStopped = false;
         _enemy.agent.updateRotation = false;

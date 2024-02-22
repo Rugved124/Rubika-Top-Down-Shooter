@@ -15,6 +15,7 @@ public class NannyIdleState : BaseState
     }
     public override void EnterState()
     {
+        _enemy.enemyAnim.SetTrigger("IdleState");
         _enemy.agent.isStopped = true;
         _enemy.agent.updateRotation = false;
         roleDice = true;

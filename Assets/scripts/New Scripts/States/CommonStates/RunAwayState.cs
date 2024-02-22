@@ -15,6 +15,7 @@ public class RunAwayState : BaseState
 	}
 	public override void EnterState()
 	{
+        _enemy.enemyAnim.SetTrigger("RunState");
         _enemy.agent.isStopped = false;
         _enemy.agent.updateRotation = true;
         _enemy.ResetAttack();

@@ -97,6 +97,7 @@ public class Enemy : MonoBehaviour
     {
         firedTime = enemyData.timeBetweenBullets;
         fsm = GetComponent<FiniteStateMachine>();
+        enemyAnim = GetComponent<Animator>();
         pc = FindObjectOfType<PC>();
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();

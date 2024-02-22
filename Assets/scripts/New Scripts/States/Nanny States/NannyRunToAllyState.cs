@@ -13,6 +13,7 @@ public class NannyRunToAllyState : BaseState
 
     public override void EnterState()
     {
+        _enemy.enemyAnim.SetTrigger("RunState");
         Debug.Log("RunToAlly");
         _enemy.agent.isStopped = false;
         _enemy.agent.updateRotation = true;

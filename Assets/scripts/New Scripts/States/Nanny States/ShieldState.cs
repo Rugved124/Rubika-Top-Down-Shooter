@@ -15,6 +15,7 @@ public class ShieldState : BaseState
 	}
 	public override void EnterState()
 	{
+        _enemy.enemyAnim.SetTrigger("ShieldState");
         Debug.Log("Shielding");
         waitbeforeShield = 2.5f;
 		_enemy.agent.isStopped = true;

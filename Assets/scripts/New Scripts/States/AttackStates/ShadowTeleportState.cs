@@ -22,6 +22,7 @@ public class ShadowTeleportState : BaseState
     }
     public override void EnterState()
     {
+        _enemy.enemyAnim.SetTrigger("IdleState");
         attackCoolDown = _enemy.firedTime;
         _enemy.ResetAttack();
     }

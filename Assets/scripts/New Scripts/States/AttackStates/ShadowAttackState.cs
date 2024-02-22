@@ -26,6 +26,7 @@ public class ShadowAttackState : BaseState
             _enemy.LookAtPlayer();
             if (!_enemy.isWeaponFiringDone)
             {
+                _enemy.enemyAnim.SetTrigger("AttackState");
                 _enemy.isWeaponFiringDone = true;
                 _enemy.FireWeapon();
             }

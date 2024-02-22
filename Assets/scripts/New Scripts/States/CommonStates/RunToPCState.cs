@@ -19,6 +19,7 @@ public class RunToPCState : BaseState
 
     public override void EnterState()
     {
+        _enemy.enemyAnim.SetTrigger("RunState");
         if(_enemy.enemyType != Enemy.EnemyType.NANNY)
         {
             _enemy.ResetAttack();

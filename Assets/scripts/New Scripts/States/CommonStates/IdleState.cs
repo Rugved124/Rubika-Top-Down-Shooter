@@ -19,6 +19,7 @@ public class IdleState : BaseState
     {
         rollDiceShadow = true;
         _enemy.isCharging = false;
+        _enemy.enemyAnim.SetTrigger("IdleState");
     }
 
     public override Type ExecuteState()
