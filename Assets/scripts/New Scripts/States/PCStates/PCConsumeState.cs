@@ -13,7 +13,9 @@ public class PCConsumeState : BaseState
 
     public override void EnterState()
     {
-
+        Debug.Log("Print");
+        _pc.consumeLine.SetActive(true);
+        _pc.anim.SetBool("isConsuming", true);
     }
 
     public override Type ExecuteState()
@@ -28,6 +30,8 @@ public class PCConsumeState : BaseState
         }
         else
         {
+            _pc.anim.SetBool("isConsuming", false);
+            _pc.consumeLine.SetActive(false);
             return typeof(PCDefaultState);
         }
         return null;

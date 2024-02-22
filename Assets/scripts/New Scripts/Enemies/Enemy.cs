@@ -82,6 +82,13 @@ public class Enemy : MonoBehaviour
 
     [HideInInspector]
     public bool canGabbarCharge;
+
+    //-----------------------------------------------StatusEffects-------------------------------------------------------//
+    float lastTick;
+    float burnTickSpeed;
+    int burnDamage;
+    float currentTickTime;
+    float maxDuration;
     private void Awake()
     {
         firedTime = enemyData.timeBetweenBullets;
@@ -135,6 +142,7 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        Burning();
     }
 
     public string GetCurrentState()
@@ -187,7 +195,6 @@ public class Enemy : MonoBehaviour
     void DropSoul(GameObject enemySoul)
     {
         Vector3 spawnPos = transform.position;
-        spawnPos.y += 1;
         Instantiate(enemySoul, spawnPos, Quaternion.identity);
     }
     public virtual void SecondaryWeaponFire()
@@ -251,21 +258,25 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public virtual void Burning(int damage, float maxTime, float tickSpeed)
+    public virtual void SetBurning(int damage, float maxTime, float tickSpeed)
     {
-        float lastTick = 0f;
-        while(maxTime > 0f)
+        maxDuration = maxTime;
+        burnDamage = damage;
+        burnTickSpeed = tickSpeed;
+    }
+    void Burning()
+    {
+        if(maxDuration > 0f)
         {
-            maxTime -= Time.deltaTime;
-            Debug.Log(maxTime +"," + lastTick);
-            float currentTick = Time.time;
-            
-            if(currentTick - lastTick > tickSpeed)
+            maxDuration -= Time.deltaTime;
+            currentTickTime = Time.time;
+            if (currentTickTime - lastTick > burnTickSpeed)
             {
-                lastTick = currentTick;
-                TakeDamage(damage);
-            } 
+                lastTick = currentTickTime;
+                TakeDamage(burnDamage);
+            }
         }
+        
     }
 }
 

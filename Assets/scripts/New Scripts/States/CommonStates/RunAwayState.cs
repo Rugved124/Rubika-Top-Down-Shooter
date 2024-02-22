@@ -15,7 +15,6 @@ public class RunAwayState : BaseState
 	}
 	public override void EnterState()
 	{
-        Debug.Log("RunAway");
         _enemy.agent.isStopped = false;
         _enemy.agent.updateRotation = true;
         _enemy.ResetAttack();

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1961891238643270217}
   - component: {fileID: 1948917667535904946}
   - component: {fileID: 6307526006698087883}
-  - component: {fileID: 8433525090204903743}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -68,8 +67,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletTypes:
   - {fileID: 3479056492831023734, guid: 4d17809e4bde6d046a6c84647c80d1cd, type: 3}
+  - {fileID: 3411248443990829376, guid: 00a16d290702cb94eaa186ecf41e28ba, type: 3}
+  - {fileID: 8720734969829648373, guid: b2cedfb493aa7ee438d8755ac96f53b3, type: 3}
+  - {fileID: 3411248443990829376, guid: a4ce36a938cad024d8467898cc232581, type: 3}
+  - {fileID: 8720734969829648373, guid: b2cedfb493aa7ee438d8755ac96f53b3, type: 3}
   bulletToSpawn: {fileID: 0}
+  ammoCount: 0
+  shield: {fileID: 4671155514325838039, guid: 3c020af5537d3cf4f8e86b68372ca246, type: 3}
+  currentShield: {fileID: 0}
   currentAmmoType: 0
+  firstAmmoType: 0
+  secondAmmoType: 0
 --- !u!114 &6307526006698087883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,15 +92,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedEnemies: []
   hasAssignedPos: 0
---- !u!114 &8433525090204903743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463250725016163887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f34cd5d496b53444975ff2d1d8ea138, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

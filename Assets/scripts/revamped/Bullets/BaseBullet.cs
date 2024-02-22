@@ -62,7 +62,6 @@ public class BaseBullet : MonoBehaviour
     }
     public virtual void Die()
     {
-      Debug.Log("dead");
       Destroy(this.gameObject);
     }
     public virtual void InitializeBullet()
@@ -79,6 +78,10 @@ public class BaseBullet : MonoBehaviour
         
         if (collision != null)
         {
+            if(collision.tag != "Shield" && collision.tag != "Player" && collision.tag != "Enemies" &&collision.tag != "Souls")
+            {
+                Die();
+            }
             if (isPC)
             {
                 if (collision.CompareTag("Shield"))
@@ -86,6 +89,7 @@ public class BaseBullet : MonoBehaviour
                     if (collision.GetComponent<ShieldBehaviour>() != null && !collision.GetComponent<ShieldBehaviour>().isPC)
                     {
                         collision.GetComponent<ShieldBehaviour>().TakeDamage(1);
+                        Die();
                     }
                 }
                 if (collision.CompareTag("Enemies"))
@@ -93,18 +97,19 @@ public class BaseBullet : MonoBehaviour
                     if (collision.GetComponent<Enemy>() != null)
                     {
                         collision.GetComponent<Enemy>().TakeDamage(bulletDamage);
+                        Die();
                     }
                 }
             }
             if (isEnemy)
             {
-                Debug.Log("DidSomething");
                 if (collision.CompareTag("Shield"))
                 {
                     
                     if (collision.GetComponent<ShieldBehaviour>() != null && collision.GetComponent<ShieldBehaviour>().isPC)
                     {
                         collision.GetComponent<ShieldBehaviour>().TakeDamage(1);
+                        Die();
                     }
                 }
                 if (collision.CompareTag("Player"))
@@ -112,11 +117,12 @@ public class BaseBullet : MonoBehaviour
                     if (collision.GetComponent<PC>() != null)
                     {
                         collision.GetComponent<PC>().TakeDamage(bulletDamage);
+                        Die();
                     }
                 }
             }
             
-            Die();
+            
         }
 
     }

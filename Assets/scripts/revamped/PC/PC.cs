@@ -39,7 +39,7 @@ public class PC : MonoBehaviour
 
     public PCStatusEffectsData statusEffects;
 
-    GameObject bullet;
+    public GameObject consumeLine;
     
     public float isBurningFor;
     [SerializeField]
@@ -67,6 +67,7 @@ public class PC : MonoBehaviour
 
     private void Start()
     {
+        consumeLine.SetActive(false);
         anim = visuals.GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
         currentHP = maxHP;
@@ -85,7 +86,6 @@ public class PC : MonoBehaviour
 
     private void Update()
     {
-        anim.SetBool("isConsuming", isConsuming);
         if (currentState == null)
         {
             currentState = availableStates.Values.First();
@@ -280,5 +280,10 @@ public class PC : MonoBehaviour
         {
             SwitchToNextState(nextState);
         }
+    }
+
+    void OnDrawGizmos()
+    {
+
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static PC;
 
@@ -57,9 +58,10 @@ public class PCDefaultState : BaseState
 
         if (InputManager.instance.GetIfConsumeIsHeld())
         {
+            _pc.consumeLine.SetActive(true);
             RaycastHit hitObj;
             bool didHit = Physics.Raycast(_pc.bulletSpawn.position, transform.forward, out hitObj, _pc.consumeRange);
-            Debug.DrawRay(transform.position, transform.forward * _pc.consumeRange, Color.red);
+            Debug.DrawRay(_pc.bulletSpawn.position, transform.forward * _pc.consumeRange, Color.red);
             if (didHit)
             {
                 if (hitObj.collider.CompareTag("Consumables"))
@@ -72,6 +74,10 @@ public class PCDefaultState : BaseState
 
                 }
             }
+        }
+        else
+        {
+            _pc.consumeLine.SetActive(false);
         }
         return null;
     }

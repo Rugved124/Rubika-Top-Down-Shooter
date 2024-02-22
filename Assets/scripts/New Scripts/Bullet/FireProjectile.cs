@@ -38,7 +38,7 @@ public class FireProjectile : BaseBullet
         {
             if (collision.GetComponent<Enemy>() != null)
             {
-                collision.GetComponent<Enemy>().Burning(fireDamage, fireDuration, tickSpeed);
+                collision.GetComponent<Enemy>().SetBurning(fireDamage, fireDuration, tickSpeed);
             }
         }
     }

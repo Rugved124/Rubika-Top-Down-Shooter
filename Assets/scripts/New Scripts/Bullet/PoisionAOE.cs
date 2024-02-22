@@ -22,6 +22,13 @@ public class PoisionAOE : MonoBehaviour
 
     private void Die()
     {
+        if(FindObjectOfType<PC>() != null)
+        {
+            if (FindObjectOfType<PC>().statusEffects.isSlowed)
+            {
+                FindObjectOfType<PC>().statusEffects.isSlowed = false;
+            }
+        }
         Destroy(this.gameObject);
     }
 }
