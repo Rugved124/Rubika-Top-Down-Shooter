@@ -197,8 +197,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.1, y: 0, z: -21.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3440395814735381810}
   - {fileID: 3225403382315375990}
@@ -360,8 +360,9 @@ MonoBehaviour:
   bullet: {fileID: 8484276848674366825, guid: bc851ef4e327eba489449b651542a5f2, type: 3}
   bulletSpeed: 8
   shootPoint: {fileID: 3440395814735381810}
-  dashSpeed: 0
-  nannyTrail: {fileID: 0}
+  dashSpeed: 15
+  nannyTrail: {fileID: 4835915344381857555, guid: ca9acb061f9d7df47a427fce4a835a40,
+    type: 3}
 --- !u!114 &8076461431349314651
 MonoBehaviour:
   m_ObjectHideFlags: 0
