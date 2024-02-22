@@ -39,6 +39,9 @@ public class WaveSpawner : MonoBehaviour
     List<GameObject> generateEnemies = new List<GameObject>();
 
     [SerializeField]
+    List<GameObject> existingEnemies = new List<GameObject>();
+
+    [SerializeField]
     List<GameObject> doors = new List<GameObject>();
 
     public bool canSpawm;
@@ -51,6 +54,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
+        existingEnemies.RemoveAll(enemies => enemies == null);
         if (canSpawm)
         {
 
@@ -83,8 +87,11 @@ public class WaveSpawner : MonoBehaviour
                     }
                     break;
                 case WaveStates.StopSpawn:
-
-                    ChangeDoorState(false);
+                    if(existingEnemies.Count <= 0)
+                    {
+                        ChangeDoorState(false);
+                    }
+                    
                     break;
             }
         }
@@ -101,7 +108,8 @@ public class WaveSpawner : MonoBehaviour
         {
             int selectedSpawnPoint = Random.Range(0, spawnPoints.Length);
 
-            Instantiate(generateEnemies[j], spawnPoints[selectedSpawnPoint].position, spawnPoints[selectedSpawnPoint].rotation);
+            existingEnemies.Add(Instantiate(generateEnemies[j], spawnPoints[selectedSpawnPoint].position, spawnPoints[selectedSpawnPoint].rotation));
+
             yield return new WaitForSeconds(0.1f);
         }
         ChangeWaveState(WaveStates.Wait);
