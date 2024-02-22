@@ -78,6 +78,7 @@ public class Butcher : Enemy
         movementDirection = Quaternion.AngleAxis(-45f, Vector3.up) * movementDirection;
         movementDirection = ((pc.transform.position + movementDirection * bulletDirMultiplier) - shootPoint.position).normalized;
         bulletShot.BulletMovement(movementDirection);
+        bulletShot.DidPCShotThis(false);
     }
 
     public override void ResetAttack()

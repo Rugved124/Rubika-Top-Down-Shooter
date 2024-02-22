@@ -13,7 +13,9 @@ public class AmmoManager : MonoBehaviour
     [SerializeField]
     int ammoCount;
     bool canShoot;
-    GameObject shield;
+
+    [SerializeField]
+    private GameObject shield;
 
     public GameObject currentShield;
     public enum EquippedAmmoType

@@ -599,15 +599,20 @@ MonoBehaviour:
   shieldDistance: 0
   isShielded: 0
   canShield: 0
+  shieldToSpawn: {fileID: 4671155514325838039, guid: 3c020af5537d3cf4f8e86b68372ca246,
+    type: 3}
+  currentShield: {fileID: 0}
   hpPercent: 0
   canRunAway: 0
   canDash: 0
+  isCharging: 0
   canDashAgain: 0
   dashPos: {x: 0, y: 0, z: 0}
   tpDone: 0
   surroundPos: {x: 0, y: 0, z: 0}
   fireTime: 4
   sepoyLookAtPlayer: 0
+  canGabbarCharge: 0
   fireline: {fileID: 8856617258114396924}
   fireDamage: 0
   visionConeAngle: 30

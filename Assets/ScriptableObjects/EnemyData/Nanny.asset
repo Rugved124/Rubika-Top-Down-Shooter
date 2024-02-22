@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Nanny
   m_EditorClassIdentifier: 
   visionConeAngle: 180
-  aggroRadius: 5
-  attackRange: 12
+  aggroRadius: 10
+  attackRange: 24
   HitPoints: 100
-  enemyMoveSpeed: 9
+  teleportCoolDown: 0
+  enemyMoveSpeed: 18
   enemyRotationSpeed: 200
   enemyAttackingAngularSpeed: 6
   timeBetweenBullets: 10
   bullet: 0
-  allyDetectionRange: 15
-  runAwayDistance: 8
+  allyDetectionRange: 30
+  runAwayDistance: 16
+  canTeleport: 1
