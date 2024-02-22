@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8953844645312633241}
   - component: {fileID: 9058957463748084198}
   - component: {fileID: 5842775136202816586}
-  - component: {fileID: 6975667982292164864}
+  - component: {fileID: 1767035177063871434}
   m_Layer: 10
   m_Name: Green Bullet
   m_TagString: Bullets
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6975667982292164864
+--- !u!114 &1767035177063871434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,10 +143,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 3411248443990829376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a021f95655c1f741b7fc53123b9a85a, type: 3}
+  m_Script: {fileID: 11500000, guid: 570326747d056474b8030429a2d3f33d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletLifeTime: 4
+  status: 0
+  bulletSpeed: 40
+  bulletRate: 2.5
   bulletDamage: 10
-  PoisonAOE: {fileID: 4077398964003033904, guid: 241016bf1e3e1ef4f84e2ed0912077fc,
+  bulletLifeTime: 4
+  ammoCount: 10
+  bulletType: 2
+  pc: {fileID: 0}
+  bulletRB: {fileID: 5842775136202816586}
+  poisonAOE: {fileID: 4077398964003033904, guid: 241016bf1e3e1ef4f84e2ed0912077fc,
     type: 3}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 72

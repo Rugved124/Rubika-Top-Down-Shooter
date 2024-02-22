@@ -40,7 +40,7 @@ public class InputManager : MonoBehaviour
         vertical = Input.GetAxisRaw("Vertical");
     }
     public bool IsMousePressed()
-    {
+    {   
         return Input.GetMouseButtonDown(0);
     }
     public float GetMovementHorizontal()

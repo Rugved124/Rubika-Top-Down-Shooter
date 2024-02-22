@@ -48,6 +48,11 @@ public class Enemy : MonoBehaviour
     public bool isShielded;
     public bool canShield;
 
+    [SerializeField]
+    private GameObject shieldToSpawn;
+
+    public GameObject currentShield;
+
     public float hpPercent;
 
     [HideInInspector]
@@ -115,6 +120,10 @@ public class Enemy : MonoBehaviour
 
     public virtual void Update()
     {
+        if(currentShield != null)
+        {
+            currentShield.GetComponent<ShieldBehaviour>().FollowSpawner(transform);
+        }
         hpPercent = (currentHP / maxHP) * 100f;
         if (curShieldPoints <= 0)
         {
@@ -146,8 +155,14 @@ public class Enemy : MonoBehaviour
         return "Not Playing";
 
     }
+
     public virtual void Die()
     {
+        if(currentShield != null)
+        {
+            currentShield.GetComponent<ShieldBehaviour>().Die();
+            currentShield = null;
+        }
         AIManager.instance.RemoveFromList(this);
         DropSoul(enemySoul);
         Destroy(this.gameObject);
@@ -180,7 +195,9 @@ public class Enemy : MonoBehaviour
 
     void DropSoul(GameObject enemySoul)
     {
-        Instantiate(enemySoul, transform.position, Quaternion.identity);
+        Vector3 spawnPos = transform.position;
+        spawnPos.y += 1;
+        Instantiate(enemySoul, spawnPos, Quaternion.identity);
     }
     public virtual void SecondaryWeaponFire()
     {
@@ -194,6 +211,9 @@ public class Enemy : MonoBehaviour
     {
         isShielded = true;
         curShieldPoints = 5;
+        currentShield = Instantiate(shieldToSpawn, transform.position, Quaternion.identity);
+        currentShield.GetComponent<ShieldBehaviour>().IsPCShield(false);
+        currentShield.GetComponent<ShieldBehaviour>().SetParentToEnemy(this.gameObject);
     }
     public virtual void ResetShield()
     {

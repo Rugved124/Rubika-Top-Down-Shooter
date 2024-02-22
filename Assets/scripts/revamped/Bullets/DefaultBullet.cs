@@ -11,6 +11,7 @@ public class DefaultBullet : BaseBullet
         base.Start();
 
         this.bulletType = BulletTypes.DEFAULTAMMO;
+        BulletMovement(pc.GetPCShoot().forward);
         //bulletRB = this.GetComponent<Rigidbody>();
 
     }
@@ -25,12 +26,11 @@ public class DefaultBullet : BaseBullet
         base.InitializeBullet();
     }
 
-    public override void BulletMovement()
+    public override void BulletMovement(Vector3 forceDirection)
     {
-        base.BulletMovement();
         if(pc != null)
         {
-            bulletRB.AddForce(pc.GetPCShoot().forward * bulletSpeed, ForceMode.Impulse);
+            bulletRB.AddForce(forceDirection * bulletSpeed, ForceMode.Impulse);
         }
         else
         {

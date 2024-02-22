@@ -46,6 +46,8 @@ public class PC : MonoBehaviour
     private float maxBurnTime;
     public int nannyFire;
     public float timeBetweenFire;
+
+    public bool isDead;
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
@@ -83,6 +85,7 @@ public class PC : MonoBehaviour
 
     private void Update()
     {
+        anim.SetBool("isConsuming", isConsuming);
         if (currentState == null)
         {
             currentState = availableStates.Values.First();
@@ -148,6 +151,7 @@ public class PC : MonoBehaviour
     
     public void DoneConsuming()
     {
+       
         beingConsumed = null;
     }
     public void TakeDamage(int damage)
@@ -195,7 +199,6 @@ public class PC : MonoBehaviour
     }
     void NannyBurning()
     {
-        Debug.Log(nannyFire);
         timeBetweenFire -= Time.deltaTime;
         if (timeBetweenFire <= 0f)
         {

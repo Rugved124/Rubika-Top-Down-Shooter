@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 5339570385836381188}
   - component: {fileID: 8859258209143242690}
   - component: {fileID: 2619312862284010128}
-  - component: {fileID: -2834408744503981050}
-  - component: {fileID: -7576037628775218678}
   m_Layer: 10
   m_Name: Red Bullet
   m_TagString: Bullets
@@ -135,28 +133,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-2834408744503981050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8720734969829648373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8ef476f5015a404487fe31e87682ca8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-7576037628775218678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8720734969829648373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d39254afe0043ff4ca3b5f24d15877be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20

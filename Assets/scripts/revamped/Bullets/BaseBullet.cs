@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BaseBullet : MonoBehaviour
@@ -32,7 +33,7 @@ public class BaseBullet : MonoBehaviour
     [SerializeField] 
     protected float bulletLifeTime;
 
-    
+    public int ammoCount;
     protected float spawnTime;
 
     public BulletTypes bulletType;
@@ -42,14 +43,15 @@ public class BaseBullet : MonoBehaviour
 
     [SerializeField]
     protected Rigidbody bulletRB;
+
+    protected bool isEnemy;
+
+    protected bool isPC;
     public virtual void Start()
     {
         spawnTime = Time.time;
         pc = FindObjectOfType<PC>();
         bulletRB = GetComponent<Rigidbody>();
-
-        BulletMovement();
-
     }
     public virtual void Update()
     {
@@ -60,6 +62,7 @@ public class BaseBullet : MonoBehaviour
     }
     public virtual void Die()
     {
+      Debug.Log("dead");
       Destroy(this.gameObject);
     }
     public virtual void InitializeBullet()
@@ -67,24 +70,59 @@ public class BaseBullet : MonoBehaviour
 
     }
 
-    public virtual void BulletMovement()
+    public virtual void BulletMovement(Vector3 forceDirection)
     {
 
     }
-    private void OnCollisionEnter(Collision collision)
+    public virtual void OnTriggerEnter(Collider collision)
     {
+        
         if (collision != null)
         {
-            if (collision.collider.CompareTag("Enemies"))
+            if (isPC)
             {
-                if(collision.collider.GetComponent<Enemy>() != null)
+                if (collision.CompareTag("Shield"))
                 {
-                    collision.collider.GetComponent<Enemy>().TakeDamage(bulletDamage);
+                    if (collision.GetComponent<ShieldBehaviour>() != null && !collision.GetComponent<ShieldBehaviour>().isPC)
+                    {
+                        collision.GetComponent<ShieldBehaviour>().TakeDamage(1);
+                    }
+                }
+                if (collision.CompareTag("Enemies"))
+                {
+                    if (collision.GetComponent<Enemy>() != null)
+                    {
+                        collision.GetComponent<Enemy>().TakeDamage(bulletDamage);
+                    }
                 }
             }
+            if (isEnemy)
+            {
+                if (collision.CompareTag("Shield"))
+                {
+                    if (collision.GetComponent<ShieldBehaviour>() != null && collision.GetComponent<ShieldBehaviour>().isPC)
+                    {
+                        collision.GetComponent<ShieldBehaviour>().TakeDamage(1);
+                    }
+                }
+                if (collision.CompareTag("Player"))
+                {
+                    if (collision.GetComponent<PC>() != null)
+                    {
+                        collision.GetComponent<PC>().TakeDamage(bulletDamage);
+                    }
+                }
+            }
+            
             Die();
         }
+
     }
     
+    public void DidPCShotThis(bool yes)
+    {
+        isEnemy = !yes;
+        isPC = yes;
+    }
 }
 

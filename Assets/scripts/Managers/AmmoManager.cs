@@ -10,9 +10,12 @@ public class AmmoManager : MonoBehaviour
     [SerializeField]
     GameObject bulletToSpawn;
     PC pc;
-
+    [SerializeField]
+    int ammoCount;
     bool canShoot;
+    GameObject shield;
 
+    public GameObject currentShield;
     public enum EquippedAmmoType
     {
         DEFAULTAMMO,
@@ -27,8 +30,9 @@ public class AmmoManager : MonoBehaviour
         SLOWFIRE,
         FIRESLOW,
         SLOWPOISON,
-        POISONSLOW
-
+        POISONSLOW,
+        SHIELD,
+        SHIELDSHIELD
     }
     private void Awake()
     {
@@ -43,6 +47,8 @@ public class AmmoManager : MonoBehaviour
     }
     public EquippedAmmoType currentAmmoType;
 
+    public EquippedAmmoType firstAmmoType;
+    public EquippedAmmoType secondAmmoType;
     private void Start()
     {
         currentAmmoType = EquippedAmmoType.DEFAULTAMMO;
@@ -54,14 +60,29 @@ public class AmmoManager : MonoBehaviour
     {
         if(InputManager.instance.IsMousePressed() && pc != null) 
         {
-            if(bulletToSpawn != null && canShoot)
+            if(bulletToSpawn != null && canShoot && ammoCount > 0)
             {
+                
                 canShoot = false;
                 StartCoroutine(bulletFireRate());
-                Instantiate(bulletToSpawn, pc.GetPCShoot().position, Quaternion.identity);
+                GameObject bulletShot = Instantiate(bulletToSpawn, pc.GetPCShoot().position, Quaternion.identity);
+                bulletShot.GetComponent<BaseBullet>().DidPCShotThis(true);
+                ammoCount--;
             }
-            
         }
+        if(ammoCount <= 0)
+        {
+            ChangeEquippedAmmo(EquippedAmmoType.DEFAULTAMMO);
+        }
+        if(currentShield != null && pc != null)
+        {
+            currentShield.GetComponent<ShieldBehaviour>().FollowSpawner(pc.transform);
+        }
+    }
+    public void ChangeEquippedAmmo(EquippedAmmoType newAmmo)
+    {
+        currentAmmoType = newAmmo;
+        ChangeAmmoType();
     }
     public void ChangeAmmoType()
     {
@@ -71,6 +92,18 @@ public class AmmoManager : MonoBehaviour
 
                 GetBulletObject(BaseBullet.BulletTypes.DEFAULTAMMO);
 
+                break;
+            case EquippedAmmoType.POISON:
+                GetBulletObject(BaseBullet.BulletTypes.POISON);
+                break;
+            case EquippedAmmoType.SLOW:
+                GetBulletObject(BaseBullet.BulletTypes.SLOW);
+                break;
+            case EquippedAmmoType.SHIELD:
+                GetBulletObject(BaseBullet.BulletTypes.DEFAULTAMMO);
+                currentShield = Instantiate(shield, transform.position, Quaternion.identity);
+                currentShield.transform.forward = transform.forward;
+                currentShield.GetComponent<ShieldBehaviour>().IsPCShield(true);
                 break;
         }
     }
@@ -84,6 +117,7 @@ public class AmmoManager : MonoBehaviour
                 if (bullet.GetComponent<BaseBullet>().bulletType == currentBulletType)
                 {
                     bulletToSpawn = bullet;
+                    ammoCount = bulletToSpawn.GetComponent<BaseBullet>().ammoCount;
                     return;
                 }
             }

@@ -170,7 +170,7 @@ public class Nanny : Enemy
     private void DashInvoke()
     {
         canDashAgain = true;
-        rb.isKinematic = true;
+        //rb.isKinematic = true;
         agent.speed = agent.speed / 8;
         agent.acceleration = agent.acceleration / 8;
         transform.forward = pc.transform.position - transform.position;

@@ -13,6 +13,7 @@ public class PCDeadState : BaseState
 
     public override void EnterState()
     {
+        _pc.isDead = true;
         _pc.Die();
     }
 

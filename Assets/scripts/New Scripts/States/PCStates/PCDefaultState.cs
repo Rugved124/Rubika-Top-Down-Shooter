@@ -58,7 +58,7 @@ public class PCDefaultState : BaseState
         if (InputManager.instance.GetIfConsumeIsHeld())
         {
             RaycastHit hitObj;
-            bool didHit = Physics.Raycast(transform.position, transform.forward, out hitObj, _pc.consumeRange);
+            bool didHit = Physics.Raycast(_pc.bulletSpawn.position, transform.forward, out hitObj, _pc.consumeRange);
             Debug.DrawRay(transform.position, transform.forward * _pc.consumeRange, Color.red);
             if (didHit)
             {
