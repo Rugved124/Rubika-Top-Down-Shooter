@@ -15,6 +15,8 @@ public class PC : MonoBehaviour
 
     public float consumeRange;
 
+    [SerializeField]
+    private bool isInvincible;
 
     public float slowMultiplier = 1;
 
@@ -156,7 +158,11 @@ public class PC : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        currentHP -= damage;
+        if (!isInvincible)
+        {
+            currentHP -= damage;
+        }
+        
     }
 
     public void Die()

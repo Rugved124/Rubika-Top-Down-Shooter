@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5842775136202816586}
   - component: {fileID: 1767035177063871434}
   m_Layer: 10
-  m_Name: Green Bullet
+  m_Name: Gabbar Projectile
   m_TagString: Bullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

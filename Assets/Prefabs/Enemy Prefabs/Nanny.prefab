@@ -325,6 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 0
+  enemyAnim: {fileID: 0}
   enemyData: {fileID: 11400000, guid: 0a860370bca388a4a825cf143e1f7f24, type: 2}
   firedTime: 0
   enemySoul: {fileID: 4289917923695981098, guid: eaa4b2f2da70aec4c9326b0d73bfb12a,
