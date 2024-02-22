@@ -250,5 +250,22 @@ public class Enemy : MonoBehaviour
     {
 
     }
+
+    public virtual void Burning(int damage, float maxTime, float tickSpeed)
+    {
+        float lastTick = 0f;
+        while(maxTime > 0f)
+        {
+            maxTime -= Time.deltaTime;
+            Debug.Log(maxTime +"," + lastTick);
+            float currentTick = Time.time;
+            
+            if(currentTick - lastTick > tickSpeed)
+            {
+                lastTick = currentTick;
+                TakeDamage(damage);
+            } 
+        }
+    }
 }
 

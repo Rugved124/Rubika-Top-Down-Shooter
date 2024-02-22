@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5339570385836381188}
   - component: {fileID: 8859258209143242690}
   - component: {fileID: 2619312862284010128}
+  - component: {fileID: 418189923517451994}
   m_Layer: 10
   m_Name: Red Bullet
   m_TagString: Bullets
@@ -100,7 +101,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -128,8 +129,32 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &418189923517451994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8720734969829648373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 002156555ba7b89468d3539eded31ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: 1
+  bulletSpeed: 5
+  bulletRate: 1
+  bulletDamage: 20
+  bulletLifeTime: 1
+  ammoCount: 20
+  bulletType: 1
+  pc: {fileID: 0}
+  bulletRB: {fileID: 0}
+  fireDamage: 2
+  fireDuration: 5
+  tickSpeed: 0.2

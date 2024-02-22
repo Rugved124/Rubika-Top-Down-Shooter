@@ -2036,12 +2036,12 @@ PrefabInstance:
     - target: {fileID: 1098474988517332648, guid: ca3387c6447462f46a446f63ad104636,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1098474988517332648, guid: ca3387c6447462f46a446f63ad104636,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4490077800532097103, guid: ca3387c6447462f46a446f63ad104636,
         type: 3}
@@ -2116,12 +2116,12 @@ PrefabInstance:
     - target: {fileID: 7466105767855820433, guid: ca3387c6447462f46a446f63ad104636,
         type: 3}
       propertyPath: m_Name
-      value: DrunkenSepoy
+      value: drunkenSepoy
       objectReference: {fileID: 0}
     - target: {fileID: 7466105767855820433, guid: ca3387c6447462f46a446f63ad104636,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2150,6 +2150,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084079199796696713, guid: b13a6224fbc4e7e4f9c09066f16db064,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4875023118549734663, guid: b13a6224fbc4e7e4f9c09066f16db064,
         type: 3}
@@ -2508,7 +2513,7 @@ PrefabInstance:
     - target: {fileID: 1948917667535904946, guid: d7d81e77cac7c1541abfac2af742fd2a,
         type: 3}
       propertyPath: bulletTypes.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1948917667535904946, guid: d7d81e77cac7c1541abfac2af742fd2a,
         type: 3}
@@ -2531,6 +2536,18 @@ PrefabInstance:
     - target: {fileID: 1948917667535904946, guid: d7d81e77cac7c1541abfac2af742fd2a,
         type: 3}
       propertyPath: bulletTypes.Array.data[3]
+      value: 
+      objectReference: {fileID: 3411248443990829376, guid: a4ce36a938cad024d8467898cc232581,
+        type: 3}
+    - target: {fileID: 1948917667535904946, guid: d7d81e77cac7c1541abfac2af742fd2a,
+        type: 3}
+      propertyPath: bulletTypes.Array.data[4]
+      value: 
+      objectReference: {fileID: 8720734969829648373, guid: b2cedfb493aa7ee438d8755ac96f53b3,
+        type: 3}
+    - target: {fileID: 1948917667535904946, guid: d7d81e77cac7c1541abfac2af742fd2a,
+        type: 3}
+      propertyPath: bulletTypes.Array.data[5]
       value: 
       objectReference: {fileID: 3411248443990829376, guid: a4ce36a938cad024d8467898cc232581,
         type: 3}

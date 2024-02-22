@@ -101,6 +101,9 @@ public class AmmoManager : MonoBehaviour
             case EquippedAmmoType.SLOW:
                 GetBulletObject(BaseBullet.BulletTypes.SLOW);
                 break;
+            case EquippedAmmoType.FIRE:
+                GetBulletObject(BaseBullet.BulletTypes.FIRE);
+                break;
             case EquippedAmmoType.SHIELD:
                 GetBulletObject(BaseBullet.BulletTypes.DEFAULTAMMO);
                 currentShield = Instantiate(shield, transform.position, Quaternion.identity);
