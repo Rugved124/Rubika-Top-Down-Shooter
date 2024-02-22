@@ -38,7 +38,7 @@ public class GabbarBullet : BaseBullet
     public override void OnTriggerEnter(Collider collision)
     {
         base.OnTriggerEnter(collision);
-        if (collision.tag != "Player" && collision.tag != "Ground")
+        if (collision.tag != "Player" && collision.tag != "Ground" && collision.tag != "Shield")
         {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, Vector3.down, out hit,groundLayer))

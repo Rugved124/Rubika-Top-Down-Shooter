@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9142017699633328621}
   - component: {fileID: 6555196975126091533}
   - component: {fileID: -2160209707746039414}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: NannyTrail
   m_TagString: NannyFire
   m_Icon: {fileID: 0}
