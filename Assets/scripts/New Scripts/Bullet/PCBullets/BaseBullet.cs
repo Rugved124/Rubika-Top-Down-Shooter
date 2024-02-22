@@ -78,7 +78,7 @@ public class BaseBullet : MonoBehaviour
         
         if (collision != null)
         {
-            if(collision.tag != "Shield" && collision.tag != "Player" && collision.tag != "Enemies" &&collision.tag != "Souls")
+            if(collision.tag != "Shield" && collision.tag != "Player" && collision.tag != "Enemies" && collision.tag != "Souls")
             {
                 Die();
             }
