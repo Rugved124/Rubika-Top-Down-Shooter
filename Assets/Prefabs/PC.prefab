@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1477510330575801110}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -2.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -79,7 +79,7 @@ Transform:
   m_GameObject: {fileID: 4020938323677436858}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.318, y: 1.31, z: 1.581}
+  m_LocalPosition: {x: 0.318, y: 0.06999993, z: 1.581}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2665077231976762195}
   - component: {fileID: 1159932485044173594}
   - component: {fileID: 5820956341707917290}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ConsumeLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ CapsuleCollider:
   m_Radius: 0.75
   m_Height: 4.5420346
   m_Direction: 1
-  m_Center: {x: 0, y: 1.2710173, z: 0.3634262}
+  m_Center: {x: 0, y: 0, z: 0.3634262}
 --- !u!54 &3654550992965985218
 Rigidbody:
   m_ObjectHideFlags: 0

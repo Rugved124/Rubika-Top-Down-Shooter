@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9058957463748084198}
   - component: {fileID: -3596430820234763355}
   - component: {fileID: 5432509339993890045}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShadowBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

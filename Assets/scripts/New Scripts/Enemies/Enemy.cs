@@ -83,6 +83,8 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public bool canGabbarCharge;
 
+    public GameObject storedAOE;
+    public LayerMask all;
     //-----------------------------------------------StatusEffects-------------------------------------------------------//
     float lastTick;
     float burnTickSpeed;

@@ -62,7 +62,7 @@ public class BaseBullet : MonoBehaviour
     }
     public virtual void Die()
     {
-      Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
     public virtual void InitializeBullet()
     { 
@@ -131,6 +131,11 @@ public class BaseBullet : MonoBehaviour
     {
         isEnemy = !yes;
         isPC = yes;
+    }
+
+    public bool IsPCBullet()
+    {
+        return isPC;
     }
 }
 

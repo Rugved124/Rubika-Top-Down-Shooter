@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 8529212398037798749}
   - component: {fileID: 3794157630835931848}
   - component: {fileID: 6295641364521053606}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultGun (1)
   m_TagString: Enemies
   m_Icon: {fileID: 0}
@@ -689,9 +689,13 @@ MonoBehaviour:
   fireTime: 0
   sepoyLookAtPlayer: 0
   canGabbarCharge: 0
+  storedAOE: {fileID: 0}
+  all:
+    serializedVersion: 2
+    m_Bits: 1024
   bulletSpeed: 10
   shootPoint: {fileID: 7406950846534626964}
-  bullet: {fileID: 3411248443990829376, guid: a4ce36a938cad024d8467898cc232581, type: 3}
+  bullet: {fileID: 0}
   shadowAOE: {fileID: 4077398964003033904, guid: 84b80a6822079264d86939c4ce866975,
     type: 3}
   ignorPC:

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7059676493858333720}
   - component: {fileID: 2555760991106809192}
   - component: {fileID: 7795598630770613286}
+  - component: {fileID: 5513746649902559135}
   m_Layer: 10
   m_Name: Default Bullet
   m_TagString: PlayerBullets
@@ -82,6 +83,29 @@ MonoBehaviour:
   bulletType: 0
   pc: {fileID: 0}
   bulletRB: {fileID: 0}
+--- !u!136 &5513746649902559135
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3479056492831023734}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Height: 1
+  m_Direction: 0
+  m_Center: {x: 0.56, y: 0, z: 0}
 --- !u!1001 &2723359803113107468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153,6 +177,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3035591234125889329, guid: 92e6645296dd1f744a551d7ca513d8a5, type: 3}
     - {fileID: -419592209748479222, guid: 92e6645296dd1f744a551d7ca513d8a5, type: 3}
+    - {fileID: -2228569340282825093, guid: 92e6645296dd1f744a551d7ca513d8a5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

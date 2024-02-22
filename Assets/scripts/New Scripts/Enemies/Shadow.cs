@@ -12,7 +12,6 @@ public class Shadow : Enemy
 
     public GameObject bullet;
     public GameObject shadowAOE;
-    GameObject storedAOE;
     bool allowInvoke = true;
     [SerializeField]
     LayerMask ignorPC;
@@ -29,7 +28,7 @@ public class Shadow : Enemy
     Vector3 telePoint;
     float randomDistance;
     float randomTPAngle;
-    public float teleportRange = 4.0f;
+    public float teleportRange = 8.0f;
     public override void Start()
     {
         base.Start();
@@ -60,7 +59,6 @@ public class Shadow : Enemy
     public override void FireWeapon()
     {
         base.FireWeapon();
-        isWeaponFiringDone = true;
         RaycastHit hit;
         Physics.Raycast(pc.transform.position, Vector3.down, out hit, ignorPC);
         Vector3 spawnPoint = new Vector3(hit.point.x, hit.point.y + 0.04f, hit.point.z);
@@ -140,7 +138,7 @@ public class Shadow : Enemy
                 //tpPoint = Instantiate(bullet, pc.transform.position + followPoint, Quaternion.identity).GetComponent<Transform>();
             }
             //followPoint = CalculateTeleportPosition(randomAngle, randomDistance);
-            Invoke("InvokeTeleport", 5f);
+            //Invoke("InvokeTeleport", 5f);
             //enemyData.canTeleport = false;
         }
         //if (Vector3.Distance(tpPoint.position, pc.transform.position) > randomDistance)

@@ -613,6 +613,10 @@ MonoBehaviour:
   fireTime: 4
   sepoyLookAtPlayer: 0
   canGabbarCharge: 0
+  storedAOE: {fileID: 0}
+  all:
+    serializedVersion: 2
+    m_Bits: 0
   fireline: {fileID: 8856617258114396924}
   fireDamage: 0
   visionConeAngle: 30

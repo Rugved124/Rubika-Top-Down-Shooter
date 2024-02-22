@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 234701259494335006}
   - component: {fileID: 2740593852097594537}
   - component: {fileID: 2625090287478455308}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: spawn thingy
   m_TagString: SlowPC
   m_Icon: {fileID: 0}

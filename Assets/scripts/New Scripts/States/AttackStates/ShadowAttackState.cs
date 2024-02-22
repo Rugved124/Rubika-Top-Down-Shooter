@@ -5,7 +5,6 @@ using UnityEngine;
 public class ShadowAttackState : BaseState
 {
     private Enemy _enemy;
-    private float waitBeforeTime;
 
     public ShadowAttackState(Enemy enemy) : base(enemy.gameObject)
     {
@@ -16,29 +15,24 @@ public class ShadowAttackState : BaseState
         _enemy.isWeaponFiringDone = false;
         _enemy.agent.isStopped = true;
         _enemy.agent.updateRotation = false;
-        waitBeforeTime = 5f;
         Debug.Log("I am in Attack State");
     }
 
     public override Type ExecuteState()
     {
-        waitBeforeTime -= Time.deltaTime;
         float distanceFromPC = CalculateDistance(_enemy.pc.transform);
         if (_enemy.hpPercent > 20 && distanceFromPC <= _enemy.enemyData.attackRange)
-        {
-
+        { 
             _enemy.LookAtPlayer();
-                if (!_enemy.isWeaponFiringDone)
-                {
-                    _enemy.FireWeapon();
-                }
-                if (_enemy.isWeaponFiringDone)
-                {
-                    _enemy.ResetAttack();
-                }
+            if (!_enemy.isWeaponFiringDone)
+            {
+                _enemy.isWeaponFiringDone = true;
+                _enemy.FireWeapon();
+            }
         }
-        if(waitBeforeTime <= 0f)
+        if(_enemy.storedAOE == null && _enemy.isWeaponFiringDone)
         {
+            Debug.Log("Something");
             return typeof(ShadowTeleportState);
         }
         return null;

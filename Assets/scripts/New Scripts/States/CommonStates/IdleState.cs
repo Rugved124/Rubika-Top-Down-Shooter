@@ -43,10 +43,8 @@ public class IdleState : BaseState
 
                 case Enemy.EnemyType.BUTCHER:
                     return typeof(ButcherAttackState);
-            }
-            if(_enemy.enemyType == Enemy.EnemyType.SHADOW && distanceFromPC <= _enemy.enemyData.attackRange / 2)
-            {
-                return typeof(ShadowAttackState);
+                case Enemy.EnemyType.SHADOW:
+                    return typeof(ShadowAttackState);
             }
         }
 

@@ -13,6 +13,7 @@ public class ShadowTeleportState : BaseState
     protected float visionConeAngle = 90f;
 
     List<Collider> bullets;
+    public List<Collider> newBullets = new List<Collider>();
 
     float attackCoolDown;
     public ShadowTeleportState(Enemy enemy) : base(enemy.gameObject)
@@ -22,18 +23,24 @@ public class ShadowTeleportState : BaseState
     public override void EnterState()
     {
         attackCoolDown = _enemy.firedTime;
+        _enemy.ResetAttack();
     }
 
     public override Type ExecuteState()
     {
         attackCoolDown -= Time.deltaTime;
-        if(Physics.OverlapSphere(_enemy.transform.position, 2f) != null)
+        if(Physics.OverlapSphere(_enemy.transform.position, 4f,_enemy.all, QueryTriggerInteraction.Collide) != null)
         {
-            bullets = Physics.OverlapSphere(_enemy.transform.position, 2f).ToList();
-            if(bullets.Exists(r => r.CompareTag("PlayerBullets")))
+
+            bullets = Physics.OverlapSphere(_enemy.transform.position, 4f,_enemy.all, QueryTriggerInteraction.Collide).ToList();
+            if(bullets.Count > 0)
             {
-                _enemy.Teleport();
+                if (bullets.Exists(r => r.gameObject.GetComponent<BaseBullet>().IsPCBullet()))
+                {
+                    _enemy.Teleport();
+                }
             }
+            
         }
         if (attackCoolDown <= 0f)
         {

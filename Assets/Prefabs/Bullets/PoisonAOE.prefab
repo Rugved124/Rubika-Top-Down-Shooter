@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4289184117319836559}
   - component: {fileID: 169971713383501422}
   - component: {fileID: 7271935129925441969}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: PoisonAOE
   m_TagString: Poison
   m_Icon: {fileID: 0}

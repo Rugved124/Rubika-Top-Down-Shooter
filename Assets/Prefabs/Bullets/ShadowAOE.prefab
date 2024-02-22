@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4289184117319836559}
   - component: {fileID: 9100089041055225748}
   - component: {fileID: -6508605018015852451}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: ShadowAOE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
