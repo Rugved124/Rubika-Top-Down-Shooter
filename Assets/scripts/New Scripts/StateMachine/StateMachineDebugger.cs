@@ -20,30 +20,30 @@ public class StateMachineDebugger : MonoBehaviour
 }
 
 
-[CustomEditor(typeof(StateMachineDebugger))]
-public class TextDrawer : Editor
-{
+//[CustomEditor(typeof(StateMachineDebugger))]
+//public class TextDrawer : Editor
+//{
 
-    void OnSceneGUI()
-    {
+//    void OnSceneGUI()
+//    {
 
-        StateMachineDebugger t = target as StateMachineDebugger;
+//        StateMachineDebugger t = target as StateMachineDebugger;
 
-        GUIStyle style = new GUIStyle();
+//        GUIStyle style = new GUIStyle();
 
-        if (t.stateName == "Not Playing")
-        {
-            style.normal.textColor = Color.red;
-        }
-        else
-        {
-            style.normal.textColor = Color.green;
-        }
+//        if (t.stateName == "Not Playing")
+//        {
+//            style.normal.textColor = Color.red;
+//        }
+//        else
+//        {
+//            style.normal.textColor = Color.green;
+//        }
 
-        style.fontSize = 18;
-        style.fontStyle = FontStyle.Bold;
+//        style.fontSize = 18;
+//        style.fontStyle = FontStyle.Bold;
 
 
-        UnityEditor.Handles.Label(t.transform.position, t.stateName, style);
-    }
-}
+//        UnityEditor.Handles.Label(t.transform.position, t.stateName, style);
+//    }
+//}

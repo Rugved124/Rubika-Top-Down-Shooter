@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/UI Scenes/Main-Menu.unity
     guid: 8d74d7513c034bb41ad7075371adb8ca
   - enabled: 1
-    path: Assets/Scenes/Aseems Scenes/EntranceAseem.unity
-    guid: 6f35adb312f0b3448b86a4787d0b8143
-  - enabled: 0
-    path: Assets/Scenes/Ruggy's Levels/Section 1.unity
-    guid: 467d1fba06f1500409b81f31cded827b
+    path: Assets/Scenes/Adis levels/Section 4 Edited.unity
+    guid: b187f261af026074e967a1c187c5bea0
+  - enabled: 1
+    path: Assets/Scenes/Adis levels/Section 3.unity
+    guid: 72be7043dc2254a40b7a98d3aec2ec37
+  - enabled: 1
+    path: Assets/Scenes/Adis levels/Sector 4 Cave.unity
+    guid: 83b28501619385c428034a47be6a864a
+  - enabled: 1
+    path: Assets/Scenes/Adis levels/Sector 5 Hell.unity
+    guid: 75cb117a31933b042b6f3d4ebe552ac8
   m_configObjects: {}
