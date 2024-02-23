@@ -50,10 +50,12 @@ public class DrunkenSepoy : Enemy
         base.FireWeapon();
         if (!isWeaponFiringDone)
         {
+            enemyAnim.SetTrigger("AttackState");
             fireline.SetActive(true);
             firedTime -= Time.deltaTime;
             if (firedTime <= 0)
             {
+                enemyAnim.SetTrigger("IdleState");
                 fireline.SetActive(false);
                 isWeaponFiringDone = true;
                 if (canAdd && pc.statusEffects.burnNumber > 0)

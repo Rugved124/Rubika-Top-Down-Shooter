@@ -269,7 +269,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: -0.99}
-  m_SizeDelta: {x: 3.5, y: 3.5}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3317127535242590064
 Canvas:
@@ -570,6 +570,9 @@ MonoBehaviour:
   all:
     serializedVersion: 2
     m_Bits: 1024
+  maxPoisonedForTime: 0
+  tickSpeed: 0
+  poisonDamagePerTick: 0
   bulletSpeed: 10
   shootPoint: {fileID: 7406950846534626964}
   bullet: {fileID: 0}

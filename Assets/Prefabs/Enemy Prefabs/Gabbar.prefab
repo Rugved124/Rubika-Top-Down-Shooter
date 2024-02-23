@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 1206793713241307077}
   - component: {fileID: 7668670416895128794}
   m_Layer: 8
-  m_Name: Butcher
+  m_Name: Gabbar
   m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -481,6 +481,9 @@ MonoBehaviour:
   all:
     serializedVersion: 2
     m_Bits: 0
+  maxPoisonedForTime: 0
+  tickSpeed: 0
+  poisonDamagePerTick: 0
   bulletSpeed_setInInspector: 40
   debries: {fileID: 4500201555358269410, guid: 07619ea9c57f81748804aa6a4e6f1b50, type: 3}
   shootPoint: {fileID: 2246623131217589833}
@@ -592,7 +595,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: -0.99}
-  m_SizeDelta: {x: 3.5, y: 3.5}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4448184753595806007
 Canvas:
