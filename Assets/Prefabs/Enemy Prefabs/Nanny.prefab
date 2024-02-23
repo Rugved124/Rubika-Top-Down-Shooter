@@ -177,7 +177,6 @@ GameObject:
   - component: {fileID: 1936576725428167023}
   - component: {fileID: 9084905155735580316}
   - component: {fileID: 4123557816643880777}
-  - component: {fileID: 8076461431349314651}
   - component: {fileID: 3277319365634094131}
   m_Layer: 8
   m_Name: Nanny
@@ -320,19 +319,6 @@ MonoBehaviour:
   dashSpeed: 15
   nannyTrail: {fileID: 4835915344381857555, guid: ca9acb061f9d7df47a427fce4a835a40,
     type: 3}
---- !u!114 &8076461431349314651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5637126596393224611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 548a1437b36654d4381017cc21071da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateName: Not Playing
 --- !u!95 &3277319365634094131
 Animator:
   serializedVersion: 5

@@ -364,7 +364,6 @@ GameObject:
   - component: {fileID: 914321147591185377}
   - component: {fileID: 6548940642338347765}
   - component: {fileID: 7772917095773911254}
-  - component: {fileID: 7215495922868246007}
   - component: {fileID: 363960181653538435}
   m_Layer: 8
   m_Name: DrunkenSepoy
@@ -500,19 +499,6 @@ MonoBehaviour:
   fireline: {fileID: 8856617258114396924}
   fireDamage: 0
   visionConeAngle: 30
---- !u!114 &7215495922868246007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7466105767855820433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 548a1437b36654d4381017cc21071da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateName: Not Playing
 --- !u!95 &363960181653538435
 Animator:
   serializedVersion: 5
