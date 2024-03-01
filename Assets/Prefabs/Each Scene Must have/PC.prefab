@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pcSpeed: 8
   consumeRange: 6
-  isInvincible: 1
+  isInvincible: 0
   slowMultiplier: 1
   bulletSpawn: {fileID: 255074778981524322}
   isConsuming: 0
