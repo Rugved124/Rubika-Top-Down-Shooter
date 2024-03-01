@@ -32,8 +32,7 @@ public class PC : MonoBehaviour
     
     public Animator anim;
 
-    [SerializeField]
-    int maxHP;
+    public int maxHP;
     public int currentHP;
 
     [SerializeField]
@@ -168,6 +167,11 @@ public class PC : MonoBehaviour
     public void Die()
     {
        this.gameObject.SetActive(false);
+    }
+
+    public void Respawn()
+    {
+        currentHP = maxHP;
     }
     public void KnockBack(Vector3 collisionPos, float pushBackForce)
     {

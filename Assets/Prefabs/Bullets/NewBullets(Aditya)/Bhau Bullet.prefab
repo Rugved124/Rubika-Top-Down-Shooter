@@ -259,10 +259,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: 1
-  bulletSpeed: 15
-  bulletRate: 1
+  bulletSpeed: 30
+  bulletRate: 2
   bulletDamage: 20
-  bulletLifeTime: 1
+  bulletLifeTime: 0.5
   ammoCount: 20
   bulletType: 1
   pc: {fileID: 0}

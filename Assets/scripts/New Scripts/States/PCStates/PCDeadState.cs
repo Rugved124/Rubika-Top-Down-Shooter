@@ -19,7 +19,11 @@ public class PCDeadState : BaseState
 
     public override Type ExecuteState()
     {
-        
+        if(_pc.currentHP > 0)
+        {
+            _pc.isDead = false;
+            return typeof(PCDefaultState);
+        }
         return null;
     }
 }

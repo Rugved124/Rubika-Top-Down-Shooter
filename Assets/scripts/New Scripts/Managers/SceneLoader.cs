@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
+    PC pc;
+
+    private void Start()
+    {
+        pc = FindObjectOfType<PC>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other != null)
@@ -24,6 +30,8 @@ public class SceneLoader : MonoBehaviour
     }
     public void ReloadScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        pc.gameObject.SetActive(true);
+        pc.Respawn();
+        SceneManager.MoveGameObjectToScene(pc.gameObject, SceneManager.GetActiveScene());
     }
 }
