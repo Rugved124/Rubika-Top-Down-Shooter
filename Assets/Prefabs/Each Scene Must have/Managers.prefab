@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1961891238643270217}
   - component: {fileID: 1948917667535904946}
   - component: {fileID: 6307526006698087883}
+  - component: {fileID: 6425771330125742879}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -92,3 +93,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedEnemies: []
   hasAssignedPos: 0
+--- !u!114 &6425771330125742879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463250725016163887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f79fbbaba1542418c43c9daafc7c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveSpawners: []
