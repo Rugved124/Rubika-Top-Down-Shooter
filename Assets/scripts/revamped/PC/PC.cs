@@ -130,7 +130,8 @@ public class PC : MonoBehaviour
     }
     public void PlayerMove(Vector3 movement, float slowMultiplier)
     {
-        Quaternion rotation = Quaternion.AngleAxis(-45, Vector3.up);
+        //Quaternion rotation = Quaternion.AngleAxis(-45, Vector3.up);
+        Quaternion rotation =  Quaternion.AngleAxis(-Vector3.SignedAngle(transform.forward, movement,Vector3.up), Vector3.up);
         movement = rotation * movement;
         playerRb.MovePosition(transform.position + (movement * pcSpeed * slowMultiplier * Time.deltaTime));
     }

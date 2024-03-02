@@ -54,6 +54,7 @@ public class PCDefaultState : BaseState
         Move(move);
 
         _pc.PlayerMove(moveVector, _pc.slowMultiplier);
+        Debug.Log(-Vector3.SignedAngle(_pc.transform.forward, moveVector, Vector3.up));
         _pc.PlayerRotation();
 
         if (InputManager.instance.GetIfConsumeIsHeld())
