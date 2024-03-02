@@ -165,7 +165,7 @@ public class PC : MonoBehaviour
         }
         
     }
-
+    //-----------------------------------------------Diying and Respawning---------------------------------------------------------------
     public void Die()
     {
        this.gameObject.SetActive(false);
@@ -175,7 +175,9 @@ public class PC : MonoBehaviour
     {
         currentHP = maxHP;
         transform.position = respawnPoint;
+        WaveSpawnerManager.instance.ResetRemainingWaveSpaners();
     }
+    //-------------------------------------------------------------------------------------------------------------------
     public void KnockBack(Vector3 collisionPos, float pushBackForce)
     {
         Debug.Log("Pushed");

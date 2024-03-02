@@ -25,6 +25,7 @@ public class AIManager : MonoBehaviour
 
     private void Update()
     {
+        spawnedEnemies.RemoveAll(enemies => enemies == null);
         if (spawnedEnemies.Count > 0)
         {
 

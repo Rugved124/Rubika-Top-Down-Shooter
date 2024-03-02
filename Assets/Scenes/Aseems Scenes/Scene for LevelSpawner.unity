@@ -1982,7 +1982,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1061719862024363999}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1705044097}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80599de119620a247b7f9da3be77e14f, type: 3}
@@ -2064,15 +2064,32 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 194769427}
     m_Modifications:
+    - target: {fileID: 1491598137817867562, guid: 8f10f10985e56d549be47dee26373e13,
+        type: 3}
+      propertyPath: waves.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491598137817867562, guid: 8f10f10985e56d549be47dee26373e13,
+        type: 3}
+      propertyPath: waves.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 82fd5a65ef2742d4c942dffae366b5c6,
+        type: 2}
+    - target: {fileID: 1491598137817867562, guid: 8f10f10985e56d549be47dee26373e13,
+        type: 3}
+      propertyPath: waves.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 972f473328452444899029d3051aadbc,
+        type: 2}
     - target: {fileID: 2861266448853325401, guid: 8f10f10985e56d549be47dee26373e13,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 101.23226
+      value: -3.7
       objectReference: {fileID: 0}
     - target: {fileID: 2861266448853325401, guid: 8f10f10985e56d549be47dee26373e13,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3279684
+      value: 5.6
       objectReference: {fileID: 0}
     - target: {fileID: 2861266448853325401, guid: 8f10f10985e56d549be47dee26373e13,
         type: 3}
@@ -2130,6 +2147,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1582291925}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1705044097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 463250725016163887, guid: d7d81e77cac7c1541abfac2af742fd2a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1061719862024363999}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1705044101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705044097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f79fbbaba1542418c43c9daafc7c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveSpawners: []
 --- !u!1 &1721906604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2351,7 +2387,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 463250725016163887, guid: d7d81e77cac7c1541abfac2af742fd2a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1705044101}
   m_SourcePrefab: {fileID: 100100000, guid: d7d81e77cac7c1541abfac2af742fd2a, type: 3}
 --- !u!1001 &1139654005669312407
 PrefabInstance:

@@ -45,8 +45,11 @@ public class WaveSpawner : MonoBehaviour
     List<GameObject> doors = new List<GameObject>();
 
     public bool canSpawm;
+
+    public bool isFinished {  get; private set; }
     private void Awake()
     {
+        isFinished = false;
         currentWave = waves[i];
         timebetweenSpawns = currentWave.timeBeforeThisWave;
         wavePurchasePower = currentWave.waveValue;
@@ -90,6 +93,7 @@ public class WaveSpawner : MonoBehaviour
                     if(existingEnemies.Count <= 0)
                     {
                         ChangeDoorState(false);
+                        isFinished = true;
                     }
                     
                     break;
@@ -189,5 +193,21 @@ public class WaveSpawner : MonoBehaviour
                 ChangeDoorState(true);
             }
         }
+    }
+    
+    public void ResetWaveSpawner()
+    {
+        foreach (GameObject enemies in existingEnemies)
+        {
+            if(enemies != null)
+            {
+                Destroy(enemies.gameObject);
+            }
+        }
+        i = 0;
+        isFinished = false;
+        currentWave = waves[i];
+        timebetweenSpawns = currentWave.timeBeforeThisWave;
+        wavePurchasePower = currentWave.waveValue;
     }
 }
