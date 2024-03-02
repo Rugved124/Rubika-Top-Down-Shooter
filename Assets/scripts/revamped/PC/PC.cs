@@ -49,6 +49,7 @@ public class PC : MonoBehaviour
     public float timeBetweenFire;
 
     public bool isDead;
+    public Vector3 respawnPoint;
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
@@ -68,6 +69,7 @@ public class PC : MonoBehaviour
 
     private void Start()
     {
+        respawnPoint = transform.position;
         consumeLine.SetActive(false);
         anim = visuals.GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
@@ -172,6 +174,7 @@ public class PC : MonoBehaviour
     public void Respawn()
     {
         currentHP = maxHP;
+        transform.position = respawnPoint;
     }
     public void KnockBack(Vector3 collisionPos, float pushBackForce)
     {
