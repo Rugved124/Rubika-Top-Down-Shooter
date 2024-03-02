@@ -50,6 +50,9 @@ public class PC : MonoBehaviour
 
     public bool isDead;
     public Vector3 respawnPoint;
+
+    public Transform cam;
+    Vector3 camForward;
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
@@ -85,6 +88,7 @@ public class PC : MonoBehaviour
         statusEffects.hasLostAbility = false;
         timeBetweenFire = statusEffects.burnTickSpeed;
         isBurningFor = -maxBurnTime;
+        cam = Camera.main.transform;
     }
 
     private void Update()
@@ -125,14 +129,18 @@ public class PC : MonoBehaviour
             nannyFire = 0;
         }
 
+        
         Burning();
         NannyBurning();
     }
     public void PlayerMove(Vector3 movement, float slowMultiplier)
     {
         //Quaternion rotation = Quaternion.AngleAxis(-45, Vector3.up);
-        Quaternion rotation =  Quaternion.AngleAxis(-Vector3.SignedAngle(transform.forward, movement,Vector3.up), Vector3.up);
+        camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
+        Quaternion rotation =  Quaternion.AngleAxis(Vector3.SignedAngle(camForward, transform.forward,Vector3.up) - 45, Vector3.up);
         movement = rotation * movement;
+        anim.SetFloat("Forwards", InputManager.instance.GetMovementVertical());
+        anim.SetFloat("Sideways", InputManager.instance.GetMovementHorizontal()) ;
         playerRb.MovePosition(transform.position + (movement * pcSpeed * slowMultiplier * Time.deltaTime));
     }
 
