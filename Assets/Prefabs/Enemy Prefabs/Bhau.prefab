@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 7772917095773911254}
   - component: {fileID: 363960181653538435}
   m_Layer: 8
-  m_Name: DrunkenSepoy
+  m_Name: Bhau
   m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

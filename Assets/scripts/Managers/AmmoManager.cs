@@ -24,7 +24,7 @@ public class AmmoManager : MonoBehaviour
         FIRE,
         FIREFIRE,
         POISON,
-        POISONPOSION,
+        POISONPOISON,
         SLOW,
         SLOWSLOW,
         FIREPOISON,
@@ -60,6 +60,13 @@ public class AmmoManager : MonoBehaviour
     }
     private void Update()
     {
+        if(currentShield != null)
+        {
+            if(firstAmmoType != EquippedAmmoType.SHIELD || secondAmmoType != EquippedAmmoType.SHIELD) 
+            {
+                Destroy(currentShield);
+            }
+        }
         if(InputManager.instance.IsMousePressed() && !pc.isDead) 
         {
             if(bulletToSpawn != null && canShoot && ammoCount > 0)
@@ -67,14 +74,14 @@ public class AmmoManager : MonoBehaviour
                 
                 canShoot = false;
                 StartCoroutine(bulletFireRate());
-                GameObject bulletShot = Instantiate(bulletToSpawn, pc.GetPCShoot().position, Quaternion.identity);
+                GameObject bulletShot = Instantiate(bulletToSpawn, pc.GetPCShoot().position, pc.GetPCShoot().rotation);
                 bulletShot.GetComponent<BaseBullet>().DidPCShotThis(true);
                 ammoCount--;
             }
         }
         if(ammoCount <= 0)
         {
-            ChangeEquippedAmmo(EquippedAmmoType.DEFAULTAMMO);
+            ResetEquippedAmmo();
         }
         if(currentShield != null && pc != null)
         {
@@ -83,11 +90,96 @@ public class AmmoManager : MonoBehaviour
     }
     public void ChangeEquippedAmmo(EquippedAmmoType newAmmo)
     {
-        currentAmmoType = newAmmo;
+        firstAmmoType = secondAmmoType;
+        secondAmmoType = newAmmo;
+        if (firstAmmoType == EquippedAmmoType.DEFAULTAMMO || secondAmmoType == EquippedAmmoType.DEFAULTAMMO)
+        {
+            if (firstAmmoType == EquippedAmmoType.DEFAULTAMMO)
+            {
+                currentAmmoType = secondAmmoType;
+            }
+            else
+            {
+                currentAmmoType = firstAmmoType;
+            }
+        }
+        if (firstAmmoType == EquippedAmmoType.SHIELD|| secondAmmoType == EquippedAmmoType.SHIELD)
+        {
+            if (firstAmmoType == EquippedAmmoType.SHIELD && secondAmmoType == EquippedAmmoType.SHIELD)
+            {
+                currentAmmoType = EquippedAmmoType.SHIELDSHIELD;
+            }
+            else
+            {
+                if(firstAmmoType != EquippedAmmoType.SHIELD)
+                {
+                    currentAmmoType = firstAmmoType;
+                }
+                else
+                {
+                    currentAmmoType = secondAmmoType;
+                }
+            }
+        }
+        switch (firstAmmoType)
+        {
+            case EquippedAmmoType.FIRE:
+                if (secondAmmoType == EquippedAmmoType.FIRE)
+                {
+                    currentAmmoType = EquippedAmmoType.FIREFIRE;
+                }
+                if (secondAmmoType == EquippedAmmoType.POISON)
+                {
+                    currentAmmoType = EquippedAmmoType.FIREPOISON;
+                }
+                if (secondAmmoType == EquippedAmmoType.SLOW)
+                {
+                    currentAmmoType = EquippedAmmoType.FIRESLOW;
+                }
+
+                break;
+            case EquippedAmmoType.POISON:
+                if (secondAmmoType == EquippedAmmoType.FIRE)
+                {
+                    currentAmmoType = EquippedAmmoType.POISONFIRE;
+                }
+                if (secondAmmoType == EquippedAmmoType.POISON)
+                {
+                    currentAmmoType = EquippedAmmoType.POISONPOISON;
+                }
+                if (secondAmmoType == EquippedAmmoType.SLOW)
+                {
+                    currentAmmoType = EquippedAmmoType.POISONSLOW;
+                }
+                break;
+            case EquippedAmmoType.SLOW:
+                if (secondAmmoType == EquippedAmmoType.FIRE)
+                {
+                    currentAmmoType = EquippedAmmoType.SLOWFIRE;
+                }
+                if (secondAmmoType == EquippedAmmoType.POISON)
+                {
+                    currentAmmoType = EquippedAmmoType.SLOWPOISON;
+                }
+                if (secondAmmoType == EquippedAmmoType.SLOW)
+                {
+                    currentAmmoType = EquippedAmmoType.SLOWSLOW;
+                }
+                break;
+        }
+        ChangeAmmoType();
+    }
+
+    void ResetEquippedAmmo()
+    {
+        firstAmmoType = EquippedAmmoType.DEFAULTAMMO;
+        secondAmmoType = EquippedAmmoType.DEFAULTAMMO;
+        currentAmmoType = EquippedAmmoType.DEFAULTAMMO;
         ChangeAmmoType();
     }
     public void ChangeAmmoType()
     {
+       
         switch (currentAmmoType)
         {
             case EquippedAmmoType.DEFAULTAMMO:
@@ -106,9 +198,22 @@ public class AmmoManager : MonoBehaviour
                 break;
             case EquippedAmmoType.SHIELD:
                 GetBulletObject(BaseBullet.BulletTypes.DEFAULTAMMO);
-                currentShield = Instantiate(shield, transform.position, Quaternion.identity);
-                currentShield.transform.forward = transform.forward;
-                currentShield.GetComponent<ShieldBehaviour>().IsPCShield(true);
+                if(currentShield == null)
+                {
+                    currentShield = Instantiate(shield, transform.position, Quaternion.identity);
+                    currentShield.transform.forward = transform.forward;
+                    currentShield.GetComponent<ShieldBehaviour>().IsPCShield(true);
+                }
+                else
+                {
+                    currentShield.GetComponent <ShieldBehaviour>().ResetShield();
+                }
+                break;
+            case EquippedAmmoType.FIREPOISON:
+                GetBulletObject(BaseBullet.BulletTypes.FIREPOISON);
+                break;
+            case EquippedAmmoType.POISONFIRE:
+                GetBulletObject(BaseBullet.BulletTypes.POISONFIRE);
                 break;
         }
     }

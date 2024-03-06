@@ -135,12 +135,12 @@ public class PC : MonoBehaviour
     }
     public void PlayerMove(Vector3 movement, float slowMultiplier)
     {
-        //Quaternion rotation = Quaternion.AngleAxis(-45, Vector3.up);
+        Quaternion rotation = Quaternion.AngleAxis(-45, Vector3.up);
         camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
-        Quaternion rotation =  Quaternion.AngleAxis(Vector3.SignedAngle(camForward, transform.forward,Vector3.up) - 45, Vector3.up);
+        //Quaternion rotation =  Quaternion.AngleAxis(Vector3.SignedAngle(camForward, transform.forward,Vector3.up) - 45, Vector3.up);
         movement = rotation * movement;
-        anim.SetFloat("Forwards", InputManager.instance.GetMovementVertical());
-        anim.SetFloat("Sideways", InputManager.instance.GetMovementHorizontal()) ;
+        //anim.SetFloat("Forwards", InputManager.instance.GetMovementVertical());
+        //anim.SetFloat("Sideways", InputManager.instance.GetMovementHorizontal()) ;
         playerRb.MovePosition(transform.position + (movement * pcSpeed * slowMultiplier * Time.deltaTime));
     }
 
@@ -177,7 +177,11 @@ public class PC : MonoBehaviour
     //-----------------------------------------------Diying and Respawning---------------------------------------------------------------
     public void Die()
     {
-       this.gameObject.SetActive(false);
+        if(AmmoManager.instance.currentShield != null) 
+        {
+            Destroy(AmmoManager.instance.currentShield.gameObject);
+        }
+        this.gameObject.SetActive(false);
     }
 
     public void Respawn()

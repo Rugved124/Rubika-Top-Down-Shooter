@@ -7,9 +7,16 @@ public class ShieldBehaviour : MonoBehaviour
     [SerializeField]
     private int shieldCount;
 
+    private int maxShieldCount;
+
     private GameObject enemy;
 
     public bool isPC;// { get; private set; }
+
+    private void Awake()
+    {
+        maxShieldCount = shieldCount;
+    }
     private void Update()
     {
         if (shieldCount <= 0)
@@ -61,5 +68,10 @@ public class ShieldBehaviour : MonoBehaviour
     public void SetParentToEnemy(GameObject _enemy)
     {
         enemy = _enemy;
+    }
+
+    public void ResetShield()
+    {
+        shieldCount = maxShieldCount;
     }
 }
