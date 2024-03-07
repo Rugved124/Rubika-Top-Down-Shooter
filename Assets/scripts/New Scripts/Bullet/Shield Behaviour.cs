@@ -13,12 +13,24 @@ public class ShieldBehaviour : MonoBehaviour
 
     public bool isPC;// { get; private set; }
 
+    float poisonedForTime;
+    [SerializeField]
+    private float maxPoisonedForTime;
+
+    [SerializeField]
+    float tickSpeed;
+    float lastTick;
+
+    [SerializeField]
+    int poisonDamagePerTick;
+
     private void Awake()
     {
         maxShieldCount = shieldCount;
     }
     private void Update()
     {
+        Poisoned();
         if (shieldCount <= 0)
         {
             Die();
@@ -73,5 +85,23 @@ public class ShieldBehaviour : MonoBehaviour
     public void ResetShield()
     {
         shieldCount = maxShieldCount;
+    }
+
+    void Poisoned()
+    {
+        if (Time.time - poisonedForTime <= maxPoisonedForTime)
+        {
+
+            if (Time.time - lastTick >= tickSpeed)
+            {
+                TakeDamage(poisonDamagePerTick);
+                lastTick = Time.time;
+            }
+
+        }
+    }
+    public void SetPoisonedForTime()
+    {
+        poisonedForTime = Time.time;
     }
 }

@@ -32,7 +32,6 @@ public class Nanny : Enemy
     {
         base.Start();
         enemyType = EnemyType.NANNY;
-        Debug.Log(enemyType.ToString());
         canInvoke = true;
         canInvokeBullet = true;
         invokeDash = true;

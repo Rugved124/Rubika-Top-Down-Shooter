@@ -493,9 +493,9 @@ MonoBehaviour:
   all:
     serializedVersion: 2
     m_Bits: 0
-  maxPoisonedForTime: 0
-  tickSpeed: 0
-  poisonDamagePerTick: 0
+  maxPoisonedForTime: 3
+  tickSpeed: 0.25
+  poisonDamagePerTick: 3
   fireline: {fileID: 8856617258114396924}
   fireDamage: 0
   visionConeAngle: 30

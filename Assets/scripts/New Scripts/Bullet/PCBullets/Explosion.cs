@@ -24,13 +24,13 @@ public class Explosion : MonoBehaviour
         startTime = Time.time;
     }
     void Update()
-    {
+    { 
         if(Time.time - startTime >= maxTime)
         {
             Die();
         }
 
-        if (Time.time - startTime >= maxTime/2 && !exploded)
+        if (Time.time - startTime >= 0.2 && !exploded)
         {
             exploded = true;
             Explode();
@@ -56,15 +56,29 @@ public class Explosion : MonoBehaviour
         {
             foreach (Collider c in Physics.OverlapSphere(transform.position, explosionRadius, enemies))
             {
-                if (c.CompareTag("Player"))
+                RaycastHit hit;
+                if(Physics.Raycast(transform.position, c.transform.position - transform.position, out hit))
                 {
-                    c.GetComponent<PC>().TakeDamage(explosionDamage / 2);
+                    Debug.DrawRay(transform.position, c.transform.position - transform.position, Color.black);
+                    if (hit.collider != null)
+                    {
+                        
+                        if(hit.collider.CompareTag("Player"))
+                        {
+                            c.GetComponent<PC>().TakeDamage(explosionDamage / 2);
+                        }
+                        if (hit.collider.CompareTag("Enemies"))
+                        {
+                            c.GetComponent<Enemy>().TakeDamage(explosionDamage);
+                        }
+                    }
                 }
-                if (c.CompareTag("Enemies"))
-                {
-                    c.GetComponent<Enemy>().TakeDamage(explosionDamage);
-                }
+
             }
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

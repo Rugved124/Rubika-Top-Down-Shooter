@@ -318,5 +318,9 @@ public class Enemy : MonoBehaviour
 
         }
     }
+    public void SetPoisonedForTime()
+    {
+        poisonedForTime = Time.time;
+    }
 }
 
