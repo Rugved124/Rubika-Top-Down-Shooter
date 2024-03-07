@@ -5,13 +5,11 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/UI Scenes/Main-Menu.unity
     guid: 8d74d7513c034bb41ad7075371adb8ca
   - enabled: 1
-    path: Assets/Scenes/Adis levels/Section 4 Edited.unity
-    guid: b187f261af026074e967a1c187c5bea0
-  - enabled: 1
-    path: Assets/Scenes/Adis levels/Section 3.unity
-    guid: 72be7043dc2254a40b7a98d3aec2ec37
+    path: Assets/Scenes/Aseems Scenes/EntranceAseem/Scene for coding/Aseem's Scene
+      for coding.unity
+    guid: eec2276b1242503458870f5c87086a4d
   m_configObjects: {}

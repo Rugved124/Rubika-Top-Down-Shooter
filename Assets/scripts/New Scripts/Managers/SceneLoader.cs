@@ -18,7 +18,7 @@ public class SceneLoader : MonoBehaviour
         {
             if(other.tag == "Player")
             {
-                if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCount)
+                if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings)
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 }
