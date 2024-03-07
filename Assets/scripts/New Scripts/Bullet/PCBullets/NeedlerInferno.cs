@@ -46,12 +46,12 @@ public class NeedlerInferno : BaseBullet
         startingAngle = Quaternion.AngleAxis(-visionConeAngle / 2, Vector3.up);
         stepAngle = Quaternion.AngleAxis(visionConeAngle / rayCastNumber, Vector3.up);
         base.Start();
+        BulletMovement(transform.forward);
     }
     public override void Update()
     {
         if (Vector3.Distance(_startPos, transform.position) >= bulletRange)
         {
-            Debug.Log("Too Far");
             if (!hitEnemy && enemy == null)
             {
                 Die();
@@ -81,7 +81,7 @@ public class NeedlerInferno : BaseBullet
             //    enemyLocation.y = transform.position.y;
             //    transform.forward = (enemyLocation - transform.position).normalized;
             //}
-            BulletMovement(transform.forward);
+  
         }
         else if(!hitThings)
         {
@@ -123,7 +123,7 @@ public class NeedlerInferno : BaseBullet
     public override void BulletMovement(Vector3 forceDirection)
     {
         base.BulletMovement(forceDirection);
-        bulletRB.AddForce(forceDirection * bulletSpeed, ForceMode.Force);
+        bulletRB.AddForce(forceDirection * bulletSpeed, ForceMode.Impulse);
 
     }
     public override void OnTriggerEnter(Collider collision)
