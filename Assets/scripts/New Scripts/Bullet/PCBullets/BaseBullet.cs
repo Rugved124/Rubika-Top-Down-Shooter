@@ -17,6 +17,7 @@ public class BaseBullet : MonoBehaviour
         POISON,
         SLOW,
         FIREPOISON,
+        POISONFIRE,
         FIRESLOW,
         POISONSLOW
     }
@@ -32,6 +33,9 @@ public class BaseBullet : MonoBehaviour
 
     [SerializeField] 
     protected float bulletLifeTime;
+
+    [SerializeField]
+    protected float bulletRange;
 
     public int ammoCount;
     protected float spawnTime;

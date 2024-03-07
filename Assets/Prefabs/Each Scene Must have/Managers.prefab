@@ -72,6 +72,8 @@ MonoBehaviour:
   - {fileID: 8720734969829648373, guid: b2cedfb493aa7ee438d8755ac96f53b3, type: 3}
   - {fileID: 3411248443990829376, guid: a4ce36a938cad024d8467898cc232581, type: 3}
   - {fileID: 8720734969829648373, guid: b2cedfb493aa7ee438d8755ac96f53b3, type: 3}
+  - {fileID: 3513004030070828614, guid: 8263c082c98d81d408af9cd4983a1c6e, type: 3}
+  - {fileID: 1878140635571930098, guid: 24d671e45cdd9f143aa429fd790e5501, type: 3}
   bulletToSpawn: {fileID: 0}
   ammoCount: 0
   shield: {fileID: 4671155514325838039, guid: 3c020af5537d3cf4f8e86b68372ca246, type: 3}

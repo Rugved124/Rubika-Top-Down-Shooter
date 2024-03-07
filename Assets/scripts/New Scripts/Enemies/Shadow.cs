@@ -197,9 +197,9 @@ public class Shadow : Enemy
         result = Vector3.zero;
         return false;
     }
-public override void Die()
-    {
-        base.Die();
-        Destroy(storedAOE);
-    }
+    public override void Die()
+        {
+            base.Die();
+            Destroy(storedAOE);
+        }
 }

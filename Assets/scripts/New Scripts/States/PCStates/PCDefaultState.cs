@@ -31,31 +31,29 @@ public class PCDefaultState : BaseState
     {
         forwards = InputManager.instance.GetMovementVertical();
         sideways = InputManager.instance.GetMovementHorizontal();
-        camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
         if (_pc.currentHP <= 0)
         {
             return typeof(PCDeadState);
         }
         Vector3 moveVector = new Vector3(sideways, 0, forwards).normalized;
-        //if (cam != null)
-        //{
-        //    camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
-        //    move = forwards * camForward + sideways * cam.right;
-        //}
-        //else
-        //{
-        //    move = forwards * Vector3.forward + sideways * Vector3.right;
-        //}
+        if (cam != null)
+        {
+            camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
+            move = forwards * camForward + sideways * cam.right;
+        }
+        else
+        {
+            move = forwards * Vector3.forward + sideways * Vector3.right;
+        }
 
-        //if(move.magnitude > 1)
-        //{
-        //    move.Normalize();
-        //}
+        if (move.magnitude > 1)
+        {
+            move.Normalize();
+        }
 
-        //Move(move);
+        Move(move);
 
         _pc.PlayerMove(moveVector, _pc.slowMultiplier);
-        Debug.Log(Vector3.SignedAngle(camForward, _pc.transform.forward, Vector3.up));
         _pc.PlayerRotation();
 
         if (InputManager.instance.GetIfConsumeIsHeld())

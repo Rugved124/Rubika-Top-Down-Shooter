@@ -15,7 +15,7 @@ MonoBehaviour:
   visionConeAngle: 180
   aggroRadius: 10
   attackRange: 24
-  HitPoints: 100
+  HitPoints: 50
   teleportCoolDown: 0
   enemyMoveSpeed: 18
   enemyRotationSpeed: 200
