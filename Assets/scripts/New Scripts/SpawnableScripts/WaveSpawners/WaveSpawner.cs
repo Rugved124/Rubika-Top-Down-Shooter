@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO.IsolatedStorage;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -47,11 +48,18 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField]
     List<GameObject> closingDoors = new List<GameObject>();
 
+    [SerializeField]
+    GameObject sceneLoader;
+
     public bool canSpawm;
 
     public bool isFinished {  get; private set; }
     private void Awake()
     {
+        if(sceneLoader != null)
+        {
+            sceneLoader.SetActive(false);
+        }
         isFinished = false;
         currentWave = waves[i];
         timebetweenSpawns = currentWave.timeBeforeThisWave;
@@ -96,6 +104,10 @@ public class WaveSpawner : MonoBehaviour
                     if(existingEnemies.Count <= 0)
                     {
                         ChangeDoorState(false);
+                        if(sceneLoader != null)
+                        {
+                            sceneLoader.SetActive(true);
+                        }
                         isFinished = true;
                     }
                     
@@ -212,9 +224,22 @@ public class WaveSpawner : MonoBehaviour
             }
         }
         i = 0;
+        if(sceneLoader != null)
+        {
+            sceneLoader.SetActive(false);
+        }
         isFinished = false;
         currentWave = waves[i];
         timebetweenSpawns = currentWave.timeBeforeThisWave;
         wavePurchasePower = currentWave.waveValue;
+        foreach (GameObject door in closingDoors)
+        {
+            door.SetActive(false);
+        }
+        foreach (GameObject door in doors)
+        {
+            door.SetActive(true);
+        }
+        currentWaveStates = WaveStates.GenerateEnemies;
     }
 }
