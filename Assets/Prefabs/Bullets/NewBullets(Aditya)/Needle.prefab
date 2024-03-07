@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 1292322134329530353}
   - component: {fileID: 1704089183113845772}
   - component: {fileID: 3644442739746183520}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Needle
-  m_TagString: Untagged
+  m_TagString: Bullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

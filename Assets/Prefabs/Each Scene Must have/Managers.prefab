@@ -78,10 +78,16 @@ MonoBehaviour:
   - {fileID: 6067043956264170758, guid: cba72af215b3ca5428f297a6d08e6a52, type: 3}
   - {fileID: 3831231028349536195, guid: a39f1db35cb626749a867542fc44c418, type: 3}
   - {fileID: 3411248443990829376, guid: dcee470ec11b8df418f1c10668c7d67f, type: 3}
+  - {fileID: 3411248443990829376, guid: 0781557bcdf19a04fb19ab13563d66ed, type: 3}
+  - {fileID: 3196530752102116148, guid: 752bd1c91f3f7b34abf51dd8855b07ee, type: 3}
   bulletToSpawn: {fileID: 0}
   ammoCount: 0
   shield: {fileID: 4671155514325838039, guid: 3c020af5537d3cf4f8e86b68372ca246, type: 3}
   currentShield: {fileID: 0}
+  firstAmmo: {fileID: 0}
+  secondAmmo: {fileID: 0}
+  firstAmmoColor: {fileID: 0}
+  secondAmmoColor: {fileID: 0}
   currentAmmoType: 0
   firstAmmoType: 0
   secondAmmoType: 0
@@ -112,3 +118,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveSpawners: []
+  fixedWaves: []

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2208067108031389540}
   - component: {fileID: 1263713998126711874}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chain Lightning
-  m_TagString: Untagged
+  m_TagString: Bullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,6 +63,6 @@ MonoBehaviour:
     m_Bits: 256
   colliders: []
   currentEnemy: {fileID: 0}
-  startPos: {x: 0, y: 0, z: 0}
+  _startPos: {x: 0, y: 0, z: 0}
   lookPos: {x: 0, y: 0, z: 0}
   hasSetPos: 0

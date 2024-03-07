@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class AmmoManager : MonoBehaviour
 {
     public static AmmoManager instance;
@@ -18,6 +18,13 @@ public class AmmoManager : MonoBehaviour
     private GameObject shield;
 
     public GameObject currentShield;
+
+    [SerializeField]
+    private Slider firstAmmo;
+    [SerializeField]
+    private Slider secondAmmo;
+
+    public Image firstAmmoColor, secondAmmoColor;
     public enum EquippedAmmoType
     {
         DEFAULTAMMO,
@@ -57,10 +64,63 @@ public class AmmoManager : MonoBehaviour
         pc = FindObjectOfType<PC>();
         ChangeAmmoType();
         canShoot = true;
+        firstAmmo.maxValue = secondAmmo.maxValue = ammoCount;
     }
     private void Update()
     {
-        if(currentShield != null)
+        if(firstAmmoType != EquippedAmmoType.DEFAULTAMMO || firstAmmoType != EquippedAmmoType.SHIELD)
+        {
+            firstAmmo.value = ammoCount;
+        }
+        else
+        {
+            firstAmmo.value = firstAmmo.maxValue;
+        }
+        if (secondAmmoType != EquippedAmmoType.DEFAULTAMMO || secondAmmoType != EquippedAmmoType.SHIELD)
+        {
+            secondAmmo.value = ammoCount;
+        }
+        else
+        {
+            secondAmmo.value = firstAmmo.maxValue;
+        }
+        switch (firstAmmoType)
+        {
+            case EquippedAmmoType.DEFAULTAMMO:
+                firstAmmoColor.color = Color.black;
+                break;
+            case EquippedAmmoType.FIRE:
+                firstAmmoColor.color = Color.red;
+                break;
+            case EquippedAmmoType.SLOW:
+                firstAmmoColor.color = Color.blue;
+                break;
+            case EquippedAmmoType.POISON:
+                firstAmmoColor.color = Color.green;
+                break;
+            case EquippedAmmoType.SHIELD:
+                firstAmmoColor.color = Color.yellow;
+                break;
+        }
+        switch (secondAmmoType)
+        {
+            case EquippedAmmoType.DEFAULTAMMO:
+                secondAmmoColor.color = Color.black;
+                break;
+            case EquippedAmmoType.FIRE:
+                secondAmmoColor.color = Color.red;
+                break;
+            case EquippedAmmoType.SLOW:
+                secondAmmoColor.color = Color.blue;
+                break;
+            case EquippedAmmoType.POISON:
+                secondAmmoColor.color = Color.green;
+                break;
+            case EquippedAmmoType.SHIELD:
+                secondAmmoColor.color = Color.yellow;
+                break;
+        }
+        if (currentShield != null)
         {
             if(firstAmmoType != EquippedAmmoType.SHIELD || secondAmmoType != EquippedAmmoType.SHIELD) 
             {
@@ -90,6 +150,7 @@ public class AmmoManager : MonoBehaviour
     }
     public void ChangeEquippedAmmo(EquippedAmmoType newAmmo)
     {
+
         firstAmmoType = secondAmmoType;
         secondAmmoType = newAmmo;
         if (firstAmmoType == EquippedAmmoType.DEFAULTAMMO || secondAmmoType == EquippedAmmoType.DEFAULTAMMO)
@@ -230,6 +291,9 @@ public class AmmoManager : MonoBehaviour
             case EquippedAmmoType.SLOWFIRE:
                 GetBulletObject(BaseBullet.BulletTypes.SLOWFIRE);
                 break;
+            case EquippedAmmoType.FIREFIRE:
+                GetBulletObject(BaseBullet.BulletTypes.FIREFIRE);
+                break;
         }
     }
     public void GetBulletObject(BaseBullet.BulletTypes currentBulletType)
@@ -243,6 +307,8 @@ public class AmmoManager : MonoBehaviour
                 {
                     bulletToSpawn = bullet;
                     ammoCount = bulletToSpawn.GetComponent<BaseBullet>().ammoCount;
+                    firstAmmo.maxValue = ammoCount;
+                    secondAmmo.maxValue = ammoCount;
                     return;
                 }
             }
@@ -254,5 +320,13 @@ public class AmmoManager : MonoBehaviour
         yield return new WaitForSeconds(1/bulletToSpawn.GetComponent<BaseBullet>().bulletRate);
         canShoot = true;
     }
+    public void ReduceAmmoCount(int damage)
+    {
+        ammoCount -= damage;
+    }
 
+    public int GetAmmoCount() 
+    {
+        return ammoCount;
+    }
 }
