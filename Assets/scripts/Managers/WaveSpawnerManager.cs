@@ -10,6 +10,7 @@ public class WaveSpawnerManager : MonoBehaviour
 
     public List<WaveSpawner> waveSpawners;
 
+    public List<FixedWaveSpawner> fixedWaves;
     private void Awake()
     {
         if (instance == null)
@@ -24,11 +25,22 @@ public class WaveSpawnerManager : MonoBehaviour
     void Start()
     {
         waveSpawners = FindObjectsOfType<WaveSpawner>().ToList();
+        fixedWaves = FindObjectsOfType<FixedWaveSpawner>(true).ToList();
     }
 
     public void ResetRemainingWaveSpaners()
     {
         foreach (WaveSpawner waveSpawner in waveSpawners)
+        {
+            if (waveSpawner != null)
+            {
+                if (!waveSpawner.isFinished)
+                {
+                    waveSpawner.ResetWaveSpawner();
+                }
+            }
+        }
+        foreach (FixedWaveSpawner waveSpawner in fixedWaves)
         {
             if (waveSpawner != null)
             {

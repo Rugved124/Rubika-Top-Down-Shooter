@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO.IsolatedStorage;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class WaveSpawner : MonoBehaviour
+public class FixedWaveSpawner : MonoBehaviour
 {
     public enum WaveStates
     {
@@ -21,7 +19,7 @@ public class WaveSpawner : MonoBehaviour
     private Wave currentWave;
 
     [SerializeField]
-    private Transform[] spawnPoints;
+    private Transform spawnPoint;
 
     private float timebetweenSpawns;
     private int i = 0;
@@ -44,15 +42,21 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField]
     List<GameObject> doors = new List<GameObject>();
 
+    [SerializeField]
+    List<GameObject> closingDoors = new List<GameObject>();
+
     public bool canSpawm;
 
-    public bool isFinished {  get; private set; }
+    public bool isFinished { get; private set; }
     private void Awake()
     {
         isFinished = false;
-        currentWave = waves[i];
-        timebetweenSpawns = currentWave.timeBeforeThisWave;
-        wavePurchasePower = currentWave.waveValue;
+        if(waves.Length > 0)
+        {
+            currentWave = waves[i];
+            timebetweenSpawns = currentWave.timeBeforeThisWave;
+            wavePurchasePower = currentWave.waveValue;
+        }
     }
 
     private void Update()
@@ -90,16 +94,16 @@ public class WaveSpawner : MonoBehaviour
                     }
                     break;
                 case WaveStates.StopSpawn:
-                    if(existingEnemies.Count <= 0)
+                    if (existingEnemies.Count <= 0)
                     {
                         ChangeDoorState(false);
                         isFinished = true;
                     }
-                    
+
                     break;
             }
         }
-        
+
 
     }
 
@@ -108,12 +112,9 @@ public class WaveSpawner : MonoBehaviour
         NextWave();
         timebetweenSpawns = Time.time + currentWave.timeBeforeThisWave;
 
-        for(int j =0; j < generateEnemies.Count; j++)
+        for (int j = 0; j < generateEnemies.Count; j++)
         {
-            int selectedSpawnPoint = Random.Range(0, spawnPoints.Length);
-
-            existingEnemies.Add(Instantiate(generateEnemies[j], spawnPoints[selectedSpawnPoint].position, spawnPoints[selectedSpawnPoint].rotation));
-
+            existingEnemies.Add(Instantiate(generateEnemies[j], spawnPoint.position, spawnPoint.rotation));
             yield return new WaitForSeconds(0.1f);
         }
         ChangeWaveState(WaveStates.Wait);
@@ -121,7 +122,7 @@ public class WaveSpawner : MonoBehaviour
     }
     void NextWave()
     {
-        if(i + 1 < waves.Length)
+        if (i + 1 < waves.Length)
         {
             i++;
             currentWave = waves[i];
@@ -134,31 +135,32 @@ public class WaveSpawner : MonoBehaviour
 
     void GenerateEnemies()
     {
-        
-
-        int randomEnemyID = Random.Range(0, currentWave.enemy.Length);
-        int randomEnemyCost = currentWave.enemy[randomEnemyID].enemyValue;
 
 
-        if (wavePurchasePower - randomEnemyCost >= 0)
+        //int randomEnemyID = Random.Range(0, currentWave.enemy.Length);
+        //int randomEnemyCost = currentWave.enemy[randomEnemyID].enemyValue;
+
+
+        //if (wavePurchasePower - randomEnemyCost >= 0)
+        //{
+        //    generateEnemies.Add(currentWave.enemy[randomEnemyID].enemiesInWave);
+        //    wavePurchasePower -= randomEnemyCost;
+        //}
+        for (int i = 0; i < currentWave.enemy.Length; i++)
         {
-            generateEnemies.Add(currentWave.enemy[randomEnemyID].enemiesInWave);
-            wavePurchasePower -= randomEnemyCost;
+            generateEnemies.Add(currentWave.enemy[i].enemiesInWave);
         }
-        else
+        for (int i = 0; i < currentWave.enemy.Length; i++)
         {
-            for(int i = 0; i < currentWave.enemy.Length; i++)
+            if (wavePurchasePower <= currentWave.enemy[i].enemyValue)
             {
-                if(wavePurchasePower <= currentWave.enemy[i].enemyValue)
+                if (currentWaveStates != WaveStates.SpawnWave)
                 {
-                    if(currentWaveStates != WaveStates.SpawnWave)
-                    {
-                        ChangeWaveState(WaveStates.SpawnWave);
-                    }
+                    ChangeWaveState(WaveStates.SpawnWave);
                 }
             }
         }
-        
+
     }
     void ChangeWaveState(WaveStates state)
     {
@@ -170,36 +172,39 @@ public class WaveSpawner : MonoBehaviour
         generateEnemies.Clear();
         wavePurchasePower = currentWave.waveValue;
 
-        if(currentWaveStates != WaveStates.GenerateEnemies)
+        if (currentWaveStates != WaveStates.GenerateEnemies)
         {
             ChangeWaveState(WaveStates.GenerateEnemies);
         }
     }
 
-    void ChangeDoorState(bool value)
+    public void ChangeDoorState(bool value)
     {
-       foreach(GameObject door in doors)
+        foreach (GameObject door in doors)
         {
             door.SetActive(value);
+        }
+        foreach (GameObject door in closingDoors)
+        {
+            door.SetActive(true);
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other != null)
         {
-            if(other.tag == "Player")
+            if (other.tag == "Player")
             {
-                canSpawm = true;
                 ChangeDoorState(true);
             }
         }
     }
-    
+
     public void ResetWaveSpawner()
     {
         foreach (GameObject enemies in existingEnemies)
         {
-            if(enemies != null)
+            if (enemies != null)
             {
                 Destroy(enemies.gameObject);
             }
