@@ -23,7 +23,7 @@ public class NeedlerInferno : BaseBullet
     [SerializeField]
     float explosionTime;
 
-    Vector3 startPos;
+    Vector3 _startPos;
 
     [SerializeField]
     LayerMask enemies;
@@ -42,14 +42,14 @@ public class NeedlerInferno : BaseBullet
         hitEnemy = false;
         hitThings = false;
         tracking = false;
-        startPos = transform.position;
+        _startPos = transform.position;
         startingAngle = Quaternion.AngleAxis(-visionConeAngle / 2, Vector3.up);
         stepAngle = Quaternion.AngleAxis(visionConeAngle / rayCastNumber, Vector3.up);
         base.Start();
     }
     public override void Update()
     {
-        if (Vector3.Distance(startPos, transform.position) >= bulletRange)
+        if (Vector3.Distance(_startPos, transform.position) >= bulletRange)
         {
             Debug.Log("Too Far");
             if (!hitEnemy && enemy == null)

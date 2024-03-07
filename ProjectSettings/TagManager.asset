@@ -21,6 +21,7 @@ TagManager:
   - PlayerBullets
   - NannyFire
   - Shield
+  - GravityWell
   layers:
   - Default
   - TransparentFX

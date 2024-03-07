@@ -18,6 +18,11 @@ public class NannyTiredState : BaseState
 
     public override Type ExecuteState()
     {
+        if (_enemy.isInGravity)
+        {
+            return typeof(SuckedState);
+        }
+
         coolDown -=Time.deltaTime;
         if(coolDown <= 0f)
         {

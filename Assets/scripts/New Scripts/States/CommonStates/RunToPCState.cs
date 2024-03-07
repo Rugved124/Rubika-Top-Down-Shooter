@@ -36,8 +36,11 @@ public class RunToPCState : BaseState
 
     public override Type ExecuteState()
     {
-        
-        if(_enemy.hpPercent <= 20)
+        if (_enemy.isInGravity)
+        {
+            return typeof(SuckedState);
+        }
+        if (_enemy.hpPercent <= 20 && !_enemy.isShielded)
         {
             return typeof (RunAwayState);
         }

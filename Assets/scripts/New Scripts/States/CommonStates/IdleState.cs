@@ -48,7 +48,10 @@ public class IdleState : BaseState
                     return typeof(ShadowAttackState);
             }
         }
-
+        if (_enemy.isInGravity)
+        {
+            return typeof(SuckedState);
+        }
         return null;
     }
     float CalculateDistance(Transform objTransform)
@@ -56,10 +59,5 @@ public class IdleState : BaseState
         float distanceFromObj = Vector3.Distance(_enemy.transform.position, objTransform.position);
 
         return distanceFromObj;
-    }
-
-    void Think()
-    {
-
     }
 }

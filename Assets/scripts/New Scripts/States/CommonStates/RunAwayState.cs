@@ -8,10 +8,12 @@ public class RunAwayState : BaseState
 {
 	Enemy _enemy;
     private bool canSetRunAway;
+
+    float timeToReturn;
     public RunAwayState(Enemy enemy) : base(enemy.gameObject)
 	{
 		_enemy = enemy;
-
+        timeToReturn = 10f;
 	}
 	public override void EnterState()
 	{
@@ -24,6 +26,15 @@ public class RunAwayState : BaseState
 
 	public override Type ExecuteState()
 	{
+        timeToReturn -= Time.deltaTime;
+        if (_enemy.isInGravity)
+        {
+            return typeof(SuckedState);
+        }
+        if (timeToReturn <= 0)
+        {
+            _enemy.canRunAway = false;
+        }
 		if(_enemy.enemyType == Enemy.EnemyType.NANNY && _enemy.hpPercent > 20f)
 		{
 
@@ -46,8 +57,9 @@ public class RunAwayState : BaseState
                 _enemy.SetRunAwayToFalse();
             }
             
-            if (!_enemy.canRunAway)
+            if (!_enemy.canRunAway || _enemy.currentShield != null)
             {
+                _enemy.canRunAway = false;
                 if(_enemy.enemyType == Enemy.EnemyType.NANNY)
                 {
                     return typeof(NannyIdleState);

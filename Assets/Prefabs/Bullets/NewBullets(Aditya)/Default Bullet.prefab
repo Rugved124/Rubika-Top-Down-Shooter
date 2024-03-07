@@ -79,6 +79,7 @@ MonoBehaviour:
   bulletRate: 2
   bulletDamage: 15
   bulletLifeTime: 0.4
+  bulletRange: 7
   ammoCount: 20
   bulletType: 0
   pc: {fileID: 0}

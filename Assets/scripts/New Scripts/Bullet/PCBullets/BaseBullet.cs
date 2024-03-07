@@ -56,15 +56,18 @@ public class BaseBullet : MonoBehaviour
     protected bool isEnemy;
 
     protected bool isPC;
+
+    Vector3 startPos;
     public virtual void Start()
     {
+        startPos = transform.position;
         spawnTime = Time.time;
         pc = FindObjectOfType<PC>();
         bulletRB = GetComponent<Rigidbody>();
     }
     public virtual void Update()
     {
-        if (Time.time - spawnTime > bulletLifeTime)
+        if (Time.time - spawnTime > bulletLifeTime || Vector3.Distance(startPos,transform.position) >= bulletRange)
         {
             Die();
         }

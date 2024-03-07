@@ -483,6 +483,7 @@ MonoBehaviour:
   maxPoisonedForTime: 3
   tickSpeed: 0.25
   poisonDamagePerTick: 3
+  isInGravity: 0
   bulletSpeed_setInInspector: 40
   debries: {fileID: 4500201555358269410, guid: 07619ea9c57f81748804aa6a4e6f1b50, type: 3}
   shootPoint: {fileID: 2246623131217589833}
@@ -518,7 +519,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 84
