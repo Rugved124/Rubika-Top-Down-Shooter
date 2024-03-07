@@ -215,6 +215,18 @@ public class AmmoManager : MonoBehaviour
             case EquippedAmmoType.POISONFIRE:
                 GetBulletObject(BaseBullet.BulletTypes.POISONFIRE);
                 break;
+            case EquippedAmmoType.FIRESLOW:
+                GetBulletObject(BaseBullet.BulletTypes.FIRESLOW);
+                break;
+            case EquippedAmmoType.POISONSLOW:
+                GetBulletObject(BaseBullet.BulletTypes.POISONSLOW);
+                break;
+            case EquippedAmmoType.SLOWPOISON:
+                GetBulletObject(BaseBullet.BulletTypes.SLOWPOISON);
+                break;
+            case EquippedAmmoType.POISONPOISON:
+                GetBulletObject (BaseBullet.BulletTypes.POISONPOISON);
+                break;
         }
     }
     public void GetBulletObject(BaseBullet.BulletTypes currentBulletType)

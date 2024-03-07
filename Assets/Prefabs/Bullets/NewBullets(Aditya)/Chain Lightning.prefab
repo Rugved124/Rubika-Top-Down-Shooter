@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3831231028349536195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2208067108031389540}
+  - component: {fileID: 1263713998126711874}
+  m_Layer: 0
+  m_Name: Chain Lightning
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2208067108031389540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3831231028349536195}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.82761973, z: 0, w: 0.5612892}
+  m_LocalPosition: {x: 11.19, y: 0, z: 7.61}
+  m_LocalScale: {x: 0.30000007, y: 0.3, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -111.71, z: 0}
+--- !u!114 &1263713998126711874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3831231028349536195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8c760b5fc20834b9c3c392643f3850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: 0
+  bulletSpeed: 10
+  bulletRate: 1
+  bulletDamage: 10
+  bulletLifeTime: 100
+  bulletRange: 10
+  ammoCount: 3
+  bulletType: 11
+  pc: {fileID: 0}
+  bulletRB: {fileID: 0}
+  chainLightning: {fileID: 5429590286086130557, guid: 4571afc701698a64292de3842195dcc0,
+    type: 3}
+  respawnThis: {fileID: 3831231028349536195}
+  jumps: 3
+  enemies:
+    serializedVersion: 2
+    m_Bits: 256
+  colliders: []
+  currentEnemy: {fileID: 0}
+  startPos: {x: 0, y: 0, z: 0}
+  lookPos: {x: 0, y: 0, z: 0}
+  hasSetPos: 0

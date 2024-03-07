@@ -569,9 +569,9 @@ MonoBehaviour:
   all:
     serializedVersion: 2
     m_Bits: 1024
-  maxPoisonedForTime: 0
-  tickSpeed: 0
-  poisonDamagePerTick: 0
+  maxPoisonedForTime: 3
+  tickSpeed: 0.25
+  poisonDamagePerTick: 3
   bulletSpeed: 10
   shootPoint: {fileID: 7406950846534626964}
   bullet: {fileID: 0}

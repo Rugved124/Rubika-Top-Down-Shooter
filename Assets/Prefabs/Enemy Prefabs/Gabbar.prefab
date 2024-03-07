@@ -480,9 +480,9 @@ MonoBehaviour:
   all:
     serializedVersion: 2
     m_Bits: 0
-  maxPoisonedForTime: 0
-  tickSpeed: 0
-  poisonDamagePerTick: 0
+  maxPoisonedForTime: 3
+  tickSpeed: 0.25
+  poisonDamagePerTick: 3
   bulletSpeed_setInInspector: 40
   debries: {fileID: 4500201555358269410, guid: 07619ea9c57f81748804aa6a4e6f1b50, type: 3}
   shootPoint: {fileID: 2246623131217589833}

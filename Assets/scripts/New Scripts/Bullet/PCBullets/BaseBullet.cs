@@ -16,9 +16,14 @@ public class BaseBullet : MonoBehaviour
         FIRE,
         POISON,
         SLOW,
+        FIREFIRE,
+        POISONPOISON,
+        SLOWSLOW,
         FIREPOISON,
         POISONFIRE,
         FIRESLOW,
+        SLOWFIRE,
+        SLOWPOISON,
         POISONSLOW
     }
     public bulletStatus status;

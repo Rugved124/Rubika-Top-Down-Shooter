@@ -19,6 +19,8 @@ public class ShadowFollow : MonoBehaviour
 
     public GameObject spawnPrefab;
 
+    public GameObject fallingObject;
+
     public Collider[] colliders;
 
     Vector3 spawnPoint;
@@ -79,6 +81,7 @@ public class ShadowFollow : MonoBehaviour
     {
         if(other.tag == "Player" && !isPlayerHit)
         {
+            isPlayerHit = true;
             pc.TakeDamage(hitDamage);
         }
     }

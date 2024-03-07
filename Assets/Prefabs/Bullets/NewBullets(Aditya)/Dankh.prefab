@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8953844645312633241}
   - component: {fileID: 9058957463748084198}
   - component: {fileID: 5842775136202816586}
-  - component: {fileID: 1767035177063871434}
+  - component: {fileID: -6851432783044727788}
   m_Layer: 10
-  m_Name: Gabbar Projectile
+  m_Name: Dankh
   m_TagString: Bullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +135,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1767035177063871434
+--- !u!114 &-6851432783044727788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,24 +144,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3411248443990829376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 570326747d056474b8030429a2d3f33d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b05e763861f0c049a873db5878c8046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   status: 0
-  bulletSpeed: 40
-  bulletRate: 2.5
+  bulletSpeed: 20
+  bulletRate: 0.3
   bulletDamage: 10
-  bulletLifeTime: 4
-  bulletRange: 0
+  bulletLifeTime: 2
+  bulletRange: 10
   ammoCount: 10
-  bulletType: 5
+  bulletType: 2
   pc: {fileID: 0}
-  bulletRB: {fileID: 5842775136202816586}
-  poisonAOE: {fileID: 4077398964003033904, guid: 241016bf1e3e1ef4f84e2ed0912077fc,
-    type: 3}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
+  bulletRB: {fileID: 0}
 --- !u!1 &6734206042797741520
 GameObject:
   m_ObjectHideFlags: 0
