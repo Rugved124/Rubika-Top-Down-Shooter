@@ -87,7 +87,7 @@ public class AmmoManager : MonoBehaviour
         switch (firstAmmoType)
         {
             case EquippedAmmoType.DEFAULTAMMO:
-                firstAmmoColor.color = Color.black;
+                firstAmmoColor.color = Color.clear;
                 break;
             case EquippedAmmoType.FIRE:
                 firstAmmoColor.color = Color.red;
@@ -105,7 +105,7 @@ public class AmmoManager : MonoBehaviour
         switch (secondAmmoType)
         {
             case EquippedAmmoType.DEFAULTAMMO:
-                secondAmmoColor.color = Color.black;
+                secondAmmoColor.color = Color.clear;
                 break;
             case EquippedAmmoType.FIRE:
                 secondAmmoColor.color = Color.red;

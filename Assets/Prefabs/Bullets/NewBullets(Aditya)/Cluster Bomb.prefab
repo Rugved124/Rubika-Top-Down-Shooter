@@ -124,7 +124,7 @@ MonoBehaviour:
   bulletRate: 0.5
   bulletDamage: 24
   bulletLifeTime: 1
-  bulletRange: 15
+  bulletRange: 8
   ammoCount: 5
   bulletType: 12
   pc: {fileID: 0}

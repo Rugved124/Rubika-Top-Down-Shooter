@@ -32,6 +32,7 @@ public class ShadowFollow : MonoBehaviour
     {
         pc = FindObjectOfType<PC>();
         isPlayerHit = false;
+        this.transform.localScale = new Vector3(transform.localScale.x - shadowTrackingTime, transform.localScale.y, transform.localScale.z - shadowTrackingTime);
     }
     void Update()
     {
@@ -53,6 +54,7 @@ public class ShadowFollow : MonoBehaviour
         {
             if(pc != null)
             {
+                this.transform.localScale += new Vector3(Time.deltaTime, 0, Time.deltaTime);
                 Vector3 followPos = new Vector3(pc.transform.position.x, transform.position.y, pc.transform.position.z);
                 transform.position = Vector3.Lerp(transform.position, followPos, trailingDistance);
             }

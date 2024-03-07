@@ -6,6 +6,8 @@ public class SceneLoader : MonoBehaviour
 {
     PC pc;
 
+    [SerializeField]
+    bool resetScene;
     private void Start()
     {
         pc = FindObjectOfType<PC>();
@@ -16,7 +18,7 @@ public class SceneLoader : MonoBehaviour
         {
             if(other.tag == "Player")
             {
-                if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCount)
+                if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings)
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 }
@@ -30,8 +32,12 @@ public class SceneLoader : MonoBehaviour
     }
     public void ReloadScene()
     {
-        pc.gameObject.SetActive(true);
-        pc.Respawn();
-        SceneManager.MoveGameObjectToScene(pc.gameObject, SceneManager.GetActiveScene());
+        if (resetScene)
+        {
+            pc.gameObject.SetActive(true);
+            pc.Respawn();
+            SceneManager.MoveGameObjectToScene(pc.gameObject, SceneManager.GetActiveScene());
+        }
+
     }
 }

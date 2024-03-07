@@ -53,7 +53,7 @@ public class ExplosiveShotgun : BaseBullet
             {
                 Debug.DrawLine(transform.position + direction.normalized * pelletOffset, transform.position + direction.normalized * (bulletSpeed * bulletLifeTime), Color.red);
                 Rigidbody currrentPellet = Instantiate(pellets, transform.position + direction.normalized, angle).GetComponent<Rigidbody>();
-                currrentPellet.gameObject.GetComponent<ShotgunPellets>().SetBaseStats(bulletType, bulletLifeTime, bulletDamage);
+                currrentPellet.gameObject.GetComponent<ShotgunPellets>().SetBaseStats(bulletType, bulletLifeTime, bulletDamage, bulletRange);
                 currrentPellet.gameObject.GetComponent<ShotgunPellets>().DidPCShotThis(isPC);
                 currrentPellet.AddForce(direction.normalized * bulletSpeed, ForceMode.Impulse);
                 direction = stepAngle * direction;
