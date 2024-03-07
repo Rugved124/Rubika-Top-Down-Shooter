@@ -33,11 +33,12 @@ public class ShotgunPellets : BaseBullet
             Die();
         }
     }
-    public void SetBaseStats(BulletTypes bullet, float _bulletLifeTime, int _damage)
+    public void SetBaseStats(BulletTypes bullet, float _bulletLifeTime, int _damage, float _range)
     {
         bulletLifeTime = _bulletLifeTime;
         bulletDamage = _damage;
         bulletType = bullet;
+        bulletRange = _range;
     }
     public override void Die()
     {
