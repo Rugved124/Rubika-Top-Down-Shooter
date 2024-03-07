@@ -28,6 +28,7 @@ public class Nanny : Enemy
     bool canInvokeBullet;
 
     public GameObject nannyTrail;
+    public float dashDistance;
     public override void Start()
     {
         base.Start();
@@ -156,24 +157,24 @@ public class Nanny : Enemy
 
     public override void Dash()
     {
-        agent.speed = agent.speed * 12;
-        agent.acceleration = agent.acceleration * 12;
+        agent.speed = agent.speed * dashSpeed;
+        agent.acceleration = agent.acceleration * dashSpeed;
         transform.forward = Quaternion.AngleAxis(UnityEngine.Random.Range(-70f, 70f), Vector3.up) * transform.forward;
-        dashPos = transform.position + transform.forward * 15;
+        dashPos = transform.position + transform.forward * dashDistance;
         //rb.AddForce(transform.forward * dashSpeed, ForceMode.Impulse);
     }
 
     public override void ResetDash()
     {
         
-        Invoke("DashInvoke", 1.4f);
+        Invoke("DashInvoke", (dashDistance/dashSpeed) - 0.5f);
     }
     private void DashInvoke()
     {
         canDashAgain = true;
         //rb.isKinematic = true;
-        agent.speed = agent.speed / 12;
-        agent.acceleration = agent.acceleration / 12;
+        agent.speed = agent.speed / dashSpeed;
+        agent.acceleration = agent.acceleration / dashSpeed;
         transform.forward = pc.transform.position - transform.position;
     }
 

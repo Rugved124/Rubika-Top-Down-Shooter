@@ -321,6 +321,7 @@ MonoBehaviour:
   dashSpeed: 15
   nannyTrail: {fileID: 4835915344381857555, guid: ca9acb061f9d7df47a427fce4a835a40,
     type: 3}
+  dashDistance: 30
 --- !u!95 &3277319365634094131
 Animator:
   serializedVersion: 5
