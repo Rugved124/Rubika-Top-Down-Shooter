@@ -232,6 +232,14 @@ public class WaveSpawner : MonoBehaviour
         currentWave = waves[i];
         timebetweenSpawns = currentWave.timeBeforeThisWave;
         wavePurchasePower = currentWave.waveValue;
+        if(generateEnemies.Count > 0) 
+        {
+            generateEnemies.Clear();
+        }
+        if(existingEnemies.Count > 0)
+        {
+            existingEnemies.Clear();
+        }
         foreach (GameObject door in closingDoors)
         {
             door.SetActive(false);
