@@ -25,7 +25,7 @@ public class ChainLightning : BaseBullet
     public GameObject currentEnemy;
 
     [SerializeField]
-    Vector3 startPos;
+    Vector3 _startPos;
 
     [SerializeField]
     Vector3 lookPos;
@@ -54,9 +54,9 @@ public class ChainLightning : BaseBullet
         if (!canJump) 
         {
             canJump = true;
-            if (Physics.OverlapSphere(startPos, bulletRange, enemies) != null)
+            if (Physics.OverlapSphere(_startPos, bulletRange, enemies) != null)
             {
-                colliders = Physics.OverlapSphere(startPos, bulletRange, enemies).ToList(); 
+                colliders = Physics.OverlapSphere(_startPos, bulletRange, enemies).ToList(); 
                 if(currentEnemy != null) 
                 {
                     colliders.Remove(currentEnemy.GetComponent<Collider>());
@@ -86,7 +86,7 @@ public class ChainLightning : BaseBullet
             {
                 Debug.Log("Hit Enemies");
                 hit.collider.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
-                startPos = hit.transform.position;
+                _startPos = hit.transform.position;
                 respawnThis.GetComponent<ChainLightning>().SetStartPos(hit.transform.position, jumps);
                 currentEnemy = hit.collider.gameObject;
             }
@@ -104,7 +104,7 @@ public class ChainLightning : BaseBullet
     {
         if (jumps > 0)
         {
-            Instantiate(respawnThis, startPos, Quaternion.identity);
+            Instantiate(respawnThis, _startPos, Quaternion.identity);
         }
         base.Die();
     }
@@ -112,13 +112,13 @@ public class ChainLightning : BaseBullet
     public void SetStartPos(Vector3 _startPos, int jumpCount)
     {
         hasSetPos = true;
-        startPos = _startPos;
+        this._startPos = _startPos;
         jumps = jumpCount -  1;
     }
     public void SetLookPos() 
     {
         Debug.Log("Check this");
         hasSetPos = true;
-        lookPos = (currentEnemy.transform.position - startPos).normalized;
+        lookPos = (currentEnemy.transform.position - _startPos).normalized;
     }
 }

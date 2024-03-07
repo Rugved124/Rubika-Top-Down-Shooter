@@ -38,7 +38,8 @@ public class DrunkenSepoy : Enemy
             { typeof(RunToPCState), new RunToPCState(this)},
             { typeof(SepoyAttackState), new SepoyAttackState(this)},
             { typeof(DeadState), new DeadState(this)},
-            { typeof(RunAwayState), new RunAwayState(this)}
+            { typeof(RunAwayState), new RunAwayState(this)},
+            { typeof(SuckedState), new SuckedState(this)}
         };
 
         GetComponent<FiniteStateMachine>().SetStates(states);

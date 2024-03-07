@@ -7,21 +7,15 @@ public class RocketLauncher : BaseBullet
     [SerializeField]
     GameObject explosion;
 
-    Vector3 startPos;
     public override void Start()
     {
         base.Start();
         BulletMovement(transform.forward);
-        startPos = transform.position;
     }
 
     public override void Update()
     {
         base.Update();
-        if (Vector3.Distance(startPos, transform.position) >= bulletRange) 
-        {
-            Die();
-        }
     }
 
     public override void OnTriggerEnter(Collider collision)

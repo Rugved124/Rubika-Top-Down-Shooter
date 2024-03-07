@@ -49,6 +49,7 @@ public class Shadow : Enemy
             { typeof(DeadState), new DeadState(this)},
             { typeof(RunAwayState), new RunAwayState(this)},
             { typeof(ShadowTeleportState), new ShadowTeleportState(this)},
+            { typeof(SuckedState), new SuckedState(this)}
         };
 
         GetComponent<FiniteStateMachine>().SetStates(states);

@@ -26,8 +26,12 @@ public class ButcherAttackState : BaseState
 
     public override Type ExecuteState()
     {
+        if (_enemy.isInGravity)
+        {
+            return typeof(SuckedState);
+        }
         startTime -= Time.deltaTime;
-        if (_enemy.hpPercent > 20 && Vector3.Distance(_enemy.pc.transform.position, transform.position) <= _enemy.enemyData.attackRange)
+        if ((_enemy.hpPercent > 20  || _enemy.isShielded )&& Vector3.Distance(_enemy.pc.transform.position, transform.position) <= _enemy.enemyData.attackRange)
         {
             _enemy.LookAtPlayer();
             if (!_enemy.isWeaponFiringDone && startTime <= 0f)

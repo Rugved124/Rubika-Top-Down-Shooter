@@ -52,7 +52,9 @@ public class Nanny : Enemy
             { typeof(RunToPCState), new RunToPCState(this)},
             { typeof(NannyAttackState), new NannyAttackState(this)},
             { typeof(NannyDashState), new NannyDashState(this)},
-            { typeof(NannyTiredState), new NannyTiredState(this)}
+            { typeof(NannyTiredState), new NannyTiredState(this)},
+            { typeof(SuckedState), new SuckedState(this)}
+
         };
 
         GetComponent<FiniteStateMachine>().SetStates(states);

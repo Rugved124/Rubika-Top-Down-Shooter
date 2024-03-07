@@ -22,7 +22,11 @@ public class NannyRunToAllyState : BaseState
 
     public override Type ExecuteState()
     {
-        if(_enemy.lowHpEnemy.Count == 0)
+        if (_enemy.isInGravity)
+        {
+            return typeof(SuckedState);
+        }
+        if (_enemy.lowHpEnemy.Count == 0)
         {
             return typeof(NannyIdleState);
         }

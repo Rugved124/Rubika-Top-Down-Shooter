@@ -105,6 +105,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     int poisonDamagePerTick;
 
+    public bool isInGravity;
+
+    private GameObject gravityWell;
     private void Awake()
     {
         poisonedForTime = -maxPoisonedForTime;
@@ -144,6 +147,10 @@ public class Enemy : MonoBehaviour
 
     public virtual void Update()
     {
+        if(gravityWell == null)
+        {
+            isInGravity = false;
+        }
         if (currentShield)
         {
             isShielded = false;
@@ -303,6 +310,18 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Poison"))
         {
             poisonedForTime = Time.time;
+        }
+        if (other.CompareTag("GravityWell"))
+        {
+            gravityWell = other.gameObject;
+            isInGravity = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("GravityWell"))
+        {
+            isInGravity = false;
         }
     }
     void Poisoned()

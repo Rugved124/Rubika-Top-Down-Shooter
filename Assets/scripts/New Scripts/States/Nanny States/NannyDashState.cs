@@ -26,6 +26,10 @@ public class NannyDashState : BaseState
 
     public override Type ExecuteState()
     {
+        if (_enemy.isInGravity)
+        {
+            return typeof(SuckedState);
+        }
         if (!_enemy.canDashAgain)
         {
             timeBetweenFire -= Time.deltaTime;

@@ -124,9 +124,9 @@ MonoBehaviour:
   bulletRate: 5
   bulletDamage: 10
   bulletLifeTime: 40
-  bulletRange: 15
+  bulletRange: 25
   ammoCount: 10
-  bulletType: 5
+  bulletType: 8
   pc: {fileID: 0}
   bulletRB: {fileID: 0}
   visionConeAngle: 60

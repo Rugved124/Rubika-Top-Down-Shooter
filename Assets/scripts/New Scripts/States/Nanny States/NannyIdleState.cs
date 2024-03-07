@@ -24,6 +24,10 @@ public class NannyIdleState : BaseState
     public override Type ExecuteState()
     {
 
+        if (_enemy.isInGravity)
+        {
+            return typeof(SuckedState);
+        }
         float distanceFromPC = CalculateDistance(_enemy.pc.transform);
         _enemy.LookAtPlayer();
         if (_enemy.hpPercent <= 20 || distanceFromPC <= _enemy.enemyData.attackRange / 2f)
