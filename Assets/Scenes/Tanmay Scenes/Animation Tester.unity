@@ -719,6 +719,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7d81e77cac7c1541abfac2af742fd2a, type: 3}
+--- !u!1001 &1811748971
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ab3f506f5f5a4544c9c2d1aa2cfc0348,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.7580662
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ab3f506f5f5a4544c9c2d1aa2cfc0348,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.75991964
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ab3f506f5f5a4544c9c2d1aa2cfc0348,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.670781
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ab3f506f5f5a4544c9c2d1aa2cfc0348,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ab3f506f5f5a4544c9c2d1aa2cfc0348,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ab3f506f5f5a4544c9c2d1aa2cfc0348,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ab3f506f5f5a4544c9c2d1aa2cfc0348,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ab3f506f5f5a4544c9c2d1aa2cfc0348,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ab3f506f5f5a4544c9c2d1aa2cfc0348,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ab3f506f5f5a4544c9c2d1aa2cfc0348,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ab3f506f5f5a4544c9c2d1aa2cfc0348,
+        type: 3}
+      propertyPath: m_Name
+      value: Maushi Final Animations
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab3f506f5f5a4544c9c2d1aa2cfc0348, type: 3}
 --- !u!1001 &1880564846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -889,3 +957,4 @@ SceneRoots:
   - {fileID: 1880564846}
   - {fileID: 164731060}
   - {fileID: 806832206}
+  - {fileID: 1811748971}
