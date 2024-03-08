@@ -75,17 +75,23 @@ public class ShadowFollow : MonoBehaviour
     IEnumerator DieCoRoutine()
     {
         yield return new WaitForSeconds(0.8f);
-        Collider collider = GetComponent<Collider>();
-        collider.enabled = true;
+        if(!isPlayerHit)
+        {
+            isPlayerHit = true;
+            Vector3 debryPos = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z);
+            Instantiate(fallingObject, debryPos, Quaternion.identity);
+        }
+        //Collider collider = GetComponent<Collider>();
+        //collider.enabled = true;
     }
 
     private void OnTriggerEnter (Collider other)
     {
-        if(other.tag == "Player" && !isPlayerHit)
-        {
-            isPlayerHit = true;
-            pc.TakeDamage(hitDamage);
-        }
+        //if(other.tag == "Player" && !isPlayerHit)
+        //{
+        //    isPlayerHit = true;
+        //    pc.TakeDamage(hitDamage);
+        //}
     }
     void SpawnSpheres()
     {

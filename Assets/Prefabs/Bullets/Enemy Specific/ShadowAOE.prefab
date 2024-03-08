@@ -102,6 +102,8 @@ MonoBehaviour:
   hitDamage: 50
   spawnPrefab: {fileID: 4147032935077094486, guid: 8f0f24848262c6445a97c5dcb9ad8dc8,
     type: 3}
+  fallingObject: {fileID: 4500201555358269410, guid: c7cb44e6dac482e4ab9950712aac315f,
+    type: 3}
   colliders: []
   spawnLayerMask:
     serializedVersion: 2

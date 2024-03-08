@@ -37,8 +37,8 @@ TagManager:
   - WaveSpawner
   - AoE
   - CheckPoints
-  - 
-  - 
+  - TopLayerUI
+  - Trigger
   - 
   - 
   - 
@@ -58,4 +58,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: TopLayer
+    uniqueID: 4268123445
     locked: 0

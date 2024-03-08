@@ -13,6 +13,7 @@ public class NannyTiredState : BaseState
 
     public override void EnterState()
     {
+        _enemy.enemyAnim.SetTrigger("TiredState");
         coolDown = 3f;
     }
 

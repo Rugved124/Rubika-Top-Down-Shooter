@@ -25,3 +25,5 @@ MonoBehaviour:
   allyDetectionRange: 30
   runAwayDistance: 16
   canTeleport: 1
+  runAwayFor: 5
+  runAwayCooldown: 5

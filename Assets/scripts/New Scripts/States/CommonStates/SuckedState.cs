@@ -15,6 +15,7 @@ public class SuckedState : BaseState
     }
     public override void EnterState()
     {
+        _enemy.enemyAnim.SetTrigger("GettingPulled");
         _enemy.agent.isStopped = true;
         _enemy.rb.isKinematic = false;
         maxTime = 3f;

@@ -24,7 +24,7 @@ public class IdleState : BaseState
 
     public override Type ExecuteState()
     {
-        if (_enemy.hpPercent <= 20 && _enemy.canRunAway)
+        if (_enemy.hpPercent <= 20 && _enemy.canRunAway && !_enemy.canShield)
         {
             return typeof(RunAwayState);
         }
