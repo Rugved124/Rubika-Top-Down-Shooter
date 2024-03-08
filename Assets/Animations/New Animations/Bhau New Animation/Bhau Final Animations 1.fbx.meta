@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 39cba90d63bf27c4f886bcb53f8d5dc6
+guid: 1ae511207bb07934bbad535f9ece3201
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -62,9 +62,38 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Bhau Spit Fire
-      takeName: Armature|Armature.001
-      internalID: 2243092118995739280
+      name: Bhau Running
+      takeName: Armature|Armature.002
+      internalID: -2031007813491923735
+      firstFrame: 330
+      lastFrame: 370
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Bhau Attack
+      takeName: Armature|Armature.003
+      internalID: -5856724065141606441
       firstFrame: 270
       lastFrame: 310
       wrapMode: 0
@@ -91,11 +120,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Bhau Running
-      takeName: Armature|Armature.001
-      internalID: 7843990413145780486
-      firstFrame: 330
-      lastFrame: 369
+      name: Bhau Gravity Pull
+      takeName: Armature|Armature.003
+      internalID: -3364359817138292367
+      firstFrame: 380
+      lastFrame: 399
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
