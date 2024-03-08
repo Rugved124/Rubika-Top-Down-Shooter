@@ -80,9 +80,13 @@ MonoBehaviour:
   - {fileID: 3411248443990829376, guid: dcee470ec11b8df418f1c10668c7d67f, type: 3}
   - {fileID: 3411248443990829376, guid: 0781557bcdf19a04fb19ab13563d66ed, type: 3}
   - {fileID: 3196530752102116148, guid: 752bd1c91f3f7b34abf51dd8855b07ee, type: 3}
+  - {fileID: 4077398964003033904, guid: 17b691097e327074395f24d7be69117f, type: 3}
   bulletToSpawn: {fileID: 0}
   ammoCount: 0
-  shield: {fileID: 4671155514325838039, guid: 3c020af5537d3cf4f8e86b68372ca246, type: 3}
+  halfShield: {fileID: 7491444903086327833, guid: 9805f1320716b384d81607887d75eb85,
+    type: 3}
+  fullShield: {fileID: 4671155514325838039, guid: 3c020af5537d3cf4f8e86b68372ca246,
+    type: 3}
   currentShield: {fileID: 0}
   firstAmmo: {fileID: 0}
   secondAmmo: {fileID: 0}

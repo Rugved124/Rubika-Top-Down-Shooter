@@ -13,10 +13,10 @@ public class RunAwayState : BaseState
     public RunAwayState(Enemy enemy) : base(enemy.gameObject)
 	{
 		_enemy = enemy;
-        timeToReturn = 10f;
 	}
 	public override void EnterState()
 	{
+        timeToReturn = _enemy.enemyData.runAwayFor;
         _enemy.enemyAnim.SetTrigger("RunState");
         _enemy.agent.isStopped = false;
         _enemy.agent.updateRotation = true;
@@ -31,9 +31,25 @@ public class RunAwayState : BaseState
         {
             return typeof(SuckedState);
         }
+        if(_enemy.currentShield != null)
+        {
+            _enemy.canRunAway = false;
+            _enemy.SetRunAwayToTrue();
+            if (_enemy.enemyType == Enemy.EnemyType.NANNY)
+            {
+                return typeof(NannyIdleState);
+            }
+            return typeof(IdleState);
+        }
         if (timeToReturn <= 0)
         {
             _enemy.canRunAway = false;
+            _enemy.SetRunAwayToTrue();
+            if (_enemy.enemyType == Enemy.EnemyType.NANNY)
+            {
+                return typeof(NannyIdleState);
+            }
+            return typeof(IdleState);
         }
 		if(_enemy.enemyType == Enemy.EnemyType.NANNY && _enemy.hpPercent > 20f)
 		{
@@ -51,21 +67,6 @@ public class RunAwayState : BaseState
         }
         else if (_enemy.hpPercent <= 20f)
         {
-            if (canSetRunAway)
-            {
-                canSetRunAway = false;
-                _enemy.SetRunAwayToFalse();
-            }
-            
-            if (!_enemy.canRunAway || _enemy.currentShield != null)
-            {
-                _enemy.canRunAway = false;
-                if(_enemy.enemyType == Enemy.EnemyType.NANNY)
-                {
-                    return typeof(NannyIdleState);
-                }
-                return typeof(IdleState);
-            }
             _enemy.RunAwayWhenLow();
         }
 

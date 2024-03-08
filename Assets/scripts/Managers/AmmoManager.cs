@@ -15,7 +15,10 @@ public class AmmoManager : MonoBehaviour
     bool canShoot;
 
     [SerializeField]
-    private GameObject shield;
+    private GameObject halfShield;
+
+    [SerializeField]
+    private GameObject fullShield;
 
     public GameObject currentShield;
 
@@ -25,6 +28,8 @@ public class AmmoManager : MonoBehaviour
     private Slider secondAmmo;
 
     public Image firstAmmoColor, secondAmmoColor;
+
+    public float currentRange {  get; private set; }
     public enum EquippedAmmoType
     {
         DEFAULTAMMO,
@@ -68,21 +73,24 @@ public class AmmoManager : MonoBehaviour
     }
     private void Update()
     {
-        if(firstAmmoType != EquippedAmmoType.DEFAULTAMMO || firstAmmoType != EquippedAmmoType.SHIELD)
-        {
-            firstAmmo.value = ammoCount;
-        }
-        else
+        currentRange = bulletToSpawn.GetComponent<BaseBullet>().bulletRange;
+        if(firstAmmoType == EquippedAmmoType.DEFAULTAMMO || firstAmmoType == EquippedAmmoType.SHIELD)
         {
             firstAmmo.value = firstAmmo.maxValue;
         }
-        if (secondAmmoType != EquippedAmmoType.DEFAULTAMMO || secondAmmoType != EquippedAmmoType.SHIELD)
+        else
         {
-            secondAmmo.value = ammoCount;
+            firstAmmo.value = ammoCount;
+
+        }
+        if (secondAmmoType == EquippedAmmoType.DEFAULTAMMO || secondAmmoType == EquippedAmmoType.SHIELD)
+        {
+            Debug.Log("Shielded");
+            secondAmmo.value = firstAmmo.maxValue;
         }
         else
         {
-            secondAmmo.value = firstAmmo.maxValue;
+            secondAmmo.value = ammoCount;
         }
         switch (firstAmmoType)
         {
@@ -122,7 +130,7 @@ public class AmmoManager : MonoBehaviour
         }
         if (currentShield != null)
         {
-            if(firstAmmoType != EquippedAmmoType.SHIELD || secondAmmoType != EquippedAmmoType.SHIELD) 
+            if(firstAmmoType != EquippedAmmoType.SHIELD && secondAmmoType != EquippedAmmoType.SHIELD)
             {
                 Destroy(currentShield);
             }
@@ -153,6 +161,39 @@ public class AmmoManager : MonoBehaviour
 
         firstAmmoType = secondAmmoType;
         secondAmmoType = newAmmo;
+        if(secondAmmoType == EquippedAmmoType.SHIELD)
+        {
+            if(firstAmmoType != EquippedAmmoType.SHIELD)
+            {
+                if (currentShield == null)
+                {
+                    currentShield = Instantiate(halfShield, transform.position, Quaternion.identity);
+                    currentShield.transform.forward = transform.forward;
+                    currentShield.GetComponent<ShieldBehaviour>().IsPCShield(true);
+                }
+                else
+                {
+                    currentShield.GetComponent<ShieldBehaviour>().ResetShield();
+                }
+            }
+            else
+            {
+                if (currentShield == null)
+                {
+                    currentShield = Instantiate(fullShield, transform.position, Quaternion.identity);
+                    currentShield.transform.forward = -transform.forward;
+                    currentShield.GetComponent<ShieldBehaviour>().IsPCShield(true);
+                }
+                else
+                {
+                    Destroy(currentShield);
+                    currentShield = Instantiate(fullShield, transform.position, Quaternion.identity);
+                    currentShield.transform.forward = -transform.forward;
+                    currentShield.GetComponent<ShieldBehaviour>().IsPCShield(true);
+                }
+            }
+
+        }
         if (firstAmmoType == EquippedAmmoType.DEFAULTAMMO || secondAmmoType == EquippedAmmoType.DEFAULTAMMO)
         {
             if (firstAmmoType == EquippedAmmoType.DEFAULTAMMO)
@@ -197,6 +238,10 @@ public class AmmoManager : MonoBehaviour
                 {
                     currentAmmoType = EquippedAmmoType.FIRESLOW;
                 }
+                if (secondAmmoType == EquippedAmmoType.SHIELD)
+                {
+                    currentAmmoType = firstAmmoType;
+                }
 
                 break;
             case EquippedAmmoType.POISON:
@@ -212,6 +257,10 @@ public class AmmoManager : MonoBehaviour
                 {
                     currentAmmoType = EquippedAmmoType.POISONSLOW;
                 }
+                if (secondAmmoType == EquippedAmmoType.SHIELD)
+                {
+                    currentAmmoType = firstAmmoType;
+                }
                 break;
             case EquippedAmmoType.SLOW:
                 if (secondAmmoType == EquippedAmmoType.FIRE)
@@ -225,6 +274,20 @@ public class AmmoManager : MonoBehaviour
                 if (secondAmmoType == EquippedAmmoType.SLOW)
                 {
                     currentAmmoType = EquippedAmmoType.SLOWSLOW;
+                }
+                if (secondAmmoType == EquippedAmmoType.SHIELD)
+                {
+                    currentAmmoType = firstAmmoType;
+                }
+                break;
+            case EquippedAmmoType.SHIELD:
+                if (secondAmmoType != EquippedAmmoType.SHIELD)
+                {
+                    currentAmmoType = secondAmmoType;
+                }
+                else
+                {
+                    currentAmmoType = EquippedAmmoType.SHIELDSHIELD;
                 }
                 break;
         }
@@ -261,7 +324,7 @@ public class AmmoManager : MonoBehaviour
                 GetBulletObject(BaseBullet.BulletTypes.DEFAULTAMMO);
                 if(currentShield == null)
                 {
-                    currentShield = Instantiate(shield, transform.position, Quaternion.identity);
+                    currentShield = Instantiate(halfShield, transform.position, Quaternion.identity);
                     currentShield.transform.forward = transform.forward;
                     currentShield.GetComponent<ShieldBehaviour>().IsPCShield(true);
                 }
@@ -294,6 +357,9 @@ public class AmmoManager : MonoBehaviour
             case EquippedAmmoType.FIREFIRE:
                 GetBulletObject(BaseBullet.BulletTypes.FIREFIRE);
                 break;
+            case EquippedAmmoType.SLOWSLOW:
+                GetBulletObject(BaseBullet.BulletTypes.SLOWSLOW);
+                break;
         }
     }
     public void GetBulletObject(BaseBullet.BulletTypes currentBulletType)
@@ -324,7 +390,10 @@ public class AmmoManager : MonoBehaviour
     {
         ammoCount -= damage;
     }
-
+    public EquippedAmmoType GetCurrentAmmoType()
+    {
+        return currentAmmoType;
+    }
     public int GetAmmoCount() 
     {
         return ammoCount;
