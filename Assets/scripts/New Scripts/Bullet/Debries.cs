@@ -55,4 +55,8 @@ public class Debries : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+    public void GetDamage(int _damage)
+    {
+        damage = _damage;
+    }
 }
