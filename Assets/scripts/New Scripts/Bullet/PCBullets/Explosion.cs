@@ -65,11 +65,19 @@ public class Explosion : MonoBehaviour
                         
                         if(hit.collider.CompareTag("Player"))
                         {
-                            c.GetComponent<PC>().TakeDamage(explosionDamage / 2);
+                            if(c.GetComponent<PC>().isDead && c.GetComponent<PC>() != null)
+                            {
+                                c.GetComponent<PC>().TakeDamage(explosionDamage / 2);
+                            }
+
                         }
                         if (hit.collider.CompareTag("Enemies"))
                         {
-                            c.GetComponent<Enemy>().TakeDamage(explosionDamage);
+                            if(c.GetComponent<Enemy>() != null)
+                            {
+                                c.GetComponent<Enemy>().TakeDamage(explosionDamage);
+
+                            }
                         }
                     }
                 }
