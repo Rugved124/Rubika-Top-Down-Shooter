@@ -309,9 +309,17 @@ public class PC : MonoBehaviour
             SwitchToNextState(nextState);
         }
     }
-
-    void OnDrawGizmos()
+    public void ResetPCStats()
     {
-
+        statusEffects.burnLastTick = 0f;
+        statusEffects.burnNumber = 0;
+        statusEffects.lastTick = 0f;
+        statusEffects.isPoisonCounting = false;
+        statusEffects.isPoisoned = false;
+        statusEffects.isSlowed = false;
+        statusEffects.isSlowedCounting = false;
+        statusEffects.hasLostAbility = false;
+        timeBetweenFire = statusEffects.burnTickSpeed;
+        isBurningFor = -maxBurnTime;
     }
 }
