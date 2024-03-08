@@ -40,7 +40,7 @@ public class RunToPCState : BaseState
         {
             return typeof(SuckedState);
         }
-        if (_enemy.hpPercent <= 20 && !_enemy.isShielded)
+        if (_enemy.hpPercent <= 20 && !_enemy.isShielded && _enemy.canRunAway)
         {
             return typeof (RunAwayState);
         }

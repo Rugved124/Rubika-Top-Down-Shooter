@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 
 public class Enemy : MonoBehaviour
 {
@@ -46,7 +45,11 @@ public class Enemy : MonoBehaviour
     public List<Enemy> lowHpEnemy;
 
     public float shieldDistance;
+
+    [HideInInspector]
     public bool isShielded;
+
+    [HideInInspector]
     public bool canShield;
 
     [SerializeField]
@@ -54,9 +57,9 @@ public class Enemy : MonoBehaviour
 
     public GameObject currentShield;
 
+    [HideInInspector]
     public float hpPercent;
 
-    [HideInInspector]
     public bool canRunAway;
 
     [HideInInspector]
@@ -72,6 +75,7 @@ public class Enemy : MonoBehaviour
 
     float timer = 4f;
     float randomAngle = 0f;
+    [HideInInspector]
     public bool tpDone;
 
     [SerializeField]
@@ -256,14 +260,15 @@ public class Enemy : MonoBehaviour
         agent.SetDestination(runDir);
     }
 
-    public void SetRunAwayToFalse()
+    public void SetRunAwayToTrue()
     {
-        Invoke("InvokeRunAway", 5f);
+        Debug.Log("RunAwayCooldDown");
+        Invoke("InvokeRunAway", enemyData.runAwayCooldown);
     }
 
     void InvokeRunAway()
     {
-        canRunAway = false;
+        canRunAway = true;
     }
     public virtual void Teleport()
     {

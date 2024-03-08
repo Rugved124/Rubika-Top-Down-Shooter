@@ -40,7 +40,7 @@ public class BaseBullet : MonoBehaviour
     protected float bulletLifeTime;
 
     [SerializeField]
-    protected float bulletRange;
+    public float bulletRange;
 
     public int ammoCount;
     protected float spawnTime;

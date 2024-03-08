@@ -28,4 +28,8 @@ public class EnemyData : ScriptableObject
     public float runAwayDistance;
 
     public bool canTeleport = true;
+
+    public float runAwayFor;
+
+    public float runAwayCooldown;
 }

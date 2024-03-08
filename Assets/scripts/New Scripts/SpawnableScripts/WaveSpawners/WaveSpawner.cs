@@ -49,6 +49,9 @@ public class WaveSpawner : MonoBehaviour
     List<GameObject> closingDoors = new List<GameObject>();
 
     [SerializeField]
+    List<GameObject> openAfterWavesAreFinished = new List<GameObject>();
+
+    [SerializeField]
     GameObject sceneLoader;
 
     public bool canSpawm;

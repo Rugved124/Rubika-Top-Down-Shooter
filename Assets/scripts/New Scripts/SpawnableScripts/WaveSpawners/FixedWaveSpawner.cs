@@ -48,9 +48,10 @@ public class FixedWaveSpawner : MonoBehaviour
     public bool canSpawm;
 
     public bool isFinished { get; private set; }
-    private void Awake()
+    private void Start()
     {
         isFinished = false;
+        canSpawm = true;
         if(waves.Length > 0)
         {
             currentWave = waves[i];
@@ -114,8 +115,8 @@ public class FixedWaveSpawner : MonoBehaviour
 
         for (int j = 0; j < generateEnemies.Count; j++)
         {
-            existingEnemies.Add(Instantiate(generateEnemies[j], spawnPoint.position, spawnPoint.rotation));
-            yield return new WaitForSeconds(0.1f);
+            existingEnemies.Add(Instantiate(generateEnemies[j], spawnPoint.position + new Vector3(Random.Range(-1,1), 0, Random.Range(-1, 1)), spawnPoint.rotation));
+            yield return new WaitForSeconds(0.5f);
         }
         ChangeWaveState(WaveStates.Wait);
         isSpawning = false;
@@ -136,7 +137,7 @@ public class FixedWaveSpawner : MonoBehaviour
     void GenerateEnemies()
     {
 
-
+        Debug.Log("Generating Enemies");
         //int randomEnemyID = Random.Range(0, currentWave.enemy.Length);
         //int randomEnemyCost = currentWave.enemy[randomEnemyID].enemyValue;
 
@@ -152,12 +153,9 @@ public class FixedWaveSpawner : MonoBehaviour
         }
         for (int i = 0; i < currentWave.enemy.Length; i++)
         {
-            if (wavePurchasePower <= currentWave.enemy[i].enemyValue)
+            if (currentWaveStates != WaveStates.SpawnWave)
             {
-                if (currentWaveStates != WaveStates.SpawnWave)
-                {
-                    ChangeWaveState(WaveStates.SpawnWave);
-                }
+                ChangeWaveState(WaveStates.SpawnWave);
             }
         }
 
