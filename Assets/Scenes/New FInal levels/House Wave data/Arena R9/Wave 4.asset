@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bdb749b0bc52d7143bb8c1b733065a3e, type: 3}
-  m_Name: Wave 2
+  m_Name: Wave 4
   m_EditorClassIdentifier: 
   enemy:
-  - {fileID: 11400000, guid: c1e0f4c5873006345849901fe7a90ff4, type: 2}
-  - {fileID: 11400000, guid: 9e12712b7da6e6f4191a90a8baa54246, type: 2}
+  - {fileID: 11400000, guid: 796eb5d8278c2ec4eba3840f268698e4, type: 2}
+  - {fileID: 11400000, guid: e1d377d204d7de143bfa0e5074069a07, type: 2}
+  - {fileID: 11400000, guid: d230439ce5a1fa541a5fc298dda331c1, type: 2}
+  - {fileID: 11400000, guid: 44dbc4ea40167574da65deea3443f5e5, type: 2}
   timeBeforeThisWave: 20
-  waveValue: 7
+  waveValue: 14
