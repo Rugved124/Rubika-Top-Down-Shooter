@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: 0
-  bulletSpeed: 20
+  bulletSpeed: 15
   bulletRate: 1
   bulletDamage: 10
   bulletLifeTime: 10

@@ -13,6 +13,9 @@ public class Debries : MonoBehaviour
 
     [SerializeField]
     private float fallingSpeed;
+
+    [SerializeField]
+    private bool canBeDestroyed;
     void Start()
     {
         this.GetComponent<Rigidbody>().AddForce(Vector3.down * fallingSpeed, ForceMode.Impulse);
@@ -53,7 +56,10 @@ public class Debries : MonoBehaviour
 
     private void Die()
     {
-        Destroy(this.gameObject);
+        if (canBeDestroyed)
+        {
+            Destroy(this.gameObject);
+        }
     }
     public void GetDamage(int _damage)
     {

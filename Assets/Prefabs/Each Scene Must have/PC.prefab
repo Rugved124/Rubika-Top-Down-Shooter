@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2433459110461413216}
+  - {fileID: 4072348678023971997}
   m_Father: {fileID: 8194695298778898395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &826627807640353754
@@ -42,7 +42,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477510330575801110}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0ddcc4d7fae7ec44f9d1d252317be948, type: 3}
+  m_Avatar: {fileID: 9000000, guid: cae04fa5c13bc4b4a829575e62aac85b, type: 3}
   m_Controller: {fileID: 9100000, guid: bcbac9e7f47c4da4c9c8bfb90f14f5b4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -230,7 +230,6 @@ GameObject:
   - component: {fileID: 3084079199796696713}
   - component: {fileID: 3654550992965985218}
   - component: {fileID: 4875023118549734663}
-  - component: {fileID: 5303610032527401361}
   m_Layer: 9
   m_Name: PC
   m_TagString: Player
@@ -339,28 +338,7 @@ MonoBehaviour:
   isDead: 0
   respawnPoint: {x: 0, y: 0, z: 0}
   cam: {fileID: 0}
---- !u!95 &5303610032527401361
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6553801574492841815}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bcbac9e7f47c4da4c9c8bfb90f14f5b4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!1001 &5126834762010246468
+--- !u!1001 &8590821507207124857
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -368,80 +346,70 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1364462399625552264}
     m_Modifications:
-    - target: {fileID: 4008885897328015585, guid: b452cf48b48bde34ebdc0636041689f2,
+    - target: {fileID: 4967621582312376670, guid: 4f5ccb42f93d5a04cbeb0c33a7141791,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.4
+      propertyPath: m_Name
+      value: Tanatric Raja Final Animations 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4008885897328015585, guid: b452cf48b48bde34ebdc0636041689f2,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7413856442480011812, guid: b452cf48b48bde34ebdc0636041689f2,
+    - target: {fileID: 5745283807686906852, guid: 4f5ccb42f93d5a04cbeb0c33a7141791,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.6
       objectReference: {fileID: 0}
-    - target: {fileID: 7413856442480011812, guid: b452cf48b48bde34ebdc0636041689f2,
+    - target: {fileID: 5745283807686906852, guid: 4f5ccb42f93d5a04cbeb0c33a7141791,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7413856442480011812, guid: b452cf48b48bde34ebdc0636041689f2,
+    - target: {fileID: 5745283807686906852, guid: 4f5ccb42f93d5a04cbeb0c33a7141791,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7413856442480011812, guid: b452cf48b48bde34ebdc0636041689f2,
+    - target: {fileID: 5745283807686906852, guid: 4f5ccb42f93d5a04cbeb0c33a7141791,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7413856442480011812, guid: b452cf48b48bde34ebdc0636041689f2,
+    - target: {fileID: 5745283807686906852, guid: 4f5ccb42f93d5a04cbeb0c33a7141791,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7413856442480011812, guid: b452cf48b48bde34ebdc0636041689f2,
+    - target: {fileID: 5745283807686906852, guid: 4f5ccb42f93d5a04cbeb0c33a7141791,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7413856442480011812, guid: b452cf48b48bde34ebdc0636041689f2,
+    - target: {fileID: 5745283807686906852, guid: 4f5ccb42f93d5a04cbeb0c33a7141791,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7413856442480011812, guid: b452cf48b48bde34ebdc0636041689f2,
+    - target: {fileID: 5745283807686906852, guid: 4f5ccb42f93d5a04cbeb0c33a7141791,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7413856442480011812, guid: b452cf48b48bde34ebdc0636041689f2,
+    - target: {fileID: 5745283807686906852, guid: 4f5ccb42f93d5a04cbeb0c33a7141791,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7413856442480011812, guid: b452cf48b48bde34ebdc0636041689f2,
+    - target: {fileID: 5745283807686906852, guid: 4f5ccb42f93d5a04cbeb0c33a7141791,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7901740969588125854, guid: b452cf48b48bde34ebdc0636041689f2,
-        type: 3}
-      propertyPath: m_Name
-      value: Tantric Raja Alpha AnimationsFixed
-      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 3459718838117920862, guid: b452cf48b48bde34ebdc0636041689f2, type: 3}
+    - {fileID: 1827183792302229918, guid: 4f5ccb42f93d5a04cbeb0c33a7141791, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b452cf48b48bde34ebdc0636041689f2, type: 3}
---- !u!4 &2433459110461413216 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 4f5ccb42f93d5a04cbeb0c33a7141791, type: 3}
+--- !u!4 &4072348678023971997 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7413856442480011812, guid: b452cf48b48bde34ebdc0636041689f2,
+  m_CorrespondingSourceObject: {fileID: 5745283807686906852, guid: 4f5ccb42f93d5a04cbeb0c33a7141791,
     type: 3}
-  m_PrefabInstance: {fileID: 5126834762010246468}
+  m_PrefabInstance: {fileID: 8590821507207124857}
   m_PrefabAsset: {fileID: 0}
