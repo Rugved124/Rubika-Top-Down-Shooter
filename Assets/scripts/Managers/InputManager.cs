@@ -17,8 +17,11 @@ public class InputManager : MonoBehaviour
 
     [SerializeField]
     SceneLoader loader;
+
+    Plane plane = new Plane(Vector3.up, Vector3.zero);
     private void Awake()
     {
+        plane = new Plane(Vector3.up, Vector3.zero);
         if (instance == null)
         {
             instance = this;
@@ -58,16 +61,13 @@ public class InputManager : MonoBehaviour
 
     public Vector3 GetMousePosition()
     {
-
+        
         Vector3 mousePos = new Vector3(0, 0, 0);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, 100, groundMask))
+        float rayDistance;
+        if (plane.Raycast(ray, out rayDistance))
         {
-            mousePos = hit.point;
-
+            mousePos = ray.GetPoint(rayDistance);
         }
 
         return mousePos;
