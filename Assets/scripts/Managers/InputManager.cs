@@ -58,7 +58,10 @@ public class InputManager : MonoBehaviour
     {
         return vertical;
     }
-
+    public bool GetDashButton()
+    {
+        return Input.GetKeyDown(KeyCode.LeftShift);
+    }
     public Vector3 GetMousePosition()
     {
         

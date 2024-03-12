@@ -16,9 +16,12 @@ public class Debries : MonoBehaviour
 
     [SerializeField]
     private bool canBeDestroyed;
+
+    [SerializeField]
+    private float fallingTime;
     void Start()
     {
-        this.GetComponent<Rigidbody>().AddForce(Vector3.down * fallingSpeed, ForceMode.Impulse);
+        StartCoroutine(FallDown());
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -64,5 +67,11 @@ public class Debries : MonoBehaviour
     public void GetDamage(int _damage)
     {
         damage = _damage;
+    }
+
+    public IEnumerator FallDown()
+    {
+        yield return new WaitForSeconds(fallingTime);
+        this.GetComponent<Rigidbody>().AddForce(Vector3.down * fallingSpeed, ForceMode.Impulse);
     }
 }

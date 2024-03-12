@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using System;
 using System.Linq;
 using UnityEngine.Events;
+using System.Collections;
+using Unity.VisualScripting;
 
 public class PC : MonoBehaviour
 {
@@ -53,13 +55,25 @@ public class PC : MonoBehaviour
 
     public Transform cam;
     Vector3 camForward;
+
+    //------------------------------------Dash Vars
+    [SerializeField]
+    float dashRange;
+    [SerializeField]
+    float dashSpeed;
+    public bool canDash;
+    public bool isDashing;
+    [SerializeField]
+    float dashCooldown;
+    public GameObject crosshair;
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
         {
             { typeof(PCDefaultState), new PCDefaultState(this)},
             { typeof(PCConsumeState), new PCConsumeState(this)},
-            { typeof(PCDeadState), new PCDeadState(this)}
+            { typeof(PCDeadState), new PCDeadState(this)},
+            { typeof(PCDashState), new PCDashState(this)}
         };
         SetStates(states);
 
@@ -72,6 +86,7 @@ public class PC : MonoBehaviour
 
     private void Start()
     {
+        crosshair = GetComponentInChildren<CrossHairPos>().gameObject;
         respawnPoint = transform.position;
         consumeLine.SetActive(false);
         anim = visuals.GetComponent<Animator>();
@@ -89,6 +104,8 @@ public class PC : MonoBehaviour
         timeBetweenFire = statusEffects.burnTickSpeed;
         isBurningFor = -maxBurnTime;
         cam = Camera.main.transform;
+        canDash = true;
+        dashCooldown = dashRange / dashSpeed + dashCooldown;
     }
 
     private void Update()
@@ -101,7 +118,15 @@ public class PC : MonoBehaviour
         {
             UpdateState();
         }
+        //-------------------------------------Dash Things-------------------------------------
 
+        if (InputManager.instance.GetDashButton() && canDash)
+        {
+            float forwards = InputManager.instance.GetMovementVertical();
+            float sideways = InputManager.instance.GetMovementHorizontal();
+            Vector3 dashVector = new Vector3(sideways, 0, forwards);
+            StartCoroutine(Dash(dashVector));
+        }
         slider.value = currentHP;
         //-------------------------------------StatusEfffects---------------------------------------------------------
         if (statusEffects.isPoisoned)
@@ -321,5 +346,27 @@ public class PC : MonoBehaviour
         statusEffects.hasLostAbility = false;
         timeBetweenFire = statusEffects.burnTickSpeed;
         isBurningFor = -maxBurnTime;
+        isInvincible = false;
+        canDash = true;
+    }
+    public IEnumerator Dash(Vector3 direction)
+    {
+        canDash = false;
+        isDashing = true;
+        playerRb.useGravity = false;
+        isInvincible = true;
+        Quaternion rotation = Quaternion.AngleAxis(-45, Vector3.up);
+        direction = rotation * direction;
+        playerRb.velocity = direction.normalized * dashSpeed;
+
+        yield return new WaitForSeconds(dashRange / dashSpeed);
+        isDashing = false;
+        isInvincible = false;
+        playerRb.useGravity = true;
+        playerRb.velocity = Vector3.zero;
+
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+
     }
 }
