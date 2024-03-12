@@ -126,7 +126,7 @@ MonoBehaviour:
   bulletDamage: 50
   bulletLifeTime: 5
   bulletRange: 100
-  ammoCount: 10
+  ammoCount: 5
   bulletType: 6
   pc: {fileID: 0}
   bulletRB: {fileID: 0}

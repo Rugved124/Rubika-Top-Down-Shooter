@@ -293,12 +293,20 @@ public class AmmoManager : MonoBehaviour
         ChangeAmmoType();
     }
 
-    void ResetEquippedAmmo()
+    public void ResetEquippedAmmo()
     {
         firstAmmoType = EquippedAmmoType.DEFAULTAMMO;
         secondAmmoType = EquippedAmmoType.DEFAULTAMMO;
         currentAmmoType = EquippedAmmoType.DEFAULTAMMO;
         ChangeAmmoType();
+    }
+    public void RemoveCurrentShield()
+    {
+        if(currentShield != null)
+        {
+            Destroy(currentShield);
+        }
+        
     }
     public void ChangeAmmoType()
     {
