@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2836150675055033881}
   - component: {fileID: 3727418806710666873}
   - component: {fileID: -6446833785666755190}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Debries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,6 +125,8 @@ MonoBehaviour:
   fallingSpeed: 50
   canBeDestroyed: 0
   fallingTime: 0.5
+  spiked: 0
+  cross: {fileID: 177753437022293337}
 --- !u!54 &3727418806710666873
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -176,6 +178,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1014743896373434233}
     m_Modifications:
+    - target: {fileID: 1361751633622224523, guid: 7be2fea7f1e25db44920f80b28e1521d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 1523363356507377627, guid: 7be2fea7f1e25db44920f80b28e1521d,
         type: 3}
       propertyPath: m_Pivot.x
@@ -283,6 +290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7515703962391512382, guid: 7be2fea7f1e25db44920f80b28e1521d,
         type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515703962391512382, guid: 7be2fea7f1e25db44920f80b28e1521d,
+        type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -291,6 +303,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7be2fea7f1e25db44920f80b28e1521d, type: 3}
+--- !u!1 &177753437022293337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7515703962391512382, guid: 7be2fea7f1e25db44920f80b28e1521d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7654612074399926375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &9159960756983039932 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1523363356507377627, guid: 7be2fea7f1e25db44920f80b28e1521d,

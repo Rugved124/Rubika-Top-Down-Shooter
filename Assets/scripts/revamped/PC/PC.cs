@@ -31,7 +31,7 @@ public class PC : MonoBehaviour
     public GameObject beingConsumed;
 
     public GameObject visuals;
-    
+
     public Animator anim;
 
     public int maxHP;
@@ -43,7 +43,7 @@ public class PC : MonoBehaviour
     public PCStatusEffectsData statusEffects;
 
     public GameObject consumeLine;
-    
+
     public float isBurningFor;
     [SerializeField]
     private float maxBurnTime;
@@ -154,7 +154,7 @@ public class PC : MonoBehaviour
             nannyFire = 0;
         }
 
-        
+
         Burning();
         NannyBurning();
     }
@@ -185,19 +185,26 @@ public class PC : MonoBehaviour
     {
         consumeObj.GetComponent<Souls>().Consumption();
     }
-    
+
     public void DoneConsuming()
     {
-       
+
         beingConsumed = null;
     }
     public void TakeDamage(int damage)
+    {
+        if (!isInvincible || isDashing)
+        {
+            currentHP -= damage;
+        }
+
+    }
+    public void TakeDamageOverTime(int damage)
     {
         if (!isInvincible)
         {
             currentHP -= damage;
         }
-        
     }
     //-----------------------------------------------Diying and Respawning---------------------------------------------------------------
     public void Die()
@@ -231,7 +238,7 @@ public class PC : MonoBehaviour
             if (Time.time - statusEffects.lastTick >= statusEffects.tickSpeed)
             {
                 slowMultiplier = statusEffects.slowedSpeed;
-                TakeDamage(statusEffects.poisonDamagePerTick);
+                TakeDamageOverTime(statusEffects.poisonDamagePerTick);
                 statusEffects.lastTick = Time.time;
             }
 
@@ -256,7 +263,7 @@ public class PC : MonoBehaviour
         if (timeBetweenFire <= 0f)
         {
             timeBetweenFire = statusEffects.burnTickSpeed;
-            TakeDamage(statusEffects.burningPerTick * nannyFire);
+            TakeDamageOverTime(statusEffects.burningPerTick * nannyFire);
 
         }
     }
@@ -336,6 +343,8 @@ public class PC : MonoBehaviour
     }
     public void ResetPCStats()
     {
+        AmmoManager.instance.ResetEquippedAmmo();
+        AmmoManager.instance.RemoveCurrentShield();
         statusEffects.burnLastTick = 0f;
         statusEffects.burnNumber = 0;
         statusEffects.lastTick = 0f;
@@ -354,14 +363,12 @@ public class PC : MonoBehaviour
         canDash = false;
         isDashing = true;
         playerRb.useGravity = false;
-        isInvincible = true;
         Quaternion rotation = Quaternion.AngleAxis(-45, Vector3.up);
         direction = rotation * direction;
         playerRb.velocity = direction.normalized * dashSpeed;
 
         yield return new WaitForSeconds(dashRange / dashSpeed);
         isDashing = false;
-        isInvincible = false;
         playerRb.useGravity = true;
         playerRb.velocity = Vector3.zero;
 
