@@ -13,7 +13,7 @@ public class PCConsumeState : BaseState
 
     public override void EnterState()
     {
-        Debug.Log("Print");
+        _pc.canDash = false;
         _pc.consumeLine.SetActive(true);
         _pc.anim.SetBool("isConsuming", true);
     }
