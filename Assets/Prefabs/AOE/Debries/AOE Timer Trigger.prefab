@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7539178368489121849}
   - component: {fileID: 8730941593898634778}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: AOE Timer Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,3 +49,4 @@ MonoBehaviour:
   - {fileID: 0}
   aoeTimer: 0
   maxAoeTimer: 5
+  AOETimers: []

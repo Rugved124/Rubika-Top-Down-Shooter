@@ -15,9 +15,9 @@ MonoBehaviour:
   visionConeAngle: 180
   aggroRadius: 5
   attackRange: 6
-  HitPoints: 100
+  HitPoints: 150
   teleportCoolDown: 0
-  enemyMoveSpeed: 5
+  enemyMoveSpeed: 9
   enemyRotationSpeed: 200
   enemyAttackingAngularSpeed: 5
   timeBetweenBullets: 2
