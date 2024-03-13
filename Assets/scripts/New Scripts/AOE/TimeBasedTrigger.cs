@@ -11,9 +11,12 @@ public class TimeBasedTrigger : MonoBehaviour
     private float aoeTimer;
     [SerializeField]
     private float maxAoeTimer;
+
+    [SerializeField]
+    private List<float> AOETimers = new List<float>();
     private void Awake()
     {
-        aoeTimer = maxAoeTimer;
+        aoeTimer = AOETimers[i];
         foreach (GameObject i in aoe) 
         {
             i.SetActive(false);
@@ -27,7 +30,6 @@ public class TimeBasedTrigger : MonoBehaviour
         }
         if(aoeTimer <= 0f)
         {
-            aoeTimer = maxAoeTimer;
             TriggerNextAOE();
         }
     }
@@ -37,6 +39,10 @@ public class TimeBasedTrigger : MonoBehaviour
         {
             aoe[i].SetActive(true);
             i++;
+            if(i < aoe.Count)
+            {
+                aoeTimer = AOETimers[i];
+            }
         }
     }
 }

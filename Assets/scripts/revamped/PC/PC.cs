@@ -396,7 +396,6 @@ public class PC : MonoBehaviour
             {
                 if (!collision.collider.CompareTag("Ground"))
                 {
-                    Debug.Log(collision.collider.name);
                     isCollided = true;
                 }
             }
