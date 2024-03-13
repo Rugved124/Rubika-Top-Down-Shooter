@@ -66,6 +66,7 @@ public class PC : MonoBehaviour
     [SerializeField]
     float dashCooldown;
     public GameObject crosshair;
+    bool isCollided;
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
@@ -106,6 +107,7 @@ public class PC : MonoBehaviour
         cam = Camera.main.transform;
         canDash = true;
         dashCooldown = dashRange / dashSpeed + dashCooldown;
+        isCollided = false;
     }
 
     private void Update()
@@ -120,7 +122,7 @@ public class PC : MonoBehaviour
         }
         //-------------------------------------Dash Things-------------------------------------
 
-        if (InputManager.instance.GetDashButton() && canDash)
+        if (InputManager.instance.GetDashButton() && canDash && !InputManager.instance.GetIfConsumeIsHeld())
         {
             float forwards = InputManager.instance.GetMovementVertical();
             float sideways = InputManager.instance.GetMovementHorizontal();
@@ -357,6 +359,8 @@ public class PC : MonoBehaviour
         isBurningFor = -maxBurnTime;
         isInvincible = false;
         canDash = true;
+        slowMultiplier = 1f;
+        isCollided = false;
     }
     public IEnumerator Dash(Vector3 direction)
     {
@@ -367,13 +371,36 @@ public class PC : MonoBehaviour
         direction = rotation * direction;
         playerRb.velocity = direction.normalized * dashSpeed;
 
-        yield return new WaitForSeconds(dashRange / dashSpeed);
+        float dashDuration = dashRange / dashSpeed;
+        float elapsedTime = 0f;
+        while (elapsedTime < dashDuration && !isCollided) // Check if collided during dash
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
         isDashing = false;
         playerRb.useGravity = true;
         playerRb.velocity = Vector3.zero;
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+        isCollided = false;
 
+    }
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (isDashing)
+        {
+            if (collision != null)
+            {
+                if (!collision.collider.CompareTag("Ground"))
+                {
+                    Debug.Log(collision.collider.name);
+                    isCollided = true;
+                }
+            }
+
+        }
     }
 }

@@ -32,6 +32,7 @@ public class PCConsumeState : BaseState
         {
             _pc.anim.SetBool("isConsuming", false);
             _pc.consumeLine.SetActive(false);
+            _pc.canDash = true;
             return typeof(PCDefaultState);
         }
         return null;

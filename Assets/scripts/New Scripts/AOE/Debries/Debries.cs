@@ -22,6 +22,8 @@ public class Debries : MonoBehaviour
     private float fallingTime;
 
     bool isHit;
+
+    [SerializeField]
     bool canSpikeHit;
     [SerializeField]
     bool spiked;
@@ -32,18 +34,18 @@ public class Debries : MonoBehaviour
     {
         isHit = false;
         StartCoroutine(FallDown());
+        this.GetComponent<Rigidbody>().isKinematic = false;
     }
     private void OnTriggerEnter(Collider other)
     {
         if(!other.CompareTag("Enemies") && !other.CompareTag("Shield") && !other.CompareTag("Player"))
         {
             cross.SetActive(false);
-            this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //this.GetComponent<Rigidbody>().velocity = Vector3.zero;
             this.GetComponent<Rigidbody>().isKinematic = true;
             isHit = true;
             if (spiked)
-            {
-                ResetSpikes();
+            {   
                 this.GetComponent<Collider>().isTrigger = false;
             }
         }

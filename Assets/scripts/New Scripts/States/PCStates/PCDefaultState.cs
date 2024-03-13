@@ -58,7 +58,7 @@ public class PCDefaultState : BaseState
         _pc.PlayerMove(moveVector, _pc.slowMultiplier);
         _pc.PlayerRotation();
 
-        if (InputManager.instance.GetIfConsumeIsHeld())
+        if (InputManager.instance.GetIfConsumeIsHeld() && !_pc.isDashing)
         {
             _pc.consumeLine.SetActive(true);
             RaycastHit hitObj;

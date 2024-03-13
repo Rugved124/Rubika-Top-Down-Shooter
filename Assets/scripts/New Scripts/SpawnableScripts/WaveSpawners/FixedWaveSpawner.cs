@@ -138,15 +138,6 @@ public class FixedWaveSpawner : MonoBehaviour
     {
 
         Debug.Log("Generating Enemies");
-        //int randomEnemyID = Random.Range(0, currentWave.enemy.Length);
-        //int randomEnemyCost = currentWave.enemy[randomEnemyID].enemyValue;
-
-
-        //if (wavePurchasePower - randomEnemyCost >= 0)
-        //{
-        //    generateEnemies.Add(currentWave.enemy[randomEnemyID].enemiesInWave);
-        //    wavePurchasePower -= randomEnemyCost;
-        //}
         for (int i = 0; i < currentWave.enemy.Length; i++)
         {
             generateEnemies.Add(currentWave.enemy[i].enemiesInWave);

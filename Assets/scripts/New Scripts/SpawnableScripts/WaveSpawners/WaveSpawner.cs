@@ -253,4 +253,12 @@ public class WaveSpawner : MonoBehaviour
         }
         currentWaveStates = WaveStates.GenerateEnemies;
     }
+
+    public void KillExistingEnemies()
+    {
+        foreach(GameObject i in existingEnemies)
+        {
+            Destroy(i);
+        }
+    }
 }

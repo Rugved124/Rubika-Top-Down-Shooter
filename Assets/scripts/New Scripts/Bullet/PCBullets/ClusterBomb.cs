@@ -21,10 +21,18 @@ public class ClusterBomb : BaseBullet
     private Quaternion stepAngle = Quaternion.AngleAxis(0, Vector3.up);
 
     bool isHit;
+    public bool isSplit;
     float time;
     public override void Start() 
     {
-        time = 0.1f;
+        if (isSplit)
+        {
+            time = 0;
+        }
+        else
+        {
+            time = 0.1f;
+        }
         isHit = true;
         startingAngle = Quaternion.AngleAxis(-splitAngle / 2, Vector3.up);
         stepAngle = Quaternion.AngleAxis(splitAngle / (splitNumber - 1), Vector3.up);
@@ -88,6 +96,7 @@ public class ClusterBomb : BaseBullet
                 GameObject _splitBullet = Instantiate(splitBullet, transform.position,transform.rotation * startingAngle);
                 _splitBullet.GetComponent<ClusterBomb>().SetSplitNumber(splitTimes - 1);
                 _splitBullet.GetComponent<ClusterBomb>().SetDamage(bulletDamage / 2);
+                _splitBullet.GetComponent<ClusterBomb>().isSplit = true;
                 startingAngle *= stepAngle;
             }
         }
