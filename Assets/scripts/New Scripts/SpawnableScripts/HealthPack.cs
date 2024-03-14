@@ -38,7 +38,10 @@ public class HealthPack : MonoBehaviour
 
     private void Die()
     {
-        owner.currentPot = null;
+        if(owner != null)
+        {
+            owner.currentPot = null;
+        }
         Destroy(this.gameObject);
     }
 

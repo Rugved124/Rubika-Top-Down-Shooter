@@ -5,7 +5,7 @@ using UnityEngine;
 public class PCDeadState : BaseState
 {
     private PC _pc;
-
+    float timeBeforeDying;
     public PCDeadState(PC pc) : base(pc.gameObject)
     {
         _pc = pc;
@@ -13,12 +13,18 @@ public class PCDeadState : BaseState
 
     public override void EnterState()
     {
+        timeBeforeDying = 1.9f;
         _pc.isDead = true;
-        _pc.Die();
+        _pc.anim.SetTrigger("isDead");
     }
 
     public override Type ExecuteState()
     {
+        timeBeforeDying -= Time.deltaTime;
+        if(timeBeforeDying <= 0)
+        {
+            _pc.Die();
+        }
         if(_pc.currentHP > 0)
         {
             _pc.isDead = false;

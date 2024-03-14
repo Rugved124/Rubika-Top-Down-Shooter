@@ -31,7 +31,8 @@ public class RespawnManager : MonoBehaviour
         {
             if (pc != null)
             {
-                pc.respawnPoint = respawner.position;
+                GameManager.Instance.respawnPoint = respawner.position;
+                //pc.respawnPoint = respawner.position;
                 foreach (GameObject go in lastRoomLights)
                 {
                     go.SetActive(false);

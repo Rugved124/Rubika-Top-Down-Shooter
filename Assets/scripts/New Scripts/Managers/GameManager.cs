@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public int currentScene;
+
+    public Vector3 respawnPoint;
     private void Awake()
     {
         if (Instance == null)
@@ -17,6 +20,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
+        respawnPoint = FindObjectOfType<PC>().transform.position;
     }
     public enum GameStates
     {
@@ -30,13 +34,19 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         ManagerEvents.switchState += ChangeState;
+        ManagerEvents.currentScene += CurrentScene;
+        ManagerEvents.respawnPoint += SetRespawn;
     }
     private void OnDisable()
     {
         ManagerEvents.switchState -= ChangeState;
+        ManagerEvents.currentScene -= CurrentScene;
+        ManagerEvents.respawnPoint -= SetRespawn;
+
     }
     void Start()
     {
+        currentScene = 1;
         currentState = GameStates.INMENU;
         DontDestroyOnLoad(this.gameObject);
     }
@@ -67,5 +77,15 @@ public class GameManager : MonoBehaviour
         {
             currentState = state;
         }
+    }
+
+    private void CurrentScene(int sceneIndex)
+    {
+        currentScene =  sceneIndex;
+    }
+
+    private void SetRespawn(Vector3 location)
+    {
+        respawnPoint = location;
     }
 }

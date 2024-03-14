@@ -219,6 +219,7 @@ public class WaveSpawner : MonoBehaviour
     
     public void ResetWaveSpawner()
     {
+        canSpawm = false;
         foreach (GameObject enemies in existingEnemies)
         {
             if(enemies != null)

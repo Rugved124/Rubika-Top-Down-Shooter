@@ -53,8 +53,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 12.51, y: 5.3, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 32.357292, y: 10.38011, z: 1}
+  m_Center: {x: 3.5098114, y: 2.5400531, z: 0}
 --- !u!114 &7618529660927952667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawner: {fileID: 7455184805648526206}
+  lastRoomLights: []
+  currentRoomLights: []
 --- !u!1 &8709044368236131430
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +95,7 @@ Transform:
   m_GameObject: {fileID: 8709044368236131430}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.08, y: -2.37, z: -7.22}
+  m_LocalPosition: {x: 22.73, y: 3.3, z: -27.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

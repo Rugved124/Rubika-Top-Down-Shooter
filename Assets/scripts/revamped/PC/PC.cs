@@ -87,6 +87,7 @@ public class PC : MonoBehaviour
 
     private void Start()
     {
+        transform.position = GameManager.Instance.respawnPoint;
         crosshair = GetComponentInChildren<CrossHairPos>().gameObject;
         respawnPoint = transform.position;
         consumeLine.SetActive(false);
@@ -222,7 +223,6 @@ public class PC : MonoBehaviour
     {
         currentHP = maxHP;
         transform.position = respawnPoint;
-        WaveSpawnerManager.instance.ResetRemainingWaveSpaners();
     }
     //-------------------------------------------------------------------------------------------------------------------
     public void KnockBack(Vector3 collisionPos, float pushBackForce)

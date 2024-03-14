@@ -73,7 +73,6 @@ public class Butcher : Enemy
     public override void FireWeapon()
     {
         base.FireWeapon();
-        isWeaponFiringDone = true;
         BaseBullet bulletShot = Instantiate(bullet, shootPoint.position, Quaternion.identity).GetComponent<BaseBullet>();
         Vector3 movementDirection = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical()).normalized;
         movementDirection = Quaternion.AngleAxis(-45f, Vector3.up) * movementDirection;
@@ -88,7 +87,7 @@ public class Butcher : Enemy
         if (allowInvoke)
         {
             allowInvoke = false;
-            Invoke("SetFiringToTrue", firedTime);
+            Invoke("SetFiringToTrue", 1 + firedTime);
         }
         
     }
@@ -235,6 +234,10 @@ public class Butcher : Enemy
             }
         }
         return true;
+    }
+    public void CallThisFunction()
+    {
+        Debug.Log("shooting");
     }
 }
 

@@ -37,10 +37,6 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(FindObjectOfType<PC>() != null)
-            {
-                FindObjectOfType<PC>().ResetPCStats();
-            }
             loader.ReloadScene();
         }
         horizontal = Input.GetAxisRaw("Horizontal");

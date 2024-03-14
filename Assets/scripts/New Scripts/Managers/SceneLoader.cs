@@ -18,8 +18,9 @@ public class SceneLoader : MonoBehaviour
         {
             if(other.tag == "Player")
             {
-                if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings)
+                if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
                 {
+                    ManagerEvents.currentScene.Invoke(SceneManager.GetActiveScene().buildIndex + 1);
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 }
                 else
@@ -34,9 +35,9 @@ public class SceneLoader : MonoBehaviour
     {
         if (resetScene)
         {
-            pc.gameObject.SetActive(true);
-            pc.Respawn();
-            SceneManager.MoveGameObjectToScene(pc.gameObject, SceneManager.GetActiveScene());
+            //pc.gameObject.SetActive(true);
+            //pc.Respawn();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
     }
