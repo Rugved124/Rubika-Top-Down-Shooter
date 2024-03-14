@@ -57,7 +57,10 @@ public class FlameThrower : BaseBullet
                             timeBetweenTick = 0.2f;
                             hit.collider.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
                         }
-
+                    }
+                    if (hit.collider.CompareTag("Shield"))
+                    {
+                        hit.collider.gameObject.GetComponent<ShieldBehaviour>().SetPoisonedForTime();
                     }
                 }
                 direction = stepAngle * direction;

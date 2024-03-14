@@ -85,7 +85,6 @@ public class AmmoManager : MonoBehaviour
         }
         if (secondAmmoType == EquippedAmmoType.DEFAULTAMMO || secondAmmoType == EquippedAmmoType.SHIELD)
         {
-            Debug.Log("Shielded");
             secondAmmo.value = firstAmmo.maxValue;
         }
         else
@@ -135,7 +134,7 @@ public class AmmoManager : MonoBehaviour
                 Destroy(currentShield);
             }
         }
-        if(InputManager.instance.IsMousePressed() && !pc.isDead) 
+        if(InputManager.instance.IsMousePressed() && !pc.isDead && !pc.isDashing) 
         {
             if(bulletToSpawn != null && canShoot && ammoCount > 0)
             {
@@ -294,12 +293,20 @@ public class AmmoManager : MonoBehaviour
         ChangeAmmoType();
     }
 
-    void ResetEquippedAmmo()
+    public void ResetEquippedAmmo()
     {
         firstAmmoType = EquippedAmmoType.DEFAULTAMMO;
         secondAmmoType = EquippedAmmoType.DEFAULTAMMO;
         currentAmmoType = EquippedAmmoType.DEFAULTAMMO;
         ChangeAmmoType();
+    }
+    public void RemoveCurrentShield()
+    {
+        if(currentShield != null)
+        {
+            Destroy(currentShield);
+        }
+        
     }
     public void ChangeAmmoType()
     {

@@ -120,19 +120,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: 0
-  bulletSpeed: 20
-  bulletRate: 0.5
-  bulletDamage: 24
-  bulletLifeTime: 1
+  bulletSpeed: 25
+  bulletRate: 2
+  bulletDamage: 60
+  bulletLifeTime: 100
   bulletRange: 8
-  ammoCount: 5
+  ammoCount: 10
   bulletType: 12
   pc: {fileID: 0}
   bulletRB: {fileID: 0}
   splitTimes: 2
   splitNumber: 3
-  splitAngle: 60
+  splitAngle: 90
   splitBullet: {fileID: 6067043956264170758}
+  isSplit: 0
 --- !u!54 &3796695607677581008
 Rigidbody:
   m_ObjectHideFlags: 0

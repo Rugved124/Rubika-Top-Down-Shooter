@@ -12,7 +12,6 @@ public class RunToPCState : BaseState
     public RunToPCState(Enemy enemy) : base(enemy.gameObject)
     {
         _enemy = enemy;
-
         pc = _enemy.pc.transform;
 
     }

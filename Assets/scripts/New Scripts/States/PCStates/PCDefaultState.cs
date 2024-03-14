@@ -24,7 +24,6 @@ public class PCDefaultState : BaseState
 
     public override void EnterState()
     {
-
     }
 
     public override Type ExecuteState()
@@ -34,6 +33,10 @@ public class PCDefaultState : BaseState
         if (_pc.currentHP <= 0)
         {
             return typeof(PCDeadState);
+        }
+        if (_pc.isDashing)
+        {
+            return typeof(PCDashState);
         }
         Vector3 moveVector = new Vector3(sideways, 0, forwards).normalized;
         if (cam != null)
@@ -52,11 +55,10 @@ public class PCDefaultState : BaseState
         }
 
         Move(move);
-
         _pc.PlayerMove(moveVector, _pc.slowMultiplier);
         _pc.PlayerRotation();
 
-        if (InputManager.instance.GetIfConsumeIsHeld())
+        if (InputManager.instance.GetIfConsumeIsHeld() && !_pc.isDashing)
         {
             _pc.consumeLine.SetActive(true);
             RaycastHit hitObj;

@@ -92,6 +92,10 @@ public class DrunkenSepoy : Enemy
                             }
                             return;
                         }
+                        if (hit.collider.CompareTag("Shield"))
+                        {
+                            hit.collider.gameObject.GetComponent<ShieldBehaviour>().SetPoisonedForTime();
+                        }
                     }
                     if (pc != null)
                     {

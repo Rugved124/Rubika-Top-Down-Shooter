@@ -22,16 +22,24 @@ public class CrossHairPos : MonoBehaviour
     }
     private void Update()
     {
-        if (!pc.isDead && AmmoManager.instance.GetCurrentAmmoType() != AmmoManager.EquippedAmmoType.SLOWSLOW)
+        Vector3 mousePos = new Vector3(InputManager.instance.GetMousePosition().x, pc.transform.position.y, InputManager.instance.GetMousePosition().z);
+        if(Vector3.Distance(pc.transform.position, mousePos) >= AmmoManager.instance.currentRange)
         {
-            transform.position = pc.transform.position + (pc.transform.forward * AmmoManager.instance.currentRange);
+            if (!pc.isDead && AmmoManager.instance.GetCurrentAmmoType() != AmmoManager.EquippedAmmoType.SLOWSLOW)
+            {
+                transform.position = pc.transform.position + (pc.transform.forward * AmmoManager.instance.currentRange);
+            }
+            else
+            {
+                if (!pc.isDead && AmmoManager.instance.GetCurrentAmmoType() == AmmoManager.EquippedAmmoType.SLOWSLOW)
+                {
+                    transform.position = mousePos;
+                }
+            }
         }
         else
         {
-            if (!pc.isDead && AmmoManager.instance.GetCurrentAmmoType() == AmmoManager.EquippedAmmoType.SLOWSLOW)
-            {
-                transform.position = InputManager.instance.GetMousePosition();
-            }
+            transform.position = mousePos;
         }
         Vector2 pos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas_rect, cam.WorldToScreenPoint(transform.position),_canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : cam, out pos);

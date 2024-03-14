@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5859742014120641253}
   - component: {fileID: 6811499365633638272}
   - component: {fileID: 8149684871880729928}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: HealthPack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healNumber: 20
+  owner: {fileID: 0}
 --- !u!136 &8149684871880729928
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -79,7 +80,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4894024055643881264}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +114,7 @@ GameObject:
   - component: {fileID: 3424056372884974814}
   - component: {fileID: 6417598618111112751}
   - component: {fileID: 9046425732433363317}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
