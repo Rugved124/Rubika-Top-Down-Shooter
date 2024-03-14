@@ -9,6 +9,11 @@ public class RespawnManager : MonoBehaviour
     [SerializeField]
     private Transform respawner;
 
+    [SerializeField]
+    List<GameObject> lastRoomLights;
+
+    [SerializeField]
+    private List<GameObject> currentRoomLights;
     
     private void Start()
     {
@@ -27,6 +32,14 @@ public class RespawnManager : MonoBehaviour
             if (pc != null)
             {
                 pc.respawnPoint = respawner.position;
+                foreach (GameObject go in lastRoomLights)
+                {
+                    go.SetActive(false);
+                }
+                foreach(GameObject go in currentRoomLights)
+                {
+                    go.SetActive(true);
+                }
             }
         }    
     }

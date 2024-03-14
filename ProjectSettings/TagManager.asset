@@ -22,6 +22,7 @@ TagManager:
   - NannyFire
   - Shield
   - GravityWell
+  - HealthPack
   layers:
   - Default
   - TransparentFX
@@ -40,7 +41,7 @@ TagManager:
   - TopLayerUI
   - Trigger
   - Debris
-  - 
+  - HealthPack
   - 
   - 
   - 
