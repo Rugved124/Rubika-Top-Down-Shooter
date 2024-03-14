@@ -21,6 +21,9 @@ public class Debries : MonoBehaviour
     [SerializeField]
     private float fallingTime;
 
+    [SerializeField]
+    private int spikeDamage;
+
     bool isHit;
 
     [SerializeField]
@@ -93,7 +96,7 @@ public class Debries : MonoBehaviour
         if (collision.collider.CompareTag("Player") && canSpikeHit)
         {
             canSpikeHit = false;
-            collision.collider.GetComponent<PC>().TakeDamage(damage/3);
+            collision.collider.GetComponent<PC>().TakeDamage(spikeDamage);
             Invoke("ResetSpikes", 1f);
         }
     }
