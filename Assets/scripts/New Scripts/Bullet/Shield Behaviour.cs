@@ -57,7 +57,10 @@ public class ShieldBehaviour : MonoBehaviour
     }
     public void Die()
     {
-        AmmoManager.instance.currentShield = null;
+        if (isPC)
+        {
+            AmmoManager.instance.currentShield = null;
+        }
         Destroy(this.gameObject);
     }
 

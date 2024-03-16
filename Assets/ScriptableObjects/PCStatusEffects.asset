@@ -22,11 +22,11 @@ MonoBehaviour:
   poisonedForTime: 20.42933
   slowedForTime: 0
   poisonDamagePerTick: 3
-  burningPerTick: 1
+  burningPerTick: 2
   burnNumber: 0
   tickSpeed: 0.33
   burnTickSpeed: 0.2
   lastTick: 0
-  burnLastTick: 46.385494
+  burnLastTick: 99.722244
   isSlowedCounting: 0
   isPoisonCounting: 0
