@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: wave 2 R8
   m_EditorClassIdentifier: 
   enemy:
-  - {fileID: 11400000, guid: 5e3f13fa2cb067b4190cf553abd26b43, type: 2}
   - {fileID: 11400000, guid: e5e19ecf82963c34a881a0f09576d8d2, type: 2}
-  timeBeforeThisWave: 20
+  - {fileID: 11400000, guid: e5e19ecf82963c34a881a0f09576d8d2, type: 2}
+  - {fileID: 11400000, guid: 62983d0b672a06f49ab878941361248f, type: 2}
+  - {fileID: 11400000, guid: 62983d0b672a06f49ab878941361248f, type: 2}
+  - {fileID: 11400000, guid: 62983d0b672a06f49ab878941361248f, type: 2}
+  timeBeforeThisWave: 30
   waveValue: 10

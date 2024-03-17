@@ -10,13 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bdb749b0bc52d7143bb8c1b733065a3e, type: 3}
-  m_Name: wave 1 R8
+  m_Name: Wave 1
   m_EditorClassIdentifier: 
   enemy:
-  - {fileID: 11400000, guid: 62983d0b672a06f49ab878941361248f, type: 2}
-  - {fileID: 11400000, guid: e5e19ecf82963c34a881a0f09576d8d2, type: 2}
-  - {fileID: 11400000, guid: 62983d0b672a06f49ab878941361248f, type: 2}
-  - {fileID: 11400000, guid: e5e19ecf82963c34a881a0f09576d8d2, type: 2}
-  - {fileID: 11400000, guid: a6210b4d5d825da4694685a716b5fd78, type: 2}
+  - {fileID: 11400000, guid: 476d16a0243b81d4791fc28b9e4cde1c, type: 2}
   timeBeforeThisWave: 0
-  waveValue: 5
+  waveValue: 0
