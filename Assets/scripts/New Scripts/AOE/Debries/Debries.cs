@@ -5,8 +5,10 @@ using UnityEngine.Rendering;
 
 public class Debries : MonoBehaviour
 {
+    [SerializeField]
     private bool isPC;
 
+    [SerializeField]
     private bool isSet;
 
     [SerializeField]
@@ -24,6 +26,8 @@ public class Debries : MonoBehaviour
     [SerializeField]
     private int spikeDamage;
 
+
+    [SerializeField]
     bool isHit;
 
     [SerializeField]
@@ -43,10 +47,16 @@ public class Debries : MonoBehaviour
     {
         if(!other.CompareTag("Enemies") && !other.CompareTag("Shield") && !other.CompareTag("Player"))
         {
-            cross.SetActive(false);
+            if(cross != null)
+            {
+                cross.SetActive(false);
+            }
             //this.GetComponent<Rigidbody>().velocity = Vector3.zero;
             this.GetComponent<Rigidbody>().isKinematic = true;
-            isHit = true;
+            if(other != null)
+            {
+                isHit = true;
+            }
             if (spiked)
             {   
                 this.GetComponent<Collider>().isTrigger = false;
@@ -54,12 +64,21 @@ public class Debries : MonoBehaviour
         }
         if (isSet)
         {
-            if (!isPC)
+            if (isPC)
             {
                 if (other.CompareTag("Enemies") && !isHit)
                 {
+                    Debug.Log("HitEnemies");
                     isHit = true;
                     other.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                }
+                if (other.CompareTag("Shield") && !isHit)
+                {
+                    isHit = true;
+                    if (!other.gameObject.GetComponent<ShieldBehaviour>().isPC)
+                    {
+                        other.gameObject.GetComponent<ShieldBehaviour>().TakeDamage(1);
+                    }
                 }
             }
             else
@@ -67,7 +86,10 @@ public class Debries : MonoBehaviour
                 if (other.CompareTag("Shield") && !isHit)
                 {
                     isHit = true;
-                    other.gameObject.GetComponent<ShieldBehaviour>().TakeDamage(1);
+                    if (other.gameObject.GetComponent<ShieldBehaviour>().isPC)
+                    {
+                        other.gameObject.GetComponent<ShieldBehaviour>().TakeDamage(1);
+                    }
                 }
                 if (other.CompareTag("Player") && !isHit)
                 {

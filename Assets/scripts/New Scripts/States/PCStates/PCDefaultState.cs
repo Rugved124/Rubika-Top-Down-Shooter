@@ -62,8 +62,7 @@ public class PCDefaultState : BaseState
         {
             _pc.consumeLine.SetActive(true);
             RaycastHit hitObj;
-            bool didHit = Physics.Raycast(_pc.bulletSpawn.position, transform.forward, out hitObj, _pc.consumeRange);
-            Debug.DrawRay(_pc.bulletSpawn.position, transform.forward * _pc.consumeRange, Color.red);
+            bool didHit = Physics.Raycast(_pc.bulletSpawn.position, transform.forward, out hitObj, _pc.consumeRange,_pc.soul);
             if (didHit)
             {
                 if (hitObj.collider.CompareTag("Consumables"))

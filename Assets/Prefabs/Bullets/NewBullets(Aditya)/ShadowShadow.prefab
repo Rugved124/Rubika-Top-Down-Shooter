@@ -122,13 +122,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status: 0
   bulletSpeed: 20
-  bulletRate: 0.2
+  bulletRate: 0.33
   bulletDamage: 50
-  bulletLifeTime: 5
+  bulletLifeTime: 3
   bulletRange: 100
   ammoCount: 5
   bulletType: 6
   pc: {fileID: 0}
   bulletRB: {fileID: 0}
-  fallingObject: {fileID: 4500201555358269410, guid: 07619ea9c57f81748804aa6a4e6f1b50,
+  fallingObject: {fileID: 4500201555358269410, guid: c7cb44e6dac482e4ab9950712aac315f,
     type: 3}

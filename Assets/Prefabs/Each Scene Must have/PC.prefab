@@ -336,12 +336,16 @@ MonoBehaviour:
   isDead: 0
   respawnPoint: {x: 0, y: 0, z: 0}
   cam: {fileID: 0}
+  fadeAnimation: {fileID: 0}
   dashRange: 10
   dashSpeed: 50
   canDash: 0
   isDashing: 0
   dashCooldown: 0.2
   crosshair: {fileID: 0}
+  soul:
+    serializedVersion: 2
+    m_Bits: 65993
 --- !u!1001 &8590821507207124857
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -67,6 +67,8 @@ public class PC : MonoBehaviour
     float dashCooldown;
     public GameObject crosshair;
     bool isCollided;
+
+    public LayerMask soul;
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
