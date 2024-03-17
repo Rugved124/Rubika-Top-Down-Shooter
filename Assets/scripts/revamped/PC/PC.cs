@@ -55,7 +55,7 @@ public class PC : MonoBehaviour
 
     public Transform cam;
     Vector3 camForward;
-
+    public Animator fadeAnimation;
     //------------------------------------Dash Vars
     [SerializeField]
     float dashRange;
