@@ -11,8 +11,10 @@ public class FixedWaveTrigger : MonoBehaviour
     int waveCount;
     private void Awake()
     {
-        enabledAfterWaves.SetActive(false);
-
+        if(enabledAfterWaves != null)
+        {
+            enabledAfterWaves.SetActive(false);
+        }
         foreach (var spawner in spawns)
         {
             spawner.gameObject.SetActive(false);
@@ -23,7 +25,10 @@ public class FixedWaveTrigger : MonoBehaviour
     {
         if(waveCount <= 0)
         {
-            enabledAfterWaves.SetActive(true);
+            if (enabledAfterWaves != null)
+            {
+                enabledAfterWaves.SetActive(true);
+            }
         }
     }
     private void OnTriggerEnter(Collider other)

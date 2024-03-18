@@ -98,7 +98,11 @@ public class FixedWaveSpawner : MonoBehaviour
                         ChangeDoorState(false);
                         if (!isFinished)
                         {
-                            trigger.RemoveCount();
+                            if(trigger != null)
+                            {
+                                trigger.RemoveCount();
+                            }
+
                             isFinished = true;
                         }
 
