@@ -6,12 +6,24 @@ public class FixedWaveTrigger : MonoBehaviour
     [SerializeField]
     List<FixedWaveSpawner> spawns;
 
+    GameObject enabledAfterWaves;
 
+    int waveCount;
     private void Awake()
     {
+        enabledAfterWaves.SetActive(false);
+
         foreach (var spawner in spawns)
         {
             spawner.gameObject.SetActive(false);
+            waveCount++;
+        }
+    }
+    private void Update()
+    {
+        if(waveCount <= 0)
+        {
+            enabledAfterWaves.SetActive(true);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -24,5 +36,15 @@ public class FixedWaveTrigger : MonoBehaviour
                 spawner.ChangeDoorState(true);
             }
         }
+    }
+
+    public List<FixedWaveSpawner> ReturnWaveSpawns()
+    {
+        return spawns;
+    }
+
+    public void RemoveCount()
+    {
+        waveCount--;
     }
 }

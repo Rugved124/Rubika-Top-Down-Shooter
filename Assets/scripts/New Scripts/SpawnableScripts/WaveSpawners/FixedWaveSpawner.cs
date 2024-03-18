@@ -31,9 +31,6 @@ public class FixedWaveSpawner : MonoBehaviour
     private bool isSpawning = false;
 
     [SerializeField]
-    int wavePurchasePower;
-
-    [SerializeField]
     List<GameObject> generateEnemies = new List<GameObject>();
 
     [SerializeField]
@@ -47,6 +44,8 @@ public class FixedWaveSpawner : MonoBehaviour
 
     public bool canSpawm;
 
+    [SerializeField]
+    FixedWaveTrigger trigger;
     public bool isFinished { get; private set; }
     private void Start()
     {
@@ -56,7 +55,6 @@ public class FixedWaveSpawner : MonoBehaviour
         {
             currentWave = waves[i];
             timebetweenSpawns = currentWave.timeBeforeThisWave;
-            wavePurchasePower = currentWave.waveValue;
         }
     }
 
@@ -98,7 +96,12 @@ public class FixedWaveSpawner : MonoBehaviour
                     if (existingEnemies.Count <= 0)
                     {
                         ChangeDoorState(false);
-                        isFinished = true;
+                        if (!isFinished)
+                        {
+                            trigger.RemoveCount();
+                            isFinished = true;
+                        }
+
                     }
 
                     break;
@@ -159,7 +162,6 @@ public class FixedWaveSpawner : MonoBehaviour
     void ResetGeneratedEnemies()
     {
         generateEnemies.Clear();
-        wavePurchasePower = currentWave.waveValue;
 
         if (currentWaveStates != WaveStates.GenerateEnemies)
         {
@@ -191,6 +193,15 @@ public class FixedWaveSpawner : MonoBehaviour
 
     public void ResetWaveSpawner()
     {
+        DestroyExistingEnemies();
+        i = 0;
+        isFinished = false;
+        currentWave = waves[i];
+        timebetweenSpawns = currentWave.timeBeforeThisWave;
+    }
+
+    public void DestroyExistingEnemies()
+    {
         foreach (GameObject enemies in existingEnemies)
         {
             if (enemies != null)
@@ -198,10 +209,5 @@ public class FixedWaveSpawner : MonoBehaviour
                 Destroy(enemies.gameObject);
             }
         }
-        i = 0;
-        isFinished = false;
-        currentWave = waves[i];
-        timebetweenSpawns = currentWave.timeBeforeThisWave;
-        wavePurchasePower = currentWave.waveValue;
     }
 }
