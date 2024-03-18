@@ -44,7 +44,7 @@ public class BossHealth : MonoBehaviour
     {
         if(waveSpawner == null)
         {
-            Debug.LogError("There is waveSpawner attached to the boss");
+            Debug.LogError("There is no waveSpawner attached to the boss");
         }
         if(barColor != null) 
         {

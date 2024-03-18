@@ -76,17 +76,44 @@ public class ChainLightning : BaseBullet
     //        Destroy(lightning, 0.3f);
     //    }
     //}
+    public override void OnTriggerEnter(Collider other)
+    {
+        //if (other.CompareTag("Enemies") || other.CompareTag("Shield"))
+        //{
+        //    if (other.gameObject != currentEnemy && other.gameObject != shield)
+        //    {
+        //        if (other.CompareTag("Enemies"))
+        //        {
+        //            currentEnemy = other.gameObject;
+        //            other.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
+        //            jumps--;
+        //        }
+        //        if (other.CompareTag("Shield"))
+        //        {
+        //            shield = other.gameObject;
+        //            other.gameObject.GetComponent<ShieldBehaviour>().TakeDamage(1);
+        //            jumps--;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    Die();
+        //}
+    }
     private void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Enemies") && other.CompareTag("Shield"))
+        if (other.CompareTag("Enemies") || other.CompareTag("Shield"))
         {
-            if(other.gameObject != currentEnemy && other.gameObject != shield)
+            if (other.gameObject != currentEnemy && other.gameObject != shield)
             {
                 if (other.CompareTag("Enemies"))
                 {
                     currentEnemy = other.gameObject;
                     other.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
                     jumps--;
+                    Debug.Log(jumps);
+                    //bulletRB.velocity = Vector3.zero;
                 }
                 if (other.CompareTag("Shield"))
                 {
@@ -94,26 +121,26 @@ public class ChainLightning : BaseBullet
                     other.gameObject.GetComponent<ShieldBehaviour>().TakeDamage(1);
                     jumps--;
                 }
+                startPos = transform.position;
             }
-            SetStartPos(transform.position);
-            if (Physics.OverlapSphere(_startPos, bulletRange, enemies) != null)
+            if(jumps > 0)
             {
-                colliders = Physics.OverlapSphere(_startPos, bulletRange, enemies).ToList();
-                if (currentEnemy != null)
+                if (Physics.OverlapSphere(transform.position, bulletRange, enemies) != null)
                 {
-                    colliders.Remove(currentEnemy.GetComponent<Collider>());
-                }
-                if (colliders.Count > 0)
-                {
-                    if (colliders[0] != null)
+                    colliders = Physics.OverlapSphere(transform.position, bulletRange, enemies).ToList();
+                    if (currentEnemy != null)
                     {
-                        currentEnemy = colliders[0].gameObject;
-                        SetLookPos();
-                        BulletMovement(transform.forward);
+                        colliders.Remove(currentEnemy.GetComponent<Collider>());
                     }
-                    else
+                    if (colliders.Count > 0)
                     {
-                        Die();
+                        if (colliders[0] != null)
+                        {
+                            bulletRB.velocity = Vector3.zero;
+                            Debug.Log("Found Enemy");
+                            //currentEnemy = colliders[0].gameObject;
+                            BulletMovement((new Vector3 (colliders[0].gameObject.transform.position.x, transform.position.y, colliders[0].gameObject.transform.position.z) - transform.position).normalized);
+                        }
                     }
                 }
             }
@@ -124,10 +151,7 @@ public class ChainLightning : BaseBullet
         }
         else
         {
-            if(other != null)
-            {
-                Die();
-            }
+            Die();
         }
     }
     public override void BulletMovement(Vector3 forceDirection)
@@ -138,17 +162,5 @@ public class ChainLightning : BaseBullet
     public override void Die()
     {
         base.Die();
-    }
-
-    public void SetStartPos(Vector3 _startPos)
-    {
-        hasSetPos = true;
-        this._startPos = _startPos;
-        jumps--;
-    }
-    public void SetLookPos() 
-    {
-        hasSetPos = true;
-        lookPos = (currentEnemy.transform.position - _startPos).normalized;
     }
 }

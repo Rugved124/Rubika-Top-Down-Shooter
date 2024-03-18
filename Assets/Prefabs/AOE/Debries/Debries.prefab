@@ -121,10 +121,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09769ed96052334bb39a1c2d4f91c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPC: 0
+  isSet: 0
   damage: 30
   fallingSpeed: 50
   canBeDestroyed: 0
   fallingTime: 0.5
+  spikeDamage: 0
+  isHit: 0
+  canSpikeHit: 0
   spiked: 0
   cross: {fileID: 177753437022293337}
 --- !u!54 &3727418806710666873
@@ -216,12 +221,12 @@ PrefabInstance:
     - target: {fileID: 1523363356507377627, guid: 7be2fea7f1e25db44920f80b28e1521d,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 392.6667
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1523363356507377627, guid: 7be2fea7f1e25db44920f80b28e1521d,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 221
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1523363356507377627, guid: 7be2fea7f1e25db44920f80b28e1521d,
         type: 3}
