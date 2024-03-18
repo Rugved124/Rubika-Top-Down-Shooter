@@ -57,7 +57,7 @@ public class BaseBullet : MonoBehaviour
 
     protected bool isPC;
 
-    Vector3 startPos;
+    protected Vector3 startPos;
     public virtual void Start()
     {
         startPos = transform.position;

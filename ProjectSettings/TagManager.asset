@@ -23,6 +23,7 @@ TagManager:
   - Shield
   - GravityWell
   - HealthPack
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -43,7 +44,7 @@ TagManager:
   - Debris
   - HealthPack
   - Shield
-  - 
+  - Boss
   - 
   - 
   - 
