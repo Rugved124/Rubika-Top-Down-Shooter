@@ -75,11 +75,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: 0
-  bulletSpeed: 15
+  bulletSpeed: 20
   bulletRate: 2
   bulletDamage: 15
   bulletLifeTime: 99
-  bulletRange: 10
+  bulletRange: 20
   ammoCount: 20
   bulletType: 0
   pc: {fileID: 0}

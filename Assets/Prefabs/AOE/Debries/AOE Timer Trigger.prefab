@@ -49,4 +49,6 @@ MonoBehaviour:
   - {fileID: 0}
   aoeTimer: 0
   maxAoeTimer: 5
-  AOETimers: []
+  AOETimers:
+  - 0
+  - 0
