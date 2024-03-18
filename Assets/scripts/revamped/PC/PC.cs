@@ -55,7 +55,7 @@ public class PC : MonoBehaviour
 
     public Transform cam;
     Vector3 camForward;
-
+    public Animator fadeAnimation;
     //------------------------------------Dash Vars
     [SerializeField]
     float dashRange;
@@ -67,6 +67,8 @@ public class PC : MonoBehaviour
     float dashCooldown;
     public GameObject crosshair;
     bool isCollided;
+
+    public LayerMask soul;
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()

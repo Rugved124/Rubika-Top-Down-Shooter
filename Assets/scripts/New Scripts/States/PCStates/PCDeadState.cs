@@ -21,8 +21,16 @@ public class PCDeadState : BaseState
     public override Type ExecuteState()
     {
         timeBeforeDying -= Time.deltaTime;
+        if(timeBeforeDying <= 0.9f)
+        {
+            if(_pc.fadeAnimation != null)
+            {
+                _pc.fadeAnimation.SetTrigger("Died");
+            }
+        }
         if(timeBeforeDying <= 0)
         {
+
             _pc.Die();
         }
         if(_pc.currentHP > 0)

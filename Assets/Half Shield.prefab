@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8735468828421640399}
   - component: {fileID: 2564852928783227632}
   - component: {fileID: 987572041708605180}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Half Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}

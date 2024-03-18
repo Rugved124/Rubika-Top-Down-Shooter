@@ -8,8 +8,13 @@ public class SceneLoader : MonoBehaviour
 
     [SerializeField]
     bool resetScene;
+
+    public Animator fadeToBlack;
+
+    bool hasInvoked;
     private void Start()
     {
+        hasInvoked = false;
         pc = FindObjectOfType<PC>();
     }
     private void OnTriggerEnter(Collider other)
@@ -20,8 +25,15 @@ public class SceneLoader : MonoBehaviour
             {
                 if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
                 {
-                    ManagerEvents.currentScene.Invoke(SceneManager.GetActiveScene().buildIndex + 1);
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    if (fadeToBlack != null)
+                    {
+                        fadeToBlack.SetTrigger("LoadScene");
+                    }
+                    if (!hasInvoked)
+                    {
+                        hasInvoked = true;
+                        Invoke("LoadNextScene", 1f);
+                    }
                 }
                 else
                 {
@@ -40,5 +52,12 @@ public class SceneLoader : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
+    }
+
+    public void LoadNextScene()
+    {
+        hasInvoked = false;
+        ManagerEvents.currentScene.Invoke(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
