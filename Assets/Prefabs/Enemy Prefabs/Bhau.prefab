@@ -499,6 +499,9 @@ MonoBehaviour:
   tickSpeed: 0.25
   poisonDamagePerTick: 3
   isInGravity: 0
+  floatingTextPrefab: {fileID: 8947330537904194897, guid: 66bb0c6969d7f8b408749332c5bd8c84,
+    type: 3}
+  damageNumber: {fileID: 0}
   fireline: {fileID: 8856617258114396924}
   fireDamage: 0
   visionConeAngle: 30

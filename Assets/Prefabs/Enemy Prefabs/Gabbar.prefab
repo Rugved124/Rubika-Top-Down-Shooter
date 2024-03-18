@@ -485,6 +485,8 @@ MonoBehaviour:
   tickSpeed: 0.25
   poisonDamagePerTick: 3
   isInGravity: 0
+  floatingTextPrefab: {fileID: 8947330537904194897, guid: 66bb0c6969d7f8b408749332c5bd8c84,
+    type: 3}
   bulletSpeed_setInInspector: 40
   debries: {fileID: 4500201555358269410, guid: 07619ea9c57f81748804aa6a4e6f1b50, type: 3}
   shootPoint: {fileID: 2246623131217589833}
