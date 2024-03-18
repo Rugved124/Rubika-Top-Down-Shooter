@@ -130,7 +130,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 194769427}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 908516343021736900, guid: 5932d5ff501cd974fa962a61529662f9,
         type: 3}
@@ -140,17 +140,17 @@ PrefabInstance:
     - target: {fileID: 3233987661682877916, guid: 5932d5ff501cd974fa962a61529662f9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -70.157
+      value: -70.38926
       objectReference: {fileID: 0}
     - target: {fileID: 3233987661682877916, guid: 5932d5ff501cd974fa962a61529662f9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -114.81497
+      value: -113.98701
       objectReference: {fileID: 0}
     - target: {fileID: 3233987661682877916, guid: 5932d5ff501cd974fa962a61529662f9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 28.060293
+      value: 12.456998
       objectReference: {fileID: 0}
     - target: {fileID: 3233987661682877916, guid: 5932d5ff501cd974fa962a61529662f9,
         type: 3}
@@ -462,7 +462,6 @@ Transform:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1158602923}
-  - {fileID: 1719929526}
   - {fileID: 35044105}
   - {fileID: 1107806675}
   - {fileID: 1582291926}
@@ -4313,12 +4312,6 @@ PrefabInstance:
       addedObject: {fileID: 1860630350}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b988155f173de9f40a49385a55dcf820, type: 3}
---- !u!4 &1719929526 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3233987661682877916, guid: 5932d5ff501cd974fa962a61529662f9,
-    type: 3}
-  m_PrefabInstance: {fileID: 6290060}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1735410656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4898,6 +4891,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3084079199796696713, guid: b13a6224fbc4e7e4f9c09066f16db064,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.73106766
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084079199796696713, guid: b13a6224fbc4e7e4f9c09066f16db064,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.0037145615
+      objectReference: {fileID: 0}
     - target: {fileID: 3126539672733764947, guid: b13a6224fbc4e7e4f9c09066f16db064,
         type: 3}
       propertyPath: _canvas
@@ -5442,6 +5445,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 6290060}
   - {fileID: 1139654005669312407}
   - {fileID: 852668460}
   - {fileID: 195035003}
