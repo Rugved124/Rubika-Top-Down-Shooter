@@ -69,6 +69,9 @@ public class PC : MonoBehaviour
     bool isCollided;
 
     public LayerMask soul;
+
+    [SerializeField]
+    GameObject damageIndicator;
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
@@ -111,6 +114,7 @@ public class PC : MonoBehaviour
         canDash = true;
         dashCooldown = dashRange / dashSpeed + dashCooldown;
         isCollided = false;
+        damageIndicator.SetActive(false);
     }
 
     private void Update()
@@ -201,6 +205,7 @@ public class PC : MonoBehaviour
         if (!isInvincible || isDashing)
         {
             currentHP -= damage;
+            StartCoroutine(IDamageTaken());
         }
 
     }
@@ -257,7 +262,7 @@ public class PC : MonoBehaviour
     {
         if (Time.time - statusEffects.burnLastTick >= statusEffects.burnTickSpeed)
         {
-            TakeDamage(statusEffects.burningPerTick * statusEffects.burnNumber);
+            TakeDamageOverTime(statusEffects.burningPerTick * statusEffects.burnNumber);
             statusEffects.burnLastTick = Time.time;
         }
     }
@@ -363,6 +368,7 @@ public class PC : MonoBehaviour
         canDash = true;
         slowMultiplier = 1f;
         isCollided = false;
+        damageIndicator.SetActive(false);
     }
     public IEnumerator Dash(Vector3 direction)
     {
@@ -403,5 +409,12 @@ public class PC : MonoBehaviour
             }
 
         }
+    }
+
+    IEnumerator IDamageTaken()
+    {
+        damageIndicator.SetActive(true);
+        yield return new WaitForSeconds(0.15f);
+        damageIndicator.SetActive(false);
     }
 }

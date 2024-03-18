@@ -6,12 +6,22 @@ public class SceneLoader : MonoBehaviour
 {
     PC pc;
 
-    [SerializeField]
-    bool resetScene;
-
+    public static SceneLoader instance;
     public Animator fadeToBlack;
 
     bool hasInvoked;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
     private void Start()
     {
         hasInvoked = false;
@@ -45,13 +55,7 @@ public class SceneLoader : MonoBehaviour
     }
     public void ReloadScene()
     {
-        if (resetScene)
-        {
-            //pc.gameObject.SetActive(true);
-            //pc.Respawn();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadNextScene()
