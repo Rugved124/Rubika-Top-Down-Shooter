@@ -17,7 +17,7 @@ public class BossHealth : MonoBehaviour
     List<int> healthPerBar = new List<int>();
 
     [SerializeField]
-    WaveSpawner waveSpawner;
+    FixedWaveTrigger waveSpawner;
 
     [SerializeField]
     Slider healthSlider;
@@ -26,25 +26,45 @@ public class BossHealth : MonoBehaviour
     private void Awake()
     {
         ResetHealth(0);
-        healthSlider.maxValue = currentHealth;
-        healthSlider.value = currentHealth;
+        if(healthSlider == null)
+        {
+            Debug.LogError("HealthBar Slider is not attached");
+        }
+        if(barColor == null)
+        {
+            Debug.LogError("HealthBar Image is not attached");
+        }
+        if(healthSlider != null)
+        {
+            healthSlider.maxValue = currentHealth;
+            healthSlider.value = currentHealth;
+        }
     }
     private void Update()
     {
-        switch (currentBulletType)
+        if(waveSpawner == null)
         {
-            case "SLOW":
-                barColor.color = Color.blue;
-                break;
-            case "POISON":
-                barColor.color = Color.green;
-                break;
-            case "FIRE":
-                barColor.color = Color.red;
-                break;
+            Debug.LogError("There is waveSpawner attached to the boss");
         }
-            
-        healthSlider.value = currentHealth;
+        if(barColor != null) 
+        {
+            switch (currentBulletType)
+            {
+                case "SLOW":
+                    barColor.color = Color.blue;
+                    break;
+                case "POISON":
+                    barColor.color = Color.green;
+                    break;
+                case "FIRE":
+                    barColor.color = Color.red;
+                    break;
+            }
+        }
+        if(healthSlider != null)
+        {
+            healthSlider.value = currentHealth;
+        }    
         if(currentHealth <= 0 )
         {
             if( i + 1 < bulletTypes.Count)
@@ -80,13 +100,23 @@ public class BossHealth : MonoBehaviour
         i = newBullet;
         currentHealth = healthPerBar[i]; 
         currentBulletType = bulletTypes[i];
-        healthSlider.maxValue = currentHealth;
+        if(healthSlider != null)
+        {
+            healthSlider.maxValue = currentHealth;
+        }
     }
 
     private void Die()
     {
-        waveSpawner.KillExistingEnemies();
-        Destroy(waveSpawner.gameObject);
+        if(waveSpawner != null)
+        {
+            foreach(FixedWaveSpawner spawner in waveSpawner.ReturnWaveSpawns())
+            {
+                spawner.DestroyExistingEnemies();
+                Destroy(spawner.gameObject);
+            }
+            Destroy(waveSpawner.gameObject);
+        }
         Destroy(gameObject);
     }
 }
