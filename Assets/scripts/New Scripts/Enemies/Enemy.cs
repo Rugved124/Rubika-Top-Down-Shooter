@@ -2,9 +2,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using System.Collections.Generic;
-
+using TMPro;
 public class Enemy : MonoBehaviour
 {
+     
     public enum EnemyType
     {
         DRUNKENSEPOY,
@@ -112,6 +113,10 @@ public class Enemy : MonoBehaviour
     public bool isInGravity;
 
     private GameObject gravityWell;
+
+    [SerializeField]
+    private GameObject floatingTextPrefab;
+
     private void Awake()
     {
         poisonedForTime = -maxPoisonedForTime;
@@ -220,6 +225,11 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHP -= damage;
+        if(floatingTextPrefab != null)
+        {
+            var number = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+            number.GetComponent<FloatingText>().SetDamageNumber(damage);
+        }
     }
 
     void DropSoul(GameObject enemySoul)

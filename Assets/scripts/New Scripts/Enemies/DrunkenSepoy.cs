@@ -10,17 +10,17 @@ public class DrunkenSepoy : Enemy
 
     public int fireDamage;
     bool canInvoke = true;
-
-    bool canAdd;
-
     [SerializeField]
     protected float visionConeAngle = 90f;
+
+    [SerializeField]
+    protected float lastTick;
 
     Quaternion startingAngle = Quaternion.AngleAxis(-0, Vector3.up);
     Quaternion stepAngle = Quaternion.AngleAxis(5, Vector3.up);
     public override void Start()
     {
-
+        lastTick = -enemyData.timeBetweenBullets;
         base.Start();
         enemyType = EnemyType.DRUNKENSEPOY;
         Debug.Log(enemyType.ToString());
@@ -59,11 +59,6 @@ public class DrunkenSepoy : Enemy
                 enemyAnim.SetTrigger("IdleState");
                 fireline.SetActive(false);
                 isWeaponFiringDone = true;
-                if (canAdd && pc.statusEffects.burnNumber > 0)
-                {
-                    pc.statusEffects.burnNumber--;
-                    canAdd = false;
-                }
             }
             if (firedTime > 0)
             {
@@ -84,10 +79,10 @@ public class DrunkenSepoy : Enemy
                             Debug.DrawRay(pos, direction * hit.distance, Color.red);
                             if (pc != null)
                             {
-                                if (!canAdd)
+                                if (Time.time - lastTick >= enemyData.timeBetweenBullets)
                                 {
-                                    pc.statusEffects.burnNumber++;
-                                    canAdd = true;
+                                    lastTick = Time.time;
+                                    pc.TakeDamage(fireDamage);
                                 }
                             }
                             return;
@@ -97,15 +92,6 @@ public class DrunkenSepoy : Enemy
                             hit.collider.gameObject.GetComponent<ShieldBehaviour>().SetPoisonedForTime();
                         }
                     }
-                    if (pc != null)
-                    {
-                        if (canAdd && pc.statusEffects.burnNumber > 0)
-                        {
-                            pc.statusEffects.burnNumber--;
-                            canAdd = false;
-                        }
-                    }
-
                     direction = stepAngle * direction;
                 }
             }
@@ -139,11 +125,6 @@ public class DrunkenSepoy : Enemy
             firedTime = fireTime;
             Invoke("DontLookAtPlayer", 0.5f);
         }
-        if (canAdd && pc.statusEffects.burnNumber > 0)
-        {
-            pc.statusEffects.burnNumber--;
-            canAdd = false;
-        }
         canInvoke = true;  
     }
     public override void LookAtPlayer()
@@ -155,14 +136,6 @@ public class DrunkenSepoy : Enemy
 
     public override void Die()
     {
-        if (pc != null)
-        {
-            if (canAdd && pc.statusEffects.burnNumber > 0)
-            {
-                pc.statusEffects.burnNumber--;
-                canAdd = false;
-            }
-        }
         base.Die();
     }
 
