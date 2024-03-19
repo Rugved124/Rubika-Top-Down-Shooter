@@ -4840,7 +4840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 860321398264189561}
   m_Layer: 0
-  m_Name: Fire
+  m_Name: FirePit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
