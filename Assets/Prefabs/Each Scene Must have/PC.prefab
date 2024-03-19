@@ -460,7 +460,7 @@ MonoBehaviour:
   dashSpeed: 50
   canDash: 0
   isDashing: 0
-  dashCooldown: 0.2
+  dashCooldown: 4
   crosshair: {fileID: 0}
   soul:
     serializedVersion: 2
