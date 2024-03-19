@@ -13,14 +13,13 @@ public class DrunkenSepoy : Enemy
     [SerializeField]
     protected float visionConeAngle = 90f;
 
-    [SerializeField]
-    protected float lastTick;
+    protected float lastDamageTick;
 
     Quaternion startingAngle = Quaternion.AngleAxis(-0, Vector3.up);
     Quaternion stepAngle = Quaternion.AngleAxis(5, Vector3.up);
     public override void Start()
     {
-        lastTick = -enemyData.timeBetweenBullets;
+        lastDamageTick = -enemyData.timeBetweenBullets;
         base.Start();
         enemyType = EnemyType.DRUNKENSEPOY;
         Debug.Log(enemyType.ToString());
@@ -79,9 +78,9 @@ public class DrunkenSepoy : Enemy
                             Debug.DrawRay(pos, direction * hit.distance, Color.red);
                             if (pc != null)
                             {
-                                if (Time.time - lastTick >= enemyData.timeBetweenBullets)
+                                if (Time.time - lastDamageTick >= enemyData.timeBetweenBullets)
                                 {
-                                    lastTick = Time.time;
+                                    lastDamageTick = Time.time;
                                     pc.TakeDamage(fireDamage);
                                 }
                             }

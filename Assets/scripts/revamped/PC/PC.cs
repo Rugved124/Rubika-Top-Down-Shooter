@@ -114,7 +114,10 @@ public class PC : MonoBehaviour
         canDash = true;
         dashCooldown = dashRange / dashSpeed + dashCooldown;
         isCollided = false;
-        damageIndicator.SetActive(false);
+        if (damageIndicator != null)
+        {
+            damageIndicator.SetActive(false);
+        }
     }
 
     private void Update()
@@ -205,7 +208,10 @@ public class PC : MonoBehaviour
         if (!isInvincible || isDashing)
         {
             currentHP -= damage;
-            StartCoroutine(IDamageTaken());
+            if(damageIndicator != null)
+            {
+                StartCoroutine(IDamageTaken());
+            }
         }
 
     }

@@ -34,7 +34,7 @@ public class SepoyAttackState : BaseState
 
     public override Type ExecuteState()
     {
-        if (_enemy.hpPercent > 20 && Vector3.Distance(transform.position, _enemy.pc.transform.position) <= _enemy.enemyData.attackRange)
+        if (Vector3.Distance(transform.position, _enemy.pc.transform.position) <= _enemy.enemyData.attackRange)
         {
             startTime -= Time.deltaTime;
             if(startTime <= 0f)
