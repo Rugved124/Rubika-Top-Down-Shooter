@@ -36,10 +36,7 @@ public class ShadowTeleportState : BaseState
             bullets = Physics.OverlapSphere(_enemy.transform.position, 4f,_enemy.all, QueryTriggerInteraction.Collide).ToList();
             if(bullets.Count > 0)
             {
-                if (bullets.Exists(r => r.gameObject.GetComponent<BaseBullet>().IsPCBullet()))
-                {
-                    _enemy.Teleport();
-                }
+                _enemy.Teleport();
             }
             
         }
