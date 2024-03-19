@@ -121,12 +121,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: 0
-  bulletSpeed: 20
-  bulletRate: 0.33
+  bulletSpeed: 10
+  bulletRate: 0.5
   bulletDamage: 75
   bulletLifeTime: 3
   bulletRange: 100
-  ammoCount: 5
+  ammoCount: 3
   bulletType: 6
   pc: {fileID: 0}
   bulletRB: {fileID: 0}
