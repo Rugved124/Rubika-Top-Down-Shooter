@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 849af088b11ec0b439e90f526af516df, type: 3}
-  m_Name: Gabbar
+  m_Script: {fileID: 11500000, guid: bdb749b0bc52d7143bb8c1b733065a3e, type: 3}
+  m_Name: wave 11 R4 1
   m_EditorClassIdentifier: 
-  enemiesInWave: {fileID: 8319296224104033158, guid: 05e8d8aa1e8c5f44bb647c9a8f4c6666,
-    type: 3}
-  enemyValue: 1
+  enemy:
+  - {fileID: 11400000, guid: da0ebb0731e443748b1cc8af568eaa82, type: 2}
+  timeBeforeThisWave: 1
+  waveValue: 1
