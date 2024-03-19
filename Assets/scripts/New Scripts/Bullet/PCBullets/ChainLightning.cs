@@ -5,15 +5,7 @@ using UnityEngine;
 public class ChainLightning : BaseBullet
 {
     [SerializeField]
-    GameObject chainLightning;
-
-    [SerializeField]
-    GameObject respawnThis;
-
-    [SerializeField]
     int jumps;
-
-    bool canJump = true;
 
     [SerializeField]
     LayerMask enemies;
@@ -33,6 +25,12 @@ public class ChainLightning : BaseBullet
     bool hasSetPos;
 
     GameObject shield;
+
+    [SerializeField]
+    AudioSource chainDash;
+
+    [SerializeField]
+    AudioSource impact;
     public override void Start()
     {
         base.Start();
@@ -46,7 +44,6 @@ public class ChainLightning : BaseBullet
         }
         BulletMovement(transform.forward);
         //StartLightning();
-        canJump = false;
     }
     public override void Update()
     {
@@ -105,6 +102,7 @@ public class ChainLightning : BaseBullet
     {
         if (other.CompareTag("Enemies") || other.CompareTag("Shield"))
         {
+            impact.Play();
             if (other.gameObject != currentEnemy && other.gameObject != shield)
             {
                 if (other.CompareTag("Enemies"))
@@ -158,6 +156,7 @@ public class ChainLightning : BaseBullet
     {
         base.BulletMovement(forceDirection);
         bulletRB.AddForce(forceDirection.normalized *  bulletSpeed, ForceMode.Impulse);
+        chainDash.Play();
     }
     public override void Die()
     {
