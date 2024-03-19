@@ -134,6 +134,17 @@ public class AmmoManager : MonoBehaviour
                 Destroy(currentShield);
             }
         }
+        if(currentShield == null)
+        {
+            if(firstAmmoType == EquippedAmmoType.SHIELD)
+            {
+                firstAmmoType = EquippedAmmoType.DEFAULTAMMO;
+            }
+            if (secondAmmoType == EquippedAmmoType.SHIELD)
+            {
+                secondAmmoType = EquippedAmmoType.DEFAULTAMMO;
+            }
+        }
         if(InputManager.instance.IsMousePressed() && !pc.isDead && !pc.isDashing) 
         {
             if(bulletToSpawn != null && canShoot && ammoCount > 0)
@@ -157,9 +168,22 @@ public class AmmoManager : MonoBehaviour
     }
     public void ChangeEquippedAmmo(EquippedAmmoType newAmmo)
     {
-
-        firstAmmoType = secondAmmoType;
-        secondAmmoType = newAmmo;
+        if(firstAmmoType == EquippedAmmoType.SHIELD)
+        {
+            secondAmmoType = newAmmo;
+        }
+        else
+        {
+            if (secondAmmoType != EquippedAmmoType.DEFAULTAMMO)
+            {
+                firstAmmoType = secondAmmoType;
+                secondAmmoType = newAmmo;
+            }
+            else
+            {
+                secondAmmoType = newAmmo;
+            }
+        }
         if(secondAmmoType == EquippedAmmoType.SHIELD)
         {
             if(firstAmmoType != EquippedAmmoType.SHIELD)
@@ -295,10 +319,27 @@ public class AmmoManager : MonoBehaviour
 
     public void ResetEquippedAmmo()
     {
-        firstAmmoType = EquippedAmmoType.DEFAULTAMMO;
-        secondAmmoType = EquippedAmmoType.DEFAULTAMMO;
-        currentAmmoType = EquippedAmmoType.DEFAULTAMMO;
-        ChangeAmmoType();
+        if(firstAmmoType == EquippedAmmoType.SHIELD || secondAmmoType == EquippedAmmoType.SHIELD)
+        {
+            if(firstAmmoType == EquippedAmmoType.SHIELD)
+            {
+                firstAmmoType = EquippedAmmoType.SHIELD;
+                secondAmmoType = EquippedAmmoType.DEFAULTAMMO;
+            }
+            if (secondAmmoType == EquippedAmmoType.SHIELD)
+            {
+                secondAmmoType = EquippedAmmoType.SHIELD;
+                firstAmmoType = EquippedAmmoType.DEFAULTAMMO;
+            }
+            currentAmmoType = EquippedAmmoType.SHIELD;
+        }
+        else
+        {
+            firstAmmoType = EquippedAmmoType.DEFAULTAMMO;
+            secondAmmoType = EquippedAmmoType.DEFAULTAMMO;
+            currentAmmoType = EquippedAmmoType.DEFAULTAMMO;
+        }
+        GetBulletObject(BaseBullet.BulletTypes.DEFAULTAMMO);
     }
     public void RemoveCurrentShield()
     {

@@ -15,9 +15,6 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private LayerMask soulMask;
 
-    [SerializeField]
-    SceneLoader loader;
-
     Plane plane = new Plane(Vector3.up, Vector3.zero);
     private void Awake()
     {
@@ -35,10 +32,6 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            loader.ReloadScene();
-        }
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
     }
@@ -56,7 +49,7 @@ public class InputManager : MonoBehaviour
     }
     public bool GetDashButton()
     {
-        return Input.GetKeyDown(KeyCode.LeftShift);
+        return Input.GetKeyDown(KeyCode.Space);
     }
     public Vector3 GetMousePosition()
     {

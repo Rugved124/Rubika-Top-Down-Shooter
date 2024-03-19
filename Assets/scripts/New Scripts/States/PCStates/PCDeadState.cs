@@ -31,7 +31,11 @@ public class PCDeadState : BaseState
         if(timeBeforeDying <= 0)
         {
 
-            _pc.Die();
+            //_pc.Die();
+        }
+        if(timeBeforeDying <= -1f)
+        {
+            SceneLoader.instance.ReloadScene();
         }
         if(_pc.currentHP > 0)
         {

@@ -211,7 +211,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.99}
+  m_AnchoredPosition: {x: 0, y: -0.5}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7126405283515971970
@@ -499,9 +499,12 @@ MonoBehaviour:
   tickSpeed: 0.25
   poisonDamagePerTick: 3
   isInGravity: 0
+  floatingTextPrefab: {fileID: 8947330537904194897, guid: 66bb0c6969d7f8b408749332c5bd8c84,
+    type: 3}
   fireline: {fileID: 8856617258114396924}
-  fireDamage: 0
+  fireDamage: 2
   visionConeAngle: 30
+  lastTick: 0
 --- !u!95 &363960181653538435
 Animator:
   serializedVersion: 5

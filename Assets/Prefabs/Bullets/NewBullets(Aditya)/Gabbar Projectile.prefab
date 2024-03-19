@@ -151,8 +151,8 @@ MonoBehaviour:
   bulletSpeed: 40
   bulletRate: 2.5
   bulletDamage: 30
-  bulletLifeTime: 4
-  bulletRange: 20
+  bulletLifeTime: 10
+  bulletRange: 25
   ammoCount: 10
   bulletType: 5
   pc: {fileID: 0}
