@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: PCStatusEffects
   m_EditorClassIdentifier: 
   isSlowed: 0
-  isPoisoned: 0
+  isPoisoned: 1
   hasLostAbility: 0
   normalSpeed: 1
-  maxSlowedForTime: 3
-  maxPoisonedForTime: 5
+  maxSlowedForTime: 1
+  maxPoisonedForTime: 1
   slowedSpeed: 0.3
-  poisonedForTime: 20.42933
+  poisonedForTime: 77.72849
   slowedForTime: 0
   poisonDamagePerTick: 3
   burningPerTick: 2
   burnNumber: 0
   tickSpeed: 0.33
   burnTickSpeed: 0.2
-  lastTick: 0
-  burnLastTick: 99.722244
+  lastTick: 77.64518
+  burnLastTick: 77.59475
   isSlowedCounting: 0
-  isPoisonCounting: 0
+  isPoisonCounting: 1

@@ -504,7 +504,6 @@ MonoBehaviour:
   fireline: {fileID: 8856617258114396924}
   fireDamage: 2
   visionConeAngle: 30
-  lastTick: 0
 --- !u!95 &363960181653538435
 Animator:
   serializedVersion: 5
@@ -888,6 +887,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434335698941386621, guid: 110f4954bf4e2a74783e39f68b2c0c1c,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434335698941386621, guid: 110f4954bf4e2a74783e39f68b2c0c1c,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

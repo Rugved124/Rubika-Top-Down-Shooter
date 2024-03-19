@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class DefaultBullet : BaseBullet
 {
-
     public override void Start()
     {
         base.Start();
@@ -25,7 +24,10 @@ public class DefaultBullet : BaseBullet
     {
         base.InitializeBullet();
     }
-
+    public override void OnTriggerEnter(Collider collision)
+    {
+        base.OnTriggerEnter(collision);
+    }
     public override void BulletMovement(Vector3 forceDirection)
     {
         if(pc != null)
@@ -36,6 +38,11 @@ public class DefaultBullet : BaseBullet
         {
             Die();
         }
+    }
+
+    public override void Die()
+    {
+        base.Die();
     }
 }
 

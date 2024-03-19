@@ -72,6 +72,13 @@ public class PC : MonoBehaviour
 
     [SerializeField]
     GameObject damageIndicator;
+
+    [SerializeField]
+    AudioSource consume;
+    bool consumeSound;
+
+    [SerializeField]
+    AudioSource burp;
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
@@ -118,6 +125,7 @@ public class PC : MonoBehaviour
         {
             damageIndicator.SetActive(false);
         }
+        consumeSound = true;
     }
 
     private void Update()
@@ -195,12 +203,19 @@ public class PC : MonoBehaviour
 
     public void Consume(GameObject consumeObj)
     {
+        if (consumeSound)
+        {
+            consumeSound = false;
+            consume.Play();
+        }
         consumeObj.GetComponent<Souls>().Consumption();
     }
 
     public void DoneConsuming()
     {
-
+        consumeSound = true;
+        consume.Pause();
+        burp.Play();
         beingConsumed = null;
     }
     public void TakeDamage(int damage)
@@ -375,6 +390,7 @@ public class PC : MonoBehaviour
         slowMultiplier = 1f;
         isCollided = false;
         damageIndicator.SetActive(false);
+        consumeSound = true;
     }
     public IEnumerator Dash(Vector3 direction)
     {

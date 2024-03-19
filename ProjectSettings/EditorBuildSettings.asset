@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Yajan's Scene/UI Scenes/Main-Menu.unity
+    path: Assets/Scenes/UI Scenes/Main-Menu.unity
     guid: 8d74d7513c034bb41ad7075371adb8ca
   - enabled: 1
     path: Assets/Scenes/New FInal levels/House.unity

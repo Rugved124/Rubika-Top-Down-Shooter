@@ -16,6 +16,9 @@ public class FlameThrower : BaseBullet
 
     [SerializeField]
     float timeBetweenAmmo;
+
+    [SerializeField]
+    LayerMask obstacles;
     public override void Start()
     {
         base.Start();
@@ -47,7 +50,7 @@ public class FlameThrower : BaseBullet
 
             for (int i = 0; i < (visionConeAngle / 5) + 1; i++)
             {
-                if (Physics.Raycast(pos, direction, out hit, bulletRange))
+                if (Physics.Raycast(pos, direction, out hit, bulletRange, obstacles))
                 {
                     if (hit.collider.tag == "Enemies")
                     {
