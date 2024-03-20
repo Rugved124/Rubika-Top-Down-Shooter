@@ -137,8 +137,8 @@ public class Butcher : Enemy
                 if (!isChargeHitWall)
                 {
                     
-                    agent.isStopped = true;
-                    agent.SetDestination(transform.position);
+                    //agent.isStopped = true;
+                    //agent.SetDestination(transform.position);
                     SpawnDebries();
                     isChargeHitWall = false;
                     Invoke("ResetChargeHitWall", 10f);

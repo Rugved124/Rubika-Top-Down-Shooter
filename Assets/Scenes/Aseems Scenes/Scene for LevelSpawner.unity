@@ -2344,17 +2344,17 @@ PrefabInstance:
     - target: {fileID: 2798386888701184881, guid: 05e8d8aa1e8c5f44bb647c9a8f4c6666,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2798386888701184881, guid: 05e8d8aa1e8c5f44bb647c9a8f4c6666,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5523602308201247676, guid: 05e8d8aa1e8c5f44bb647c9a8f4c6666,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8319296224104033158, guid: 05e8d8aa1e8c5f44bb647c9a8f4c6666,
         type: 3}
@@ -2364,7 +2364,7 @@ PrefabInstance:
     - target: {fileID: 8319296224104033158, guid: 05e8d8aa1e8c5f44bb647c9a8f4c6666,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2567,6 +2567,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1560056517221308334, guid: 483790d593fc310488cb638fdf0f9565,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1775160757513260721, guid: 483790d593fc310488cb638fdf0f9565,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2622,15 +2627,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Maushi
       objectReference: {fileID: 0}
-    - target: {fileID: 5847008633348906252, guid: 483790d593fc310488cb638fdf0f9565,
+    - target: {fileID: 5637126596393224611, guid: 483790d593fc310488cb638fdf0f9565,
         type: 3}
-      propertyPath: m_AnchorMax.x
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5847008633348906252, guid: 483790d593fc310488cb638fdf0f9565,
         type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847008633348906252, guid: 483790d593fc310488cb638fdf0f9565,
+        type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3007,6 +3017,11 @@ PrefabInstance:
       propertyPath: fadeAnimation
       value: 
       objectReference: {fileID: 1115452075}
+    - target: {fileID: 5970101129846924182, guid: b13a6224fbc4e7e4f9c09066f16db064,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6553801574492841815, guid: b13a6224fbc4e7e4f9c09066f16db064,
         type: 3}
       propertyPath: m_Name

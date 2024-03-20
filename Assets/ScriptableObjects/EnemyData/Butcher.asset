@@ -27,3 +27,4 @@ MonoBehaviour:
   canTeleport: 1
   runAwayFor: 5
   runAwayCooldown: 15
+  chargeSpeed: 16

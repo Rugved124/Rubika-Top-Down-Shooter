@@ -32,4 +32,6 @@ public class EnemyData : ScriptableObject
     public float runAwayFor;
 
     public float runAwayCooldown;
+
+    public float chargeSpeed;
 }
