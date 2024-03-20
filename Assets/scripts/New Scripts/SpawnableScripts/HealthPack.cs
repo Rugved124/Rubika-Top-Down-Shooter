@@ -24,11 +24,11 @@ public class HealthPack : MonoBehaviour
                 Debug.Log("PickedUp");
                 if(pc.maxHP - pc.currentHP >= healNumber)
                 {
-                    pc.TakeDamage(-healNumber);
+                    pc.Heal(healNumber);
                 }
                 else
                 {
-                    pc.TakeDamage(-(pc.maxHP - pc.currentHP));
+                    pc.Heal((pc.maxHP - pc.currentHP));
                 }
                 Die();
             }
@@ -40,7 +40,7 @@ public class HealthPack : MonoBehaviour
     {
         if(owner != null)
         {
-            owner.currentPot = null;
+            owner.RemoveCurrentPot();
         }
         Destroy(this.gameObject);
     }

@@ -40,7 +40,14 @@ public class HealthPackSpawner : MonoBehaviour
             }
         }
     }
-
+    public void RemoveCurrentPot()
+    {
+        Debug.Log("Thingd Happened");
+        if (currentPot != null)
+        {
+            currentPot = null;
+        }
+    }
 
     //private void OnTriggerEnter(Collider other)
     //{

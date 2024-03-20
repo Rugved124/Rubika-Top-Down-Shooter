@@ -123,6 +123,8 @@ public class Enemy : MonoBehaviour
     public GameObject dashVisual;
     public GameObject currentVisual;
 
+    public AudioSource ability;
+
     private void Awake()
     {
         dashVisual.SetActive(false);

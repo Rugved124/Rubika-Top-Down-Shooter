@@ -471,6 +471,8 @@ MonoBehaviour:
   damageIndicator: {fileID: 5970101129846924182}
   consume: {fileID: 8881090008306100912}
   burp: {fileID: 6304072121751613218}
+  floatingTextPrefab: {fileID: 8947330537904194897, guid: c7e8024b3a0b7b142bc26cf945cf9590,
+    type: 3}
 --- !u!82 &8881090008306100912
 AudioSource:
   m_ObjectHideFlags: 0

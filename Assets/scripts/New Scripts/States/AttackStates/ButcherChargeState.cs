@@ -14,6 +14,7 @@ public class ButcherChargeState : BaseState
     ObstacleAvoidanceType avoidanceType;
     float rageTime;
     bool canCharge;
+    bool callSound;
     public ButcherChargeState(Enemy enemy): base(enemy.gameObject)
     {
         _enemy = enemy;
@@ -21,6 +22,7 @@ public class ButcherChargeState : BaseState
 
     public override void EnterState()
     {
+        callSound = true;
         waitBeforeIdle = 6f;
         rageTime = 2f;
         canCharge = true;
@@ -38,6 +40,11 @@ public class ButcherChargeState : BaseState
     { 
         waitBeforeIdle -= Time.deltaTime;
         rageTime -= Time.deltaTime;
+        if(rageTime <= 1f && callSound)
+        {
+            callSound = false;
+            _enemy.ability.Play();
+        }
         if(rageTime <= 0f && canCharge)
         {
             canCharge = false;

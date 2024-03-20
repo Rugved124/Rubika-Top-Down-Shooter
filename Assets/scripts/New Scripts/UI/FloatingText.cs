@@ -30,4 +30,9 @@ public class FloatingText : MonoBehaviour
     {
         damageText.text = damage.ToString();
     }
+    public void SetToHeal(int heal)
+    {
+        damageText.color = Color.green;
+        damageText.text = "+"+heal.ToString();
+    }
 }
