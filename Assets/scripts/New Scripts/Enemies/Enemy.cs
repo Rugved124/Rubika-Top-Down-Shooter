@@ -127,7 +127,10 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        dashVisual.SetActive(false);
+        if(dashVisual != null)
+        { 
+            dashVisual.SetActive(false); 
+        }
         poisonedForTime = -maxPoisonedForTime;
         firedTime = enemyData.timeBetweenBullets;
         fsm = GetComponent<FiniteStateMachine>();
