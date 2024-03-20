@@ -16,17 +16,19 @@ MonoBehaviour:
   isPoisoned: 0
   hasLostAbility: 0
   normalSpeed: 1
-  maxSlowedForTime: 3
-  maxPoisonedForTime: 5
+  maxSlowedForTime: 1
+  maxPoisonedForTime: 1
+  maxBurnedForTime: 0
   slowedSpeed: 0.3
-  poisonedForTime: 20.42933
+  poisonedForTime: 77.72849
   slowedForTime: 0
   poisonDamagePerTick: 3
   burningPerTick: 2
+  burstDamage: 15
   burnNumber: 0
   tickSpeed: 0.33
-  burnTickSpeed: 0.2
+  burnTickSpeed: 0.25
   lastTick: 0
-  burnLastTick: 99.722244
+  burnLastTick: 0
   isSlowedCounting: 0
   isPoisonCounting: 0

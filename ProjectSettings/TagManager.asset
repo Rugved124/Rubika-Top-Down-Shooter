@@ -19,11 +19,12 @@ TagManager:
   - Consumables
   - Spawner
   - PlayerBullets
-  - NannyFire
   - Shield
   - GravityWell
   - HealthPack
   - Boss
+  - Fire
+  - NannyFire
   layers:
   - Default
   - TransparentFX

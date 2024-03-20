@@ -72,6 +72,15 @@ public class PC : MonoBehaviour
 
     [SerializeField]
     GameObject damageIndicator;
+
+    [SerializeField]
+    AudioSource consume;
+    bool consumeSound;
+
+    [SerializeField]
+    AudioSource burp;
+
+    bool isBurnt;
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
@@ -114,10 +123,12 @@ public class PC : MonoBehaviour
         canDash = true;
         dashCooldown = dashRange / dashSpeed + dashCooldown;
         isCollided = false;
+        isBurnt = false;
         if (damageIndicator != null)
         {
             damageIndicator.SetActive(false);
         }
+        consumeSound = true;
     }
 
     private void Update()
@@ -159,17 +170,9 @@ public class PC : MonoBehaviour
         }
         if (Time.time - isBurningFor <= maxBurnTime)
         {
-            nannyFire = 1;
+            Burning();
         }
-        else
-        {
-            nannyFire = 0;
-        }
-
-
-        Burning();
-        NannyBurning();
-    }
+    } 
     public void PlayerMove(Vector3 movement, float slowMultiplier)
     {
         Quaternion rotation = Quaternion.AngleAxis(-45, Vector3.up);
@@ -195,12 +198,19 @@ public class PC : MonoBehaviour
 
     public void Consume(GameObject consumeObj)
     {
+        if (consumeSound)
+        {
+            consumeSound = false;
+            consume.Play();
+        }
         consumeObj.GetComponent<Souls>().Consumption();
     }
 
     public void DoneConsuming()
     {
-
+        consumeSound = true;
+        consume.Pause();
+        burp.Play();
         beingConsumed = null;
     }
     public void TakeDamage(int damage)
@@ -266,19 +276,11 @@ public class PC : MonoBehaviour
     }
     void Burning()
     {
-        if (Time.time - statusEffects.burnLastTick >= statusEffects.burnTickSpeed)
-        {
-            TakeDamageOverTime(statusEffects.burningPerTick * statusEffects.burnNumber);
-            statusEffects.burnLastTick = Time.time;
-        }
-    }
-    void NannyBurning()
-    {
         timeBetweenFire -= Time.deltaTime;
         if (timeBetweenFire <= 0f)
         {
             timeBetweenFire = statusEffects.burnTickSpeed;
-            TakeDamageOverTime(statusEffects.burningPerTick * nannyFire);
+            TakeDamageOverTime(statusEffects.burningPerTick);
 
         }
     }
@@ -312,8 +314,13 @@ public class PC : MonoBehaviour
                 statusEffects.isPoisonCounting = true;
                 statusEffects.isPoisoned = true;
             }
-            if(other.tag == "NannyFire")
+            if(other.tag == "Fire")
             {
+                if(!isBurnt)
+                {
+                    isBurnt = true;
+                    TakeDamage(statusEffects.burstDamage);
+                }
                 isBurningFor = Time.time;
             }
 
@@ -332,6 +339,10 @@ public class PC : MonoBehaviour
             if (other.tag == "Poison")
             {
                 statusEffects.isPoisonCounting = false;
+            }
+            if(other.tag == "Fire")
+            {
+                StartCoroutine(EResetBurnt());
             }
         }
     }
@@ -375,6 +386,7 @@ public class PC : MonoBehaviour
         slowMultiplier = 1f;
         isCollided = false;
         damageIndicator.SetActive(false);
+        consumeSound = true;
     }
     public IEnumerator Dash(Vector3 direction)
     {
@@ -422,5 +434,11 @@ public class PC : MonoBehaviour
         damageIndicator.SetActive(true);
         yield return new WaitForSeconds(0.15f);
         damageIndicator.SetActive(false);
+    }
+
+    IEnumerator EResetBurnt()
+    {
+        yield return new WaitForSeconds(0.8f);
+        isBurnt = false;
     }
 }

@@ -10,13 +10,13 @@ public class PCStatusEffectsData : ScriptableObject
     
     public float normalSpeed;
     
-    public float maxSlowedForTime, maxPoisonedForTime;
+    public float maxSlowedForTime, maxPoisonedForTime, maxBurnedForTime;
 
     public float slowedSpeed = 0.3f;
 
     public float poisonedForTime, slowedForTime;
 
-    public int poisonDamagePerTick, burningPerTick;
+    public int poisonDamagePerTick, burningPerTick, burstDamage;
 
     [HideInInspector]
     public int burnNumber;

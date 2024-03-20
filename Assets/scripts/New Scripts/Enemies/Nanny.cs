@@ -29,6 +29,13 @@ public class Nanny : Enemy
 
     public GameObject nannyTrail;
     public float dashDistance;
+
+    [SerializeField]
+    AudioSource dashNoise;
+
+
+    [SerializeField]
+    AudioSource shieldNoise;
     public override void Start()
     {
         base.Start();
@@ -157,6 +164,7 @@ public class Nanny : Enemy
 
     public override void Dash()
     {
+        dashNoise.Play();
         agent.speed = agent.speed * dashSpeed;
         agent.acceleration = agent.acceleration * dashSpeed;
         transform.forward = Quaternion.AngleAxis(UnityEngine.Random.Range(-70f, 70f), Vector3.up) * transform.forward;
@@ -187,5 +195,10 @@ public class Nanny : Enemy
     public override void ReleaseNannyFire()
     {
         Instantiate(nannyTrail, new Vector3(transform.position.x, transform.position.y - 2f, transform.position.z), Quaternion.identity);
+    }
+
+    public override void SetSpecialSound()
+    {
+        shieldNoise.Play();
     }
 }

@@ -36,6 +36,7 @@ public class ButcherAttackState : BaseState
             _enemy.LookAtPlayer();
             if (!_enemy.isWeaponFiringDone && startTime <= 0f)
             {
+                _enemy.canIdle = false;
                 _enemy.isWeaponFiringDone = true;
                 _enemy.enemyAnim.SetTrigger("AttackState");
                 //_enemy.FireWeapon();
@@ -50,7 +51,7 @@ public class ButcherAttackState : BaseState
                 _enemy.ResetAttack();
             }
         }
-        else
+        else if(_enemy.canIdle) 
         {
             return typeof(IdleState);
         }

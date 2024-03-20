@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -2160209707746039414}
   m_Layer: 12
   m_Name: NannyTrail
-  m_TagString: NannyFire
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

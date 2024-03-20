@@ -38,21 +38,17 @@ public class GabbarBullet : BaseBullet
     public override void OnTriggerEnter(Collider collision)
     {
         base.OnTriggerEnter(collision);
-        if (collision.tag != "Player" && collision.tag != "Shield" && collision.tag != "Enemies")
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, Vector3.down, out hit,groundLayer))
-            {
-                if (hit.collider != null)
-                {
-                    Instantiate(poisonAOE, hit.point, Quaternion.identity);
-                    Die();
-                }
-            }
-        }
     }
     public override void Die()
     {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, groundLayer))
+        {
+            if (hit.collider != null)
+            {
+                Instantiate(poisonAOE, hit.point, Quaternion.identity);
+            }
+        }
         base.Die();
     }
 }

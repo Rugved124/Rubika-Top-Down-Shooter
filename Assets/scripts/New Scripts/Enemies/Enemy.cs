@@ -117,6 +117,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject floatingTextPrefab;
 
+    [HideInInspector]
+    public bool canIdle;
     private void Awake()
     {
         poisonedForTime = -maxPoisonedForTime;
@@ -355,6 +357,11 @@ public class Enemy : MonoBehaviour
     public void SetPoisonedForTime()
     {
         poisonedForTime = Time.time;
+    }
+
+    public virtual void SetSpecialSound()
+    {
+
     }
 }
 

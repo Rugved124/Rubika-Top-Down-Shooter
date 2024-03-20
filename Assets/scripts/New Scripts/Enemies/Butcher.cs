@@ -31,6 +31,9 @@ public class Butcher : Enemy
     [SerializeField]
     float gap;
     float timeBetweenDebries;
+
+    [SerializeField]
+    AudioSource throwingSound;
     public override void Start()
     {
         base.Start();
@@ -39,6 +42,7 @@ public class Butcher : Enemy
         canDash = true;
         timeBetweenDebries = 0.4f;
         isChargeHitWall = false;
+        canIdle = true;
     }
     public override void InitializeStateMachine()
     {
@@ -73,6 +77,7 @@ public class Butcher : Enemy
     public override void FireWeapon()
     {
         base.FireWeapon();
+        canIdle = true;
         BaseBullet bulletShot = Instantiate(bullet, shootPoint.position, Quaternion.identity).GetComponent<BaseBullet>();
         Vector3 movementDirection = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical()).normalized;
         movementDirection = Quaternion.AngleAxis(-45f, Vector3.up) * movementDirection;
@@ -238,6 +243,15 @@ public class Butcher : Enemy
     public void CallThisFunction()
     {
         Debug.Log("shooting");
+    }
+
+    public override void SetSpecialSound()
+    {
+        base.SetSpecialSound();
+        if(throwingSound != null)
+        {
+            throwingSound.Play();
+        }
     }
 }
 

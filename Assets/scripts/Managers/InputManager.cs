@@ -49,7 +49,7 @@ public class InputManager : MonoBehaviour
     }
     public bool GetDashButton()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        return Input.GetButtonDown("Dash");
     }
     public Vector3 GetMousePosition()
     {
