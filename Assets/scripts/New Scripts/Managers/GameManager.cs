@@ -25,7 +25,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-        respawnPoint = FindObjectOfType<PC>().transform.position;
+        if (FindObjectOfType<PC>() != null)
+        {
+            respawnPoint = FindObjectOfType<PC>().transform.position;
+        }
     }
     public enum GameStates
     {
@@ -59,11 +62,6 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-
-        if(SceneManager.GetActiveScene().ToString() != "Main-Menu")
-        {
-            ChangeState(GameStates.RUNNING);
-        }
         switch (currentState)
         {
             case GameStates.INMENU:
@@ -78,7 +76,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void ChangeState(GameStates state) 
+    public void ChangeState(GameStates state) 
     {
         if(currentState != state)
         {

@@ -54,7 +54,10 @@ public class FixedWaveSpawner : MonoBehaviour
     GameObject loader;
     private void Start()
     {
-        //loader.SetActive(false);
+        if(loader != null)
+        {
+            loader.SetActive(false);
+        }   
         isFinished = false;
         canSpawm = true;
         if(waves.Length > 0)
@@ -115,7 +118,10 @@ public class FixedWaveSpawner : MonoBehaviour
                         }
                         else
                         {
-                            //loader.SetActive(true);
+                            if (loader != null)
+                            {
+                                loader.SetActive(true);
+                            }
                             ChangeDoorState(false);
                             if (!isFinished)
                             {

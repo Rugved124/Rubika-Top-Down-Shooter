@@ -56,6 +56,7 @@ public class SceneLoader : MonoBehaviour
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        pc.transform.position = GameManager.Instance.respawnPoint;
     }
 
     public void LoadNextScene()
@@ -63,5 +64,10 @@ public class SceneLoader : MonoBehaviour
         hasInvoked = false;
         ManagerEvents.currentScene.Invoke(SceneManager.GetActiveScene().buildIndex + 1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void LoadScene(int i)
+    {
+        SceneManager.LoadScene(i);
+        pc.transform.position = GameManager.Instance.respawnPoint;
     }
 }
