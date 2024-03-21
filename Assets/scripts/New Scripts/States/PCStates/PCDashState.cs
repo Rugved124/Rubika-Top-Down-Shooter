@@ -17,7 +17,6 @@ public class PCDashState : BaseState
 
     public override Type ExecuteState()
     {
-        Debug.Log("Dashing");
         if (!_pc.isDashing)
         {
             return typeof(PCDefaultState);

@@ -40,11 +40,15 @@ public class ButcherAttackState : BaseState
                 _enemy.isWeaponFiringDone = true;
                 _enemy.enemyAnim.SetTrigger("AttackState");
                 //_enemy.FireWeapon();
-                //if(UnityEngine.Random.Range(0f, 100f) <= 50f && _enemy.canDash)
-                //{
-                //    _enemy.canDash = false;
-                //   // return typeof(ButcherChargeState);
-                //}
+                if (_enemy.canDash)
+                {
+                    if (UnityEngine.Random.Range(0f, 100f) <= 50f)
+                    {
+                        _enemy.canDash = false;
+                        return typeof(ButcherChargeState);
+                    }
+                }
+
             }
             if (_enemy.isWeaponFiringDone)
             {

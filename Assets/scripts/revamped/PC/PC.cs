@@ -81,6 +81,9 @@ public class PC : MonoBehaviour
     AudioSource burp;
 
     bool isBurnt;
+
+    [SerializeField]
+    private GameObject floatingTextPrefab;
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
@@ -218,18 +221,33 @@ public class PC : MonoBehaviour
         if (!isInvincible || isDashing)
         {
             currentHP -= damage;
-            if(damageIndicator != null)
+            if (floatingTextPrefab != null)
             {
-                StartCoroutine(IDamageTaken());
+                var number = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+                number.GetComponent<FloatingText>().SetDamageNumber(damage);
             }
         }
 
+    }
+    public void Heal(int healnumber)
+    {
+        currentHP += healnumber;
+        if (floatingTextPrefab != null)
+        {
+            var number = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+            number.GetComponent<FloatingText>().SetToHeal(healnumber);
+        }
     }
     public void TakeDamageOverTime(int damage)
     {
         if (!isInvincible)
         {
             currentHP -= damage;
+            if (floatingTextPrefab != null)
+            {
+                var number = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+                number.GetComponent<FloatingText>().SetDamageNumber(damage);
+            }
         }
     }
     //-----------------------------------------------Diying and Respawning---------------------------------------------------------------

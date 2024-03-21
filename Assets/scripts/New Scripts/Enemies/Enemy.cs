@@ -119,8 +119,18 @@ public class Enemy : MonoBehaviour
 
     [HideInInspector]
     public bool canIdle;
+
+    public GameObject dashVisual;
+    public GameObject currentVisual;
+
+    public AudioSource ability;
+
     private void Awake()
     {
+        if(dashVisual != null)
+        { 
+            dashVisual.SetActive(false); 
+        }
         poisonedForTime = -maxPoisonedForTime;
         firedTime = enemyData.timeBetweenBullets;
         fsm = GetComponent<FiniteStateMachine>();
@@ -274,7 +284,6 @@ public class Enemy : MonoBehaviour
 
     public void SetRunAwayToTrue()
     {
-        Debug.Log("RunAwayCooldDown");
         Invoke("InvokeRunAway", enemyData.runAwayCooldown);
     }
 
