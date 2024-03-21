@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/UI Scenes/Main-Menu.unity
-    guid: 8d74d7513c034bb41ad7075371adb8ca
+    path: Assets/Scenes/Tanmay Scenes/Scenes/Main Menu.unity
+    guid: 33a53d440e4c48e4e86eafd314d4e82b
   - enabled: 1
     path: Assets/Scenes/New FInal levels/House.unity
     guid: 7192aadeea186434fb6b75792a47ae1d
