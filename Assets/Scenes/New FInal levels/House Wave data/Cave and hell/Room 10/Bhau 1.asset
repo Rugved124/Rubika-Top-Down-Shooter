@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849af088b11ec0b439e90f526af516df, type: 3}
   m_Name: Bhau 1
   m_EditorClassIdentifier: 
-  enemiesInWave: {fileID: 7466105767855820433, guid: ca3387c6447462f46a446f63ad104636,
+  enemiesInWave: {fileID: 7466105767855820433, guid: f0e47c2faddf3104a90090ffe0c2794e,
     type: 3}
   enemyValue: 5
