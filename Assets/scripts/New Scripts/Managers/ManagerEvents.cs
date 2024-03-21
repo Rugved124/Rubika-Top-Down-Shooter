@@ -8,4 +8,5 @@ public class ManagerEvents
     public static UnityAction<GameManager.GameStates> switchState;
     public static UnityAction<int> currentScene;
     public static UnityAction<Vector3> respawnPoint;
+    public static UnityAction<int, int, string, string> playerData;
 }

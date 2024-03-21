@@ -31,8 +31,8 @@ public class RespawnManager : MonoBehaviour
         {
             if (pc != null)
             {
-                GameManager.Instance.respawnPoint = respawner.position;
-                //pc.respawnPoint = respawner.position;
+                ManagerEvents.respawnPoint.Invoke(respawner.position);
+                ManagerEvents.playerData.Invoke(pc.currentHP, AmmoManager.instance.GetAmmoCount(), AmmoManager.instance.firstAmmoType.ToString(), AmmoManager.instance.secondAmmoType.ToString());
                 foreach (GameObject go in lastRoomLights)
                 {
                     go.SetActive(false);

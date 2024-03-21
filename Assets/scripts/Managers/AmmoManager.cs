@@ -446,4 +446,11 @@ public class AmmoManager : MonoBehaviour
     {
         return ammoCount;
     }
+
+    public void LoadSaveData()
+    {
+        firstAmmoType = (EquippedAmmoType)System.Enum.Parse(typeof(EquippedAmmoType), GameManager.Instance.firstAmmo);
+        secondAmmoType = (EquippedAmmoType)System.Enum.Parse(typeof(EquippedAmmoType), GameManager.Instance.secondAmmo);
+        ammoCount = GameManager.Instance.ammoCount;
+    }
 }
