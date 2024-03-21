@@ -6,6 +6,7 @@ public class FixedWaveTrigger : MonoBehaviour
     [SerializeField]
     List<FixedWaveSpawner> spawns;
 
+    [SerializeField]
     GameObject enabledAfterWaves;
 
     int waveCount;
