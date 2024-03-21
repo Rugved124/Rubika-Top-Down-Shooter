@@ -103,4 +103,9 @@ public class GameManager : MonoBehaviour
         firstAmmo = first;
         secondAmmo = second;
     }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

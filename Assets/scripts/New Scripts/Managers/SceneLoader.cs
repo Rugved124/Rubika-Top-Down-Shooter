@@ -6,21 +6,21 @@ public class SceneLoader : MonoBehaviour
 {
     PC pc;
 
-    public static SceneLoader instance;
+    //public static SceneLoader instance;
     public Animator fadeToBlack;
 
     bool hasInvoked;
 
     private void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        //if(instance == null)
+        //{
+        //    instance = this;
+        //}
+        //else
+        //{
+        //    Destroy(this.gameObject);
+        //}
     }
     private void Start()
     {
