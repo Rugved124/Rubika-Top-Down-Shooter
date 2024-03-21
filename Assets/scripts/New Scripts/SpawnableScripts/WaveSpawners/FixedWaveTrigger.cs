@@ -9,6 +9,9 @@ public class FixedWaveTrigger : MonoBehaviour
     GameObject enabledAfterWaves;
 
     int waveCount;
+
+    [SerializeField]
+    bool makeItLoop;
     private void Awake()
     {
         if(enabledAfterWaves != null)
@@ -38,6 +41,7 @@ public class FixedWaveTrigger : MonoBehaviour
             foreach (var spawner in spawns)
             {
                 spawner.gameObject.SetActive(true);
+                spawner.SetToLoop(makeItLoop);
                 spawner.ChangeDoorState(true);
             }
         }

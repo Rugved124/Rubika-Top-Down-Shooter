@@ -676,7 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9908538a62875c14892d368238cf3f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pcSpeed: 8
+  pcSpeed: 10
   consumeRange: 6
   isInvincible: 0
   slowMultiplier: 1
@@ -702,7 +702,7 @@ MonoBehaviour:
   dashSpeed: 50
   canDash: 0
   isDashing: 0
-  dashCooldown: 4
+  dashCooldown: 2
   crosshair: {fileID: 0}
   soul:
     serializedVersion: 2

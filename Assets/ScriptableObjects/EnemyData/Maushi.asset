@@ -10,21 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b49413cba2de6844ab2be9a319324522, type: 3}
-  m_Name: Butcher
+  m_Name: Maushi
   m_EditorClassIdentifier: 
   visionConeAngle: 180
-  aggroRadius: 5
-  attackRange: 12
-  HitPoints: 100
+  aggroRadius: 10
+  attackRange: 24
+  HitPoints: 50
   teleportCoolDown: 0
-  enemyMoveSpeed: 10
-  enemyRotationSpeed: 200
-  enemyAttackingAngularSpeed: 8
-  timeBetweenBullets: 5
+  enemyMoveSpeed: 18
+  enemyRotationSpeed: 180
+  enemyAttackingAngularSpeed: 6
+  timeBetweenBullets: 10
   bullet: 0
-  allyDetectionRange: 0
-  runAwayDistance: 18
+  allyDetectionRange: 21
+  runAwayDistance: 16
   canTeleport: 1
   runAwayFor: 5
-  runAwayCooldown: 15
-  chargeSpeed: 16
+  runAwayCooldown: 5
