@@ -124,7 +124,6 @@ public class PC : MonoBehaviour
         isBurningFor = -maxBurnTime;
         cam = Camera.main.transform;
         canDash = true;
-        dashCooldown = dashRange / dashSpeed + dashCooldown;
         isCollided = false;
         isBurnt = false;
         if (damageIndicator != null)

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8919986774785633090}
   - component: {fileID: 282790132207008885}
   - component: {fileID: 3029298975330179302}
-  - component: {fileID: -4424068876080738331}
   - component: {fileID: -3323447933713305019}
+  - component: {fileID: 4902494855610358688}
   m_Layer: 0
   m_Name: Kalia Explosion
   m_TagString: Untagged
@@ -113,24 +113,6 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &-4424068876080738331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3536243147325767784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1d8358fd51625a4b95a1774b5bba1ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionDamage: 0
-  explosionRadius: 5
-  enemies:
-    serializedVersion: 2
-    m_Bits: 256
-  maxTime: 0.4
 --- !u!82 &-3323447933713305019
 AudioSource:
   m_ObjectHideFlags: 0
@@ -227,3 +209,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4902494855610358688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3536243147325767784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f03a0b9e7d63804c93ce71a28037e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 0.8
