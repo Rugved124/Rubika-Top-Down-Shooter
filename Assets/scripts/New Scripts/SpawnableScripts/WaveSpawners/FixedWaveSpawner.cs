@@ -46,6 +46,8 @@ public class FixedWaveSpawner : MonoBehaviour
 
     [SerializeField]
     FixedWaveTrigger trigger;
+
+    bool isLoop;
     public bool isFinished { get; private set; }
     private void Start()
     {
@@ -95,17 +97,31 @@ public class FixedWaveSpawner : MonoBehaviour
                 case WaveStates.StopSpawn:
                     if (existingEnemies.Count <= 0)
                     {
-                        ChangeDoorState(false);
-                        if (!isFinished)
+                        if (isLoop)
                         {
-                            if(trigger != null)
+                            isFinished = false;
+                            canSpawm = true;
+                            i = 0;
+                            if (waves.Length > 0)
                             {
-                                trigger.RemoveCount();
+                                currentWave = waves[i];
+                                timebetweenSpawns = currentWave.timeBeforeThisWave;
                             }
-
-                            isFinished = true;
+                            ChangeWaveState (WaveStates.GenerateEnemies);
                         }
+                        else
+                        {
+                            ChangeDoorState(false);
+                            if (!isFinished)
+                            {
+                                if (trigger != null)
+                                {
+                                    trigger.RemoveCount();
+                                }
 
+                                isFinished = true;
+                            }
+                        }
                     }
 
                     break;
@@ -213,5 +229,10 @@ public class FixedWaveSpawner : MonoBehaviour
                 Destroy(enemies.gameObject);
             }
         }
+    }
+
+    public void SetToLoop(bool loop)
+    {
+        isLoop = loop;
     }
 }

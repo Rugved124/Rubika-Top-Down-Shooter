@@ -71,6 +71,14 @@ public class AmmoManager : MonoBehaviour
         canShoot = true;
         firstAmmo.maxValue = secondAmmo.maxValue = ammoCount;
     }
+    private void OnEnable()
+    {
+        ManagerEvents.loadData += LoadSaveData;
+    }
+    private void OnDisable()
+    {
+        ManagerEvents.loadData -= LoadSaveData;
+    }
     private void Update()
     {
         currentRange = bulletToSpawn.GetComponent<BaseBullet>().bulletRange;
@@ -174,13 +182,13 @@ public class AmmoManager : MonoBehaviour
         }
         else
         {
-            if (secondAmmoType != EquippedAmmoType.DEFAULTAMMO)
+            if(secondAmmoType == EquippedAmmoType.DEFAULTAMMO)
             {
-                firstAmmoType = secondAmmoType;
                 secondAmmoType = newAmmo;
             }
             else
             {
+                firstAmmoType = secondAmmoType;
                 secondAmmoType = newAmmo;
             }
         }
