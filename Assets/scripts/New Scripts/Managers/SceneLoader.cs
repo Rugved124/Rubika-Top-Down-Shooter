@@ -27,15 +27,6 @@ public class SceneLoader : MonoBehaviour
         hasInvoked = false;
         pc = FindObjectOfType<PC>();
     }
-
-    private void OnEnable()
-    {
-        ManagerEvents.loadSavedScene += LoadScene;
-    }
-    private void OnDisable()
-    {
-        ManagerEvents.loadSavedScene -= LoadScene;
-    }
     private void OnTriggerEnter(Collider other)
     {
         if(other != null)
@@ -64,14 +55,9 @@ public class SceneLoader : MonoBehaviour
     }
     public void ReloadScene()
     {
-        ManagerEvents.loadData.Invoke();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    private void LoadScene(int i)
-    {
-        SceneManager.LoadScene(i);
-    }
     public void LoadNextScene()
     {
         hasInvoked = false;
