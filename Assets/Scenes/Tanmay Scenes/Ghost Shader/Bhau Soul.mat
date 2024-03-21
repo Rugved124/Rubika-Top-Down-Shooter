@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Yellow Pickup Glow
+  m_Name: Bhau Soul
   m_Shader: {fileID: -6465566751694194690, guid: f6053f29414432b4bb28ad1589a0988c,
     type: 3}
   m_Parent: {fileID: 0}
@@ -64,7 +64,7 @@ Material:
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
-    - _fresnelPower: -0.64
+    - _fresnelPower: -1.16
     m_Colors:
-    - _fresnelColor: {r: 0.64705884, g: 0.53490293, b: 0, a: 1}
+    - _fresnelColor: {r: 0.055074453, g: 0.23137255, b: 0, a: 1}
   m_BuildTextureStacks: []
