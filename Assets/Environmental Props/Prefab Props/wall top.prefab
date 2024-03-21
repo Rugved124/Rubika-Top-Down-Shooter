@@ -8,22 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 806864148809310905, guid: 7140dbf35e35cb74ca9bc5368c6c4715,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 7167499764579951279, guid: 587c982f4aaefa345995730a66db98c3,
-        type: 3}
-    - target: {fileID: 3230903798311818867, guid: 7140dbf35e35cb74ca9bc5368c6c4715,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4cfef668b89c366408d718359bc5a963, type: 2}
     - target: {fileID: 3230903798311818867, guid: 7140dbf35e35cb74ca9bc5368c6c4715,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 71b50fdebb7c1ad4198df30d99c77480, type: 2}
+      objectReference: {fileID: 2100000, guid: 55c1e3254975bd64d8dc8bb75b311e77, type: 2}
     - target: {fileID: 5320833881423445976, guid: 7140dbf35e35cb74ca9bc5368c6c4715,
         type: 3}
       propertyPath: m_Name

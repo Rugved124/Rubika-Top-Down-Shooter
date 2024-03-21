@@ -37,9 +37,6 @@ public class Debries : MonoBehaviour
 
     [SerializeField]
     GameObject cross;
-
-    [SerializeField]
-    GameObject explosion;
     void Start()
     {
         isHit = false;
@@ -135,10 +132,6 @@ public class Debries : MonoBehaviour
     {
         if (canBeDestroyed)
         {
-            if(explosion != null)
-            {
-                Instantiate(explosion, transform.position, Quaternion.identity);
-            }
             Destroy(this.gameObject);
         }
     }
