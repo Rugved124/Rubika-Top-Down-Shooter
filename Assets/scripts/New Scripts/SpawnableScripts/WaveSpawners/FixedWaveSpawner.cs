@@ -107,6 +107,7 @@ public class FixedWaveSpawner : MonoBehaviour
                                 currentWave = waves[i];
                                 timebetweenSpawns = currentWave.timeBeforeThisWave;
                             }
+                            ChangeWaveState (WaveStates.GenerateEnemies);
                         }
                         else
                         {
