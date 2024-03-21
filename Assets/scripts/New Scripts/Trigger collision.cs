@@ -9,6 +9,7 @@ public class Triggercollision : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<Collider>().enabled = false;
+            StartCoroutine(TurnColliderToNormal());
         }
     }
 
