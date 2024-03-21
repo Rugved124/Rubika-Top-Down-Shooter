@@ -17,13 +17,14 @@ MonoBehaviour:
   attackRange: 6
   HitPoints: 150
   teleportCoolDown: 0
-  enemyMoveSpeed: 9
+  enemyMoveSpeed: 11
   enemyRotationSpeed: 200
   enemyAttackingAngularSpeed: 5
-  timeBetweenBullets: 2
+  timeBetweenBullets: 0.5
   bullet: 0
   allyDetectionRange: 0
   runAwayDistance: 8
   canTeleport: 1
   runAwayFor: 10
   runAwayCooldown: 10
+  chargeSpeed: 0

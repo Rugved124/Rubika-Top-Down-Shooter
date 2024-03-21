@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849af088b11ec0b439e90f526af516df, type: 3}
   m_Name: Kalia
   m_EditorClassIdentifier: 
-  enemiesInWave: {fileID: 6180407339577389415, guid: f6305230db121bf49a45576aff4620dd,
+  enemiesInWave: {fileID: 6180407339577389415, guid: e8bb5b2b80ee2e34683141d29faddef1,
     type: 3}
   enemyValue: 0
