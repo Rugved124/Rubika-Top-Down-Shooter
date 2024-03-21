@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-
+using UnityEngine.SceneManagement;
 public class RespawnManager : MonoBehaviour
 {
     private PC pc;
@@ -31,8 +31,8 @@ public class RespawnManager : MonoBehaviour
         {
             if (pc != null)
             {
-                ManagerEvents.respawnPoint.Invoke(respawner.position);
-                ManagerEvents.playerData.Invoke(pc.currentHP, AmmoManager.instance.GetAmmoCount(), AmmoManager.instance.firstAmmoType.ToString(), AmmoManager.instance.secondAmmoType.ToString());
+                //ManagerEvents.respawnPoint.Invoke(respawner.position,GameManager.Instance.currentScene);
+                //ManagerEvents.playerData.Invoke(pc.currentHP, AmmoManager.instance.GetAmmoCount(), AmmoManager.instance.firstAmmoType.ToString(), AmmoManager.instance.secondAmmoType.ToString());
                 foreach (GameObject go in lastRoomLights)
                 {
                     go.SetActive(false);
