@@ -107,7 +107,7 @@ MonoBehaviour:
   colliders: []
   spawnLayerMask:
     serializedVersion: 2
-    m_Bits: 501
+    m_Bits: 66517
   gap: 1
 --- !u!136 &-6508605018015852451
 CapsuleCollider:
