@@ -90,7 +90,7 @@ public class WaveSpawner : MonoBehaviour
                     break;
                 case WaveStates.Wait:
 
-                    if (Time.time >= timebetweenSpawns)
+                    if (Time.time >= timebetweenSpawns || existingEnemies.Count == 0)
                     {
                         ResetGeneratedEnemies();
 
