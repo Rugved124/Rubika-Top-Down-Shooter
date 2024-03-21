@@ -20,15 +20,15 @@ MonoBehaviour:
   maxPoisonedForTime: 1
   maxBurnedForTime: 0
   slowedSpeed: 0.3
-  poisonedForTime: 77.72849
+  poisonedForTime: 8.763718
   slowedForTime: 0
   poisonDamagePerTick: 3
   burningPerTick: 2
-  burstDamage: 15
+  burstDamage: 5
   burnNumber: 0
   tickSpeed: 0.33
-  burnTickSpeed: 0.25
-  lastTick: 0
+  burnTickSpeed: 0.5
+  lastTick: 9.738034
   burnLastTick: 0
   isSlowedCounting: 0
   isPoisonCounting: 0

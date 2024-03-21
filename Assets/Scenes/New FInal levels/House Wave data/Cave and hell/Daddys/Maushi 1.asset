@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 849af088b11ec0b439e90f526af516df, type: 3}
+  m_Name: Maushi 1
+  m_EditorClassIdentifier: 
+  enemiesInWave: {fileID: 5637126596393224611, guid: 483790d593fc310488cb638fdf0f9565,
+    type: 3}
+  enemyValue: 2
