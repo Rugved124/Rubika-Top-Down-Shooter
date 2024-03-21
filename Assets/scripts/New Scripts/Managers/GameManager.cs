@@ -25,8 +25,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-        respawnPoint = FindObjectOfType<PC>().transform.position;
-        playerHealth = FindObjectOfType<PC>().maxHP;
+        if(FindObjectOfType<PC>() != null)
+        {
+            respawnPoint = FindObjectOfType<PC>().transform.position;
+            playerHealth = FindObjectOfType<PC>().maxHP;
+        }
         firstAmmo = "DEFAULTAMMO";
         secondAmmo = "DEFAULTAMMO";
         ammoCount = 20;

@@ -64,6 +64,7 @@ public class SceneLoader : MonoBehaviour
     }
     public void ReloadScene()
     {
+        ManagerEvents.loadData.Invoke();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

@@ -110,7 +110,10 @@ public class PC : MonoBehaviour
         anim = visuals.GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
         currentHP = maxHP;
-        slider.maxValue = maxHP;
+        if(slider != null)
+        {
+            slider.maxValue = maxHP;
+        }
         statusEffects.burnLastTick = 0f;
         statusEffects.burnNumber = 0;
         statusEffects.lastTick = 0f;

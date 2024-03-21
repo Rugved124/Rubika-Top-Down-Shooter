@@ -9,4 +9,5 @@ public class ManagerEvents
     public static UnityAction<int> currentScene;
     public static UnityAction loadData;
     public static UnityAction<int> loadSavedScene;
+    public static UnityAction<Vector3> respawnPoint;
 }
