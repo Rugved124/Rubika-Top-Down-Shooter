@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ghostBody
+  m_Name: Maushi Soul
   m_Shader: {fileID: -6465566751694194690, guid: f6053f29414432b4bb28ad1589a0988c,
     type: 3}
   m_Parent: {fileID: 0}
@@ -64,7 +64,7 @@ Material:
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
-    - _fresnelPower: -1.3
+    - _fresnelPower: -1.19
     m_Colors:
-    - _fresnelColor: {r: 0.013290125, g: 0, b: 0.64705884, a: 1}
+    - _fresnelColor: {r: 0.09981872, g: 0.015272317, b: 0.20754719, a: 1}
   m_BuildTextureStacks: []

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Green Glow
+  m_Name: Kalia Soul
   m_Shader: {fileID: -6465566751694194690, guid: f6053f29414432b4bb28ad1589a0988c,
     type: 3}
   m_Parent: {fileID: 0}
@@ -64,7 +64,7 @@ Material:
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
-    - _fresnelPower: -1
+    - _fresnelPower: -1.27
     m_Colors:
-    - _fresnelColor: {r: 0, g: 0.40251565, b: 0.006707916, a: 1}
+    - _fresnelColor: {r: 0, g: 0.0035743, b: 0.06415099, a: 1}
   m_BuildTextureStacks: []
