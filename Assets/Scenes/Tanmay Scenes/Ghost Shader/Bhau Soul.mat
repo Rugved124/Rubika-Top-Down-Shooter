@@ -66,5 +66,5 @@ Material:
     - _ZWriteControl: 0
     - _fresnelPower: -1.16
     m_Colors:
-    - _fresnelColor: {r: 0.055074453, g: 0.23137255, b: 0, a: 1}
+    - _fresnelColor: {r: 0, g: 0.01826657, b: 0.23137255, a: 1}
   m_BuildTextureStacks: []
