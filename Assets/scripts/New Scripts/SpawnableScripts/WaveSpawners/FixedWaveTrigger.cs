@@ -10,6 +10,7 @@ public class FixedWaveTrigger : MonoBehaviour
 
     int waveCount;
 
+    [SerializeField]
     bool makeItLoop;
     private void Awake()
     {
