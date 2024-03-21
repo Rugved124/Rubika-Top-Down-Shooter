@@ -49,8 +49,12 @@ public class FixedWaveSpawner : MonoBehaviour
 
     bool isLoop;
     public bool isFinished { get; private set; }
+
+    [SerializeField]
+    GameObject loader;
     private void Start()
     {
+        //loader.SetActive(false);
         isFinished = false;
         canSpawm = true;
         if(waves.Length > 0)
@@ -111,6 +115,7 @@ public class FixedWaveSpawner : MonoBehaviour
                         }
                         else
                         {
+                            //loader.SetActive(true);
                             ChangeDoorState(false);
                             if (!isFinished)
                             {
