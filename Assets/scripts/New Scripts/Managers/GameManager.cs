@@ -10,6 +10,11 @@ public class GameManager : MonoBehaviour
     public int currentScene;
 
     public Vector3 respawnPoint;
+
+    public int playerHealth;
+    public string firstAmmo, secondAmmo;
+
+    public int ammoCount;
     private void Awake()
     {
         if (Instance == null)
@@ -36,12 +41,14 @@ public class GameManager : MonoBehaviour
         ManagerEvents.switchState += ChangeState;
         ManagerEvents.currentScene += CurrentScene;
         ManagerEvents.respawnPoint += SetRespawn;
+        ManagerEvents.playerData += SetPlayerData;
     }
     private void OnDisable()
     {
         ManagerEvents.switchState -= ChangeState;
         ManagerEvents.currentScene -= CurrentScene;
         ManagerEvents.respawnPoint -= SetRespawn;
+        ManagerEvents.playerData -= SetPlayerData;
 
     }
     void Start()
@@ -87,5 +94,13 @@ public class GameManager : MonoBehaviour
     private void SetRespawn(Vector3 location)
     {
         respawnPoint = location;
+    }
+
+    private void SetPlayerData(int health, int ammo, string first, string second)
+    {
+        playerHealth = health;
+        ammoCount = ammo;
+        firstAmmo = first;
+        secondAmmo = second;
     }
 }
