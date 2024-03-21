@@ -25,14 +25,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-        if(FindObjectOfType<PC>() != null)
-        {
-            respawnPoint = FindObjectOfType<PC>().transform.position;
-            playerHealth = FindObjectOfType<PC>().maxHP;
-        }
-        firstAmmo = "DEFAULTAMMO";
-        secondAmmo = "DEFAULTAMMO";
-        ammoCount = 20;
+        respawnPoint = FindObjectOfType<PC>().transform.position;
     }
     public enum GameStates
     {
@@ -47,11 +40,16 @@ public class GameManager : MonoBehaviour
     {
         ManagerEvents.switchState += ChangeState;
         ManagerEvents.currentScene += CurrentScene;
+        ManagerEvents.respawnPoint += SetRespawn;
+        ManagerEvents.playerData += SetPlayerData;
     }
     private void OnDisable()
     {
         ManagerEvents.switchState -= ChangeState;
         ManagerEvents.currentScene -= CurrentScene;
+        ManagerEvents.respawnPoint -= SetRespawn;
+        ManagerEvents.playerData -= SetPlayerData;
+
     }
     void Start()
     {
@@ -92,35 +90,22 @@ public class GameManager : MonoBehaviour
     {
         currentScene =  sceneIndex;
     }
-    public void SaveData()
+
+    private void SetRespawn(Vector3 location)
     {
-        SaveSystem.SaveAllData();
+        respawnPoint = location;
     }
-    public void LoadSaveFile()
+
+    private void SetPlayerData(int health, int ammo, string first, string second)
     {
-        if(SaveSystem.LoadData() != null)
-        {
-            SaveData data = SaveSystem.LoadData();
-            playerHealth = data.health;
-            ammoCount = data.ammoCount;
-            firstAmmo = data.firstAmmo;
-            secondAmmo = data.secondAmmo;
+        playerHealth = health;
+        ammoCount = ammo;
+        firstAmmo = first;
+        secondAmmo = second;
+    }
 
-            respawnPoint.x = data.position[0];
-            respawnPoint.y = data.position[1];
-            respawnPoint.z = data.position[2];
-            currentScene = data.scene;
-
-            ManagerEvents.loadSavedScene?.Invoke(currentScene);
-            if (SceneManager.GetActiveScene().buildIndex == currentScene)
-            {
-                ManagerEvents.loadData?.Invoke();
-            }
-        }
-        else
-        {
-            ManagerEvents.loadSavedScene?.Invoke(SceneManager.GetActiveScene().buildIndex);
-        }
-
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

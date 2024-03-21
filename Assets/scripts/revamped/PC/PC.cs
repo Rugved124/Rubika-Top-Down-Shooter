@@ -104,16 +104,14 @@ public class PC : MonoBehaviour
 
     private void Start()
     {
+        transform.position = GameManager.Instance.respawnPoint;
         crosshair = GetComponentInChildren<CrossHairPos>().gameObject;
         respawnPoint = transform.position;
         consumeLine.SetActive(false);
         anim = visuals.GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
         currentHP = maxHP;
-        if(slider != null)
-        {
-            slider.maxValue = maxHP;
-        }
+        slider.maxValue = maxHP;
         statusEffects.burnLastTick = 0f;
         statusEffects.burnNumber = 0;
         statusEffects.lastTick = 0f;
@@ -135,14 +133,7 @@ public class PC : MonoBehaviour
         }
         consumeSound = true;
     }
-    private void OnEnable()
-    {
-        ManagerEvents.loadData += LoadSaveData;
-    }
-    private void OnDisable()
-    {
-        ManagerEvents.loadData -= LoadSaveData;
-    }
+
     private void Update()
     {
         if (currentState == null)
@@ -455,11 +446,7 @@ public class PC : MonoBehaviour
 
         }
     }
-    private void LoadSaveData()
-    {
-        currentHP = GameManager.Instance.playerHealth;
-        transform.position = GameManager.Instance.respawnPoint;
-    }
+
     IEnumerator IDamageTaken()
     {
         damageIndicator.SetActive(true);
