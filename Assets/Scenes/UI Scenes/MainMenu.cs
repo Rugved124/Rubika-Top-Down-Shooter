@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 	}
 	public void LoadGame()
 	{
-		GameManager.Instance.LoadSaveFile();
+		//GameManager.Instance.LoadSaveFile();
 	}
 	public void QuitGame()
 	{
