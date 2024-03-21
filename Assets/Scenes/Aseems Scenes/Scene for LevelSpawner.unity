@@ -535,7 +535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &195034998
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1524,6 +1524,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Green Pickup
       objectReference: {fileID: 0}
+    - target: {fileID: 2141065964912912087, guid: f4327c4559cd15c4ba4d3a4f71b75c33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9070457964300986255, guid: f4327c4559cd15c4ba4d3a4f71b75c33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1591,6 +1596,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Nanny Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289917923695981098, guid: eaa4b2f2da70aec4c9326b0d73bfb12a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6825940465326393622, guid: eaa4b2f2da70aec4c9326b0d73bfb12a,
         type: 3}
@@ -2643,6 +2653,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Pickup
       objectReference: {fileID: 0}
+    - target: {fileID: 4289917923695981098, guid: a81409944813c3341a02cea8d5d07718,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6825940465326393622, guid: a81409944813c3341a02cea8d5d07718,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2691,6 +2706,11 @@ PrefabInstance:
     - target: {fileID: 6825940465326393622, guid: a81409944813c3341a02cea8d5d07718,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007190047941572799, guid: a81409944813c3341a02cea8d5d07718,
+        type: 3}
+      propertyPath: soulType
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3178,10 +3198,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4820809003000208708, guid: 77848483f2786ac4b8a19e04029de6bc,
+        type: 3}
+      propertyPath: soulType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8498124923016124782, guid: 77848483f2786ac4b8a19e04029de6bc,
         type: 3}
       propertyPath: m_Name
       value: Blue Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498124923016124782, guid: 77848483f2786ac4b8a19e04029de6bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
