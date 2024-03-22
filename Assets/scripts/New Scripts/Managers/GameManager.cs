@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public string firstAmmo, secondAmmo;
 
     public int ammoCount;
+
+    public Transform pcLocation;
+    public Transform pcLocationInHell;
     private void Awake()
     {
         if (Instance == null)
@@ -25,9 +28,14 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-        if (FindObjectOfType<PC>() != null)
+        DontDestroyOnLoad(this.gameObject);
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            respawnPoint = FindObjectOfType<PC>().transform.position;
+            respawnPoint = pcLocation.position;
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            respawnPoint = pcLocationInHell.position;
         }
     }
     public enum GameStates
@@ -57,11 +65,19 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentScene = 1;
-        currentState = GameStates.INMENU;
-        DontDestroyOnLoad(this.gameObject);
+        //currentState = GameStates.INMENU;
+        //DontDestroyOnLoad(this.gameObject);
     }
     void Update()
     {
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            respawnPoint = pcLocation.position;
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            respawnPoint = pcLocationInHell.position;
+        }
         switch (currentState)
         {
             case GameStates.INMENU:
@@ -69,11 +85,11 @@ public class GameManager : MonoBehaviour
                 break;
             case GameStates.RUNNING:
                 Cursor.visible = false; 
-                InputManager.instance.gameObject.SetActive(true);
+                //InputManager.instance.gameObject.SetActive(true);
                 break;
             case GameStates.PAUSED:
                 Cursor.visible = true;
-                InputManager.instance.gameObject.SetActive(false);
+                //InputManager.instance.gameObject.SetActive(false);
                 break;
         }
     }
@@ -93,7 +109,14 @@ public class GameManager : MonoBehaviour
 
     private void SetRespawn(Vector3 location)
     {
-        respawnPoint = location;
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            pcLocation.position = location;
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            pcLocationInHell.position = location;
+        }
     }
 
     private void SetPlayerData(int health, int ammo, string first, string second)
@@ -108,5 +131,9 @@ public class GameManager : MonoBehaviour
     {
         ChangeState(GameStates.RUNNING);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void ChangeSpawnPoint()
+    {
+        respawnPoint = pcLocationInHell.position;
     }
 }

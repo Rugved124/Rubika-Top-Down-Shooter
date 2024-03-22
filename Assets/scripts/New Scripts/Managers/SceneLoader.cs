@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
@@ -62,8 +63,10 @@ public class SceneLoader : MonoBehaviour
     public void LoadNextScene()
     {
         hasInvoked = false;
-        ManagerEvents.currentScene.Invoke(SceneManager.GetActiveScene().buildIndex + 1);
+        //ManagerEvents.currentScene.Invoke(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.MoveGameObjectToScene(pc.gameObject, SceneManager.GetSceneAt(SceneManager.GetActiveScene().buildIndex +1));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameManager.Instance.ChangeSpawnPoint();
     }
     public void LoadScene(int i)
     {
