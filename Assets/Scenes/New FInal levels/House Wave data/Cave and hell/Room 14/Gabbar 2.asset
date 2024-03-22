@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849af088b11ec0b439e90f526af516df, type: 3}
   m_Name: Gabbar 2
   m_EditorClassIdentifier: 
-  enemiesInWave: {fileID: 8319296224104033158, guid: 05e8d8aa1e8c5f44bb647c9a8f4c6666,
+  enemiesInWave: {fileID: 8319296224104033158, guid: d15a3e09782f0904eabc07fa64b28cff,
     type: 3}
   enemyValue: 2
