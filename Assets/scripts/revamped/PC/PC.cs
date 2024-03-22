@@ -84,6 +84,7 @@ public class PC : MonoBehaviour
 
     [SerializeField]
     private GameObject floatingTextPrefab;
+
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
