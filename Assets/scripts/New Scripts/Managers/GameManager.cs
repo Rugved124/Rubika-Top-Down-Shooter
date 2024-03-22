@@ -69,9 +69,11 @@ public class GameManager : MonoBehaviour
                 break;
             case GameStates.RUNNING:
                 Cursor.visible = false; 
+                InputManager.instance.gameObject.SetActive(true);
                 break;
             case GameStates.PAUSED:
                 Cursor.visible = true;
+                InputManager.instance.gameObject.SetActive(false);
                 break;
         }
     }
@@ -104,6 +106,7 @@ public class GameManager : MonoBehaviour
 
     public void ReloadScene()
     {
+        ChangeState(GameStates.RUNNING);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

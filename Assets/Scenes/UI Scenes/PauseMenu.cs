@@ -1,4 +1,5 @@
 using UnityEngine;
+using static GameManager;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -29,7 +30,8 @@ public class PauseMenu : MonoBehaviour
 	public void ReloadCheckPoint()
 	{
 		Time.timeScale = 1f;
-		sceneLoader.ReloadScene();
+		GameManager.Instance.ChangeState(GameStates.RUNNING);
+        GameManager.Instance.ReloadScene();
 	}
 	public void Resume()
 	{
@@ -40,7 +42,8 @@ public class PauseMenu : MonoBehaviour
 	}
 	public void MainMenu()
 	{
-		Time.timeScale = 1f;
+        GameManager.Instance.ChangeState(GameStates.INMENU);
+        Time.timeScale = 1;
 		sceneLoader.LoadScene(0);
 	}
 }

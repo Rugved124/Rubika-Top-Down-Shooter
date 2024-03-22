@@ -104,7 +104,7 @@ public class PC : MonoBehaviour
 
     private void Start()
     {
-       // transform.position = GameManager.Instance.respawnPoint;
+        transform.position = GameManager.Instance.respawnPoint;
         crosshair = GetComponentInChildren<CrossHairPos>().gameObject;
         respawnPoint = transform.position;
         consumeLine.SetActive(false);
