@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849af088b11ec0b439e90f526af516df, type: 3}
   m_Name: Maushi 2
   m_EditorClassIdentifier: 
-  enemiesInWave: {fileID: 5637126596393224611, guid: 483790d593fc310488cb638fdf0f9565,
+  enemiesInWave: {fileID: 5637126596393224611, guid: b43464ff80253324faf2fc271642256b,
     type: 3}
   enemyValue: 3
