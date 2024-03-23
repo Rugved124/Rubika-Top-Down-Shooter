@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
         DontDestroyOnLoad(this.gameObject);
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 0)
         {
             respawnPoint = pcLocation.position;
         }
