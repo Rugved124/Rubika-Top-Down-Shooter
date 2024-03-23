@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 584519153783136801}
   - component: {fileID: 1187373878953189653}
+  - component: {fileID: 3740769406122674990}
   m_Layer: 15
   m_Name: Debry Trigger
   m_TagString: Untagged
@@ -53,3 +54,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.252667, y: 2.25079, z: 2.5618668}
   m_Center: {x: 1.2974334, y: 0.62539506, z: 5.6716814}
+--- !u!114 &3740769406122674990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858741981468505246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6e9a7cfb04deb4ea988e487f53dfd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debries: []
