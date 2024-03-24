@@ -3328,6 +3328,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d681213377b020d418ec306fe12d7a1b, type: 3}
+--- !u!114 &1533954857 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1546175091597310436, guid: 0d25b9b7cf5f8604784afe75ec6514ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 1228585401}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1578509782 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2119533439044387595, guid: 0d25b9b7cf5f8604784afe75ec6514ba,
@@ -4156,10 +4168,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2330037829487971908, guid: 77848483f2786ac4b8a19e04029de6bc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330037829487971908, guid: 77848483f2786ac4b8a19e04029de6bc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330037829487971908, guid: 77848483f2786ac4b8a19e04029de6bc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 3738960583114507292, guid: 77848483f2786ac4b8a19e04029de6bc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.42
+      value: -5.59
       objectReference: {fileID: 0}
     - target: {fileID: 3738960583114507292, guid: 77848483f2786ac4b8a19e04029de6bc,
         type: 3}
@@ -4169,7 +4196,7 @@ PrefabInstance:
     - target: {fileID: 3738960583114507292, guid: 77848483f2786ac4b8a19e04029de6bc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.29
+      value: -9.5
       objectReference: {fileID: 0}
     - target: {fileID: 3738960583114507292, guid: 77848483f2786ac4b8a19e04029de6bc,
         type: 3}
@@ -4229,6 +4256,11 @@ PrefabInstance:
     - target: {fileID: 6731092595564581857, guid: 77848483f2786ac4b8a19e04029de6bc,
         type: 3}
       propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764879556253699470, guid: 77848483f2786ac4b8a19e04029de6bc,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7032252410647068700, guid: 77848483f2786ac4b8a19e04029de6bc,
@@ -4513,6 +4545,11 @@ PrefabInstance:
       propertyPath: fadeAnimation
       value: 
       objectReference: {fileID: 1115452075}
+    - target: {fileID: 4875023118549734663, guid: b13a6224fbc4e7e4f9c09066f16db064,
+        type: 3}
+      propertyPath: dashCooldownUI
+      value: 
+      objectReference: {fileID: 1533954857}
     - target: {fileID: 5970101129846924182, guid: b13a6224fbc4e7e4f9c09066f16db064,
         type: 3}
       propertyPath: m_IsActive
