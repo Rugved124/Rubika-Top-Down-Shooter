@@ -85,6 +85,9 @@ public class PC : MonoBehaviour
     [SerializeField]
     private GameObject floatingTextPrefab;
 
+    [SerializeField]
+    Slider dashCooldownUI;
+
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
@@ -132,6 +135,11 @@ public class PC : MonoBehaviour
             damageIndicator.SetActive(false);
         }
         consumeSound = true;
+        if(dashCooldownUI != null)
+        {
+            dashCooldownUI.maxValue = dashCooldown;
+            dashCooldownUI.value = dashCooldownUI.maxValue;
+        }
     }
 
     private void Update()
@@ -146,7 +154,7 @@ public class PC : MonoBehaviour
         }
         //-------------------------------------Dash Things-------------------------------------
 
-        if (InputManager.instance.GetDashButton() && canDash && !InputManager.instance.GetIfConsumeIsHeld())
+        if (InputManager.instance.GetDashButton() && canDash && !InputManager.instance.GetIfConsumeIsHeld() && !isDead)
         {
             float forwards = InputManager.instance.GetMovementVertical();
             float sideways = InputManager.instance.GetMovementHorizontal();
@@ -423,11 +431,25 @@ public class PC : MonoBehaviour
             yield return null;
         }
 
-        isDashing = false;
-        playerRb.useGravity = true;
-        playerRb.velocity = Vector3.zero;
-
-        yield return new WaitForSeconds(dashCooldown);
+        if (isDashing)
+        {
+            isDashing = false;
+            playerRb.useGravity = true;
+            playerRb.velocity = Vector3.zero;
+            if(dashCooldownUI != null)
+            {
+                dashCooldownUI.value = 0f;
+            }
+        }
+        while (dashCooldownUI.value < dashCooldown)
+        {
+            if (dashCooldownUI != null)
+            {
+                dashCooldownUI.value += Time.deltaTime;
+            }
+            yield return null;
+        }
+        //yield return new WaitForSeconds(dashCooldown);
         canDash = true;
         isCollided = false;
 

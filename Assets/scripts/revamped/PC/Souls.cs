@@ -1,15 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Souls : MonoBehaviour
 {
     [SerializeField]
-    private int soulTimer;
+    private float soulTimer;
 
     public AmmoManager.EquippedAmmoType soulType;
+
+    [SerializeField]
+    Slider soulSlider;
+
+    private void Awake()
+    {
+        soulSlider = GetComponentInChildren<Slider>();
+        soulSlider.maxValue = soulTimer;
+        soulSlider.value = 0;
+    }
     IEnumerator ConsumptionCoroutine()
     {
+        soulSlider.value += Time.deltaTime;
         yield return new WaitForSeconds(soulTimer);
         Die();
     }
