@@ -14,7 +14,12 @@ public class RespawnManager : MonoBehaviour
 
     [SerializeField]
     private List<GameObject> currentRoomLights;
-    
+
+    [SerializeField]
+    private List<GameObject> otherRoomCollider;
+
+    [SerializeField]
+    private List<GameObject> currentRoomCollider;
     private void Start()
     {
         pc = FindObjectOfType<PC>();
@@ -27,12 +32,12 @@ public class RespawnManager : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     { 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && respawner.position != GameManager.Instance.respawnPoint)
         {
             if (pc != null)
             {
                 ManagerEvents.respawnPoint.Invoke(respawner.position);
-                ManagerEvents.playerData.Invoke(pc.currentHP, AmmoManager.instance.GetAmmoCount(), AmmoManager.instance.firstAmmoType.ToString(), AmmoManager.instance.secondAmmoType.ToString());
+                //ManagerEvents.playerData.Invoke(pc.currentHP, AmmoManager.instance.GetAmmoCount(), AmmoManager.instance.firstAmmoType.ToString(), AmmoManager.instance.secondAmmoType.ToString());
                 foreach (GameObject go in lastRoomLights)
                 {
                     go.SetActive(false);
@@ -41,6 +46,16 @@ public class RespawnManager : MonoBehaviour
                 {
                     go.SetActive(true);
                 }
+
+                foreach (GameObject go in currentRoomCollider)
+                {
+                    go.SetActive(false);
+                }
+                foreach (GameObject go in otherRoomCollider)
+                {
+                    go.SetActive(true);
+                }
+
             }
         }    
     }

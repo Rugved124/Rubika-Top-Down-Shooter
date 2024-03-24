@@ -320,19 +320,19 @@ public class PC : MonoBehaviour
     {
         if (other != null)
         {
-            if (other.tag == "SlowPC")
+            if (other.tag == "SlowPC" && !isDashing)
             {
                 statusEffects.isSlowedCounting = true;
                 statusEffects.isSlowed = true;
                 statusEffects.hasLostAbility = true;
 
             }
-            if (other.tag == "Poison")
+            if (other.tag == "Poison" && !isDashing)
             {
                 statusEffects.isPoisonCounting = true;
                 statusEffects.isPoisoned = true;
             }
-            if(other.tag == "Fire")
+            if(other.tag == "Fire" && !isDashing)
             {
                 if(!isBurnt)
                 {

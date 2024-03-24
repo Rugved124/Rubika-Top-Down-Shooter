@@ -130,7 +130,7 @@ public class Butcher : Enemy
     {
         if (isCharging)
         {
-            if (collision.collider.tag == "Obstacle")
+            if (!collision.collider.CompareTag("Player") && !collision.collider.CompareTag("Ground"))
             {
                 Debug.Log("I hit a Wall");
                 canGabbarCharge = false;
@@ -140,7 +140,7 @@ public class Butcher : Enemy
                     //agent.isStopped = true;
                     //agent.SetDestination(transform.position);
                     SpawnDebries();
-                    isChargeHitWall = false;
+                    isChargeHitWall = true;
                     Invoke("ResetChargeHitWall", 10f);
                 }
             }

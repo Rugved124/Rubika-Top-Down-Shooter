@@ -42,7 +42,7 @@ public class ButcherAttackState : BaseState
                 //_enemy.FireWeapon();
                 if (_enemy.canDash)
                 {
-                    if (UnityEngine.Random.Range(0f, 100f) <= 50f)
+                    if (UnityEngine.Random.Range(0f, 100f) <= 80f)
                     {
                         _enemy.canDash = false;
                         return typeof(ButcherChargeState);
