@@ -149,7 +149,6 @@ public class AmmoManager : MonoBehaviour
         {
             if(bulletToSpawn != null && canShoot && ammoCount > 0)
             {
-                
                 canShoot = false;
                 StartCoroutine(bulletFireRate());
                 GameObject bulletShot = Instantiate(bulletToSpawn, pc.GetPCShoot().position, pc.GetPCShoot().rotation);
@@ -157,6 +156,7 @@ public class AmmoManager : MonoBehaviour
                 ammoCount--;
             }
         }
+
         if(ammoCount <= 0)
         {
             ResetEquippedAmmo();

@@ -111,8 +111,7 @@ MonoBehaviour:
   canSpikeHit: 0
   spiked: 0
   cross: {fileID: 0}
-  explosion: {fileID: 3536243147325767784, guid: f00aa68f8eec8cd47bc6f552b49a24e3,
-    type: 3}
+  dieTime: 1
 --- !u!54 &4570606818526197404
 Rigidbody:
   m_ObjectHideFlags: 0

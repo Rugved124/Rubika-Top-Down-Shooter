@@ -20,7 +20,7 @@ MonoBehaviour:
   enemyMoveSpeed: 12
   enemyRotationSpeed: 250
   enemyAttackingAngularSpeed: 6
-  timeBetweenBullets: 5
+  timeBetweenBullets: 4
   bullet: 3
   allyDetectionRange: 0
   runAwayDistance: 8

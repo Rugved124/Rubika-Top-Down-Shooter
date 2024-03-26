@@ -37,6 +37,9 @@ public class Debries : MonoBehaviour
 
     [SerializeField]
     GameObject cross;
+
+    [SerializeField]
+    float dieTime;
     void Start()
     {
         isHit = false;
@@ -111,7 +114,7 @@ public class Debries : MonoBehaviour
                 other.gameObject.GetComponent<PC>().TakeDamage(damage);
             }
         }
-        Die();
+        Invoke("Die",dieTime);
     }
     private void OnCollisionEnter(Collision collision)
     {
