@@ -4955,37 +4955,37 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e43342534d9c9c44b9d12665299713dd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.83
+      value: -0.017996937
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e43342534d9c9c44b9d12665299713dd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.89
+      value: -0.01999998
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e43342534d9c9c44b9d12665299713dd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.1
+      value: 0.018998504
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e43342534d9c9c44b9d12665299713dd,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.70710576
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e43342534d9c9c44b9d12665299713dd,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00000091595325
+      value: 0.0000016391185
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e43342534d9c9c44b9d12665299713dd,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.70710784
+      value: -0.000002905726
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e43342534d9c9c44b9d12665299713dd,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000032340233
+      value: -0.0000029344787
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e43342534d9c9c44b9d12665299713dd,
         type: 3}
@@ -4995,7 +4995,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e43342534d9c9c44b9d12665299713dd,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e43342534d9c9c44b9d12665299713dd,
         type: 3}
@@ -5011,6 +5011,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Consume VFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e43342534d9c9c44b9d12665299713dd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
