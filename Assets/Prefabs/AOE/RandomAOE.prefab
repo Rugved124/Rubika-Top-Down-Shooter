@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3388486877417442492}
   - component: {fileID: 7012432345218503247}
   m_Layer: 0
-  m_Name: RandAOE
+  m_Name: RandomAOE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,5 @@ MonoBehaviour:
   - 10
   - 5
   - 3
-  currentTimer: 0
-  currentAOE: {fileID: 0}
   minDespawnTime: 0
   maxDespawnTime: 0

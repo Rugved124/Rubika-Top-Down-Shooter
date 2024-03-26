@@ -160,7 +160,7 @@ MonoBehaviour:
   bulletDamage: 100
   bulletLifeTime: 10
   bulletRange: 40
-  ammoCount: 1
+  ammoCount: 3
   bulletType: 9
   pc: {fileID: 0}
   bulletRB: {fileID: 0}
