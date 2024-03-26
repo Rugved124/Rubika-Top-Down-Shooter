@@ -22,7 +22,6 @@ public class ButcherAttackState : BaseState
             _enemy.agent.isStopped = true;
             _enemy.agent.updateRotation = false;
         }
-
     }
 
     public override Type ExecuteState()
