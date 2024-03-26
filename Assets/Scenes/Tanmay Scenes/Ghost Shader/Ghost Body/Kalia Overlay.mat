@@ -53,7 +53,7 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _fresnelPower: 1.46
+    - _fresnelPower: 1.06
     m_Colors:
     - _fresnelColor: {r: 0.07442422, g: 0, b: 0.4509804, a: 1}
   m_BuildTextureStacks: []
