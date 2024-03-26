@@ -1,8 +1,5 @@
 using System;
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.AI;
-
 public class RunToPCState : BaseState
 {
     private Enemy _enemy;
@@ -24,7 +21,6 @@ public class RunToPCState : BaseState
         {
             _enemy.ResetAttack();
         }
-
         _enemy.agent.isStopped = false;
         _enemy.agent.updateRotation = true;
         _enemy.isWeaponFiringDone = true;
