@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8445661061448320404}
   - component: {fileID: 8724770673500652886}
   - component: {fileID: 1188620028904326060}
+  - component: {fileID: 868071824532589943}
   m_Layer: 12
   m_Name: PoisonAOE
   m_TagString: Poison
@@ -124,6 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PoisonTime: 5
+  poisonAoe: {fileID: 0}
+  isPC: 0
 --- !u!82 &8445661061448320404
 AudioSource:
   m_ObjectHideFlags: 0
@@ -328,3 +331,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451f0ddda72a9d444abe48e0df53487c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &868071824532589943
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4077398964003033904}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 2, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
