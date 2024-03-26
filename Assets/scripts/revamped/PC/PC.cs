@@ -71,9 +71,6 @@ public class PC : MonoBehaviour
     public LayerMask soul;
 
     [SerializeField]
-    GameObject damageIndicator;
-
-    [SerializeField]
     AudioSource consume;
     bool consumeSound;
 
@@ -130,16 +127,7 @@ public class PC : MonoBehaviour
         canDash = true;
         isCollided = false;
         isBurnt = false;
-        if (damageIndicator != null)
-        {
-            damageIndicator.SetActive(false);
-        }
         consumeSound = true;
-        if(dashCooldownUI != null)
-        {
-            dashCooldownUI.maxValue = dashCooldown;
-            dashCooldownUI.value = dashCooldownUI.maxValue;
-        }
     }
 
     private void Update()
@@ -411,7 +399,7 @@ public class PC : MonoBehaviour
         canDash = true;
         slowMultiplier = 1f;
         isCollided = false;
-        damageIndicator.SetActive(false);
+        //damageIndicator.SetActive(false);
         consumeSound = true;
     }
     public IEnumerator Dash(Vector3 direction)
@@ -471,9 +459,7 @@ public class PC : MonoBehaviour
 
     IEnumerator IDamageTaken()
     {
-        damageIndicator.SetActive(true);
         yield return new WaitForSeconds(0.15f);
-        damageIndicator.SetActive(false);
     }
 
     IEnumerator EResetBurnt()
