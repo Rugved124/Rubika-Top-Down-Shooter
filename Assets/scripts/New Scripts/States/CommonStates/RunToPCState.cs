@@ -9,11 +9,12 @@ public class RunToPCState : BaseState
     Transform pc;
     float angle;
     Vector3 stopPoint;
+    float timer;
     public RunToPCState(Enemy enemy) : base(enemy.gameObject)
     {
         _enemy = enemy;
         pc = _enemy.pc.transform;
-
+        timer = 3f;
     }
 
     public override void EnterState()
@@ -53,6 +54,21 @@ public class RunToPCState : BaseState
                 if (_enemy.agent.remainingDistance <= 1f || _enemy.lowHpEnemy.Count > 0)
                 {
                     return typeof(NannyIdleState);
+                }
+            }
+            if(_enemy.enemyType == Enemy.EnemyType.DRUNKENSEPOY)
+            {
+                timer -= Time.deltaTime;
+                if(timer <= 0)
+                {
+                    return typeof(IdleState);
+                }
+                else
+                {
+                    if (_enemy.agent.remainingDistance <= 1f)
+                    {
+                        return typeof(IdleState);
+                    }
                 }
             }
             else

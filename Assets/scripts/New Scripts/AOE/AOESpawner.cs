@@ -10,12 +10,15 @@ public class AOESpawner : MonoBehaviour
     [SerializeField]
     List<float> timer;
 
+    float currentTimer;
+
     private void Start()
     {
         foreach (GameObject a in aoe)
         {
             a.SetActive(false);
         }
+        currentTimer = timer[Random.Range(0, timer.Count - 1)];
     }
     private void Update()
     {
