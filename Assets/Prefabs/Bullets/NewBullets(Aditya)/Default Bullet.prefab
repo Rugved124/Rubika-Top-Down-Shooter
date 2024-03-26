@@ -77,15 +77,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status: 0
   bulletSpeed: 20
-  bulletRate: 2
-  bulletDamage: 15
+  bulletRate: 1.5
+  bulletDamage: 5
   bulletLifeTime: 99
   bulletRange: 20
   ammoCount: 20
   bulletType: 0
   pc: {fileID: 0}
   bulletRB: {fileID: 0}
-  defaultImpact: {fileID: 0}
 --- !u!136 &5513746649902559135
 CapsuleCollider:
   m_ObjectHideFlags: 0

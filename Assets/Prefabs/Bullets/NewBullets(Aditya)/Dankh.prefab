@@ -150,9 +150,9 @@ MonoBehaviour:
   status: 0
   bulletSpeed: 20
   bulletRate: 1
-  bulletDamage: 10
+  bulletDamage: 15
   bulletLifeTime: 10
-  bulletRange: 8
+  bulletRange: 10
   ammoCount: 10
   bulletType: 2
   pc: {fileID: 0}
