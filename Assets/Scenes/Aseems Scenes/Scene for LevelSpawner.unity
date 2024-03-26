@@ -4537,11 +4537,6 @@ PrefabInstance:
       objectReference: {fileID: 754808125}
     - target: {fileID: 4875023118549734663, guid: b13a6224fbc4e7e4f9c09066f16db064,
         type: 3}
-      propertyPath: isInvincible
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4875023118549734663, guid: b13a6224fbc4e7e4f9c09066f16db064,
-        type: 3}
       propertyPath: fadeAnimation
       value: 
       objectReference: {fileID: 1115452075}
@@ -4550,11 +4545,6 @@ PrefabInstance:
       propertyPath: dashCooldownUI
       value: 
       objectReference: {fileID: 1533954857}
-    - target: {fileID: 5970101129846924182, guid: b13a6224fbc4e7e4f9c09066f16db064,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6553801574492841815, guid: b13a6224fbc4e7e4f9c09066f16db064,
         type: 3}
       propertyPath: m_Name
