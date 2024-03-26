@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class ButcherAttackState : BaseState
@@ -15,7 +13,6 @@ public class ButcherAttackState : BaseState
 
     public override void EnterState()
     {
-        _enemy.canIdle = false;
         startTime = 0.5f;
         if (!_enemy.agent.isStopped)
         {
@@ -52,10 +49,11 @@ public class ButcherAttackState : BaseState
             }
             if (_enemy.isWeaponFiringDone)
             {
+                _enemy.canIdle = true;
                 _enemy.ResetAttack();
             }
         }
-        else if(_enemy.canIdle && _enemy.isWeaponFiringDone) 
+        else if(_enemy.canIdle) 
         {
             return typeof(IdleState);
         }
