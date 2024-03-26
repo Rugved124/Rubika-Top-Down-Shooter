@@ -184,7 +184,7 @@ public class PC : MonoBehaviour
         //anim.SetFloat("Sideways", InputManager.instance.GetMovementHorizontal()) ;
         //playerRb.MovePosition(transform.position + (movement * pcSpeed * slowMultiplier * Time.deltaTime));
         //playerRb.AddForce((movement * pcSpeed * slowMultiplier) * Time.deltaTime);
-        playerRb.velocity = movement * pcSpeed * slowMultiplier;
+        playerRb.velocity = movement * pcSpeed * slowMultiplier ;
     }
 
     public void PlayerRotation()
