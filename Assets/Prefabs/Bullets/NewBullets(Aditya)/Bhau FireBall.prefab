@@ -190,6 +190,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Ball Particles
       objectReference: {fileID: 0}
+    - target: {fileID: 7434335698941386621, guid: 4ae0002f8b3ec964e911c6505e03016d,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 154a34d98181434479079397dde9f75e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
