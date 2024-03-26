@@ -920,7 +920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   enemyAnim: {fileID: 0}
-  enemyData: {fileID: 11400000, guid: 34a31cd620b0f3648a032a2b802e749e, type: 2}
+  enemyData: {fileID: 11400000, guid: 1e7608d9df1b7194b85532456b85dc8a, type: 2}
   firedTime: 0
   enemySoul: {fileID: 4289917923695981098, guid: a81409944813c3341a02cea8d5d07718,
     type: 3}
