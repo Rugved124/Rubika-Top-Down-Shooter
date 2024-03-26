@@ -51,7 +51,7 @@ Material:
     - _Wobble_Frequency: 2
     - _Wobble_Speed: 0.5
     m_Colors:
-    - _Color: {r: 0.7735849, g: 0.07443929, b: 0.08281409, a: 0}
+    - _Color: {r: 3.0943396, g: 0.29775715, b: 0.33125636, a: 0}
     - _Noise_Speed: {r: 0, g: 0.05, b: 0, a: 0}
     - _Noise_Tiling: {r: 6.99, g: 0.27, b: 0, a: 0}
     - _Vector3: {r: 0, g: 0, b: 0, a: 0}
