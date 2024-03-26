@@ -128,6 +128,8 @@ public class PC : MonoBehaviour
         isCollided = false;
         isBurnt = false;
         consumeSound = true;
+        dashCooldownUI.maxValue = dashCooldown;
+        dashCooldownUI.value = dashCooldownUI.maxValue;
     }
 
     private void Update()
@@ -429,11 +431,17 @@ public class PC : MonoBehaviour
                 dashCooldownUI.value = 0f;
             }
         }
-        while (dashCooldownUI.value < dashCooldown)
+        while (dashCooldownUI.value <= dashCooldown)
         {
+            Debug.Log(dashCooldownUI.value);
             if (dashCooldownUI != null)
             {
                 dashCooldownUI.value += Time.deltaTime;
+            }
+            if(dashCooldownUI.value >= dashCooldown)
+            {
+                Debug.Log(canDash);
+                break;
             }
             yield return null;
         }

@@ -14,6 +14,9 @@ public class TimeBasedTrigger : MonoBehaviour
 
     [SerializeField]
     private List<float> AOETimers = new List<float>();
+
+    [SerializeField]
+    bool canLoop;
     private void Awake()
     {
         aoeTimer = AOETimers[i];
