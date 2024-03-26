@@ -15,6 +15,7 @@ public class ButcherAttackState : BaseState
 
     public override void EnterState()
     {
+        _enemy.canIdle = false;
         startTime = 0.5f;
         if (!_enemy.agent.isStopped)
         {
@@ -31,9 +32,9 @@ public class ButcherAttackState : BaseState
             return typeof(SuckedState);
         }
         startTime -= Time.deltaTime;
+        _enemy.LookAtPlayer();
         if ((_enemy.hpPercent > 20  || _enemy.isShielded || !_enemy.canRunAway)&& Vector3.Distance(_enemy.pc.transform.position, transform.position) <= _enemy.enemyData.attackRange)
         {
-            _enemy.LookAtPlayer();
             if (!_enemy.isWeaponFiringDone && startTime <= 0f)
             {
                 _enemy.canIdle = false;
@@ -55,7 +56,7 @@ public class ButcherAttackState : BaseState
                 _enemy.ResetAttack();
             }
         }
-        else if(_enemy.canIdle) 
+        else if(_enemy.canIdle && _enemy.isWeaponFiringDone) 
         {
             return typeof(IdleState);
         }

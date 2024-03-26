@@ -725,7 +725,7 @@ MonoBehaviour:
   shootPoint: {fileID: 2246623131217589833}
   bullet: {fileID: 3411248443990829376, guid: 00a16d290702cb94eaa186ecf41e28ba, type: 3}
   chargeDamage: 30
-  bulletDirMultiplier: 0
+  bulletDirMultiplier: 2
   isChargeHit: 0
   isChargeHitWall: 0
   colliders: []

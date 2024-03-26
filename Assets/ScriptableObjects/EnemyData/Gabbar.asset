@@ -18,7 +18,7 @@ MonoBehaviour:
   HitPoints: 70
   teleportCoolDown: 0
   enemyMoveSpeed: 10
-  enemyRotationSpeed: 200
+  enemyRotationSpeed: 300
   enemyAttackingAngularSpeed: 8
   timeBetweenBullets: 3
   bullet: 0

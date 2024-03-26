@@ -81,7 +81,7 @@ public class Butcher : Enemy
         BaseBullet bulletShot = Instantiate(bullet, shootPoint.position, Quaternion.identity).GetComponent<BaseBullet>();
         Vector3 movementDirection = new Vector3(InputManager.instance.GetMovementHorizontal(), 0, InputManager.instance.GetMovementVertical()).normalized;
         movementDirection = Quaternion.AngleAxis(-45f, Vector3.up) * movementDirection;
-        movementDirection = ((pc.transform.position + movementDirection * bulletDirMultiplier) - shootPoint.position).normalized;
+        movementDirection = transform.forward;
         bulletShot.BulletMovement(movementDirection);
         bulletShot.DidPCShotThis(false);
     }
@@ -104,7 +104,7 @@ public class Butcher : Enemy
     public override void LookAtPlayer()
     {
         base.LookAtPlayer();
-        Quaternion lookOnLook = Quaternion.LookRotation(pc.transform.position - transform.position);
+        Quaternion lookOnLook = Quaternion.LookRotation(pc.transform.position + new Vector3(InputManager.instance.GetMovementHorizontal(), 0 , InputManager.instance.GetMovementVertical()).normalized - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookOnLook, Time.deltaTime * angularSpeedMulitplier);
     }
     private void OnDestroy()
