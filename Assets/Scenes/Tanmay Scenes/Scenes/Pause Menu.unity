@@ -454,6 +454,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 105429914642839706, guid: 9e436e554d41a5c49ac6cd40a2b42aa2,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243288716770502643, guid: 9e436e554d41a5c49ac6cd40a2b42aa2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 73bb65674dffbab47983e5870591391f,
+        type: 3}
     - target: {fileID: 2705446738828337236, guid: 9e436e554d41a5c49ac6cd40a2b42aa2,
         type: 3}
       propertyPath: m_Pivot.x
@@ -553,6 +564,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843960037826885253, guid: 9e436e554d41a5c49ac6cd40a2b42aa2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 475.1
       objectReference: {fileID: 0}
     - target: {fileID: 8080798385238187184, guid: 9e436e554d41a5c49ac6cd40a2b42aa2,
         type: 3}

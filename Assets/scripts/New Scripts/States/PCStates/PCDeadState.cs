@@ -13,6 +13,7 @@ public class PCDeadState : BaseState
 
     public override void EnterState()
     {
+        _pc.playerRb.velocity = Vector3.zero;
         timeBeforeDying = 1.9f;
         _pc.isDead = true;
         _pc.anim.SetTrigger("isDead");

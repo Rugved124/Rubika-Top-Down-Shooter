@@ -13,6 +13,7 @@ public class PCConsumeState : BaseState
 
     public override void EnterState()
     {
+        _pc.playerRb.velocity = Vector3.zero;
         _pc.canDash = false;
         _pc.consumeLine.SetActive(true);
         _pc.anim.SetBool("isConsuming", true);
