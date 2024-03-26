@@ -126,7 +126,7 @@ MonoBehaviour:
   damage: 30
   fallingSpeed: 50
   canBeDestroyed: 0
-  fallingTime: 0.5
+  fallingTime: 0.25
   spikeDamage: 0
   isHit: 0
   canSpikeHit: 0

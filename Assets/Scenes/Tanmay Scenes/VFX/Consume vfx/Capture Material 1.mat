@@ -51,12 +51,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Dissolve_: 0.66
-    - Noise_Scale_: 0.65
-    - _Noise_Power: 0.49
+    - Dissolve_: 0.439
+    - Noise_Scale_: 0.14
+    - _Noise_Power: 0.38
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Twirl_Amount: 5
+    - _Twirl_Amount: 5.69
     m_Colors:
     - Color_: {r: 0, g: 3.688605, b: 2.9127264, a: 0}
     - _Noise_Speed: {r: 0, g: -0.5, b: 0, a: 0}
