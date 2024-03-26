@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7271935129925441969}
   - component: {fileID: 8445661061448320404}
   - component: {fileID: 8724770673500652886}
+  - component: {fileID: 1188620028904326060}
   m_Layer: 12
   m_Name: PoisonAOE
   m_TagString: Poison
@@ -133,7 +134,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 33030854a36add94cb41116cc265e9d9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f4ee42ef1d9485a48ad10e0fbc15b6dd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -141,7 +142,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 156
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -315,3 +316,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1188620028904326060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4077398964003033904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451f0ddda72a9d444abe48e0df53487c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

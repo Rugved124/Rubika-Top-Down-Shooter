@@ -286,5 +286,5 @@ MonoBehaviour:
     type: 3}
   mask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   transparentMaterial: {fileID: 2100000, guid: 3593973f9b2c71648994bb50a0d42e3d, type: 2}

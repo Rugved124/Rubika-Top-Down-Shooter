@@ -10,6 +10,9 @@ public class Transparency : MonoBehaviour
 	public Transform pcTransform;
 	public LayerMask mask;
 
+
+	Renderer rend;
+
 	public Material transparentMaterial;
 
 	private void Update()
@@ -30,13 +33,16 @@ public class Transparency : MonoBehaviour
 
 
 		Vector3 dir = pcTransform.position - transform.position;
-		
+
 		dir = dir.normalized;
 		Debug.DrawRay(transform.position, dir * Vector3.Distance(transform.position, pcTransform.position), Color.red);
 
 		Ray ray = new Ray(transform.position, dir * Vector3.Distance(transform.position, pcTransform.position));
 
 		RaycastHit[] hits = Physics.RaycastAll(ray, mask);
+
+		Array.Sort(hits, (x, y) =>
+		x.distance.CompareTo(y.distance));
 
 		foreach (RaycastHit hit in hits)
 		{
@@ -50,7 +56,15 @@ public class Transparency : MonoBehaviour
 	{
 		// Change the material of all hit colliders
 		// to use a transparent shader.
-		Renderer rend = goHit.GetComponent<Renderer>();
+		if (goHit.GetComponent<Renderer>() != null)
+		{
+			rend = goHit.GetComponentInChildren<Renderer>();
+		}
+
+		else
+		{
+			rend = goHit.GetComponent<Renderer>();
+		}
 		rend.material = transparentMaterial;
 		Color tempColor = rend.material.color;
 		tempColor.a = 0.3F;
