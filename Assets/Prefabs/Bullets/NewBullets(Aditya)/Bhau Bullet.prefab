@@ -97,17 +97,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: 1
-  bulletSpeed: 35
-  bulletRate: 2
-  bulletDamage: 25
+  bulletSpeed: 30
+  bulletRate: 1.5
+  bulletDamage: 15
   bulletLifeTime: 0.5
   bulletRange: 10
-  ammoCount: 20
+  ammoCount: 15
   bulletType: 1
   pc: {fileID: 0}
   bulletRB: {fileID: 0}
   fireDamage: 2
-  fireDuration: 3
+  fireDuration: 2
   tickSpeed: 0.33
 --- !u!82 &4420228260244403067
 AudioSource:
