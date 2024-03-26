@@ -21,7 +21,7 @@ public class ShadowAttackState : BaseState
     public override Type ExecuteState()
     {
         float distanceFromPC = CalculateDistance(_enemy.pc.transform);
-        if (_enemy.hpPercent > 20 && distanceFromPC <= _enemy.enemyData.attackRange)
+        if (distanceFromPC <= _enemy.enemyData.attackRange)
         { 
             _enemy.LookAtPlayer();
             if (!_enemy.isWeaponFiringDone)
