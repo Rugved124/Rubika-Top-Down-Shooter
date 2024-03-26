@@ -22,7 +22,7 @@ public class PC : MonoBehaviour
 
     public float slowMultiplier = 1;
 
-    Rigidbody playerRb;
+    public Rigidbody playerRb;
 
     public Transform bulletSpawn;
 
@@ -182,8 +182,9 @@ public class PC : MonoBehaviour
         movement = rotation * movement;
         //anim.SetFloat("Forwards", InputManager.instance.GetMovementVertical());
         //anim.SetFloat("Sideways", InputManager.instance.GetMovementHorizontal()) ;
-        playerRb.MovePosition(transform.position + (movement * pcSpeed * slowMultiplier * Time.deltaTime));
-        //playerRb.AddForce((movement * pcSpeed * slowMultiplier) * Time.deltaTime, ForceMode.VelocityChange);
+        //playerRb.MovePosition(transform.position + (movement * pcSpeed * slowMultiplier * Time.deltaTime));
+        //playerRb.AddForce((movement * pcSpeed * slowMultiplier) * Time.deltaTime);
+        playerRb.velocity = movement * pcSpeed * slowMultiplier;
     }
 
     public void PlayerRotation()
