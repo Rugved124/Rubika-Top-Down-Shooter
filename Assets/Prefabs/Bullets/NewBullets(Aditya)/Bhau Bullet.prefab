@@ -97,8 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status: 1
   bulletSpeed: 30
-  bulletRate: 1
-  bulletDamage: 15
+  bulletRate: 1.5
+  bulletDamage: 10
   bulletLifeTime: 0.5
   bulletRange: 10
   ammoCount: 10
