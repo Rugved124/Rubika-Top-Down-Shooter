@@ -38,6 +38,9 @@ public class PC : MonoBehaviour
     [SerializeField]
     private Slider slider;
 
+    [SerializeField]
+    private Image healthBar;
+
     public PCStatusEffectsData statusEffects;
 
     public GameObject consumeLine;
@@ -166,6 +169,31 @@ public class PC : MonoBehaviour
             StartCoroutine(Dash(dashVector));
         }
         slider.value = currentHP;
+        if (healthBar != null)
+        {
+            float hpPercent = (float)currentHP / (float)maxHP;
+            Debug.Log(hpPercent);
+
+            // Calculate inverted values
+            float invertedHpPercent = 1 - hpPercent;
+
+            // Adjusted threshold for color change
+            float threshold = 0.3f;
+
+            // If health percentage is below the threshold, adjust color to red
+            if (hpPercent <= threshold)
+            {
+                healthBar.color = new Vector4(1, 0, 0, 1); // Full red color
+            }
+            else
+            {
+                // Linear interpolation between green and red
+                float greenComponent = Mathf.Lerp(0, 1, (hpPercent - threshold) / (1 - threshold));
+                float redComponent = Mathf.Lerp(1, 0, (hpPercent - threshold) / (1 - threshold));
+                // Assign color with adjusted values
+                healthBar.color = new Vector4(redComponent, greenComponent, 0, 1);
+            }
+        }
         //-------------------------------------StatusEfffects---------------------------------------------------------
         if (statusEffects.isPoisoned)
         {
