@@ -29,6 +29,7 @@ public class Shadow : Enemy
     float randomDistance;
     float randomTPAngle;
     public float teleportRange = 8.0f;
+    public GameObject electricity;
     public override void Start()
     {
         base.Start();
@@ -38,6 +39,7 @@ public class Shadow : Enemy
         tpDone = false;
         enemyData.canTeleport = true;
         canInvoke = true;
+        electricity.SetActive(false);
     }
     public override void InitializeStateMachine()
     {
@@ -64,6 +66,7 @@ public class Shadow : Enemy
         Physics.Raycast(pc.transform.position, Vector3.down, out hit, ignorPC);
         Vector3 spawnPoint = new Vector3(hit.point.x, hit.point.y + 0.04f, hit.point.z);
         storedAOE = Instantiate(shadowAOE, spawnPoint, Quaternion.identity);
+        electricity.SetActive(true);
     }
 
     //public override void SecondaryWeaponFire()
@@ -98,6 +101,7 @@ public class Shadow : Enemy
     //}
     public override void ResetAttack()
     {
+        electricity.SetActive(false);
         base.ResetAttack();
         if (allowInvoke)
         {
