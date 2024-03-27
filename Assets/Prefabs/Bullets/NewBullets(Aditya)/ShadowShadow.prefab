@@ -72,7 +72,7 @@ MonoBehaviour:
   status: 0
   bulletSpeed: 10
   bulletRate: 0.5
-  bulletDamage: 75
+  bulletDamage: 200
   bulletLifeTime: 1
   bulletRange: 100
   ammoCount: 3
