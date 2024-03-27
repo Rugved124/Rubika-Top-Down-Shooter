@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 987305816973849665}
   - component: {fileID: 1149455985888962016}
   - component: {fileID: 1914629277244447489}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: HealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 4626652021076837525}
   - component: {fileID: 3284390359544438482}
   - component: {fileID: 422584042087033264}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: HUD Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 7038282924927033771}
   - component: {fileID: 6309114914217348146}
   - component: {fileID: 6064056962536590587}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: BulletBarTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ RectTransform:
   m_Father: {fileID: 1080874403487182596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.30000305, y: -9.100001}
   m_SizeDelta: {x: 154.3831, y: 187.9}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 8220334800204342178}
   - component: {fileID: 5965065364268394713}
   - component: {fileID: 7063372251915675506}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: BulletBarOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,7 +627,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: blah blah
+  m_text: 'Consumed
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -871,7 +873,7 @@ GameObject:
   - component: {fileID: 1540555175441379436}
   - component: {fileID: 1005020356599156424}
   - component: {fileID: 2299729070117291302}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: SecondBulletBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,7 +970,7 @@ GameObject:
   - component: {fileID: 4605785232215138721}
   - component: {fileID: 4250797482871394134}
   - component: {fileID: 2119533439044387595}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: FirstBulletBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1213,7 +1215,7 @@ GameObject:
   - component: {fileID: 3883667694054942046}
   - component: {fileID: 2395885139747593131}
   - component: {fileID: 3192856685469985343}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: BackgroundBlack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1288,7 +1290,7 @@ GameObject:
   - component: {fileID: 5147802376353962687}
   - component: {fileID: 2545610363611205005}
   - component: {fileID: 3601804690558165610}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: PlayerHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1365,7 +1367,7 @@ GameObject:
   - component: {fileID: 4402322988642862024}
   - component: {fileID: 1489476780393037991}
   - component: {fileID: 1328782074511383183}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
