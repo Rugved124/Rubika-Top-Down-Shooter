@@ -505,7 +505,6 @@ public class PC : MonoBehaviour
             }
             if(dashCooldownUI.value >= dashCooldown)
             {
-                Debug.Log(canDash);
                 break;
             }
             yield return null;

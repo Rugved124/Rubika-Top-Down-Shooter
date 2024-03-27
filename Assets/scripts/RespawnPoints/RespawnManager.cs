@@ -21,10 +21,12 @@ public class RespawnManager : MonoBehaviour
 
     [SerializeField]
     private List<GameObject> currentRoomCollider;
+
+    bool setRespawn;
     private void Start()
     {
         pc = FindObjectOfType<PC>();
-
+        setRespawn = false;
     }
 
     private void Update()
@@ -32,9 +34,10 @@ public class RespawnManager : MonoBehaviour
         
     }
     private void OnTriggerEnter(Collider other)
-    { 
-        if (other.CompareTag("Player"))
+    {
+        if (other.CompareTag("Player") && setRespawn)
         {
+            setRespawn = true;
             if (pc != null)
             {
                 SaveManager.SavePlayerStats(respawner.position, pc.currentHP, AmmoManager.instance.firstAmmoType, AmmoManager.instance.secondAmmoType, AmmoManager.instance.GetAmmoCount(), SceneManager.GetActiveScene().buildIndex);

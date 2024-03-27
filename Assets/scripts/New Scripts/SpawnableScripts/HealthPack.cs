@@ -21,7 +21,6 @@ public class HealthPack : MonoBehaviour
         {
             if (pc != null)
             {
-                Debug.Log("PickedUp");
                 if(pc.maxHP - pc.currentHP >= healNumber)
                 {
                     pc.Heal(healNumber);
