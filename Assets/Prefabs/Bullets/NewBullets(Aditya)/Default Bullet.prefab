@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status: 0
   bulletSpeed: 30
-  bulletRate: 1
+  bulletRate: 0.75
   bulletDamage: 8
   bulletLifeTime: 99
   bulletRange: 20

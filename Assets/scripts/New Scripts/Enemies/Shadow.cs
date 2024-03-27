@@ -29,9 +29,16 @@ public class Shadow : Enemy
     float randomDistance;
     float randomTPAngle;
     public float teleportRange = 8.0f;
+
+    [SerializeField]
+    GameObject electricity;
     public override void Start()
     {
         base.Start();
+        if(electricity != null)
+        {
+            electricity.SetActive(false);
+        }
         enemyType = EnemyType.SHADOW;
         isWeaponFiringDone = true;
         Debug.Log(enemyType.ToString());
@@ -60,6 +67,10 @@ public class Shadow : Enemy
     public override void FireWeapon()
     {
         base.FireWeapon();
+        if (electricity != null)
+        {
+            electricity.SetActive(true);
+        }
         RaycastHit hit;
         Physics.Raycast(pc.transform.position, Vector3.down, out hit, ignorPC);
         Vector3 spawnPoint = new Vector3(hit.point.x, hit.point.y + 0.04f, hit.point.z);
@@ -104,7 +115,10 @@ public class Shadow : Enemy
             allowInvoke = false;
             Invoke("SetFiringToTrue", firedTime);
         }
-
+        if (electricity != null)
+        {
+            electricity.SetActive(false);
+        }
     }
     public override void SetFiringToTrue()
     {
