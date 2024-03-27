@@ -98,10 +98,10 @@ MonoBehaviour:
   status: 1
   bulletSpeed: 30
   bulletRate: 1.5
-  bulletDamage: 10
+  bulletDamage: 14
   bulletLifeTime: 0.5
   bulletRange: 10
-  ammoCount: 10
+  ammoCount: 15
   bulletType: 1
   pc: {fileID: 0}
   bulletRB: {fileID: 0}
