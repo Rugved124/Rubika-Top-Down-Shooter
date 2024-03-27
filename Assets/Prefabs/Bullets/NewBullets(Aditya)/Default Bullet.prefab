@@ -77,8 +77,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status: 0
   bulletSpeed: 30
-  bulletRate: 1.5
-  bulletDamage: 10
+  bulletRate: 4
+  bulletDamage: 2
   bulletLifeTime: 99
   bulletRange: 20
   ammoCount: 20
@@ -118,15 +118,15 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 244acd1b4f4512a4da5dc475f2efb899, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 479ff9d6a21e6214db3a451b3ca3ab60, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.75
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
