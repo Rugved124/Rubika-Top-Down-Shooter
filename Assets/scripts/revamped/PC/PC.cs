@@ -5,8 +5,6 @@ using System;
 using System.Linq;
 using UnityEngine.Events;
 using System.Collections;
-using Unity.VisualScripting;
-
 public class PC : MonoBehaviour
 {
     private Dictionary<Type, BaseState> availableStates;
@@ -105,13 +103,21 @@ public class PC : MonoBehaviour
 
     private void Start()
     {
-        transform.position = GameManager.Instance.respawnPoint;
+        if (GameManager.Instance.CanLoadData())
+        {
+            LoadPlayerData();
+            GameManager.Instance.ReduceLoadCount();
+        }
+        else
+        {
+            transform.position = GameManager.Instance.respawnPoint;
+            currentHP = maxHP;
+        }
         crosshair = GetComponentInChildren<CrossHairPos>().gameObject;
         respawnPoint = transform.position;
         consumeLine.SetActive(false);
         anim = visuals.GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
-        currentHP = maxHP;
         slider.maxValue = maxHP;
         statusEffects.burnLastTick = 0f;
         statusEffects.burnNumber = 0;
@@ -435,7 +441,6 @@ public class PC : MonoBehaviour
         }
         while (dashCooldownUI.value <= dashCooldown)
         {
-            Debug.Log(dashCooldownUI.value);
             if (dashCooldownUI != null)
             {
                 dashCooldownUI.value += Time.deltaTime;
@@ -477,4 +482,11 @@ public class PC : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         isBurnt = false;
     }
+    private void LoadPlayerData()
+    {
+        currentHP = SaveManager.LoadPlayerHealth();
+        transform.position = SaveManager.LoadPlayerPosition();
+
+        Debug.Log("Player HP" + currentHP);
+    } 
 }

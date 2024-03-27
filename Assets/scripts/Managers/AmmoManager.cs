@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class AmmoManager : MonoBehaviour
 {
     public static AmmoManager instance;
@@ -29,6 +30,9 @@ public class AmmoManager : MonoBehaviour
     private Slider secondAmmo;
 
     public Image firstAmmoColor, secondAmmoColor;
+
+    public TextMeshPro text;
+    public GameObject textPopUP;
 
     public float currentRange {  get; private set; }
     public enum EquippedAmmoType
@@ -66,6 +70,11 @@ public class AmmoManager : MonoBehaviour
     public EquippedAmmoType secondAmmoType;
     private void Start()
     {
+        if (GameManager.Instance.CanLoadData())
+        {
+            LoadSaveData();
+            GameManager.Instance.ReduceLoadCount();
+        }
         currentAmmoType = EquippedAmmoType.DEFAULTAMMO;
         pc = FindObjectOfType<PC>();
         ChangeAmmoType();
@@ -177,6 +186,10 @@ public class AmmoManager : MonoBehaviour
     }
     public void ChangeEquippedAmmo(EquippedAmmoType newAmmo)
     {
+        if (textPopUP != null)
+        {
+            textPopUP.SetActive(true);
+        }
         if(firstAmmoType == EquippedAmmoType.SHIELD)
         {
             secondAmmoType = newAmmo;
@@ -261,14 +274,20 @@ public class AmmoManager : MonoBehaviour
                 if (secondAmmoType == EquippedAmmoType.FIRE)
                 {
                     currentAmmoType = EquippedAmmoType.FIREFIRE;
+
+                    text.text = "Agni + Agni = AagToph";
                 }
                 if (secondAmmoType == EquippedAmmoType.POISON)
                 {
                     currentAmmoType = EquippedAmmoType.FIREPOISON;
+
+                    text.text = "Agni + Vish = Sphotak";
                 }
                 if (secondAmmoType == EquippedAmmoType.SLOW)
                 {
                     currentAmmoType = EquippedAmmoType.FIRESLOW;
+
+                    text.text = "Agni + Akaal = Aagh Toph";
                 }
                 if (secondAmmoType == EquippedAmmoType.SHIELD)
                 {
@@ -458,8 +477,12 @@ public class AmmoManager : MonoBehaviour
 
     public void LoadSaveData()
     {
-        firstAmmoType = (EquippedAmmoType)System.Enum.Parse(typeof(EquippedAmmoType), GameManager.Instance.firstAmmo);
-        secondAmmoType = (EquippedAmmoType)System.Enum.Parse(typeof(EquippedAmmoType), GameManager.Instance.secondAmmo);
-        ammoCount = GameManager.Instance.ammoCount;
+        firstAmmoType = SaveManager.LoadEquippedAmmo1();
+        secondAmmoType = SaveManager.LoadEquippedAmmo2();
+        ammoCount = SaveManager.GetAmmoCount();
+
+        Debug.Log("First Ammo:" + firstAmmoType);
+        Debug.Log("Second Ammo:" + secondAmmoType);
+        Debug.Log("Ammo Count:" + ammoCount);
     }
 }
