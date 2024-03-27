@@ -35,9 +35,13 @@ public class InputManager : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
     }
-    public bool IsMousePressed()
+    public bool IsFirePressed()
     {   
         return Input.GetMouseButtonDown(0);
+    }
+    public bool IsFireHeld() 
+    {
+        return Input.GetMouseButton(0);
     }
     public float GetMovementHorizontal()
     {
