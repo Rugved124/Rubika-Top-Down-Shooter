@@ -62,6 +62,9 @@ public class WaveSpawner : MonoBehaviour
 
     [SerializeField]
     AudioSource bell;
+
+    [SerializeField]
+    AudioSource doorSound;
     private void Awake()
     {
         bellStarted = false;
@@ -129,7 +132,11 @@ public class WaveSpawner : MonoBehaviour
                         {
                             sceneLoader.SetActive(true);
                         }
-                        isFinished = true;
+                        if (!isFinished)
+                        {
+                            isFinished = true;
+                            doorSound.Play();
+                        }
                     }
                     
                     break;

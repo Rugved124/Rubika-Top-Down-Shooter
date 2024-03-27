@@ -135,6 +135,7 @@ public class NeedlerInferno : BaseBullet
             Debug.Log("Hit");
             hitEnemy = true;
             enemy = collision.gameObject;
+            this.GetComponent<Collider>().enabled = false;
             //transform.position = collision.transform.position;
         }
     }

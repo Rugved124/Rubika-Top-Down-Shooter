@@ -56,6 +56,9 @@ public class FixedWaveSpawner : MonoBehaviour
     [SerializeField]
     AudioSource bell;
 
+    [SerializeField]
+    AudioSource doorSound;
+
     bool bellStarted = false;
 
     [SerializeField]
@@ -150,6 +153,7 @@ public class FixedWaveSpawner : MonoBehaviour
                             ChangeDoorState(false);
                             if (!isFinished)
                             {
+                                doorSound.Play();
                                 if (trigger != null)
                                 {
                                     trigger.RemoveCount();

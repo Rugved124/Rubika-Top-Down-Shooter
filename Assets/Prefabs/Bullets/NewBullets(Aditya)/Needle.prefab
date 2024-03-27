@@ -84,7 +84,7 @@ MonoBehaviour:
   enemy: {fileID: 0}
   explosion: {fileID: 3536243147325767784, guid: 30b5a0da35dae5243bbdcb576ecd6a80,
     type: 3}
-  explosionTime: 3
+  explosionTime: 1
   enemies:
     serializedVersion: 2
     m_Bits: 256
@@ -123,6 +123,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1525595378637319846}
     m_Modifications:
+    - target: {fileID: 936299690684411714, guid: e3560c9363a7b524d9981d668b312099,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 936299690684411714, guid: e3560c9363a7b524d9981d668b312099,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 936299690684411714, guid: e3560c9363a7b524d9981d668b312099,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 2710902874432186587, guid: e3560c9363a7b524d9981d668b312099,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -187,6 +202,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2862195355849662325, guid: e3560c9363a7b524d9981d668b312099,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2862195355849662325, guid: e3560c9363a7b524d9981d668b312099,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2862195355849662325, guid: e3560c9363a7b524d9981d668b312099,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2862195355849662325, guid: e3560c9363a7b524d9981d668b312099,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2862195355849662325, guid: e3560c9363a7b524d9981d668b312099,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3374567631627350625, guid: e3560c9363a7b524d9981d668b312099,
         type: 3}

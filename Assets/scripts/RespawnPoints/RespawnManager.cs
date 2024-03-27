@@ -26,7 +26,7 @@ public class RespawnManager : MonoBehaviour
     private void Start()
     {
         pc = FindObjectOfType<PC>();
-        setRespawn = false;
+        setRespawn = true;
     }
 
     private void Update()
@@ -37,7 +37,7 @@ public class RespawnManager : MonoBehaviour
     {
         if (other.CompareTag("Player") && setRespawn)
         {
-            setRespawn = true;
+            setRespawn = false;
             if (pc != null)
             {
                 SaveManager.SavePlayerStats(respawner.position, pc.currentHP, AmmoManager.instance.firstAmmoType, AmmoManager.instance.secondAmmoType, AmmoManager.instance.GetAmmoCount(), SceneManager.GetActiveScene().buildIndex);
