@@ -13,6 +13,7 @@ public class AmmoManager : MonoBehaviour
     [SerializeField]
     int ammoCount;
     bool canShoot;
+    bool shooting;
 
     [SerializeField]
     private GameObject halfShield;
@@ -73,6 +74,14 @@ public class AmmoManager : MonoBehaviour
     }
     private void Update()
     {
+        if(currentAmmoType == EquippedAmmoType.FIREFIRE)
+        {
+            shooting = InputManager.instance.IsFirePressed();
+        }
+        else
+        {
+            shooting = InputManager.instance.IsFireHeld();
+        }
         currentRange = bulletToSpawn.GetComponent<BaseBullet>().bulletRange;
         if(firstAmmoType == EquippedAmmoType.DEFAULTAMMO || firstAmmoType == EquippedAmmoType.SHIELD)
         {
@@ -145,11 +154,10 @@ public class AmmoManager : MonoBehaviour
                 secondAmmoType = EquippedAmmoType.DEFAULTAMMO;
             }
         }
-        if(InputManager.instance.IsMousePressed() && !pc.isDead && !pc.isDashing) 
+        if(shooting && !pc.isDead && !pc.isDashing) 
         {
             if(bulletToSpawn != null && canShoot && ammoCount > 0)
             {
-                
                 canShoot = false;
                 StartCoroutine(bulletFireRate());
                 GameObject bulletShot = Instantiate(bulletToSpawn, pc.GetPCShoot().position, pc.GetPCShoot().rotation);
@@ -157,6 +165,7 @@ public class AmmoManager : MonoBehaviour
                 ammoCount--;
             }
         }
+
         if(ammoCount <= 0)
         {
             ResetEquippedAmmo();

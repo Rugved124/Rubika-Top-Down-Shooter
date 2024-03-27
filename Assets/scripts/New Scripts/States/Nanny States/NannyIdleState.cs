@@ -30,6 +30,10 @@ public class NannyIdleState : BaseState
         }
         float distanceFromPC = CalculateDistance(_enemy.pc.transform);
         _enemy.LookAtPlayer();
+        if(distanceFromPC > _enemy.enemyData.attackRange)
+        {
+            return typeof(RunToPCState);
+        }
         if (_enemy.hpPercent <= 20 || distanceFromPC <= _enemy.enemyData.attackRange / 2f)
         {
             if(_enemy.canDash && _enemy.canRunAway)
