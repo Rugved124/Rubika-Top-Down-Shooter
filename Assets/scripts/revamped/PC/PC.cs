@@ -89,6 +89,8 @@ public class PC : MonoBehaviour
     [SerializeField]
     Slider dashCooldownUI;
 
+    [SerializeField]
+    private GameObject lowHealthFeedBack;
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
@@ -147,6 +149,10 @@ public class PC : MonoBehaviour
         {
             healEffect.SetActive(false);
         }
+        if(lowHealthFeedBack != null)
+        {
+            lowHealthFeedBack.SetActive(false);
+        }
     }
 
     private void Update()
@@ -168,12 +174,23 @@ public class PC : MonoBehaviour
             Vector3 dashVector = new Vector3(sideways, 0, forwards);
             StartCoroutine(Dash(dashVector));
         }
+
         slider.value = currentHP;
+        float hpPercent = (float)currentHP / (float)maxHP;
+        if(lowHealthFeedBack != null)
+        {
+            lowHealthFeedBack.SetActive(true);
+            if (hpPercent <= 0.3)
+            {
+                lowHealthFeedBack.GetComponent<Image>().color = new Color(1, 0, 0, 0.4f);
+            }
+            else
+            {
+                lowHealthFeedBack.GetComponent<Image>().color = new Color(1, 0, 0, 0f);
+            }
+        }
         if (healthBar != null)
         {
-            float hpPercent = (float)currentHP / (float)maxHP;
-            Debug.Log(hpPercent);
-
             // Calculate inverted values
             float invertedHpPercent = 1 - hpPercent;
 
