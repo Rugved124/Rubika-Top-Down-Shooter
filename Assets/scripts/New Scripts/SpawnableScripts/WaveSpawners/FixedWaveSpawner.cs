@@ -52,6 +52,14 @@ public class FixedWaveSpawner : MonoBehaviour
 
     [SerializeField]
     GameObject loader;
+
+    [SerializeField]
+    AudioSource bell;
+
+    bool bellStarted = false;
+
+    [SerializeField]
+    private List<GameObject> openOnTrigger;
     private void Start()
     {
         if(loader != null)
@@ -64,6 +72,11 @@ public class FixedWaveSpawner : MonoBehaviour
         {
             currentWave = waves[i];
             timebetweenSpawns = currentWave.timeBeforeThisWave;
+        }
+
+        foreach(GameObject go in openOnTrigger)
+        {
+            go.SetActive(false);
         }
     }
 
@@ -87,9 +100,21 @@ public class FixedWaveSpawner : MonoBehaviour
                     }
                     break;
                 case WaveStates.Wait:
-
+                    if(Time.time >= timebetweenSpawns - 3&& Time.time < timebetweenSpawns && !bellStarted)
+                    {
+                        bellStarted = true;
+                        if(bell != null)
+                        {
+                            bell.Play();
+                        }
+                    }
                     if (Time.time >= timebetweenSpawns || existingEnemies.Count == 0)
                     {
+                        bellStarted = false;
+                        if(bell != null)
+                        {
+                            bell.Stop();
+                        }
                         ResetGeneratedEnemies();
 
                         if (stopSpawning)
