@@ -32,7 +32,7 @@ public class AmmoManager : MonoBehaviour
     public Image firstAmmoColor, secondAmmoColor;
 
     public TextMeshProUGUI text;
-    public GameObject textPopUp;
+    public GameObject textPopUP;
 
     public float currentRange {  get; private set; }
     public enum EquippedAmmoType
@@ -80,7 +80,7 @@ public class AmmoManager : MonoBehaviour
         ChangeAmmoType();
         canShoot = true;
         firstAmmo.maxValue = secondAmmo.maxValue = ammoCount;
-        textPopUp.SetActive(false);
+        textPopUP.SetActive(false);
     }
     private void Update()
     {
@@ -187,9 +187,9 @@ public class AmmoManager : MonoBehaviour
     }
     public void ChangeEquippedAmmo(EquippedAmmoType newAmmo)
     {
-        if (textPopUp != null)
+        if (textPopUP != null)
         {
-            textPopUp.SetActive(true);
+            textPopUP.SetActive(true);
             Invoke("ResetPopUpPanel", 2f);
         }
         if(firstAmmoType == EquippedAmmoType.SHIELD)
@@ -501,6 +501,6 @@ public class AmmoManager : MonoBehaviour
 
     private void ResetPopUpPanel()
     {
-        textPopUp.SetActive(false);
+        textPopUP.SetActive(false);
     }
 }
