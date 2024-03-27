@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.16, y: 1.28, z: -24.8}
-  m_LocalScale: {x: 1, y: 1, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,11 +72,11 @@ VisualEffect:
       - m_Value:
           serializedVersion: 2
           key0: {r: 0, g: 683.5601, b: 586.6049, a: 0}
-          key1: {r: 4.89551, g: 7.9066997, b: 0, a: 1}
-          key2: {r: 2.608237, g: 2.0120695, b: 0, a: 0.8}
-          key3: {r: 7.906699, g: 0.5043778, b: 0, a: 0}
-          key4: {r: 2.922065, g: 0.5813533, b: 0, a: 0}
-          key5: {r: 2.9220648, g: 0.5813533, b: 0, a: 0}
+          key1: {r: 0, g: 0.26673466, b: 7.9066987, a: 1}
+          key2: {r: 0, g: 0.31321266, b: 2.6082373, a: 0.8}
+          key3: {r: 0, g: 0.74802804, b: 7.9066987, a: 0}
+          key4: {r: 0, g: 0.17971, b: 2.922065, a: 0}
+          key5: {r: 0, g: 0.30976874, b: 2.2572894, a: 0}
           key6: {r: 0, g: 0, b: 0, a: 0}
           key7: {r: 0, g: 0, b: 0, a: 0}
           ctime0: 9766

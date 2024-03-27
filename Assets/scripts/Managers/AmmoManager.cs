@@ -116,16 +116,16 @@ public class AmmoManager : MonoBehaviour
                 firstAmmoColor.color = Color.clear;
                 break;
             case EquippedAmmoType.FIRE:
-                firstAmmoColor.color = Color.red;
+                firstAmmoColor.color = new Vector4(0.35f, 0.7f, 1, 1);
                 break;
             case EquippedAmmoType.SLOW:
-                firstAmmoColor.color = Color.blue;
+                firstAmmoColor.color = new Vector4(0.38f, 0.26f, 0.78f, 1f);
                 break;
             case EquippedAmmoType.POISON:
-                firstAmmoColor.color = Color.green;
+                firstAmmoColor.color = new Vector4(0.47f, 0.723f, 0, 1);
                 break;
             case EquippedAmmoType.SHIELD:
-                firstAmmoColor.color = Color.yellow;
+                firstAmmoColor.color = new Vector4(1, 0.745f, 0, 1);
                 break;
         }
         switch (secondAmmoType)
@@ -134,16 +134,16 @@ public class AmmoManager : MonoBehaviour
                 secondAmmoColor.color = Color.clear;
                 break;
             case EquippedAmmoType.FIRE:
-                secondAmmoColor.color = Color.red;
+                secondAmmoColor.color = new Vector4(0.35f, 0.7f, 1, 1);
                 break;
             case EquippedAmmoType.SLOW:
-                secondAmmoColor.color = Color.blue;
+                secondAmmoColor.color = new Vector4(0.38f, 0.26f, 0.78f, 1f);
                 break;
             case EquippedAmmoType.POISON:
-                secondAmmoColor.color = Color.green;
+                secondAmmoColor.color = new Vector4(0.47f, 0.723f, 0, 1);
                 break;
             case EquippedAmmoType.SHIELD:
-                secondAmmoColor.color = Color.yellow;
+                secondAmmoColor.color = new Vector4(1, 0.745f, 0, 1);
                 break;
         }
         if (currentShield != null)
@@ -492,8 +492,8 @@ public class AmmoManager : MonoBehaviour
     {
         firstAmmoType = SaveManager.LoadEquippedAmmo1();
         secondAmmoType = SaveManager.LoadEquippedAmmo2();
+        ChangeAmmoType(); 
         ammoCount = SaveManager.GetAmmoCount();
-
         Debug.Log("First Ammo:" + firstAmmoType);
         Debug.Log("Second Ammo:" + secondAmmoType);
         Debug.Log("Ammo Count:" + ammoCount);
