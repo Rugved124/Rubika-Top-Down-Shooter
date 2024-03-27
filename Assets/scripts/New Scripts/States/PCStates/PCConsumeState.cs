@@ -21,20 +21,23 @@ public class PCConsumeState : BaseState
 
     public override Type ExecuteState()
     {
-        if (_pc.currentHP <= 0)
+        if(GameManager.Instance.currentState == GameManager.GameStates.RUNNING)
         {
-            return typeof(PCDeadState);
-        }
-        if (_pc.beingConsumed != null)
-        {
-            _pc.Consume(_pc.beingConsumed);
-        }
-        else
-        {
-            _pc.anim.SetBool("isConsuming", false);
-            _pc.consumeLine.SetActive(false);
-            _pc.canDash = true;
-            return typeof(PCDefaultState);
+            if (_pc.currentHP <= 0)
+            {
+                return typeof(PCDeadState);
+            }
+            if (_pc.beingConsumed != null)
+            {
+                _pc.Consume(_pc.beingConsumed);
+            }
+            else
+            {
+                _pc.anim.SetBool("isConsuming", false);
+                _pc.consumeLine.SetActive(false);
+                _pc.canDash = true;
+                return typeof(PCDefaultState);
+            }
         }
         return null;
     }

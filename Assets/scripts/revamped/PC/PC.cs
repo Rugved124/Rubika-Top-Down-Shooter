@@ -161,7 +161,7 @@ public class PC : MonoBehaviour
         }
         //-------------------------------------Dash Things-------------------------------------
 
-        if (InputManager.instance.GetDashButton() && canDash && !InputManager.instance.GetIfConsumeIsHeld() && !isDead)
+        if (InputManager.instance.GetDashButton() && canDash && !InputManager.instance.GetIfConsumeIsHeld() && !isDead && GameManager.Instance.currentState == GameManager.GameStates.RUNNING)
         {
             float forwards = InputManager.instance.GetMovementVertical();
             float sideways = InputManager.instance.GetMovementHorizontal();
