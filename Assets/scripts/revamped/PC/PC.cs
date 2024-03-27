@@ -182,7 +182,7 @@ public class PC : MonoBehaviour
             lowHealthFeedBack.SetActive(true);
             if (hpPercent <= 0.3)
             {
-                lowHealthFeedBack.GetComponent<Image>().color = new Color(1, 0, 0, 0.4f);
+                lowHealthFeedBack.GetComponent<Image>().color = new Color(1, 0, 0, 0.2f);
             }
             else
             {
