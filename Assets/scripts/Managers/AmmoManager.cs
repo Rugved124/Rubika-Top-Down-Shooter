@@ -189,6 +189,7 @@ public class AmmoManager : MonoBehaviour
         if (textPopUP != null)
         {
             textPopUP.SetActive(true);
+            Invoke("ResetPopUpPanel", 2f);
         }
         if(firstAmmoType == EquippedAmmoType.SHIELD)
         {
@@ -291,6 +292,7 @@ public class AmmoManager : MonoBehaviour
                 }
                 if (secondAmmoType == EquippedAmmoType.SHIELD)
                 {
+                    text.text = "Agni + Dhaal = Agni";
                     currentAmmoType = firstAmmoType;
                 }
 
@@ -298,18 +300,22 @@ public class AmmoManager : MonoBehaviour
             case EquippedAmmoType.POISON:
                 if (secondAmmoType == EquippedAmmoType.FIRE)
                 {
+                    text.text = "Vish + Agni = Dhwani";
                     currentAmmoType = EquippedAmmoType.POISONFIRE;
                 }
                 if (secondAmmoType == EquippedAmmoType.POISON)
                 {
+                    text.text = "Vish + Vish = Gaadha";
                     currentAmmoType = EquippedAmmoType.POISONPOISON;
                 }
                 if (secondAmmoType == EquippedAmmoType.SLOW)
                 {
+                    text.text = "Vish + Akaal = Dhwani";
                     currentAmmoType = EquippedAmmoType.POISONSLOW;
                 }
                 if (secondAmmoType == EquippedAmmoType.SHIELD)
                 {
+                    text.text = "Vish + Dhaal = Vish";
                     currentAmmoType = firstAmmoType;
                 }
                 break;
@@ -317,27 +323,33 @@ public class AmmoManager : MonoBehaviour
                 if (secondAmmoType == EquippedAmmoType.FIRE)
                 {
                     currentAmmoType = EquippedAmmoType.SLOWFIRE;
+                    text.text = "Akaal + Agni = Bhawri";
                 }
                 if (secondAmmoType == EquippedAmmoType.POISON)
                 {
                     currentAmmoType = EquippedAmmoType.SLOWPOISON;
+                    text.text = "Akaal + Vish = Bijli";
                 }
                 if (secondAmmoType == EquippedAmmoType.SLOW)
                 {
                     currentAmmoType = EquippedAmmoType.SLOWSLOW;
+                    text.text = "Akaal + Akaal = Andhkaar";
                 }
                 if (secondAmmoType == EquippedAmmoType.SHIELD)
                 {
                     currentAmmoType = firstAmmoType;
+                    text.text = "Any + Kavach = Kavach";
                 }
                 break;
             case EquippedAmmoType.SHIELD:
                 if (secondAmmoType != EquippedAmmoType.SHIELD)
                 {
                     currentAmmoType = secondAmmoType;
+                    text.text = "Kavach + Any = Kavach";
                 }
                 else
                 {
+                    text.text = "Kavach + Kavach = Dhaal";
                     currentAmmoType = EquippedAmmoType.SHIELDSHIELD;
                 }
                 break;
@@ -484,5 +496,10 @@ public class AmmoManager : MonoBehaviour
         Debug.Log("First Ammo:" + firstAmmoType);
         Debug.Log("Second Ammo:" + secondAmmoType);
         Debug.Log("Ammo Count:" + ammoCount);
+    }
+
+    private void ResetPopUpPanel()
+    {
+        textPopUP.SetActive(false);
     }
 }

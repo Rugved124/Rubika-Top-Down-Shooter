@@ -103,7 +103,7 @@ public class PC : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.Instance.CanLoadData())
+        if (GameManager.Instance.CanLoadData() && SaveManager.LoadPlayerPosition() != Vector3.zero)
         {
             LoadPlayerData();
             GameManager.Instance.ReduceLoadCount();
@@ -112,6 +112,7 @@ public class PC : MonoBehaviour
         {
             transform.position = GameManager.Instance.respawnPoint;
             currentHP = maxHP;
+            SaveManager.SavePlayerStats(transform.position, maxHP, AmmoManager.EquippedAmmoType.DEFAULTAMMO, AmmoManager.EquippedAmmoType.DEFAULTAMMO, 20, 1);
         }
         crosshair = GetComponentInChildren<CrossHairPos>().gameObject;
         respawnPoint = transform.position;
