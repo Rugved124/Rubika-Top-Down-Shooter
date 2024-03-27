@@ -81,6 +81,9 @@ public class PC : MonoBehaviour
     private GameObject floatingTextPrefab;
 
     [SerializeField]
+    private GameObject healEffect;
+
+    [SerializeField]
     Slider dashCooldownUI;
 
     public void InitializeStateMachine()
@@ -137,6 +140,10 @@ public class PC : MonoBehaviour
         consumeSound = true;
         dashCooldownUI.maxValue = dashCooldown;
         dashCooldownUI.value = dashCooldownUI.maxValue;
+        if(healEffect != null)
+        {
+            healEffect.SetActive(false);
+        }
     }
 
     private void Update()
@@ -239,11 +246,16 @@ public class PC : MonoBehaviour
     public void Heal(int healnumber)
     {
         currentHP += healnumber;
-        if (floatingTextPrefab != null)
+        if(healnumber != 0)
         {
-            var number = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
-            number.GetComponent<FloatingText>().SetToHeal(healnumber);
+            if (floatingTextPrefab != null)
+            {
+                var number = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+                number.GetComponent<FloatingText>().SetToHeal(healnumber);
+            }
+            StartCoroutine(HealVFX());
         }
+
     }
     public void TakeDamageOverTime(int damage)
     {
@@ -490,4 +502,13 @@ public class PC : MonoBehaviour
 
         Debug.Log("Player HP" + currentHP);
     } 
+
+    IEnumerator HealVFX()
+    {
+        healEffect.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+
+        healEffect.SetActive(false);
+    }
 }
