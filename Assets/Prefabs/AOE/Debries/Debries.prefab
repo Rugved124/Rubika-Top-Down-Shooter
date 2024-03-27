@@ -126,12 +126,13 @@ MonoBehaviour:
   damage: 30
   fallingSpeed: 50
   canBeDestroyed: 0
-  fallingTime: 0.25
+  fallingTime: 1
   spikeDamage: 0
   isHit: 0
   canSpikeHit: 0
   spiked: 0
   cross: {fileID: 177753437022293337}
+  dieTime: 0
 --- !u!54 &3727418806710666873
 Rigidbody:
   m_ObjectHideFlags: 0
