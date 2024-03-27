@@ -31,12 +31,14 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
         DontDestroyOnLoad(this.gameObject);
-        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
+            FindObjectOfType<PC>().gameObject.transform.position = pcLocation.position;
             respawnPoint = pcLocation.position;
         }
         else if (SceneManager.GetActiveScene().buildIndex == 2)
         {
+            FindObjectOfType<PC>().gameObject.transform.position = pcLocation.position;
             respawnPoint = pcLocationInHell.position;
         }
     }

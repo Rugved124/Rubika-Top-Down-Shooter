@@ -31,7 +31,7 @@ public class AmmoManager : MonoBehaviour
 
     public Image firstAmmoColor, secondAmmoColor;
 
-    public TextMeshPro text;
+    public TextMeshProUGUI text;
     public GameObject textPopUP;
 
     public float currentRange {  get; private set; }
