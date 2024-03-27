@@ -49,7 +49,7 @@ public class WaveSpawner : MonoBehaviour
     List<GameObject> closingDoors = new List<GameObject>();
 
     [SerializeField]
-    List<GameObject> openAfterWavesAreFinished = new List<GameObject>();
+    List<GameObject> openOnTrigger = new List<GameObject>();
 
     [SerializeField]
     GameObject sceneLoader;
@@ -57,8 +57,14 @@ public class WaveSpawner : MonoBehaviour
     public bool canSpawm;
 
     public bool isFinished {  get; private set; }
+
+    bool bellStarted;
+
+    [SerializeField]
+    AudioSource bell;
     private void Awake()
     {
+        bellStarted = false;
         if(sceneLoader != null)
         {
             sceneLoader.SetActive(false);
@@ -89,9 +95,21 @@ public class WaveSpawner : MonoBehaviour
                     }
                     break;
                 case WaveStates.Wait:
-
+                    if (Time.time >= timebetweenSpawns - 3 && Time.time < timebetweenSpawns && !bellStarted)
+                    {
+                        bellStarted = true;
+                        if (bell != null)
+                        {
+                            bell.Play();
+                        }
+                    }
                     if (Time.time >= timebetweenSpawns || existingEnemies.Count == 0)
                     {
+                        bellStarted = false;
+                        if (bell != null)
+                        {
+                            bell.Stop();
+                        }
                         ResetGeneratedEnemies();
 
                         if (stopSpawning)
@@ -213,6 +231,10 @@ public class WaveSpawner : MonoBehaviour
             {
                 canSpawm = true;
                 ChangeDoorState(true);
+                foreach(GameObject go in openOnTrigger)
+                {   
+                    go.SetActive(false);
+                }
             }
         }
     }

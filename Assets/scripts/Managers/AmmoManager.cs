@@ -68,16 +68,24 @@ public class AmmoManager : MonoBehaviour
 
     public EquippedAmmoType firstAmmoType;
     public EquippedAmmoType secondAmmoType;
+    public EquippedAmmoType tempAmmoType;
     private void Start()
     {
         if (GameManager.Instance.CanLoadData())
         {
             LoadSaveData();
             GameManager.Instance.ReduceLoadCount();
+            tempAmmoType = secondAmmoType;
+            secondAmmoType = firstAmmoType;
+            ChangeEquippedAmmo(tempAmmoType);
+            LoadSaveData();
         }
-        currentAmmoType = EquippedAmmoType.DEFAULTAMMO;
+        else
+        {
+            currentAmmoType = EquippedAmmoType.DEFAULTAMMO;
+            ChangeAmmoType();
+        }
         pc = FindObjectOfType<PC>();
-        ChangeAmmoType();
         canShoot = true;
         firstAmmo.maxValue = secondAmmo.maxValue = ammoCount;
         textPopUP.SetActive(false);
@@ -192,21 +200,15 @@ public class AmmoManager : MonoBehaviour
             textPopUP.SetActive(true);
             Invoke("ResetPopUpPanel", 2f);
         }
-        if(firstAmmoType == EquippedAmmoType.SHIELD)
+
+        if (secondAmmoType != EquippedAmmoType.DEFAULTAMMO)
         {
+            firstAmmoType = secondAmmoType;
             secondAmmoType = newAmmo;
         }
         else
         {
-            if (secondAmmoType != EquippedAmmoType.DEFAULTAMMO)
-            {
-                firstAmmoType = secondAmmoType;
-                secondAmmoType = newAmmo;
-            }
-            else
-            {
-                secondAmmoType = newAmmo;
-            }
+            secondAmmoType = newAmmo;
         }
         if(secondAmmoType == EquippedAmmoType.SHIELD)
         {
@@ -492,7 +494,6 @@ public class AmmoManager : MonoBehaviour
     {
         firstAmmoType = SaveManager.LoadEquippedAmmo1();
         secondAmmoType = SaveManager.LoadEquippedAmmo2();
-        ChangeAmmoType(); 
         ammoCount = SaveManager.GetAmmoCount();
         Debug.Log("First Ammo:" + firstAmmoType);
         Debug.Log("Second Ammo:" + secondAmmoType);

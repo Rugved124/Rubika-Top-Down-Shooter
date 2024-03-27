@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
         DontDestroyOnLoad(this.gameObject);
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            respawnPoint = pcLocation.position;
+        }
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             FindObjectOfType<PC>().gameObject.transform.position = pcLocation.position;
@@ -69,8 +73,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentScene = 1;
-        //currentState = GameStates.INMENU;
-        //DontDestroyOnLoad(this.gameObject);
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            currentState = GameStates.INMENU;
+        }
+        else
+        {
+            currentState = GameStates.RUNNING;
+        }
     }
     void Update()
     {

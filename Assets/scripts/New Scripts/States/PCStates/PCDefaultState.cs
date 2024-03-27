@@ -28,57 +28,60 @@ public class PCDefaultState : BaseState
 
     public override Type ExecuteState()
     {
-        forwards = InputManager.instance.GetMovementVertical();
-        sideways = InputManager.instance.GetMovementHorizontal();
-        if (_pc.currentHP <= 0)
+        if(GameManager.Instance.currentState == GameManager.GameStates.RUNNING)
         {
-            return typeof(PCDeadState);
-        }
-        if (_pc.isDashing)
-        {
-            return typeof(PCDashState);
-        }
-        Vector3 moveVector = new Vector3(sideways, 0, forwards).normalized;
-        if (cam != null)
-        {
-            camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
-            move = forwards * camForward + sideways * cam.right;
-        }
-        else
-        {
-            move = forwards * Vector3.forward + sideways * Vector3.right;
-        }
-
-        if (move.magnitude > 1)
-        {
-            move.Normalize();
-        }
-
-        Move(move);
-        _pc.PlayerMove(moveVector, _pc.slowMultiplier);
-        _pc.PlayerRotation();
-
-        if (InputManager.instance.GetIfConsumeIsHeld() && !_pc.isDashing)
-        {
-            _pc.consumeLine.SetActive(true);
-            RaycastHit hitObj;
-            bool didHit = Physics.Raycast(_pc.bulletSpawn.position, transform.forward, out hitObj, _pc.consumeRange,_pc.soul);
-            if (didHit)
+            forwards = InputManager.instance.GetMovementVertical();
+            sideways = InputManager.instance.GetMovementHorizontal();
+            if (_pc.currentHP <= 0)
             {
-                if (hitObj.collider.CompareTag("Consumables"))
-                {
-                    if (_pc.beingConsumed == null)
-                    {
-                        _pc.beingConsumed = hitObj.collider.gameObject;
-                    }
-                    return typeof(PCConsumeState);
+                return typeof(PCDeadState);
+            }
+            if (_pc.isDashing)
+            {
+                return typeof(PCDashState);
+            }
+            Vector3 moveVector = new Vector3(sideways, 0, forwards).normalized;
+            if (cam != null)
+            {
+                camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
+                move = forwards * camForward + sideways * cam.right;
+            }
+            else
+            {
+                move = forwards * Vector3.forward + sideways * Vector3.right;
+            }
 
+            if (move.magnitude > 1)
+            {
+                move.Normalize();
+            }
+
+            Move(move);
+            _pc.PlayerMove(moveVector, _pc.slowMultiplier);
+            _pc.PlayerRotation();
+
+            if (InputManager.instance.GetIfConsumeIsHeld() && !_pc.isDashing)
+            {
+                _pc.consumeLine.SetActive(true);
+                RaycastHit hitObj;
+                bool didHit = Physics.Raycast(_pc.bulletSpawn.position, transform.forward, out hitObj, _pc.consumeRange, _pc.soul);
+                if (didHit)
+                {
+                    if (hitObj.collider.CompareTag("Consumables"))
+                    {
+                        if (_pc.beingConsumed == null)
+                        {
+                            _pc.beingConsumed = hitObj.collider.gameObject;
+                        }
+                        return typeof(PCConsumeState);
+
+                    }
                 }
             }
-        }
-        else
-        {
-            _pc.consumeLine.SetActive(false);
+            else
+            {
+                _pc.consumeLine.SetActive(false);
+            }
         }
         return null;
     }

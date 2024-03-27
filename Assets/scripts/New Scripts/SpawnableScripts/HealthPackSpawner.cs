@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthPackSpawner : MonoBehaviour
 {
-    public HealthPack currentPot;
+    public GameObject currentPot;
 
     public GameObject pot;
 
@@ -17,9 +17,9 @@ public class HealthPackSpawner : MonoBehaviour
 
     private void Start()
     {
-        Instantiate(pot, transform.position, Quaternion.identity);
-        currentPot = pot.GetComponent<HealthPack>();
-        currentPot.SetSpawner(this.GetComponent<HealthPackSpawner>());
+        
+        currentPot = Instantiate(pot, transform.position, Quaternion.identity);
+        currentPot.GetComponent<HealthPack>().SetSpawner(this.GetComponent<HealthPackSpawner>());
     }
     private void Update()
     {
@@ -33,9 +33,8 @@ public class HealthPackSpawner : MonoBehaviour
             }
             if(Time.time - timeOfLastPickUp >= coolDown)
             {
-                Instantiate(pot, transform.position, Quaternion.identity);
-                currentPot = pot.GetComponent<HealthPack>();
-                currentPot.SetSpawner(this.GetComponent<HealthPackSpawner>());
+                currentPot = Instantiate(pot, transform.position, Quaternion.identity);
+                currentPot.GetComponent<HealthPack>().SetSpawner(this.GetComponent<HealthPackSpawner>());
                 didPickUp = false;
             }
         }
@@ -44,6 +43,7 @@ public class HealthPackSpawner : MonoBehaviour
     {
         if (currentPot != null)
         {
+            Debug.Log("Ate Health");
             currentPot = null;
         }
     }
