@@ -97,8 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status: 1
   bulletSpeed: 30
-  bulletRate: 3
-  bulletDamage: 5
+  bulletRate: 1.5
+  bulletDamage: 10
   bulletLifeTime: 0.5
   bulletRange: 10
   ammoCount: 10
@@ -106,7 +106,7 @@ MonoBehaviour:
   pc: {fileID: 0}
   bulletRB: {fileID: 0}
   fireDamage: 2
-  fireDuration: 2
+  fireDuration: 3
   tickSpeed: 0.33
 --- !u!1001 &1107530314234736022
 PrefabInstance:
