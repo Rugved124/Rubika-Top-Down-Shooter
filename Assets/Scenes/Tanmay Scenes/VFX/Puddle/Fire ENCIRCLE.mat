@@ -53,12 +53,12 @@ Material:
     m_Floats:
     - Dissolve_: 0.94
     - Noise_Scale_: 0.52
-    - _Noise_Power: 1.23
+    - _Noise_Power: 1.28
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Twirl_Amount: 23.6
     m_Colors:
-    - Color_: {r: 2169.3918, g: 174.163, b: 0, a: 0}
+    - Color_: {r: 101.03251, g: 8.463457, b: 0, a: 0}
     - _Noise_Speed: {r: 0, g: 0.2, b: 0, a: 0}
     - _Twirl_Amount: {r: 0, g: 0, b: 0, a: 0}
     - _Twirl_Centre: {r: 0.73, g: 0.26, b: 0, a: 0}
