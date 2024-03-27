@@ -37,11 +37,25 @@ public class InputManager : MonoBehaviour
     }
     public bool IsFirePressed()
     {   
-        return Input.GetMouseButtonDown(0);
+        if(GameManager.Instance.currentState == GameManager.GameStates.RUNNING)
+        {
+            return Input.GetMouseButtonDown(0);
+        }
+        else
+        {
+            return false;
+        }
     }
     public bool IsFireHeld() 
     {
-        return Input.GetMouseButton(0);
+        if (GameManager.Instance.currentState == GameManager.GameStates.RUNNING)
+        {
+            return Input.GetMouseButton(0);
+        }
+        else
+        {
+            return false;
+        }
     }
     public float GetMovementHorizontal()
     {
@@ -72,7 +86,7 @@ public class InputManager : MonoBehaviour
 
     public bool GetIfConsumeIsHeld()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && GameManager.Instance.currentState == GameManager.GameStates.RUNNING)
         {
             return true;
         }

@@ -69,7 +69,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentScene = 1;
-        //currentState = GameStates.INMENU;
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            currentState = GameStates.INMENU;
+        }
+        else
+        {
+            currentState = GameStates.RUNNING;
+        }
         //DontDestroyOnLoad(this.gameObject);
     }
     void Update()
