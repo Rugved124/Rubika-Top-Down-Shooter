@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class RespawnManager : MonoBehaviour
 {
@@ -32,11 +33,11 @@ public class RespawnManager : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     { 
-        if (other.CompareTag("Player") && respawner.position != GameManager.Instance.respawnPoint)
+        if (other.CompareTag("Player"))
         {
             if (pc != null)
             {
-                ManagerEvents.respawnPoint.Invoke(respawner.position);
+                SaveManager.SavePlayerStats(respawner.position, pc.currentHP, AmmoManager.instance.firstAmmoType, AmmoManager.instance.secondAmmoType, AmmoManager.instance.GetAmmoCount(), SceneManager.GetActiveScene().buildIndex);
                 //ManagerEvents.playerData.Invoke(pc.currentHP, AmmoManager.instance.GetAmmoCount(), AmmoManager.instance.firstAmmoType.ToString(), AmmoManager.instance.secondAmmoType.ToString());
                 foreach (GameObject go in lastRoomLights)
                 {

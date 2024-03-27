@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public Transform pcLocation;
     public Transform pcLocationInHell;
+
+    private int canLoad;
     private void Awake()
     {
         if (Instance == null)
@@ -130,10 +132,27 @@ public class GameManager : MonoBehaviour
     public void ReloadScene()
     {
         ChangeState(GameStates.RUNNING);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SetLoadData(2);
+        SceneManager.LoadScene(SaveManager.LoadLevelIndex());
+
     }
     public void ChangeSpawnPoint()
     {
         respawnPoint = pcLocationInHell.position;
+    }
+
+    public bool CanLoadData()
+    {
+        return canLoad > 0;
+    }
+
+    public void SetLoadData(int yes)
+    {
+        canLoad = yes;
+    }
+
+    public void ReduceLoadCount()
+    {
+        canLoad--;
     }
 }

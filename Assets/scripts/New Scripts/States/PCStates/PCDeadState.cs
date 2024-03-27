@@ -31,7 +31,6 @@ public class PCDeadState : BaseState
         }
         if(timeBeforeDying <= 0)
         {
-
             //_pc.Die();
         }
         if(timeBeforeDying <= -1f)
