@@ -107,8 +107,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0966165, y: 1, z: 1.0750024}
-  m_Center: {x: 0.010225803, y: 0, z: -0.010156989}
+  m_Size: {x: 1.6702371, y: 1, z: 1.57988}
+  m_Center: {x: 0.0029652514, y: 0, z: -0.024518171}
 --- !u!114 &2836150675055033881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   isSet: 0
   damage: 30
   fallingSpeed: 50
-  canBeDestroyed: 0
+  canBeDestroyed: 1
   fallingTime: 1
   spikeDamage: 0
   isHit: 0
