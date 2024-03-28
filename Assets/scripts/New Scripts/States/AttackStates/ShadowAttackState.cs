@@ -38,7 +38,7 @@ public class ShadowAttackState : BaseState
                 return typeof(IdleState);
             }
         }
-        if(_enemy.storedAOE == null && _enemy.isWeaponFiringDone)
+        if(_enemy.storedAOE == null)
         {
             Debug.Log("Something");
             return typeof(ShadowTeleportState);
