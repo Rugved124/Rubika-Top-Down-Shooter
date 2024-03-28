@@ -35,6 +35,8 @@ public class AmmoManager : MonoBehaviour
     public GameObject textPopUP;
 
     public float currentRange {  get; private set; }
+
+    bool canCheck;
     public enum EquippedAmmoType
     {
         DEFAULTAMMO,
@@ -70,6 +72,7 @@ public class AmmoManager : MonoBehaviour
     public EquippedAmmoType secondAmmoType;
     private void Start()
     {
+        canCheck = false;
         if (GameManager.Instance.CanLoadData())
         {
             LoadSaveData();
@@ -89,6 +92,13 @@ public class AmmoManager : MonoBehaviour
     }
     private void Update()
     {
+        if (!canCheck)
+        {
+            if(bulletToSpawn == null)
+            {
+                ResetEquippedAmmo();
+            }
+        }
         if(currentAmmoType == EquippedAmmoType.FIREFIRE)
         {
             shooting = InputManager.instance.IsFirePressed();
