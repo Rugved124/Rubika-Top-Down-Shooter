@@ -844,7 +844,6 @@ MonoBehaviour:
   maxHP: 100
   currentHP: 0
   slider: {fileID: 0}
-  healthBar: {fileID: 0}
   statusEffects: {fileID: 11400000, guid: 1a18351127999a34f97468b288f5f83b, type: 2}
   consumeLine: {fileID: 4182021413697068842}
   isBurningFor: 0
@@ -860,7 +859,7 @@ MonoBehaviour:
   canDash: 0
   isDashing: 0
   dashCooldown: 2
-  crosshair: {fileID: 3405918642614899927}
+  crosshair: {fileID: 0}
   soul:
     serializedVersion: 2
     m_Bits: 65993
@@ -870,7 +869,6 @@ MonoBehaviour:
     type: 3}
   healEffect: {fileID: 2518958108183686724}
   dashCooldownUI: {fileID: 0}
-  lowHealthFeedBack: {fileID: 0}
 --- !u!82 &8881090008306100912
 AudioSource:
   m_ObjectHideFlags: 0
