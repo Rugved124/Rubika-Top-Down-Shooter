@@ -124,13 +124,13 @@ public class AmmoManager : MonoBehaviour
                 firstAmmoColor.color = new Vector4(0.35f, 0.7f, 1, 1);
                 break;
             case EquippedAmmoType.SLOW:
-                firstAmmoColor.color = new Vector4(0.38f, 0.26f, 0.78f, 1f);
+                firstAmmoColor.color = new Vector4(0.33f, 0, 1, 1f);
                 break;
             case EquippedAmmoType.POISON:
                 firstAmmoColor.color = new Vector4(0.47f, 0.723f, 0, 1);
                 break;
             case EquippedAmmoType.SHIELD:
-                firstAmmoColor.color = new Vector4(1, 0.745f, 0, 1);
+                firstAmmoColor.color = new Vector4(1, 1, 0, 1);
                 break;
         }
         switch (secondAmmoType)
@@ -142,13 +142,13 @@ public class AmmoManager : MonoBehaviour
                 secondAmmoColor.color = new Vector4(0.35f, 0.7f, 1, 1);
                 break;
             case EquippedAmmoType.SLOW:
-                secondAmmoColor.color = new Vector4(0.38f, 0.26f, 0.78f, 1f);
+                secondAmmoColor.color = new Vector4(0.33f, 0, 1, 1f);
                 break;
             case EquippedAmmoType.POISON:
                 secondAmmoColor.color = new Vector4(0.47f, 0.723f, 0, 1);
                 break;
             case EquippedAmmoType.SHIELD:
-                secondAmmoColor.color = new Vector4(1, 0.745f, 0, 1);
+                secondAmmoColor.color = new Vector4(1, 1, 0, 1);
                 break;
         }
         if (currentShield != null)

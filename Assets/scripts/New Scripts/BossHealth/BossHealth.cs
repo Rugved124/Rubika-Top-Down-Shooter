@@ -51,7 +51,7 @@ public class BossHealth : MonoBehaviour
             switch (currentBulletType)
             {
                 case "SLOW":
-                    barColor.color = new Vector4(0.38f, 0.26f, 0.78f, 1f);
+                    barColor.color = new Vector4(0.33f, 0, 1, 1f);
                     break;
                 case "POISON":
                     barColor.color = new Vector4(0.47f, 0.723f, 0, 1);
