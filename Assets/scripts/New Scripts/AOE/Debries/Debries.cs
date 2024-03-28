@@ -40,6 +40,9 @@ public class Debries : MonoBehaviour
 
     [SerializeField]
     float dieTime;
+
+    [SerializeField]
+    GameObject debryBlast;
     void Start()
     {
         isHit = false;
@@ -133,6 +136,11 @@ public class Debries : MonoBehaviour
 
     private void Die()
     {
+        if(debryBlast != null)
+        {
+            GameObject go = Instantiate(debryBlast, transform.position, Quaternion.identity);
+            Destroy(go, 1f);
+        }
         if (canBeDestroyed)
         {
             Destroy(this.gameObject);

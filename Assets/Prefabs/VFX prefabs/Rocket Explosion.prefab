@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d8358fd51625a4b95a1774b5bba1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionDamage: 50
-  explosionRadius: 5
+  explosionDamage: 9999999
+  explosionRadius: 6
   enemies:
     serializedVersion: 2
     m_Bits: 256
