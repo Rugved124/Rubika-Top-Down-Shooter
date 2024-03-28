@@ -276,7 +276,7 @@ public class AmmoManager : MonoBehaviour
                 {
                     currentAmmoType = EquippedAmmoType.FIREFIRE;
 
-                    text.text = "Agni + Agni = AagToph";
+                    text.text = "Agni + Agni = Jwaala";
                 }
                 if (secondAmmoType == EquippedAmmoType.POISON)
                 {
@@ -305,7 +305,7 @@ public class AmmoManager : MonoBehaviour
                 }
                 if (secondAmmoType == EquippedAmmoType.POISON)
                 {
-                    text.text = "Vish + Vish = Gaadha";
+                    text.text = "Vish + Vish = Gaarhaa";
                     currentAmmoType = EquippedAmmoType.POISONPOISON;
                 }
                 if (secondAmmoType == EquippedAmmoType.SLOW)
