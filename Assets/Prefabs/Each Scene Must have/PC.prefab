@@ -831,7 +831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9908538a62875c14892d368238cf3f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pcSpeed: 10
+  pcSpeed: 14
   consumeRange: 6
   isInvincible: 0
   slowMultiplier: 1
@@ -844,6 +844,7 @@ MonoBehaviour:
   maxHP: 100
   currentHP: 0
   slider: {fileID: 0}
+  healthBar: {fileID: 0}
   statusEffects: {fileID: 11400000, guid: 1a18351127999a34f97468b288f5f83b, type: 2}
   consumeLine: {fileID: 4182021413697068842}
   isBurningFor: 0
@@ -869,6 +870,7 @@ MonoBehaviour:
     type: 3}
   healEffect: {fileID: 2518958108183686724}
   dashCooldownUI: {fileID: 0}
+  lowHealthFeedBack: {fileID: 0}
 --- !u!82 &8881090008306100912
 AudioSource:
   m_ObjectHideFlags: 0
