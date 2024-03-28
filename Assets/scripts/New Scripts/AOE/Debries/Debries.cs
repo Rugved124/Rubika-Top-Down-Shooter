@@ -59,9 +59,10 @@ public class Debries : MonoBehaviour
             }
             //this.GetComponent<Rigidbody>().velocity = Vector3.zero;
             this.GetComponent<Rigidbody>().isKinematic = true;
-            if(other != null)
+            if(other != null && !isHit)
             {
                 isHit = true;
+                Invoke("Die", dieTime);
             }
             if (spiked)
             {   
@@ -77,6 +78,7 @@ public class Debries : MonoBehaviour
                     Debug.Log("HitEnemies");
                     isHit = true;
                     other.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                    Invoke("Die", dieTime);
                 }
                 if (other.CompareTag("Shield") && !isHit)
                 {
@@ -84,6 +86,7 @@ public class Debries : MonoBehaviour
                     if (!other.gameObject.GetComponent<ShieldBehaviour>().isPC)
                     {
                         other.gameObject.GetComponent<ShieldBehaviour>().TakeDamage(1);
+                        Invoke("Die", dieTime);
                     }
                 }
             }
@@ -95,12 +98,14 @@ public class Debries : MonoBehaviour
                     if (other.gameObject.GetComponent<ShieldBehaviour>().isPC)
                     {
                         other.gameObject.GetComponent<ShieldBehaviour>().TakeDamage(1);
+                        Invoke("Die", dieTime);
                     }
                 }
                 if (other.CompareTag("Player") && !isHit)
                 {
                     isHit = true;
                     other.gameObject.GetComponent<PC>().TakeDamage(damage);
+                    Invoke("Die", dieTime);
                 }
             }
         }
@@ -110,14 +115,15 @@ public class Debries : MonoBehaviour
             {
                 isHit = true;
                 other.gameObject.GetComponent<ShieldBehaviour>().TakeDamage(1);
+                Invoke("Die", dieTime);
             }
             if (other.CompareTag("Player") && !isHit)
             {
                 isHit = true;
                 other.gameObject.GetComponent<PC>().TakeDamage(damage);
+                Invoke("Die", dieTime);
             }
         }
-        Invoke("Die",dieTime);
     }
     private void OnCollisionEnter(Collision collision)
     {
