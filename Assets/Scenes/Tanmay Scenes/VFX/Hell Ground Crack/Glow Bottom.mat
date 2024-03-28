@@ -38,11 +38,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Glow_Power: -7.9
+    - _Glow_Power: -1.6
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Glow_Color: {r: 0.4610756, g: 0.03674211, b: 0, a: 0}
+    - _Glow_Color: {r: 4.8671436, g: 0.3877357, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8056395458241694154
 MonoBehaviour:
