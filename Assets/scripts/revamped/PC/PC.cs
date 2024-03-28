@@ -182,7 +182,7 @@ public class PC : MonoBehaviour
             lowHealthFeedBack.SetActive(true);
             if (hpPercent <= 0.3)
             {
-                lowHealthFeedBack.GetComponent<Image>().color = new Color(1, 0, 0, 0.2f);
+                lowHealthFeedBack.GetComponent<Image>().color = new Color(1, 0, 0, 0.05f);
             }
             else
             {
@@ -206,9 +206,10 @@ public class PC : MonoBehaviour
             {
                 // Linear interpolation between green and red
                 float greenComponent = Mathf.Lerp(0, 1, (hpPercent - threshold) / (1 - threshold));
-                float redComponent = Mathf.Lerp(1, 0, (hpPercent - threshold) / (1 - threshold));
+                float redComponent = Mathf.Lerp(1, 0.4f, (hpPercent - threshold) / (1 - threshold));
+                float blueComponent = Mathf.Lerp(0, 0.7f, (hpPercent - threshold) / (1 - threshold));
                 // Assign color with adjusted values
-                healthBar.color = new Vector4(redComponent, greenComponent, 0, 1);
+                healthBar.color = new Vector4(redComponent, greenComponent, blueComponent, 1);
             }
         }
         //-------------------------------------StatusEfffects---------------------------------------------------------
