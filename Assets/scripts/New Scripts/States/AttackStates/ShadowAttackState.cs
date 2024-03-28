@@ -31,6 +31,13 @@ public class ShadowAttackState : BaseState
                 _enemy.FireWeapon();
             }
         }
+        else
+        {
+            if (!_enemy.isWeaponFiringDone || (_enemy.hpPercent < 20 && !_enemy.isShielded))
+            {
+                return typeof(IdleState);
+            }
+        }
         if(_enemy.storedAOE == null && _enemy.isWeaponFiringDone)
         {
             Debug.Log("Something");
