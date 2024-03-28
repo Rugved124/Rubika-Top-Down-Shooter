@@ -111,7 +111,7 @@ MonoBehaviour:
   canSpikeHit: 0
   spiked: 0
   cross: {fileID: 0}
-  dieTime: 1
+  dieTime: 0.5
   debryBlast: {fileID: 0}
 --- !u!54 &4570606818526197404
 Rigidbody:

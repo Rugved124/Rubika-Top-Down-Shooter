@@ -13,8 +13,11 @@ public class FixedWaveTrigger : MonoBehaviour
 
     [SerializeField]
     bool makeItLoop;
+
+    bool canChange;
     private void Awake()
     {
+        canChange = true;
         if(enabledAfterWaves != null)
         {
             enabledAfterWaves.SetActive(false);
@@ -41,9 +44,14 @@ public class FixedWaveTrigger : MonoBehaviour
         {
             foreach (var spawner in spawns)
             {
-                spawner.gameObject.SetActive(true);
-                spawner.SetToLoop(makeItLoop);
-                spawner.ChangeDoorState(true);
+                if (canChange)
+                {
+                    canChange = false;
+                    spawner.gameObject.SetActive(true);
+                    spawner.SetToLoop(makeItLoop);
+                    spawner.ChangeDoorState(true);
+                }
+
             }
         }
     }

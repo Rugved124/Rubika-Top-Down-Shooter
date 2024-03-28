@@ -114,7 +114,7 @@ public class FixedWaveSpawner : MonoBehaviour
                             bell.Play();
                         }
                     }
-                    if (Time.time >= timebetweenSpawns || existingEnemies.Count == 0)
+                    if (Time.time >= timebetweenSpawns || existingEnemies.Count <= 0)
                     {
                         bellStarted = false;
                         if(bell != null)
@@ -242,18 +242,6 @@ public class FixedWaveSpawner : MonoBehaviour
             door.SetActive(true);
         }
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other != null)
-        {
-            if (other.tag == "Player" && !isCollided)
-            {
-                isCollided = true;
-                ChangeDoorState(true);
-            }
-        }
-    }
-
     public void ResetWaveSpawner()
     {
         DestroyExistingEnemies();

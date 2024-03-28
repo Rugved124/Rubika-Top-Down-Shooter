@@ -702,7 +702,7 @@ MonoBehaviour:
     type: 3}
   ignorPC:
     serializedVersion: 2
-    m_Bits: 511
+    m_Bits: 127
   ignoreAlliesAndBullets:
     serializedVersion: 2
     m_Bits: 767
