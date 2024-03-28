@@ -10,11 +10,18 @@ public class AOEFeedBack : MonoBehaviour
     [SerializeField]
     GameObject feedback;
 
+    [SerializeField]
+    GameObject visuals;
+
     bool canSet;
     void Awake()
     {
         canSet = true;
         this.GetComponent<Collider>().enabled = false;
+        if(visuals != null)
+        {
+            visuals.SetActive(false);
+        }
         if (feedback != null)
         {
             feedback.SetActive(true);
@@ -32,6 +39,10 @@ public class AOEFeedBack : MonoBehaviour
                 if (feedback != null)
                 {
                     feedback.SetActive(false);
+                }
+                if (visuals != null)
+                {
+                    visuals.SetActive(true);
                 }
             }
         }
