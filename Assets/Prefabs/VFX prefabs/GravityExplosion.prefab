@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.169371, y: 0.32, z: -4.8839707}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d8358fd51625a4b95a1774b5bba1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionDamage: 20
-  explosionRadius: 5
+  explosionDamage: 300
+  explosionRadius: 10
   enemies:
     serializedVersion: 2
     m_Bits: 256
