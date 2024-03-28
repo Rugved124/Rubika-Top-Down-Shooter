@@ -65,6 +65,8 @@ public class WaveSpawner : MonoBehaviour
 
     [SerializeField]
     AudioSource doorSound;
+
+    bool isCollided;
     private void Awake()
     {
         bellStarted = false;
@@ -76,6 +78,7 @@ public class WaveSpawner : MonoBehaviour
         currentWave = waves[i];
         timebetweenSpawns = currentWave.timeBeforeThisWave;
         wavePurchasePower = currentWave.waveValue;
+        isCollided = false;
     }
 
     private void Update()
@@ -234,8 +237,9 @@ public class WaveSpawner : MonoBehaviour
     {
         if (other != null)
         {
-            if(other.tag == "Player")
+            if(other.tag == "Player" && !isCollided)
             {
+                isCollided = true;
                 canSpawm = true;
                 ChangeDoorState(true);
                 foreach(GameObject go in openOnTrigger)

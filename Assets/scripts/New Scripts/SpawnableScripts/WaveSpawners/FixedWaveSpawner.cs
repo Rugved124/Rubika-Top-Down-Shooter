@@ -63,8 +63,11 @@ public class FixedWaveSpawner : MonoBehaviour
 
     [SerializeField]
     private List<GameObject> openOnTrigger;
+
+    private bool isCollided;
     private void Start()
     {
+        isCollided = false;
         if(loader != null)
         {
             loader.SetActive(false);
@@ -243,8 +246,9 @@ public class FixedWaveSpawner : MonoBehaviour
     {
         if (other != null)
         {
-            if (other.tag == "Player")
+            if (other.tag == "Player" && !isCollided)
             {
+                isCollided = true;
                 ChangeDoorState(true);
             }
         }
