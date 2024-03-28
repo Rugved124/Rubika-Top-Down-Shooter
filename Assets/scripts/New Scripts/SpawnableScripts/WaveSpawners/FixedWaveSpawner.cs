@@ -150,16 +150,15 @@ public class FixedWaveSpawner : MonoBehaviour
                             {
                                 loader.SetActive(true);
                             }
-                            ChangeDoorState(false);
                             if (!isFinished)
                             {
+                                isFinished = true;
+                                ChangeDoorState(false);
                                 doorSound.Play();
                                 if (trigger != null)
                                 {
                                     trigger.RemoveCount();
                                 }
-
-                                isFinished = true;
                             }
                         }
                     }

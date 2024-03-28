@@ -127,7 +127,6 @@ public class WaveSpawner : MonoBehaviour
                 case WaveStates.StopSpawn:
                     if(existingEnemies.Count <= 0)
                     {
-                        ChangeDoorState(false);
                         if(sceneLoader != null)
                         {
                             sceneLoader.SetActive(true);
@@ -135,6 +134,7 @@ public class WaveSpawner : MonoBehaviour
                         if (!isFinished)
                         {
                             isFinished = true;
+                            ChangeDoorState(false);
                             doorSound.Play();
                         }
                     }
