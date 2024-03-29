@@ -415,22 +415,11 @@ public class PC : MonoBehaviour
                 statusEffects.isSlowedCounting = true;
                 statusEffects.isSlowed = true;
                 statusEffects.hasLostAbility = true;
-                if (other == null)
-                {
-                    statusEffects.isSlowedCounting = false;
-                    statusEffects.hasLostAbility = false;
-                    slowMultiplier = 1;
-                }
-
             }
             if (other.tag == "Poison" && !isDashing)
             {
                 statusEffects.isPoisonCounting = true;
                 statusEffects.isPoisoned = true;
-                if (other == null)
-                {
-                    statusEffects.isPoisonCounting = false;
-                }
             }
             if(other.tag == "Fire" && !isDashing)
             {
@@ -440,12 +429,16 @@ public class PC : MonoBehaviour
                     TakeDamage(statusEffects.burstDamage);
                 }
                 isBurningFor = Time.time;
-                if(other == null)
-                {
-                    StartCoroutine(EResetBurnt());
-                }
             }
 
+        }
+        if (!other.gameObject.activeInHierarchy || other.gameObject == null)
+        {
+            StartCoroutine(EResetBurnt());
+            statusEffects.isPoisonCounting = false;
+            statusEffects.isSlowedCounting = false;
+            statusEffects.hasLostAbility = false;
+            slowMultiplier = 1;
         }
     }
     private void OnTriggerExit(Collider other)
