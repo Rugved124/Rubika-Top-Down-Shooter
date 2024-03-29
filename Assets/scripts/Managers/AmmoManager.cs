@@ -134,7 +134,7 @@ public class AmmoManager : MonoBehaviour
                 firstAmmoColor.color = new Vector4(0.35f, 0.7f, 1, 1);
                 break;
             case EquippedAmmoType.SLOW:
-                firstAmmoColor.color = new Vector4(0.33f, 0, 1, 1f);
+                firstAmmoColor.color = new Vector4(0.78f, 0.35f, 1, 1f);
                 break;
             case EquippedAmmoType.POISON:
                 firstAmmoColor.color = new Vector4(0.47f, 0.723f, 0, 1);
@@ -152,7 +152,7 @@ public class AmmoManager : MonoBehaviour
                 secondAmmoColor.color = new Vector4(0.35f, 0.7f, 1, 1);
                 break;
             case EquippedAmmoType.SLOW:
-                secondAmmoColor.color = new Vector4(0.33f, 0, 1, 1f);
+                secondAmmoColor.color = new Vector4(0.78f, 0.35f, 1, 1f);
                 break;
             case EquippedAmmoType.POISON:
                 secondAmmoColor.color = new Vector4(0.47f, 0.723f, 0, 1);

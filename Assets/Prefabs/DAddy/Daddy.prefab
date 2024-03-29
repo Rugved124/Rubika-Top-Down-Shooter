@@ -54,7 +54,10 @@ MonoBehaviour:
   healthPerBar: 0a000000
   waveSpawner: {fileID: 0}
   healthSlider: {fileID: 4324122770385286270}
+  fullHealthSlider: {fileID: 669769134025022882}
   barColor: {fileID: 265264890856319192}
+  bulletType: {fileID: 5939184380997369108}
+  totalHealth: 0
 --- !u!65 &4555522912342601638
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -330,6 +333,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &669769134025022882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1677948620435366830, guid: a532fa11d3c4d4e459c748a8c6f8f82b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2162354662009552396}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4324122770385286270 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2450068853338868338, guid: a532fa11d3c4d4e459c748a8c6f8f82b,
@@ -340,6 +355,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5939184380997369108 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5507342288987636504, guid: a532fa11d3c4d4e459c748a8c6f8f82b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2162354662009552396}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &8818365705329267984 stripped
