@@ -9,6 +9,9 @@ public class ColourChange : MonoBehaviour
     private Image soulIndicator;
     void Update()
     {
-        GetComponent<Image>().color = soulIndicator.color;
+        if (soulIndicator != null)
+        {
+            GetComponent<Image>().color = soulIndicator.color;
+        }
     }
 }
