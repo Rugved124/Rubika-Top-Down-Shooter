@@ -72,11 +72,14 @@ public class FlameThrower : BaseBullet
                         }
                         if (hit.collider.CompareTag("Boss"))
                         {
-                            timeBetweenTick -= Time.deltaTime;
-                            if (timeBetweenTick <= 0f)
+                            if (hit.collider.gameObject.GetComponent<BossHealth>().GetCurrentBulletType() == "FIRE")
                             {
-                                timeBetweenTick = 1 / bulletRate;
-                                hit.collider.gameObject.GetComponent<BossHealth>().TakeDamage();
+                                timeBetweenTick -= Time.deltaTime;
+                                if (timeBetweenTick <= 0f)
+                                {
+                                    timeBetweenTick = 1 / bulletRate;
+                                    hit.collider.gameObject.GetComponent<BossHealth>().TakeDamage();
+                                }
                             }
                         }
                         if (hit.collider.CompareTag("Shield"))
