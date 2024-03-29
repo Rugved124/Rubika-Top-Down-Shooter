@@ -53,7 +53,7 @@ MonoBehaviour:
   soulMask:
     serializedVersion: 2
     m_Bits: 384
-  loader: {fileID: 0}
+  gamePadSensitivity: 2
 --- !u!114 &1948917667535904946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +92,8 @@ MonoBehaviour:
   secondAmmo: {fileID: 0}
   firstAmmoColor: {fileID: 0}
   secondAmmoColor: {fileID: 0}
+  text: {fileID: 0}
+  textPopUP: {fileID: 0}
   currentAmmoType: 0
   firstAmmoType: 0
   secondAmmoType: 0
