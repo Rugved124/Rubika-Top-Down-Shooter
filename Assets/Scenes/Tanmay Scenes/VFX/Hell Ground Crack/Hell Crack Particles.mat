@@ -122,7 +122,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color01: {r: 7.3772106, g: 2.0698612, b: 0, a: 1}
-    - _Color02: {r: 0.32602972, g: 0.043516915, b: 0, a: 1}
+    - _Color02: {r: 9.734287, g: 1.299287, b: 0, a: 1}
     - _DissolveSpeed: {r: -0.5, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MainTexSpeed: {r: -0.1, g: 0, b: 0, a: 0}
