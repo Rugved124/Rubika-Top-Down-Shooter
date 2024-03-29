@@ -88,13 +88,15 @@ public class GameManager : MonoBehaviour
         {
             currentState = GameStates.INMENU;
         }
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex == 1 && Time.timeScale != 0)
         {
             respawnPoint = pcLocation.position;
+            ChangeState(GameStates.RUNNING);
         }
-        if (SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 2 && Time.timeScale != 0)
         {
             respawnPoint = pcLocationInHell.position;
+            ChangeState(GameStates.RUNNING);
         }
         switch (currentState)
         {
