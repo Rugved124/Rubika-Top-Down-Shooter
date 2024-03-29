@@ -94,15 +94,12 @@ public class BossHealth : MonoBehaviour
             {
                 case "SLOW":
                     barColor.color = new Vector4(0.78f, 0.35f, 1, 1f);
-                    bulletType.text = "Kalia";
                     break;
                 case "POISON":
                     barColor.color = new Vector4(0.47f, 0.723f, 0, 1);
-                    bulletType.text = "Gabbar";
                     break;
                 case "FIRE":
                     barColor.color = new Vector4(0.35f, 0.7f, 1, 1);
-                    bulletType.text = "Bhau";
                     break;
             }
         }

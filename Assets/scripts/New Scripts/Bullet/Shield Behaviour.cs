@@ -7,7 +7,7 @@ public class ShieldBehaviour : MonoBehaviour
     [SerializeField]
     private int shieldCount;
 
-    private int maxShieldCount;
+    public int maxShieldCount { get; private set; }
 
     private GameObject enemy;
 
@@ -106,5 +106,10 @@ public class ShieldBehaviour : MonoBehaviour
     public void SetPoisonedForTime()
     {
         poisonedForTime = Time.time;
+    }
+    
+    public int GetCurrentHitPoints()
+    {
+        return shieldCount;
     }
 }

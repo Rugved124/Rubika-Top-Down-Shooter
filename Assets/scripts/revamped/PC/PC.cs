@@ -90,6 +90,9 @@ public class PC : MonoBehaviour
     Slider dashCooldownUI;
 
     [SerializeField]
+    Slider shieldHPUI;
+
+    [SerializeField]
     private GameObject lowHealthFeedBack;
 
     private float blinkSpeed;
@@ -176,7 +179,16 @@ public class PC : MonoBehaviour
             Vector3 dashVector = new Vector3(sideways, 0, forwards);
             StartCoroutine(Dash(dashVector));
         }
-
+        if (AmmoManager.instance.currentShield != null && shieldHPUI != null)
+        {
+            shieldHPUI.value = AmmoManager.instance.currentShield.GetComponent<ShieldBehaviour>().GetCurrentHitPoints();
+            shieldHPUI.maxValue = AmmoManager.instance.currentShield.GetComponent<ShieldBehaviour>().maxShieldCount;
+        }
+        else if(AmmoManager.instance.currentShield == null)
+        {
+            shieldHPUI.maxValue = 1;
+            shieldHPUI.value = 0;
+        }
         slider.value = currentHP;
         float hpPercent = (float)currentHP / (float)maxHP;
         if(lowHealthFeedBack != null)
@@ -202,29 +214,30 @@ public class PC : MonoBehaviour
                 lowHealthFeedBack.GetComponent<Image>().color = new Color(1, 0, 0, 0f);
             }
         }
-        if (healthBar != null)
-        {
-            // Calculate inverted values
-            float invertedHpPercent = 1 - hpPercent;
+        //-------------------------------------------------------------HP Bar Colour Change------------------------------------------------------------------------
+        //if (healthBar != null)
+        //{
+        //    // Calculate inverted values
+        //    float invertedHpPercent = 1 - hpPercent;
 
-            // Adjusted threshold for color change
-            float threshold = 0.3f;
+        //    // Adjusted threshold for color change
+        //    float threshold = 0.3f;
 
-            // If health percentage is below the threshold, adjust color to red
-            if (hpPercent <= threshold)
-            {
-                healthBar.color = new Vector4(1, 0, 0, 1); // Full red color
-            }
-            else
-            {
-                // Linear interpolation between green and red
-                float greenComponent = Mathf.Lerp(0, 1, (hpPercent - threshold) / (1 - threshold));
-                float redComponent = Mathf.Lerp(1, 0.4f, (hpPercent - threshold) / (1 - threshold));
-                float blueComponent = Mathf.Lerp(0, 0.7f, (hpPercent - threshold) / (1 - threshold));
-                // Assign color with adjusted values
-                healthBar.color = new Vector4(redComponent, greenComponent, blueComponent, 1);
-            }
-        }
+        //    // If health percentage is below the threshold, adjust color to red
+        //    if (hpPercent <= threshold)
+        //    {
+        //        healthBar.color = new Vector4(1, 0, 0, 1); // Full red color
+        //    }
+        //    else
+        //    {
+        //        // Linear interpolation between green and red
+        //        float greenComponent = Mathf.Lerp(0, 1, (hpPercent - threshold) / (1 - threshold));
+        //        float redComponent = Mathf.Lerp(1, 0.4f, (hpPercent - threshold) / (1 - threshold));
+        //        float blueComponent = Mathf.Lerp(0, 0.7f, (hpPercent - threshold) / (1 - threshold));
+        //        // Assign color with adjusted values
+        //        healthBar.color = new Vector4(redComponent, greenComponent, blueComponent, 1);
+        //    }
+        //}
         //-------------------------------------StatusEfffects---------------------------------------------------------
         if (statusEffects.isPoisoned)
         {
