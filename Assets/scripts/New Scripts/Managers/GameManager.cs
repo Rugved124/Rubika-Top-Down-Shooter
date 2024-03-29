@@ -98,7 +98,11 @@ public class GameManager : MonoBehaviour
             respawnPoint = pcLocationInHell.position;
             ChangeState(GameStates.RUNNING);
         }
-        switch (currentState)
+        if(SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            ChangeState(GameStates.INMENU);
+        }
+            switch (currentState)
         {
             case GameStates.INMENU:
                 Cursor.visible = true;
