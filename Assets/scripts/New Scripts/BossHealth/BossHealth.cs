@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class BossHealth : MonoBehaviour
 {
     int i;
@@ -161,9 +162,12 @@ public class BossHealth : MonoBehaviour
                 spawner.DestroyExistingEnemies();
                 Destroy(spawner.gameObject);
             }
-            Destroy(waveSpawner.gameObject);
+
         }
-        Destroy(gameObject);
+        Invoke("LoadCreditScene", 2f);
+        GetComponent<Renderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
+        Destroy(waveSpawner.gameObject, 2.1f);
     }
 
     public string GetCurrentBulletType()
@@ -175,5 +179,12 @@ public class BossHealth : MonoBehaviour
     {
         currentHealth--;
         totalHealth--;
+    }
+    private void LoadCreditScene()
+    {
+        if(SceneManager.GetActiveScene().buildIndex + 1 <= SceneManager.sceneCount)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
