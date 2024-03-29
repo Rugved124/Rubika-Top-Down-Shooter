@@ -22,11 +22,13 @@ public class FlameThrower : BaseBullet
     private float timeBeforeFire = 1;
 
     float chargeTime;
+    float lifeTime;
     public override void Start()
     {
         base.Start();
         timeBetweenTick = 1/ bulletRate;
         chargeTime = timeBeforeFire;
+        Invoke("Die", bulletLifeTime);
     }
 
     public override void Update()
