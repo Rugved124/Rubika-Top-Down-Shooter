@@ -339,9 +339,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Congratulations !\nShudh Desi Soul Cleaning Done Right\n\n\n\n\n\n\n\n\n\n\n\n---CREDITS---\n\n\n\n\n\n\n\n\n\n\n\n\n\n--Game
-    Designers--\n\nRugved Marathe\nAditya Holkar\nAseem Rakshasbhuvankar    \n\n\n\n\n\n\n\n\n\n\n\n\n--Game
-    Artists--\n\nTanmay Patole\nOm Fudke \nYajan Chauhan\n\n\n\n\n\n\n\n\n\nThanks
+  m_text: "Congratulations !\nShudh Desi Soul Cleaning Done Right\n\n\n\n\n\n\n\n\n\n\n\n---CREDITS---\n\n\n\n\n\n\n\n\n\n\n\n--Game
+    Designers--\n\nRugved Marathe\nAditya Holkar\nAseem Rakshasbhuvankar    \n\n\n\n\n\n\n\n\n\n\n\n--Game
+    Artists--\n\nTanmay Patole\nOm Fudke \nYajan Chauhan\n\n\n\n\n\n\n\n\n\n\n\nThanks
     To Trainers For The Help"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f58c4ee2e2727b438c7a1115a168672, type: 2}
