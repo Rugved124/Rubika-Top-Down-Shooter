@@ -19,13 +19,13 @@ public class VirtualCameraShake : MonoBehaviour
         while (time < duration/2) 
         {
             cam_perlin.m_AmplitudeGain = Mathf.Lerp(0, shakeAmount,speed);
-            duration += Time.deltaTime;
+            time += Time.deltaTime;
             yield return null;
         }
         while (time >= duration/2 && time < duration) 
         {
             cam_perlin.m_AmplitudeGain = Mathf.Lerp( shakeAmount,0, speed);
-            duration += Time.deltaTime;
+            time += Time.deltaTime;
             yield return null;
         }
         cam_perlin.m_AmplitudeGain = 0;

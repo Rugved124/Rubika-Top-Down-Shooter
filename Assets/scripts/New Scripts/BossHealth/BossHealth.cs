@@ -5,6 +5,7 @@ using TMPro;
 public class BossHealth : MonoBehaviour
 {
     int i;
+    public VirtualCameraShake camShake;
     [SerializeField]
     List<string> bulletTypes = new List<string> { "SLOW", "FIRE", "POISON" };
 
@@ -34,6 +35,9 @@ public class BossHealth : MonoBehaviour
 
     [SerializeField]
     int totalHealth;
+
+    [SerializeField]
+    GameObject explosion;
     private void Awake()
     {
         ResetHealth(0);
@@ -60,6 +64,10 @@ public class BossHealth : MonoBehaviour
             fullHealthSlider.maxValue = totalHealth;
             fullHealthSlider.value = totalHealth;
         }
+    }
+    private void OnEnable()
+    {
+        StartCoroutine(camShake.ShakeCamera(8f, 4f, 3f));
     }
     private void Update()
     {
