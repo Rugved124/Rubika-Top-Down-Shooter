@@ -42,6 +42,9 @@ public class FixedWaveSpawner : MonoBehaviour
     [SerializeField]
     List<GameObject> closingDoors = new List<GameObject>();
 
+    [SerializeField]
+    List<GameObject> destoryOnTrigger = new List<GameObject>();
+
     public bool canSpawm;
 
     [SerializeField]
@@ -85,7 +88,10 @@ public class FixedWaveSpawner : MonoBehaviour
             currentWave = waves[i];
             timebetweenSpawns = currentWave.timeBeforeThisWave;
         }
-
+        foreach(GameObject go in destoryOnTrigger)
+        {
+            Destroy(go);
+        }
         foreach(GameObject go in openOnTrigger)
         {
             go.SetActive(false);
