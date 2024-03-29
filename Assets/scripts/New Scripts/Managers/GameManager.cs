@@ -84,7 +84,11 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            currentState = GameStates.INMENU;
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             respawnPoint = pcLocation.position;
         }
