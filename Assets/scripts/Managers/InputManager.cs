@@ -133,7 +133,6 @@ public class InputManager : MonoBehaviour
             {
                 // Get the last key that was pressed
                 KeyCode lastKeyCode = GetLastKeyCode();
-                Debug.Log("Last key pressed: " + lastKeyCode.ToString());
             }
             usingMouseAndKeyboard = true;
             usingController = false;

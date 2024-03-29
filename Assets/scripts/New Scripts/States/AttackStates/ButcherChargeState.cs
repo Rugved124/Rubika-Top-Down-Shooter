@@ -34,6 +34,7 @@ public class ButcherChargeState : BaseState
         //_enemy.agent.acceleration *= 5f;
         //_enemy.agent.speed *= 5f;
         //_enemy.agent.obstacleAvoidanceType = ObstacleAvoidanceType.LowQualityObstacleAvoidance;
+        _enemy.gameObject.layer = LayerMask.NameToLayer("EnemyCollidable");
     }   
         
     public override Type ExecuteState()
@@ -74,6 +75,7 @@ public class ButcherChargeState : BaseState
             //_enemy.agent.speed /= 5f;
             _enemy.GetComponent<Rigidbody>().isKinematic = true;
             _enemy.agent.enabled = true;
+            _enemy.gameObject.layer = LayerMask.NameToLayer("Enemy");
             return typeof(IdleState);
         }
         return null;

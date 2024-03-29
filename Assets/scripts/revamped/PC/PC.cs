@@ -91,6 +91,8 @@ public class PC : MonoBehaviour
 
     [SerializeField]
     private GameObject lowHealthFeedBack;
+
+    private float blinkSpeed;
     public void InitializeStateMachine()
     {
         Dictionary<Type, BaseState> states = new Dictionary<Type, BaseState>()
@@ -182,7 +184,18 @@ public class PC : MonoBehaviour
             lowHealthFeedBack.SetActive(true);
             if (hpPercent <= 0.3)
             {
-                lowHealthFeedBack.GetComponent<Image>().color = new Color(1, 0, 0, 0.05f);
+                blinkSpeed -= Time.deltaTime;
+                if (blinkSpeed <= 0)
+                {
+                    blinkSpeed = 1f;
+                    lowHealthFeedBack.GetComponent<Image>().color = new Color(1, 0, 0, 0.15f);
+                }
+                else if(blinkSpeed <= 0.5 && blinkSpeed > 0)
+                {
+                    lowHealthFeedBack.GetComponent<Image>().color = new Color(1, 0, 0, 0.01f);
+                }
+
+                
             }
             else
             {
