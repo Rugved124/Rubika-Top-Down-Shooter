@@ -88,10 +88,7 @@ public class FixedWaveSpawner : MonoBehaviour
             currentWave = waves[i];
             timebetweenSpawns = currentWave.timeBeforeThisWave;
         }
-        foreach(GameObject go in destoryOnTrigger)
-        {
-            Destroy(go);
-        }
+        Invoke("DestroyObstacles", 0.5f);
         foreach(GameObject go in openOnTrigger)
         {
             go.SetActive(false);
@@ -296,5 +293,13 @@ public class FixedWaveSpawner : MonoBehaviour
     public void SetToLoop(bool loop)
     {
         isLoop = loop;
+    }
+
+    private void DestroyObstacles()
+    {
+        foreach(GameObject go in destoryOnTrigger)
+        {
+            Destroy(go, 1f);
+        }
     }
 }
