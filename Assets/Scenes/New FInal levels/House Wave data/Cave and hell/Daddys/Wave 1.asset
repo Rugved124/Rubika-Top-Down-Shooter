@@ -15,5 +15,7 @@ MonoBehaviour:
   enemy:
   - {fileID: 11400000, guid: cf5558d2ab3a9044d972f8e1db8184ab, type: 2}
   - {fileID: 11400000, guid: e820a38b4f7ba144ea93df975730d258, type: 2}
+  - {fileID: 11400000, guid: edf2b6525ae590a40b49493ca4442c75, type: 2}
+  - {fileID: 11400000, guid: cf5558d2ab3a9044d972f8e1db8184ab, type: 2}
   timeBeforeThisWave: 0
-  waveValue: 8
+  waveValue: 0

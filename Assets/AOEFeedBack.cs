@@ -14,10 +14,13 @@ public class AOEFeedBack : MonoBehaviour
     GameObject visuals;
 
     bool canSet;
+
+    float inGameFeedback;
     void Awake()
     {
         canSet = true;
         this.GetComponent<Collider>().enabled = false;
+        inGameFeedback = wait;
         if(visuals != null)
         {
             visuals.SetActive(false);
@@ -29,8 +32,8 @@ public class AOEFeedBack : MonoBehaviour
     }
     void Update()
     {
-        wait -= Time.deltaTime;
-        if(wait < 0f)
+        inGameFeedback -= Time.deltaTime;
+        if(inGameFeedback < 0f)
         {
             if(canSet )
             {
