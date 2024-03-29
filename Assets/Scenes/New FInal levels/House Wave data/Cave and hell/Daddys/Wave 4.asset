@@ -17,4 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7648dfa412ab04546b104363194f3ba6, type: 2}
   - {fileID: 11400000, guid: e4a4397093d87164db3f608b04121315, type: 2}
   timeBeforeThisWave: 400
-  waveValue: 7
+  waveValue: 0
