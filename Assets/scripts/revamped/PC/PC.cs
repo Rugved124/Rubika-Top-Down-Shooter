@@ -346,7 +346,6 @@ public class PC : MonoBehaviour
     //-------------------------------------------------------------------------------------------------------------------
     public void KnockBack(Vector3 collisionPos, float pushBackForce)
     {
-        Debug.Log("Pushed");
         Vector3 knockBackDir = transform.position - collisionPos;
         playerRb.AddForce(knockBackDir.normalized * pushBackForce,ForceMode.Impulse);
     }
