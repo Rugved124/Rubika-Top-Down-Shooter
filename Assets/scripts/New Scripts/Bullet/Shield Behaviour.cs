@@ -24,6 +24,8 @@ public class ShieldBehaviour : MonoBehaviour
     [SerializeField]
     int poisonDamagePerTick;
 
+    [SerializeField]
+    private AudioSource shieldDamage;
     private void Awake()
     {
         maxShieldCount = shieldCount;
@@ -72,6 +74,10 @@ public class ShieldBehaviour : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if(shieldDamage != null)
+        {
+            shieldDamage.Play();
+        }
         shieldCount -= damage;
     }
 

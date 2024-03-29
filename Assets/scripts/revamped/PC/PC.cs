@@ -184,7 +184,7 @@ public class PC : MonoBehaviour
             shieldHPUI.value = AmmoManager.instance.currentShield.GetComponent<ShieldBehaviour>().GetCurrentHitPoints();
             shieldHPUI.maxValue = AmmoManager.instance.currentShield.GetComponent<ShieldBehaviour>().maxShieldCount;
         }
-        else if(AmmoManager.instance.currentShield == null)
+        if(AmmoManager.instance.currentShield == null && shieldHPUI != null)
         {
             shieldHPUI.maxValue = 1;
             shieldHPUI.value = 0;
