@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/New FInal levels/Hell & Cave.unity
     guid: da2556859f4f9934cae161be804bf003
+  - enabled: 1
+    path: Assets/Scenes/Tanmay Scenes/Scenes/Ends Credits.unity
+    guid: 51b0702bfc08f334b8cbc2e700b43516
   m_configObjects: {}
