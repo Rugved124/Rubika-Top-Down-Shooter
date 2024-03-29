@@ -68,6 +68,15 @@ public class FlameThrower : BaseBullet
                                 hit.collider.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
                             }
                         }
+                        if (hit.collider.CompareTag("Boss"))
+                        {
+                            timeBetweenTick -= Time.deltaTime;
+                            if (timeBetweenTick <= 0f)
+                            {
+                                timeBetweenTick = 1 / bulletRate;
+                                hit.collider.gameObject.GetComponent<BossHealth>().TakeDamage();
+                            }
+                        }
                         if (hit.collider.CompareTag("Shield"))
                         {
                             hit.collider.gameObject.GetComponent<ShieldBehaviour>().SetPoisonedForTime();
