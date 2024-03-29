@@ -65,9 +65,15 @@ public class FixedWaveSpawner : MonoBehaviour
     private List<GameObject> openOnTrigger;
 
     private bool isCollided;
+
+    [SerializeField]
+    private bool isBoss;
+
+    bool canInvoke;
     private void Start()
     {
         isCollided = false;
+        canInvoke = true;
         if(loader != null)
         {
             loader.SetActive(false);
@@ -121,8 +127,26 @@ public class FixedWaveSpawner : MonoBehaviour
                         {
                             bell.Stop();
                         }
-                        ResetGeneratedEnemies();
-
+                        if (isBoss && existingEnemies.Count <= 0)
+                        {
+                            if (canInvoke)
+                            {
+                                Invoke("ResetGeneratedEnemies", 10f);
+                                canInvoke = false;
+                            }
+                        }
+                        else if(isBoss)
+                        {
+                            if (canInvoke)
+                            {
+                                Invoke("ResetGeneratedEnemies", 5f);
+                                canInvoke = false;
+                            }
+                        }
+                        else
+                        {
+                            ResetGeneratedEnemies();
+                        }
                         if (stopSpawning)
                         {
                             if (currentWaveStates != WaveStates.StopSpawn)
@@ -223,6 +247,7 @@ public class FixedWaveSpawner : MonoBehaviour
 
     void ResetGeneratedEnemies()
     {
+        canInvoke = true;
         generateEnemies.Clear();
 
         if (currentWaveStates != WaveStates.GenerateEnemies)
