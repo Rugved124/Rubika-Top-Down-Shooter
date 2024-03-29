@@ -23,7 +23,7 @@ Material:
   m_Name: Gravity  ENCIRCLE 1
   m_Shader: {fileID: -6465566751694194690, guid: a6db52a32fd32f74c8031b8b8aeda0a4,
     type: 3}
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 2100000, guid: 7a6ad92fc0a002b468bc7dab5b1eb270, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -36,31 +36,15 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
     m_Floats:
     - Dissolve_: 0.93
     - Noise_Scale_: 11.14
     - _Noise_Power: 2
-    - _QueueControl: 0
-    - _QueueOffset: 0
     - _Twirl_Amount: 91.55
     m_Colors:
     - Color_: {r: 10.134645, g: 2.296602, b: 81.147095, a: 0}
-    - _Noise_Speed: {r: 0, g: 0.2, b: 0, a: 0}
-    - _Twirl_Amount: {r: 0, g: 0, b: 0, a: 0}
     - _Twirl_Centre: {r: 0, g: 0, b: 0, a: 0}
     - _Twirl_Speed: {r: 3, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
