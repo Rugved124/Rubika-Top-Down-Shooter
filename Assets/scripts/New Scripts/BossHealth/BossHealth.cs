@@ -119,4 +119,14 @@ public class BossHealth : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
+    public string GetCurrentBulletType()
+    {
+        return currentBulletType;
+    }
+
+    public void TakeDamage()
+    {
+        currentHealth--;
+    }
 }
