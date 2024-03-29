@@ -42,8 +42,11 @@ public class BossHealth : MonoBehaviour
 
     [SerializeField]
     Transform explosionPos;
+
+    bool canExplode;
     private void Awake()
     {
+        canExplode = true;
         ResetHealth(0);
         if(healthSlider == null)
         {
@@ -69,26 +72,12 @@ public class BossHealth : MonoBehaviour
             fullHealthSlider.value = totalHealth;
         }
     }
-
-    private void OnDestroy()
-    {
-        if(explosion != null && explosionPos != null)
-        {
-            GameObject explode = Instantiate(explosion, explosionPos.position, Quaternion.identity);
-            Destroy(explode, 1.5f);
-        }
-
-    }
     private void OnEnable()
     {
         StartCoroutine(camShake.ShakeCamera(8f, 4f, 3f));
     }
     private void Update()
     {
-        if(waveSpawner == null)
-        {
-            Debug.LogError("There is no waveSpawner attached to the boss");
-        }
         if(barColor != null) 
         {
             switch (currentBulletType)
@@ -152,22 +141,29 @@ public class BossHealth : MonoBehaviour
             healthSlider.maxValue = currentHealth;
         }
     }
-
     private void Die()
-    {
-        if(waveSpawner != null)
+    {   
+        if(canExplode)
         {
-            foreach(FixedWaveSpawner spawner in waveSpawner.ReturnWaveSpawns())
+            Debug.Log("Dying");
+            canExplode = false;
+            Invoke("LoadCreditScene", 2f);
+            if (waveSpawner != null)
             {
-                spawner.DestroyExistingEnemies();
-                Destroy(spawner.gameObject);
+                foreach (FixedWaveSpawner spawner in waveSpawner.ReturnWaveSpawns())
+                {
+                    if (spawner != null)
+                    {
+                        spawner.DestroyExistingEnemies();
+                        Destroy(spawner.gameObject);
+                    }
+                }
             }
-
+            GameObject go = Instantiate(explosion, explosionPos.position, Quaternion.identity);
+            Destroy(go, 1f);
+            Destroy(waveSpawner.gameObject, 2.1f);
         }
-        Invoke("LoadCreditScene", 2f);
-        GetComponent<Renderer>().enabled = false;
-        GetComponent<Collider>().enabled = false;
-        Destroy(waveSpawner.gameObject, 2.1f);
+
     }
 
     public string GetCurrentBulletType()
@@ -182,9 +178,7 @@ public class BossHealth : MonoBehaviour
     }
     private void LoadCreditScene()
     {
-        if(SceneManager.GetActiveScene().buildIndex + 1 <= SceneManager.sceneCount)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        Debug.Log($"Loading Scene: {SceneManager.GetActiveScene().buildIndex + 1}");
+        SceneManager.LoadScene(3);
     }
 }
