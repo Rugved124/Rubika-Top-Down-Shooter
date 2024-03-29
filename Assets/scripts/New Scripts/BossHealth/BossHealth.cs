@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class BossHealth : MonoBehaviour
 {
     int i;
@@ -21,8 +22,18 @@ public class BossHealth : MonoBehaviour
 
     [SerializeField]
     Slider healthSlider;
+
+    [SerializeField]
+    Slider fullHealthSlider;
+
     [SerializeField]
     Image barColor;
+
+    [SerializeField]
+    TextMeshProUGUI bulletType;
+
+    [SerializeField]
+    int totalHealth;
     private void Awake()
     {
         ResetHealth(0);
@@ -39,6 +50,16 @@ public class BossHealth : MonoBehaviour
             healthSlider.maxValue = currentHealth;
             healthSlider.value = currentHealth;
         }
+        if(fullHealthSlider != null)
+        {
+            foreach(int a in healthPerBar)
+            {
+                totalHealth += a;
+            }
+            
+            fullHealthSlider.maxValue = totalHealth;
+            fullHealthSlider.value = totalHealth;
+        }
     }
     private void Update()
     {
@@ -51,20 +72,27 @@ public class BossHealth : MonoBehaviour
             switch (currentBulletType)
             {
                 case "SLOW":
-                    barColor.color = new Vector4(0.33f, 0, 1, 1f);
+                    barColor.color = new Vector4(0.78f, 0.35f, 1, 1f);
+                    bulletType.text = "Kalia";
                     break;
                 case "POISON":
                     barColor.color = new Vector4(0.47f, 0.723f, 0, 1);
+                    bulletType.text = "Gabbar";
                     break;
                 case "FIRE":
                     barColor.color = new Vector4(0.35f, 0.7f, 1, 1);
+                    bulletType.text = "Bhau";
                     break;
             }
         }
         if(healthSlider != null)
         {
             healthSlider.value = currentHealth;
-        }    
+        }   
+        if(fullHealthSlider != null)
+        {
+            fullHealthSlider.value = totalHealth;
+        }
         if(currentHealth <= 0 )
         {
             if( i + 1 < bulletTypes.Count)
@@ -88,7 +116,7 @@ public class BossHealth : MonoBehaviour
                 {
                     if (other.gameObject.GetComponent<BaseBullet>().bulletType.ToString().Contains(currentBulletType))
                     {
-                        currentHealth--;
+                        TakeDamage();
                     }
                 }
             }
@@ -128,5 +156,6 @@ public class BossHealth : MonoBehaviour
     public void TakeDamage()
     {
         currentHealth--;
+        totalHealth--;
     }
 }
