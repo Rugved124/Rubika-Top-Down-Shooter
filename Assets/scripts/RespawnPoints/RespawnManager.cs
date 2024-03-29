@@ -40,7 +40,14 @@ public class RespawnManager : MonoBehaviour
             setRespawn = false;
             if (pc != null)
             {
-                SaveManager.SavePlayerStats(respawner.position, pc.currentHP, AmmoManager.instance.firstAmmoType, AmmoManager.instance.secondAmmoType, AmmoManager.instance.GetAmmoCount(), SceneManager.GetActiveScene().buildIndex);
+                if(pc.currentHP <= 10)
+                {
+                    SaveManager.SavePlayerStats(respawner.position, 100, AmmoManager.instance.firstAmmoType, AmmoManager.instance.secondAmmoType, AmmoManager.instance.GetAmmoCount(), SceneManager.GetActiveScene().buildIndex);
+                }
+                else
+                {
+                    SaveManager.SavePlayerStats(respawner.position, pc.currentHP, AmmoManager.instance.firstAmmoType, AmmoManager.instance.secondAmmoType, AmmoManager.instance.GetAmmoCount(), SceneManager.GetActiveScene().buildIndex);
+                }
                 //ManagerEvents.playerData.Invoke(pc.currentHP, AmmoManager.instance.GetAmmoCount(), AmmoManager.instance.firstAmmoType.ToString(), AmmoManager.instance.secondAmmoType.ToString());
                 foreach (GameObject go in lastRoomLights)
                 {

@@ -574,7 +574,14 @@ public class PC : MonoBehaviour
     }
     private void LoadPlayerData()
     {
-        currentHP = SaveManager.LoadPlayerHealth();
+        if (SaveManager.LoadPlayerHealth() <= 10)
+        {
+            currentHP = 100;
+        }
+        else
+        {
+            currentHP = SaveManager.LoadPlayerHealth();
+        }
         transform.position = SaveManager.LoadPlayerPosition();
 
         Debug.Log("Player HP" + currentHP);
