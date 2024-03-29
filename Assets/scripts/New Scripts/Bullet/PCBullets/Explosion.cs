@@ -78,7 +78,6 @@ public class Explosion : MonoBehaviour
                             if(c.GetComponent<Enemy>() != null)
                             {
                                 c.GetComponent<Enemy>().TakeDamage(explosionDamage);
-
                             }
                         }
                     }
