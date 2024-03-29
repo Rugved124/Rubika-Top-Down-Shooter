@@ -211,7 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce005853242015241b47d5013a2aac87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 0}
   mainMenu: {fileID: 0}
   victoryScreenTime: 35
 --- !u!1 &72716152
@@ -273,8 +272,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "--Game Artists--\n\nTanmay Patole\nOm Fudke \nYajan Chauhan"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9f58c4ee2e2727b438c7a1115a168672, type: 2}
+  m_sharedMaterial: {fileID: -774577713571655798, guid: 9f58c4ee2e2727b438c7a1115a168672,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -831,8 +831,9 @@ MonoBehaviour:
     Aseem
     Rakshasbhuvankar'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9f58c4ee2e2727b438c7a1115a168672, type: 2}
+  m_sharedMaterial: {fileID: -774577713571655798, guid: 9f58c4ee2e2727b438c7a1115a168672,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -965,8 +966,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: ---CREDITS---
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9f58c4ee2e2727b438c7a1115a168672, type: 2}
+  m_sharedMaterial: {fileID: -774577713571655798, guid: 9f58c4ee2e2727b438c7a1115a168672,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1442,8 +1444,9 @@ MonoBehaviour:
 
     securing Swaraj !'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9f58c4ee2e2727b438c7a1115a168672, type: 2}
+  m_sharedMaterial: {fileID: -774577713571655798, guid: 9f58c4ee2e2727b438c7a1115a168672,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1712,8 +1715,9 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9f58c4ee2e2727b438c7a1115a168672, type: 2}
+  m_sharedMaterial: {fileID: -774577713571655798, guid: 9f58c4ee2e2727b438c7a1115a168672,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
